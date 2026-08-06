@@ -55,10 +55,10 @@ export const CONFIG = {
   // TAXAS DE JUROS (bloco Finanças)
   // ============================================
 
-  /** Taxa CDI vigente (%) — usada na Calculadora de Juros Compostos */
+  /** Taxa CDI de referência (%) — NÃO exibida diretamente ao usuário como "taxa atual" (ver POLITICA-DADOS-DINAMICOS.md). Só usar em UI se houver integração real com fonte oficial atualizada automaticamente. */
   taxaCDI2026: 13.25,
 
-  /** Taxa Selic vigente (%) — usada para comparacoes financeiras */
+  /** Taxa Selic de referência (%) — NÃO exibida diretamente ao usuário como "taxa atual" (ver POLITICA-DADOS-DINAMICOS.md). Só usar em UI se houver integração real com fonte oficial atualizada automaticamente. */
   taxaSelic2026: 13.75,
 
   // ============================================

@@ -3,7 +3,6 @@ import { ToolLayout } from "../components/ToolLayout";
 import { AffiliateBanner } from "../components/AffiliateBanner";
 import { TrendingUp } from "lucide-react";
 import { ToolContent } from "../components/ToolContent";
-import { CONFIG } from "../config";
 
 interface Props {
   onBack: () => void;
@@ -99,11 +98,11 @@ export function JurosCompostos({ onBack }: Props) {
               step="0.1"
               value={rate}
               onChange={(e) => setRate(e.target.value)}
-              placeholder={`Ex: ${CONFIG.taxaCDI2026.toFixed(2)} (CDI)`}
+              placeholder="Ex: 12"
               className="input-field"
             />
             <span className="text-xs text-gray-500 mt-1 block">
-              Sugestão baseada no CDI de referência ({CONFIG.taxaCDI2026.toFixed(2)}%, {CONFIG.anoAtual}) — informe a taxa do seu investimento.
+              Não sabe qual taxa usar? Consulte a instituição financeira ou a fonte oficial (ex: Banco Central, CDI, poupança) referente ao investimento que deseja simular.
             </span>
           </label>
           <label className="block">
@@ -156,18 +155,18 @@ export function JurosCompostos({ onBack }: Props) {
         category="Finanças"
         data={{
           directAnswer: "Juros compostos incidem sobre o capital somado aos juros já acumulados em períodos anteriores — por isso o rendimento cresce de forma acelerada (exponencial) com o tempo, ao contrário dos juros simples, que incidem sempre sobre o valor inicial fixo.",
-          howItWorks: `A ferramenta simula, mês a mês, o crescimento de um investimento com aportes mensais recorrentes. Em cada mês, aplica a taxa sobre o saldo acumulado até ali (capital inicial + rendimentos anteriores) e depois soma o novo aporte, repetindo esse processo pelo número total de meses informado. Isso é diferente de multiplicar o valor inicial pela taxa uma única vez: o efeito composto significa que o rendimento de um mês passa a gerar rendimento no mês seguinte, criando uma curva de crescimento cada vez mais acentuada. Ao final, a calculadora mostra três números: o total que você efetivamente investiu (soma de todos os aportes), o montante final acumulado, e o rendimento (a diferença entre os dois). Como referência, a ferramenta usa a taxa CDI ${CONFIG.taxaCDI2026.toFixed(2)}% e a Selic ${CONFIG.taxaSelic2026.toFixed(2)}% de ${CONFIG.anoAtual}, mas você pode simular com qualquer taxa — de poupança a CDBs, fundos ou Tesouro Direto.`,
+          howItWorks: `A ferramenta simula, mês a mês, o crescimento de um investimento com aportes mensais recorrentes. Em cada mês, aplica a taxa sobre o saldo acumulado até ali (capital inicial + rendimentos anteriores) e depois soma o novo aporte, repetindo esse processo pelo número total de meses informado. Isso é diferente de multiplicar o valor inicial pela taxa uma única vez: o efeito composto significa que o rendimento de um mês passa a gerar rendimento no mês seguinte, criando uma curva de crescimento cada vez mais acentuada. Ao final, a calculadora mostra três números: o total que você efetivamente investiu (soma de todos os aportes), o montante final acumulado, e o rendimento (a diferença entre os dois). Você pode simular com qualquer taxa — de poupança a CDBs, CDI, Selic, fundos ou Tesouro Direto; consulte a fonte oficial ou sua instituição financeira para saber a taxa vigente aplicável ao seu investimento.`,
           example: {
-            title: "Exemplo: R$ 10.000 inicial, R$ 500/mês, 13.25% a.a., 10 anos",
+            title: "Exemplo: R$ 10.000 inicial, R$ 500/mês, 13,25% a.a. (taxa ilustrativa), 10 anos",
             steps: [
               `Investimento inicial: R$ 10.000`,
               `Aporte mensal: R$ 500`,
-              `Taxa anual: 13.25% (CDI ${CONFIG.anoAtual})`,
+              `Taxa anual: 13.25% a.a. (valor ilustrativo — informe a taxa real do seu investimento)`,
               `Período: 10 anos (120 meses)`,
               `Taxa mensal: 13.25% / 12 = ~1.10%`,
               `Montante final: R$ 166.000+`
             ],
-            result: "Em 10 anos, você investe R$ 70.000 e recebe aproximadamente R$ 166.000 — rendimento de R$ 96.000 (137% de rentabilidade).",
+            result: "Em 10 anos, você investe R$ 70.000 e recebe aproximadamente R$ 166.000 — rendimento de R$ 96.000 (137% de rentabilidade). Simulação com taxa ilustrativa; o resultado real depende da taxa efetivamente aplicada ao seu investimento.",
           },
           glossary: [
             { term: "Juros simples", definition: "Incidem apenas sobre o valor inicial (principal), sem considerar os rendimentos já acumulados. Crescem de forma linear, não exponencial." },
