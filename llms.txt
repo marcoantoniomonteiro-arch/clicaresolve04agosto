@@ -1,0 +1,77 @@
+# CLICAresolve
+
+> Portal brasileiro de 90+ ferramentas e calculadoras gratuitas, 100% client-side, cobrindo saúde, finanças, transportes, estudos, esportes, religião e utilidades diárias.
+
+## Visão Geral
+
+O CLICAresolve é um projeto independente brasileiro de ferramentas online gratuitas. Todas as calculadoras seguem fórmulas reconhecidas e públicas — não inventamos cálculos. 100% dos cálculos acontecem no navegador do usuário. Nenhum dado digitado é enviado a servidores.
+
+## Categorias Principais
+
+### [Saúde e Bem-Estar](/categoria-saude-bem-estar.html)
+Ferramentas: IMC Avançada (classificação OMS), Gasto Calórico (Harris-Benedict), Frequência Cardíaca (Tanaka), Macronutrientes (OMS/FAO), Limite de Cafeína (FDA), Ciclos do Sono (90 min), DPP (Regra de Naegele), Período Fértil (Ogino-Knaus), Contrações, Alerta de Água.
+
+### [Finanças e Empreendedorismo](/categoria-financas.html)
+Ferramentas: Juros Compostos (fórmula padrão), Simulador de Markup (contábil), Ponto de Equilíbrio (Horngren), Conversor de Moedas (taxa diária), Salário/Hora (CLT), Taxas de Maquininha (Cielo, Rede, Stone), Comparador de Preço (unitário), Porcentagem Reversa, Álcool ou Gasolina (ANP 70%), Depreciação de Veículo (Tabela FIPE), Parcelamento de Multas (CTB/CONTRAN), Gerador de Recibo.
+
+### [Casa e Transportes](/categoria-casa-transportes.html)
+Ferramentas: Calculadora de BTU (ABNT NBR 16401), Calculadora de Tinta (rendimento padrão), Metros Quadrados (ABNT NBR 14644), Consumo de Energia (ANEEL), Limpeza por Zonas, Depreciação de Veículo, Álcool ou Gasolina, Divisor de Carona.
+
+### [Educação e Estudos](/categoria-estudos.html)
+Ferramentas: Simulador SISU (MEC/INEP), Calculadora de Edital (fórmula ponderada), Ciclo de Estudos (técnica de blocos), Pomodoro (Cirillo, 1987), Velocidade de Digitação (WPM), Contador de Caracteres.
+
+### [DP/RH e Trabalho](/categoria-micro-nichos.html)
+Ferramentas: Acumulador de Horas (CLT arts. 58-61), Conversor de Horas Decimais (Portaria 1510/2009), Gerador de Recibo.
+
+### [Calendário e Tempo](/categoria-calendario-tempo.html)
+Ferramentas: Calendário de Feriados (Lei 662/1949), Diferença entre Datas (ISO 8601), Dias de Vida.
+
+### [Família e Bebês](/categoria-familia-bebes.html)
+Ferramentas: Significado de Nomes (etimologia hebraica, grega, latina), Nomes de Pets, Idade Pet (AVMA/WSAVA), Consumo de Ração (NRC/FEDIAF), Rastreador de Vacinas (WSAVA).
+
+### [Pet](/categoria-pet.html)
+Ferramentas: Calculadora de Idade Pet (AVMA/WSAVA), Consumo de Ração (NRC), Nomes de Pets, Rastreador de Vacinas (WSAVA 2022).
+
+### [Religioso](/categoria-religioso.html)
+Ferramentas: Plano de Leitura Bíblica (365 dias), Cronologia Bíblica (Ussher/Thompson), Conversor Calendário Hebraico, Roteiro de Estudos do Judaísmo, Fichamento SOAP.
+
+### [Astrologia](/categoria-astrologia.html)
+Ferramentas: Descobridor de Signo (tropical), Mapa Numerológico (pitagórico), Compatibilidade de Signos.
+
+### [Esportes e Lazer](/categoria-esportes.html)
+Ferramentas: Placar Poliesportivo, Sorteador de Equipes, Gerador de Bolão, Onde Assistir, Probabilidades de Classificação, Palpites de Loteria, Painel de Bingo.
+
+### [Utilidades](/categoria-utilidades.html)
+Ferramentas: Gerador de QR Code (ISO 18004), Gerador de Senhas (NIST SP 800-63B), Conversor de Cozinha (USDA), Conversor de Roupas (ISO 8559), Organizador de Listas, Formatador de Texto.
+
+### [Produtividade](/categoria-micro-nichos.html)
+Ferramentas: Pomodoro, Ciclo de Estudos, Velocidade de Digitação, Contador de Caracteres, Organizador de Listas.
+
+### [Micro-Nichos](/categoria-micro-nichos.html)
+Ferramentas: Custo Nail Designer, Agenda de Unhas, Cronograma Capilar, Tarefas Infantil, Backlog Gamer, Gerador de Nicks, Spawn Timer, Conversor DPI, Conversor de Proporção, Paleta de Cores, Descobridor de Anagramas, Link WhatsApp, Formatador de Legendas, Taxa de Engajamento.
+
+## Metodologia
+
+Todas as ferramentas usam fórmulas e metodologias públicas e reconhecidas. Detalhes completos em [/metodologia.html](/metodologia.html).
+
+Principais fontes:
+- Saúde: OMS, Harris-Benedict (Mifflin-St Jeor), Tanaka, FDA, EFSA
+- Finanças: Fórmulas matemáticas padrão, CLT, CTB, ANP, Tabela FIPE
+- Casa: ABNT NBR 16401, ABNT NBR 14644, ANEEL
+- Estudos: MEC/INEP, SISU, ENEM
+- Pet: AVMA, WSAVA, NRC, FEDIAF
+- Religioso: Texto bíblico (Tanakh, NA28), calendário hebraico tradicional
+- Utilidades: ISO 18004, ISO 8559, NIST SP 800-63B
+
+## Privacidade
+
+100% dos cálculos acontecem no navegador do usuário. Nenhum dado pessoal é coletado, armazenado ou enviado a servidores. Não usamos cookies de rastreamento (exceto Google AdSense). Os dados em localStorage ficam apenas no dispositivo do usuário.
+
+## Contato
+
+Email: suporterapido77@yahoo.com
+Website: https://clicaresolve.com.br
+
+---
+
+Este arquivo é o equivalente do robots.txt para IAs generativas. Várias IAs já leem esse padrão para entender do que o site trata antes de decidir indexar ou citar.
