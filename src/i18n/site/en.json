@@ -1,0 +1,62 @@
+{
+  "site": {
+    "name": "CLICAresolve",
+    "tagline": "Click. Solved.",
+    "description": "84 free online tools and calculators for everyday life — no sign-up, no downloads, everything runs in your browser."
+  },
+  "nav": {
+    "searchPlaceholder": "Search a tool...",
+    "backToHome": "Back to Home",
+    "backToMenu": "Back to Menu",
+    "allTools": "All Tools",
+    "categories": "Categories"
+  },
+  "categories": {
+    "calculators": "Calculators",
+    "finance": "Finance",
+    "health": "Health",
+    "productivity": "Productivity",
+    "education": "Education",
+    "sports": "Sports",
+    "leisure": "Leisure",
+    "pets": "Pets",
+    "utilities": "Utilities",
+    "family": "Family & Babies",
+    "gaming": "Gaming"
+  },
+  "home": {
+    "heroTitle": "Click. Solved.",
+    "heroSubtitle": "84 free tools for your everyday life, no hassle.",
+    "ctaButton": "Explore Tools",
+    "mostUsedLabel": "MOST USED NOW"
+  },
+  "footer": {
+    "about": "About",
+    "contact": "Contact",
+    "privacy": "Privacy Policy",
+    "terms": "Terms of Use",
+    "methodology": "Methodology",
+    "cookieNotice": "CLICAresolve uses cookies to display ads. By continuing to browse, you agree to our",
+    "cookiePolicyLink": "Privacy Policy",
+    "rightsReserved": "All rights reserved.",
+    "madeIn": "Made in Brazil"
+  },
+  "common": {
+    "calculate": "Calculate",
+    "reset": "Reset",
+    "copy": "Copy",
+    "copied": "Copied!",
+    "share": "Share",
+    "result": "Result",
+    "loading": "Loading...",
+    "relatedTools": "Related Tools",
+    "frequentlyAskedQuestions": "Frequently Asked Questions",
+    "readMore": "Read more",
+    "readLess": "Read less"
+  },
+  "languageBanner": {
+    "message": "We noticed you're browsing in English — View this page in English?",
+    "action": "View in English",
+    "dismiss": "No, thanks"
+  }
+}
