@@ -48,7 +48,7 @@ export function IMCAvancada({ onBack }: Props) {
 
   return (
     <ToolLayout
-      title="IMC Avançada"
+      title="IMC Avançado"
       emoji="⚖️"
       category="Saúde"
       description="Calcule seu IMC com classificação OMS, peso ideal e hidratação recomendada."
@@ -109,11 +109,11 @@ export function IMCAvancada({ onBack }: Props) {
         )}
       </div>
       <ToolContent
-        toolName="IMC Avançada"
+        toolName="IMC Avançado"
         category="Saúde"
         data={{
           directAnswer: "O IMC (Índice de Massa Corporal) é calculado dividindo o peso em quilogramas pela altura em metros ao quadrado. Uma pessoa com 70 kg e 1,75 m de altura tem IMC de 22.9, que é classificado como 'peso normal' segundo a OMS.",
-          howItWorks: "O IMC Avançada calcula seu Índice de Massa Corporal usando a fórmula padrão da Organização Mundial da Saúde (OMS): IMC = peso (kg) / altura² (m). A ferramenta vai além do cálculo simples: determina sua classificação (abaixo do peso, normal, sobrepeso, obesidade I, II, III), calcula o peso mínimo e máximo ideal para sua altura, e estima a ingestão diária recomendada de água. A classificação segue os parâmetros da OMS (1997): <18.5 = abaixo do peso, 18.5-24.9 = normal, 25-29.9 = sobrepeso, 30-34.9 = obesidade I, 35-39.9 = obesidade II, ≥40 = obesidade III. A meta de água é calculada como 35ml/kg de peso. A faixa de peso ideal usa a inversa da fórmula: peso mínimo = 18.5 × altura² e peso máximo = 24.9 × altura². Essa ferramenta é informativa e não substitui avaliação médica.",
+          howItWorks: "O IMC Avançado calcula seu Índice de Massa Corporal usando a fórmula padrão da Organização Mundial da Saúde (OMS): IMC = peso (kg) / altura² (m). A ferramenta vai além do cálculo simples: determina sua classificação (abaixo do peso, normal, sobrepeso, obesidade I, II, III), calcula o peso mínimo e máximo ideal para sua altura, e estima a ingestão diária recomendada de água. A classificação segue os parâmetros da OMS (1997): <18.5 = abaixo do peso, 18.5-24.9 = normal, 25-29.9 = sobrepeso, 30-34.9 = obesidade I, 35-39.9 = obesidade II, ≥40 = obesidade III. A meta de água é calculada como 35ml/kg de peso. A faixa de peso ideal usa a inversa da fórmula: peso mínimo = 18.5 × altura² e peso máximo = 24.9 × altura². Essa ferramenta é informativa e não substitui avaliação médica.",
           example: {
             title: "Exemplo: Maria, 28 anos, 70 kg, 1.75 m",
             steps: [

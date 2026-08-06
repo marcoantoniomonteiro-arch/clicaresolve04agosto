@@ -128,7 +128,7 @@ export function CalendarioFeriados({ onBack }: Props) {
       title="Calendario de Feriados"
       emoji="📆"
       category="Utilidades"
-      description="Calendario com feriados nacionais e moveis de 2025-2026."
+      description={`Calendario com feriados nacionais e moveis de ${new Date().getFullYear()} e ${new Date().getFullYear() + 1}.`}
       onBack={onBack}
       affiliateBanner={
         <AffiliateBanner

@@ -134,7 +134,7 @@ export function MapaNumerologico({ onBack }: Props) {
 
   return (
     <ToolLayout
-      title="MapaNumerologico"
+      title="Mapa Numerológico"
       emoji="🔢"
       category="Astrologia"
       description="Descubra seu Nmero do Destino baseado na sua data de nascimento."

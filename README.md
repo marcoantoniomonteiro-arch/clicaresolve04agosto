@@ -1,6 +1,6 @@
 # CLICAresolve
 
-Portal brasileiro de 95+ ferramentas e calculadoras gratuitas, 100% client-side, sem cadastro.
+Portal brasileiro de 130+ ferramentas e calculadoras gratuitas, 100% client-side, sem cadastro.
 
 ---
 
@@ -124,7 +124,7 @@ searchConsoleVerification: "codigo-de-verificacao",
 - [ ] Página de Política de Privacidade publicada
 
 ### Conteúdo
-- [ ] Todas as 95+ ferramentas têm botão "Voltar ao Menu"
+- [ ] Todas as ferramentas têm botão "Voltar ao Menu"
 - [ ] Todas as páginas de ferramenta têm banner afiliado
 - [ ] Todas as páginas de ferramenta têm 2 slots de AdSense
 - [ ] Página 404.html personalizada presente
@@ -163,11 +163,11 @@ project/
 │   │   ├── CategoryPage.tsx   # Página de categoria
 │   │   └── Header.tsx          # Cabeçalho global
 │   ├── data/
-│   │   ├── tools.ts           # 95+ ferramentas cadastradas
+│   │   ├── tools.ts           # ferramentas cadastradas (ver TOOLS.length)
 │   │   ├── seoData.ts         # SEO de categorias
 │   │   └── toolSeoData.ts     # SEO de ferramentas (22+ completos)
 │   ├── pages/                 # Páginas estáticas (Sobre, Contato, etc.)
-│   └── tools/                 # 95+ componentes de ferramentas
+│   └── tools/                 # componentes de ferramentas (um por ferramenta)
 ├── index.html                 # HTML principal com meta tags
 └── package.json
 ```

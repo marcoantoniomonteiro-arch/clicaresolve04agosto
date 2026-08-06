@@ -198,7 +198,7 @@ export const TOOL_SEO_DATA: Record<string, ToolSEOData> = {
   },
   "limite-cafeina": {
     title: "Descubra seu Limite Seguro de Cafeína Grátis | CLICAresolve",
-    description: "Calcule sua dose segura de café com base no peso. Gratuito, sem cadastro. Saiba seu limite!",
+    description: "Calcule uma referência de ingestão de cafeína com base no peso. Gratuito, sem cadastro.",
     schemaType: "MedicalWebPage",
     hasFAQ: true,
     faqs: [
@@ -574,7 +574,7 @@ export const TOOL_SEO_DATA: Record<string, ToolSEOData> = {
   },
   // Calendário
   "calendario-feriados": {
-    title: "Calendário de Feriados 2025-2026 com Contador | CLICAresolve",
+    title: `Calendário de Feriados ${new Date().getFullYear()}-${new Date().getFullYear() + 1} com Contador | CLICAresolve`,
     description: "Veja feriados nacionais e móveis com contador. Gratuito, sem cadastro. Confira os feriados!",
     schemaType: "SoftwareApplication",
     hasFAQ: true,

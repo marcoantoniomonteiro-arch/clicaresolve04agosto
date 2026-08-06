@@ -2,6 +2,7 @@ import React from "react";
 import { StaticPage } from "../components/StaticPage";
 import { Shield, Heart, CheckCircle, Globe, Lock, Award } from "lucide-react";
 import { CafeInline } from "../components/CafeButton";
+import { TOOLS } from "../data/tools";
 
 interface Props {
   onBack: () => void;
@@ -33,7 +34,7 @@ export function SobrePage({ onBack }: Props) {
           <p className="text-sm text-gray-300 leading-relaxed">
             O CLICAresolve nasceu de uma ideia simples: resolver problemas do dia a dia com um único clique.
             Somos um portal brasileiro de ferramentas e calculadoras gratuitas, sem cadastro e sem custo.
-            Com mais de 84 ferramentas cobrindo Saúde, Finanças, Transportes, Estudos, Esportes, DP/RH, Pet e mais.
+            Com mais de {TOOLS.length} ferramentas cobrindo Saúde, Finanças, Transportes, Estudos, Esportes, DP/RH, Pet e mais.
             Nossa missão é democratizar o acesso a informações úteis de forma gratuita para todos os brasileiros.
             Todos os cálculos funcionam 100% no navegador — nenhum dado é enviado a servidores.
           </p>

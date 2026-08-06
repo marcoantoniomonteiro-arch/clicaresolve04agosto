@@ -102,6 +102,9 @@ export function JurosCompostos({ onBack }: Props) {
               placeholder={`Ex: ${CONFIG.taxaCDI2026.toFixed(2)} (CDI)`}
               className="input-field"
             />
+            <span className="text-xs text-gray-500 mt-1 block">
+              Sugestão baseada no CDI de referência ({CONFIG.taxaCDI2026.toFixed(2)}%, {CONFIG.anoAtual}) — informe a taxa do seu investimento.
+            </span>
           </label>
           <label className="block">
             <span className="text-sm text-gray-400 mb-1 block">Periodo ({periodType})</span>

@@ -163,7 +163,7 @@ export const GUIDES: Guide[] = [
     relatedTools: [
       { slug: "gasto-calorico", name: "Calculadora de Gasto Calórico" },
       { slug: "macronutrientes", name: "Calculadora de Macronutrientes" },
-      { slug: "imc-avancada", name: "IMC Avançada" },
+      { slug: "imc-avancada", name: "IMC Avançado" },
       { slug: "frequencia-cardiaca", name: "Frequência Cardíaca" },
     ],
   },

@@ -1,5 +1,6 @@
 import React from "react";
 import { Helmet } from "react-helmet-async";
+import { TOOLS } from "../data/tools";
 
 interface SEOHeadProps {
   title?: string;
@@ -16,10 +17,11 @@ interface SEOHeadProps {
 }
 
 const SITE_URL = "https://www.clicaresolve.com.br";
+const DEFAULT_SEO_DESCRIPTION = `CLICAresolve — ${TOOLS.length} ferramentas gratuitas: calculadoras, conversores, utilitários e muito mais. Sem cadastro, tudo no navegador.`;
 
 export function SEOHead({
   title,
-  description = "CLICAresolve — 95+ ferramentas gratuitas: calculadoras, conversores, utilitários e muito mais. Sem cadastro, tudo no navegador.",
+  description = DEFAULT_SEO_DESCRIPTION,
   canonical,
   ogTitle,
   ogDescription,

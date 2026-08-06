@@ -188,7 +188,7 @@ const FEATURED_SLUGS = [
   "alcool-gasolina",
   "imc-avancada",
   "juros-compostos",
-  "gerador-qr-code",
+  "gerador-qrcode",
   "dias-vida",
   "calculadora-churrasco",
 ];
@@ -241,7 +241,7 @@ function FeaturedTools({ onSelectTool }: { onSelectTool: (slug: string) => void 
     <section className="max-w-4xl mx-auto px-4 pt-10 pb-2">
       <div className="flex items-center gap-2 mb-4">
         <span className="text-base">⚡</span>
-        <p className="text-xs font-semibold text-gray-500 uppercase tracking-widest">Mais usadas agora</p>
+        <p className="text-xs font-semibold text-gray-500 uppercase tracking-widest">Comece por aqui</p>
       </div>
       <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
         {featured.map((tool, i) => (
@@ -563,7 +563,7 @@ export default function App() {
           "@type": "WebSite",
           name: "CLICAresolve",
           url: "https://www.clicaresolve.com.br",
-          description: "84 ferramentas gratuitas para o seu dia a dia — sem cadastro, sem complicação.",
+          description: `${TOOLS.length} ferramentas gratuitas para o seu dia a dia — sem cadastro, sem complicação.`,
           potentialAction: {
             "@type": "SearchAction",
             target: "https://www.clicaresolve.com.br/?search={search_term_string}",
@@ -741,7 +741,7 @@ function Footer({ onNavigate, cafeOpen, setCafeOpen }: { onNavigate: (page: stri
               <span className="text-sm font-bold leading-none"><span className="text-white">CLICA</span><span className="text-green-400">resolve</span></span>
             </div>
             <p className="text-xs text-gray-500 leading-relaxed">
-              84 ferramentas gratuitas para o dia a dia — sem cadastro, sem complicação.
+              {TOOLS.length} ferramentas gratuitas para o dia a dia — sem cadastro, sem complicação.
             </p>
           </div>
           <div>

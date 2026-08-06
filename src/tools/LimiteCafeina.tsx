@@ -58,7 +58,7 @@ export function LimiteCafeina({ onBack }: Props) {
       title="Limite de Cafeína"
       emoji="☕"
       category="Saúde"
-      description="Calcule o total de cafeína consumida e compare com o limite diário seguro."
+      description="Calcule o total de cafeína consumida e compare com a referência diária."
       onBack={onBack}
       affiliateBanner={<AffiliateBanner terms={["cafe especial", "garrafa termica"]} label="Para os amantes de café" />}
       disclaimer="Esta ferramenta é puramente informativa. Não substitui consulta médica ou diagnóstico profissional. Consulte sempre um profissional de saúde habilitado."
@@ -120,7 +120,7 @@ export function LimiteCafeina({ onBack }: Props) {
                 ? <span className="text-red-400 font-semibold">Acima do limite! Reduza o consumo.</span>
                 : result.pct >= 80
                 ? <span className="text-yellow-400">Perto do limite. Fique atento.</span>
-                : <span className="text-green-400">Dentro do limite seguro.</span>
+                : <span className="text-green-400">Dentro da referência estimada.</span>
               }
             </p>
           </div>
@@ -130,7 +130,7 @@ export function LimiteCafeina({ onBack }: Props) {
         toolName="Limite de Cafeína"
         category="Saúde"
         data={{
-          directAnswer: "O limite seguro de cafeína para a maioria dos adultos saudáveis é de até 400mg por dia, o equivalente a cerca de 4 xícaras de café.",
+          directAnswer: "A referência de ingestão de cafeína para a maioria dos adultos saudáveis é de até 400mg por dia (fonte: FDA), o equivalente a cerca de 4 xícaras de café. Esta ferramenta é informativa e não substitui orientação médica.",
           howItWorks: "A ferramenta soma a quantidade de cafeína consumida ao longo do dia, considerando diferentes fontes (café, chá, energéticos, refrigerantes) e compara com o limite diário recomendado para o seu peso corporal. Também é possível ver o tempo estimado para a cafeína ser metabolizada, já que sua meia-vida no organismo é de cerca de 5 horas.",
           example: {
             title: "Exemplo: 3 xícaras de café + 1 lata de energético",
@@ -140,10 +140,10 @@ export function LimiteCafeina({ onBack }: Props) {
               "Total consumido: 365mg",
               "Limite diário recomendado: 400mg",
             ],
-            result: "Com 365mg consumidos, a pessoa está próxima do limite diário recomendado de 400mg, mas ainda dentro da faixa considerada segura.",
+            result: "Com 365mg consumidos, a pessoa está próxima do limite diário recomendado de 400mg, mas ainda dentro da referência geral.",
           },
           faqs: [
-            { question: "Qual o limite seguro de cafeína por dia?", answer: "Para adultos saudáveis, até 400mg por dia é geralmente considerado seguro." },
+            { question: "Qual o limite seguro de cafeína por dia?", answer: "Para adultos saudáveis, até 400mg por dia é a referência geral (FDA). Esta ferramenta não substitui orientação médica." },
             { question: "Quanto tempo a cafeína fica no organismo?", answer: "A meia-vida da cafeína é de cerca de 5 horas, podendo variar de pessoa para pessoa." },
             { question: "Gestantes podem consumir a mesma quantidade?", answer: "Não, recomenda-se limitar a cafeína a 200mg por dia durante a gravidez. Consulte um médico." },
             { question: "Quais alimentos além do café contêm cafeína?", answer: "Chá preto e verde, chocolate, refrigerantes tipo cola e bebidas energéticas também contêm cafeína." },

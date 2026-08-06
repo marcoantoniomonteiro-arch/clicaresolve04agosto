@@ -46,7 +46,7 @@ export const tools: Tool[] = [
     slug: "imc-avancada",
     emoji: "⚖️",
     category: "Saúde",
-    name: "IMC Avançada",
+    name: "IMC Avançado",
     description: "Calcule seu IMC com análise completa de peso ideal e classificação.",
   },
   {
@@ -79,7 +79,7 @@ export const tools: Tool[] = [
     emoji: "☕",
     category: "Saúde",
     name: "Limite de Cafeína",
-    description: "Descubra seu limite seguro de café diário baseado no seu peso.",
+    description: "Estime uma referência de ingestão diária de cafeína com base no seu peso.",
   },
   {
     id: 10,
@@ -340,7 +340,7 @@ export const tools: Tool[] = [
   {
     id: 42,
     slug: "painel-bingo",
-    emoji: "bingo",
+    emoji: "🎱",
     category: "Sorte",
     name: "Painel de Bingo",
     description: "Painel para sortear e acompanhar números do bingo.",
@@ -423,7 +423,7 @@ export const tools: Tool[] = [
     emoji: "📆",
     category: "Utilidades",
     name: "Calendário de Feriados",
-    description: "Veja feriados nacionais e móveis de 2025-2026 com contador regressivo.",
+    description: `Veja feriados nacionais e móveis de ${new Date().getFullYear()} e ${new Date().getFullYear() + 1} com contador regressivo.`,
   },
   {
     id: 53,
@@ -630,7 +630,7 @@ export const tools: Tool[] = [
     slug: "mapa-numerologico",
     emoji: "🔢",
     category: "Astrologia",
-    name: "MapaNumerologico",
+    name: "Mapa Numerológico",
     description: "Descubra seu Numero do Destino pela data de nascimento.",
   },
   {

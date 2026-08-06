@@ -10,7 +10,7 @@ const METHODOLOGIES = [
   {
     category: "Saúde e Bem-Estar",
     tools: [
-      { name: "IMC Avançada", source: "Classificação conforme parâmetros da Organização Mundial da Saúde (OMS, 1997). Fórmula: IMC = peso (kg) / altura² (m)" },
+      { name: "IMC Avançado", source: "Classificação conforme parâmetros da Organização Mundial da Saúde (OMS, 1997). Fórmula: IMC = peso (kg) / altura² (m)" },
       { name: "Gasto Calórico", source: "Fórmula de Harris-Benedict revisada (Mifflin-St Jeor, 1990). Equação de Metabolismo Basal validada para populações diversas" },
       { name: "Frequência Cardíaca", source: "Fórmula de Tanaka (2001): 208 – 0.7 × idade. Zonas de treino baseadas em percentuais do FCmax (ACSM, 2018)" },
       { name: "Macronutrientes", source: "Distribuição percentual recomendada pela OMS/FAO: 50-60% carboidratos, 10-15% proteínas, 25-30% gorduras" },
