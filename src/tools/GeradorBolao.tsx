@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { ToolLayout } from "../components/ToolLayout";
 import { AffiliateBanner } from "../components/AffiliateBanner";
 import { ToolContent } from "../components/ToolContent";
-import { CONFIG } from "../config";
 import { Plus, Trash2, Share2 } from "lucide-react";
 
 interface Props { onBack: () => void; }
@@ -59,7 +58,6 @@ export function GeradorBolao({ onBack }: Props) {
     const footer = [
       "",
       "─────────────────",
-      `🎰 Aposte de forma oficial: ${CONFIG.linkBet}`,
       "_Gerado pelo CLICAresolve_",
     ].join("\n");
 
@@ -89,17 +87,6 @@ export function GeradorBolao({ onBack }: Props) {
     
     >
       <div className="space-y-4">
-        {/* Bet banner */}
-        <a
-          href={CONFIG.linkBet}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="flex items-center justify-between gap-3 p-3 rounded-xl bg-amber-500/10 border border-amber-500/30 hover:bg-amber-500/20 transition-colors"
-        >
-          <span className="text-sm text-amber-400 font-semibold">🎰 {CONFIG.nomeBet} — {CONFIG.textoBet}</span>
-          <span className="text-xs text-amber-300 shrink-0 underline">Apostar agora</span>
-        </a>
-
         <div className="grid grid-cols-2 gap-3">
           <label className="block col-span-2">
             <span className="text-xs text-gray-400 mb-1 block">Nome do jogo / campeonato</span>

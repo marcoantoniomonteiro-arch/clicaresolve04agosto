@@ -152,8 +152,8 @@ export function JurosCompostos({ onBack }: Props) {
         toolName="Juros Compostos"
         category="Finanças"
         data={{
-          directAnswer: "Juros compostos são calculados sobre o principal mais os juros acumulados. A fórmula é M = C × (1 + i)^t, onde C é o capital, i é a taxa e t é o tempo.",
-          howItWorks: `A ferramenta simula o crescimento de um investimento com juros compostos, considerando aportes mensais. Calcula: montante final, total investido, rendimento bruto e rentabilidade percentual. A taxa mensal é derivada da taxa anual informada. A simulação aplica juros compostos mês a mês sobre o saldo acumulado mais o aporte. Dados de referência: CDI ${CONFIG.taxaCDI2026.toFixed(2)}% e Selic ${CONFIG.taxaSelic2026.toFixed(2)}% (ano ${CONFIG.anoAtual}).`,
+          directAnswer: "Juros compostos incidem sobre o capital somado aos juros já acumulados em períodos anteriores — por isso o rendimento cresce de forma acelerada (exponencial) com o tempo, ao contrário dos juros simples, que incidem sempre sobre o valor inicial fixo.",
+          howItWorks: `A ferramenta simula, mês a mês, o crescimento de um investimento com aportes mensais recorrentes. Em cada mês, aplica a taxa sobre o saldo acumulado até ali (capital inicial + rendimentos anteriores) e depois soma o novo aporte, repetindo esse processo pelo número total de meses informado. Isso é diferente de multiplicar o valor inicial pela taxa uma única vez: o efeito composto significa que o rendimento de um mês passa a gerar rendimento no mês seguinte, criando uma curva de crescimento cada vez mais acentuada. Ao final, a calculadora mostra três números: o total que você efetivamente investiu (soma de todos os aportes), o montante final acumulado, e o rendimento (a diferença entre os dois). Como referência, a ferramenta usa a taxa CDI ${CONFIG.taxaCDI2026.toFixed(2)}% e a Selic ${CONFIG.taxaSelic2026.toFixed(2)}% de ${CONFIG.anoAtual}, mas você pode simular com qualquer taxa — de poupança a CDBs, fundos ou Tesouro Direto.`,
           example: {
             title: "Exemplo: R$ 10.000 inicial, R$ 500/mês, 13.25% a.a., 10 anos",
             steps: [
@@ -166,10 +166,16 @@ export function JurosCompostos({ onBack }: Props) {
             ],
             result: "Em 10 anos, você investe R$ 70.000 e recebe aproximadamente R$ 166.000 — rendimento de R$ 96.000 (137% de rentabilidade).",
           },
+          glossary: [
+            { term: "Juros simples", definition: "Incidem apenas sobre o valor inicial (principal), sem considerar os rendimentos já acumulados. Crescem de forma linear, não exponencial." },
+            { term: "Efeito composto", definition: "O fenômeno pelo qual os rendimentos de um período passam a render juros nos períodos seguintes, acelerando o crescimento do total investido ao longo do tempo." },
+            { term: "CDI", definition: "Certificado de Depósito Interbancário — taxa média usada como referência para a rentabilidade da maioria dos investimentos de renda fixa no Brasil." },
+          ],
           faqs: [
-            { question: "O que é juros compostos?", answer: "Juros compostos são calculados sobre o principal mais os juros acumulados. Fórmula: M = C × (1 + i)^t. Diferente dos juros simples, que incidem apenas sobre o valor inicial." },
-            { question: "Como funciona a simulação?", answer: "A ferramenta calcula mês a mês: aplica a taxa mensal sobre o saldo acumulado e adiciona o aporte. Repete pelo número total de meses. Mostra montante final, investido e rendimento." },
-            { question: "Qual a diferença entre CDI e Selic?", answer: "CDI é a taxa média dos empréstimos entre bancos. Selic é a taxa básica de juros da economia. Normalmente, CDI = Selic − 0.10%. A ferramenta usa CDI como referência." },
+            { question: "O que são juros compostos?", answer: "São juros calculados sobre o capital somado aos rendimentos anteriores, e não apenas sobre o valor inicial. A fórmula clássica (sem aportes) é M = C × (1 + i)^t, onde C é o capital, i é a taxa por período e t é o número de períodos." },
+            { question: "Como a simulação considera os aportes mensais?", answer: "A cada mês, a ferramenta aplica a taxa sobre o saldo acumulado até aquele momento e, em seguida, soma o novo aporte ao saldo — esse processo se repete mês a mês até completar o período total, o que reflete melhor a realidade de quem investe todo mês, em vez de um único depósito." },
+            { question: "Qual a diferença entre CDI e Selic?", answer: "A Selic é a taxa básica de juros da economia, definida pelo Banco Central. O CDI é a taxa média dos empréstimos entre bancos e costuma ficar ligeiramente abaixo da Selic (diferença de cerca de 0,10 ponto percentual). A maioria dos investimentos de renda fixa usa o CDI como referência de rentabilidade." },
+            { question: "Vale mais a pena investir um valor alto de uma vez ou aportar todo mês?", answer: "Depende do seu momento financeiro. Quem já tem o capital disponível se beneficia de mais tempo de rendimento composto sobre aquele valor. Já os aportes mensais são a forma mais realista de construir patrimônio para quem está poupando parte da renda mês a mês — o importante é começar e manter a constância." },
           ],
         }}
       />

@@ -280,6 +280,63 @@ export const CATEGORY_SEO_DATA: Record<string, CategorySEOData> = {
     categoryFilter: "Livros e Leitura",
     emoji: "📚",
     schemaKeywords: ["sugestor livros", "cronologia biblica", "plano leitura biblica", "roteiro judaismo", "fichamento soap"]
+  },
+  "pdf-documentos": {
+    slug: "pdf-documentos",
+    title: "Ferramentas de PDF Online Grátis — Juntar, Dividir, Comprimir e Mais",
+    h1: "Ferramentas de PDF e Documentos Online Grátis",
+    metaDescription: "Mais de 20 ferramentas gratuitas para PDF: juntar, dividir, comprimir, girar, assinar, numerar páginas, converter HEIC e Markdown, fazer OCR e muito mais. Tudo direto no navegador, sem upload para servidores externos.",
+    intro: "Trabalhar com PDF no dia a dia costuma exigir programas pagos ou sites que pedem cadastro só para uma tarefa simples. O CLICAresolve reúne mais de 20 ferramentas de PDF gratuitas que rodam direto no navegador: juntar vários arquivos em um só, dividir um PDF grande em partes, comprimir para caber no limite de anexo de e-mail, girar páginas na orientação errada, adicionar marca d'água, numerar páginas, extrair páginas específicas, preencher formulários e até assinar digitalmente. Também oferecemos conversores para quem lida com fotos de iPhone (HEIC para JPG e PDF) e para quem trabalha com documentação técnica (HTML, DOCX e PDF para Markdown, além de OCR para tornar PDFs escaneados pesquisáveis). Como o processamento acontece no seu navegador, os arquivos não são enviados a nenhum servidor — sua privacidade fica garantida mesmo em documentos sensíveis.",
+    diferenciais: [
+      "Mais de 20 ferramentas de PDF em um só lugar, sem precisar instalar nada",
+      "Processamento local no navegador — seus arquivos não sobem para servidores externos",
+      "Conversores HEIC, OCR e Markdown pouco comuns em outras ferramentas gratuitas",
+      "100% gratuito — sem limites, sem cadastro, sem marca d'água forçada"
+    ],
+    ogTitle: "Ferramentas de PDF Online Grátis — Juntar, Dividir, Comprimir e Mais",
+    ogDescription: "Mais de 20 ferramentas gratuitas de PDF, processadas direto no navegador. Sem cadastro, sem upload para servidores.",
+    categoryName: "PDF e Documentos",
+    categoryFilter: "PDF e Documentos",
+    emoji: "📄",
+    schemaKeywords: ["juntar pdf", "dividir pdf", "comprimir pdf", "assinar pdf", "heic para pdf", "ocr pdf", "numerar paginas pdf"]
+  },
+  "ferramentas-dev": {
+    slug: "ferramentas-dev",
+    title: "Ferramentas para Desenvolvedores Online Grátis — JSON, Regex, UUID e Mais",
+    h1: "Ferramentas para Desenvolvedores Online Grátis",
+    metaDescription: "Ferramentas gratuitas para desenvolvedores: formatador de JSON, testador de regex, gerador de UUID e hash, codificador Base64 e URL, validador de CPF/CNPJ, conversor de CSV e JSON. Tudo no navegador.",
+    intro: "Tarefas rápidas do dia a dia de quem programa — formatar um JSON bagunçado, testar uma expressão regular, gerar um UUID ou validar um CPF — não deveriam exigir abrir um projeto ou instalar uma extensão. O CLICAresolve reúne um conjunto de utilitários técnicos gratuitos: formatador e validador de JSON, testador de regex com destaque de correspondências, gerador de UUID e de hash (MD5, SHA), codificador e decodificador Base64 e de URL, validador de CPF e CNPJ com dígitos verificadores, além de conversores entre CSV, JSON e Excel. Todas as ferramentas rodam localmente no navegador, então dados sensíveis (como um token de API ou dado de cliente que você só quer formatar rapidamente) nunca saem da sua máquina.",
+    diferenciais: [
+      "Processamento 100% local — nenhum dado enviado a servidores externos",
+      "Ferramentas essenciais do dia a dia: JSON, Regex, UUID, Base64, Hash",
+      "Validador de CPF/CNPJ com verificação real de dígitos",
+      "100% gratuito — sem limites, sem cadastro, sem anúncios"
+    ],
+    ogTitle: "Ferramentas para Desenvolvedores — JSON, Regex, UUID e Mais",
+    ogDescription: "Utilitários técnicos gratuitos processados localmente no navegador. Sem cadastro, sem upload de dados.",
+    categoryName: "Ferramentas Dev",
+    categoryFilter: "Ferramentas Dev",
+    emoji: "💻",
+    schemaKeywords: ["formatador json", "testador regex", "gerador uuid", "codificador base64", "validador cpf cnpj", "gerador hash"]
+  },
+  "imagem-design": {
+    slug: "imagem-design",
+    title: "Ferramentas de Imagem e Design Online Grátis — Compressor, Paleta de Cores e Mais",
+    h1: "Ferramentas de Imagem e Design Online Grátis",
+    metaDescription: "Ferramentas gratuitas de imagem: compressor, redimensionador, extrator de paleta de cores, seletor de cores e conversores de DPI e proporção. Tudo direto no navegador, sem upload.",
+    intro: "Ajustes rápidos de imagem — reduzir o tamanho de um arquivo pesado, redimensionar para um formato específico, extrair a paleta de cores de uma foto ou converter a proporção para redes sociais — costumam exigir abrir um editor completo para uma tarefa de segundos. O CLICAresolve reúne ferramentas gratuitas de imagem e design que resolvem isso direto no navegador: compressor de imagem (reduz o peso do arquivo mantendo qualidade visual), redimensionador (ajusta largura e altura mantendo proporção), extrator de paleta de cores (identifica as cores dominantes de uma imagem), seletor de cores (converte entre HEX, RGB e HSL) e conversores de DPI e proporção para quem prepara arquivos para impressão ou redes sociais. Como tudo roda localmente, suas imagens não são enviadas a nenhum servidor externo.",
+    diferenciais: [
+      "Compressão e redimensionamento sem perder qualidade perceptível",
+      "Extrator de paleta de cores útil para design e branding",
+      "Processamento local — suas imagens não saem do navegador",
+      "100% gratuito — sem limites, sem marca d'água, sem cadastro"
+    ],
+    ogTitle: "Ferramentas de Imagem e Design — Compressor, Paleta de Cores e Mais",
+    ogDescription: "Ferramentas gratuitas de imagem processadas no navegador. Sem cadastro, sem upload para servidores.",
+    categoryName: "Imagem e Design",
+    categoryFilter: "Imagem e Design",
+    emoji: "🎨",
+    schemaKeywords: ["compressor imagem", "redimensionador imagem", "extrator paleta cores", "seletor cores", "conversor dpi"]
   }
 };
 

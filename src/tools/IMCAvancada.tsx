@@ -109,7 +109,7 @@ export function IMCAvancada({ onBack }: Props) {
         )}
       </div>
       <ToolContent
-        toolName="IMC"
+        toolName="IMC Avançada"
         category="Saúde"
         data={{
           directAnswer: "O IMC (Índice de Massa Corporal) é calculado dividindo o peso em quilogramas pela altura em metros ao quadrado. Uma pessoa com 70 kg e 1,75 m de altura tem IMC de 22.9, que é classificado como 'peso normal' segundo a OMS.",

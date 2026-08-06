@@ -193,7 +193,7 @@ export function SimuladorSISU({ onBack }: Props) {
         </p>
       </div>
       <ToolContent
-        toolName="SimuladorSISU"
+        toolName="Simulador SISU"
         category="Estudos"
         data={{
           directAnswer: "Com notas ENEM de 700 (redação), 650 (LC), 600 (CH), 550 (CN), 500 (MT) e pesos 1,1,1,1,2 para Medicina, sua média ponderada é 580.",

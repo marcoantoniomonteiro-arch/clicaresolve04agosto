@@ -1,5 +1,6 @@
 import { ToolLayout } from "../components/ToolLayout";
 import { AffiliateBanner } from "../components/AffiliateBanner";
+import { ToolContent } from "../components/ToolContent";
 import React, { useState, useMemo } from "react";
 
 
@@ -135,6 +136,29 @@ export function HorasDecimais({ onBack }: Props) {
           <span>Usado para calculo de folha de pagamento e faturamento</span>
         </div>
       </div>
+      <ToolContent
+        toolName="Conversor de Horas Decimais"
+        category="DP/RH"
+        data={{
+          directAnswer: "1h45min em decimal é 1,75 — divida os minutos por 60 e some às horas cheias. Para o caminho inverso, a parte decimal multiplicada por 60 vira minutos.",
+          howItWorks: "Para converter de horário para decimal, a ferramenta soma as horas inteiras com os minutos divididos por 60 (ex: 1h45min → 1 + 45/60 = 1,75). Para converter de decimal para horário, ela separa a parte inteira (as horas) e multiplica a parte decimal por 60 para obter os minutos (ex: 1,75 → 1h + 0,75×60 = 1h45min). Essa conversão é essencial em folhas de pagamento e planilhas financeiras, porque sistemas de cálculo geralmente trabalham com números decimais, enquanto o relógio marca horas e minutos.",
+          example: {
+            title: "Exemplo: converter 2h30min para decimal",
+            steps: [
+              "Horas inteiras: 2",
+              "Minutos: 30 → 30 ÷ 60 = 0,50",
+              "Soma: 2 + 0,50 = 2,50",
+            ],
+            result: "2h30min equivale a 2,50 horas decimais",
+          },
+          faqs: [
+            { question: "Por que usar horas decimais em vez de horário normal?", answer: "Planilhas e sistemas de folha de pagamento geralmente calculam valores com base decimal (ex: multiplicar horas por valor/hora), o que fica mais simples com 2,50 do que com 2h30min." },
+            { question: "Como faço a conversão sem calculadora?", answer: "Divida os minutos por 60 para achar a fração decimal e some às horas inteiras. Ex: 15min = 15/60 = 0,25; 45min = 0,75." },
+            { question: "1h30min é 1,3 ou 1,5 em decimal?", answer: "É 1,5. O erro comum é pensar que 30 minutos equivale a 0,3, mas 30 minutos é metade de uma hora, ou seja, 0,5." },
+            { question: "Essa ferramenta serve para calcular hora extra?", answer: "Ela converte o formato do número, mas não calcula valores em dinheiro. Para isso, multiplique o resultado em decimal pelo valor da hora trabalhada." },
+          ],
+        }}
+      />
     </ToolLayout>
   );
 }

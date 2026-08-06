@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { ToolLayout } from "../components/ToolLayout";
 import { AffiliateBanner } from "../components/AffiliateBanner";
+import { ToolContent } from "../components/ToolContent";
 
 interface Props { onBack: () => void; }
 
@@ -120,6 +121,30 @@ export function ParcelamentoMultas({ onBack }: Props) {
           </div>
         )}
       </div>
+      <ToolContent
+        toolName="Parcelamento de Multas"
+        category="Finanças"
+        data={{
+          directAnswer: "Informe o valor da multa, o número de parcelas desejado e a taxa de juros mensal — a ferramenta calcula o valor de cada parcela pelo sistema de amortização com juros compostos (Tabela Price) e mostra o total de juros pago.",
+          howItWorks: "A simulação usa a fórmula da Tabela Price (amortização com parcelas fixas): PMT = V × [i × (1+i)ⁿ] ÷ [(1+i)ⁿ − 1], onde V é o valor da multa, i é a taxa de juros mensal e n é o número de parcelas. O resultado mostra o valor de cada parcela, o total pago ao final do parcelamento e a diferença entre esse total e o valor original da multa (os juros). Também é gerada uma tabela com a data estimada de vencimento de cada parcela, começando no mês seguinte à simulação.",
+          example: {
+            title: "Exemplo: multa de R$ 293,47 em 6x com juros de 2,99% a.m.",
+            steps: [
+              "Valor da multa: R$ 293,47",
+              "Número de parcelas: 6",
+              "Taxa de juros: 2,99% ao mês",
+              "Aplica a fórmula da Tabela Price",
+            ],
+            result: "Parcela de aproximadamente R$ 52,60 por mês, totalizando cerca de R$ 315,60 (R$ 22,13 de juros)",
+          },
+          faqs: [
+            { question: "Todo órgão de trânsito permite parcelar multa?", answer: "Não necessariamente — as regras de parcelamento variam por estado e por órgão (Detran, DER, PRF, prefeituras). Consulte o órgão emissor da sua multa para confirmar se e como o parcelamento é oferecido." },
+            { question: "Qual taxa de juros devo usar na simulação?", answer: "Use a taxa informada pelo órgão ou instituição financeira responsável pelo parcelamento da sua multa específica — ela varia conforme o convênio e a forma de pagamento (boleto, cartão, etc.)." },
+            { question: "Parcelar a multa afeta os pontos na carteira?", answer: "Não. Os pontos na CNH são registrados no ato da infração, independentemente da forma de pagamento escolhida." },
+            { question: "Existe desconto para pagamento à vista?", answer: "Muitos órgãos oferecem desconto (geralmente 20%) para pagamento à vista dentro do prazo de notificação. Vale comparar esse desconto com o total de juros do parcelamento antes de decidir." },
+          ],
+        }}
+      />
     </ToolLayout>
   );
 }

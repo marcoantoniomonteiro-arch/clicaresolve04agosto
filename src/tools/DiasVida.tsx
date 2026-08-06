@@ -220,8 +220,8 @@ export function DiasVida({ onBack }: Props) {
         toolName="Contador de Dias de Vida"
         category="Utilidades"
         data={{
-          directAnswer: "O total de dias vividos é calculado contando os dias corridos entre a data de nascimento e hoje.",
-          howItWorks: "A ferramenta calcula quantos dias, semanas, meses e anos se passaram desde o nascimento até hoje, considerando anos bissextos. Também mostra quantos dias faltam para o próximo aniversário.",
+          directAnswer: "O total de dias vividos é calculado contando os dias corridos entre a data de nascimento e a data de hoje, já considerando os anos bissextos que aconteceram nesse período.",
+          howItWorks: "A ferramenta pega a data de nascimento informada e calcula a diferença exata até a data de hoje em dias corridos, convertendo também esse total em semanas, meses e anos completos. O cálculo considera os anos bissextos ocorridos no intervalo (que têm 366 dias em vez de 365), o que evita o erro comum de simplesmente multiplicar '365 dias × anos de idade'. Além do total vivido, a ferramenta calcula quantos dias faltam para o próximo aniversário, comparando a data atual com o próximo dia e mês de nascimento que ainda vai ocorrer no calendário.",
           example: {
             title: "Exemplo: pessoa nascida em 10/05/1995",
             steps: [
@@ -233,10 +233,11 @@ export function DiasVida({ onBack }: Props) {
             result: "Uma pessoa nascida em 10/05/1995 viveu 11.386 dias até 12/07/2026.",
           },
           faqs: [
-            { question: "Como calcular quantos dias uma pessoa já viveu?", answer: "Conte os dias corridos entre nascimento e hoje, considerando anos bissextos." },
-            { question: "Mostra quanto falta para o aniversário?", answer: "Sim, calcula quantos dias faltam até a próxima data de aniversário." },
-            { question: "Considera anos bissextos?", answer: "Sim, usa o calendário real." },
-            { question: "Posso calcular a idade de outra pessoa?", answer: "Sim, basta inserir a data de nascimento dela." },
+            { question: "Como calcular quantos dias uma pessoa já viveu?", answer: "Basta contar os dias corridos entre a data de nascimento e hoje, levando em conta os anos bissextos que ocorreram no período — é exatamente esse cálculo que a ferramenta faz automaticamente ao informar a data de nascimento." },
+            { question: "A ferramenta mostra quanto falta para o próximo aniversário?", answer: "Sim. Além do total de dias já vividos, ela calcula a contagem regressiva em dias até a próxima vez que o dia e mês de nascimento se repetirem no calendário." },
+            { question: "O cálculo considera anos bissextos?", answer: "Sim, o resultado usa o calendário real com todos os anos bissextos (366 dias) ocorridos entre a data de nascimento e hoje, o que evita pequenas imprecisões que apareceriam numa conta simplificada." },
+            { question: "Posso usar para calcular a idade em dias de outra pessoa, como meu filho?", answer: "Sim, a ferramenta funciona para qualquer data de nascimento que você informar — é bastante usada para acompanhar marcos de bebês (como os '1.000 dias de vida') ou apenas por curiosidade sobre datas marcantes." },
+            { question: "Por que saber a idade em dias, e não só em anos?", answer: "Contar em dias é uma forma comum de celebrar marcos específicos (como completar 10.000 dias de vida) e também é usado em contextos médicos, principalmente no acompanhamento de bebês nos primeiros meses." },
           ],
         }}
       />

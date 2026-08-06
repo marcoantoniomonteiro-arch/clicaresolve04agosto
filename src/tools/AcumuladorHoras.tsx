@@ -1,5 +1,6 @@
 import { ToolLayout } from "../components/ToolLayout";
 import { AffiliateBanner } from "../components/AffiliateBanner";
+import { ToolContent } from "../components/ToolContent";
 import React, { useState, useMemo, useCallback } from "react";
 
 
@@ -184,6 +185,30 @@ export function AcumuladorHoras({ onBack }: Props) {
           {registros.length} registro(s) | Maximo 14 por dia
         </p>
       </div>
+      <ToolContent
+        toolName="Acumulador de Horas"
+        category="DP/RH"
+        data={{
+          directAnswer: "Some cada par de entrada e saída do seu dia, compare o total com a jornada contratada (4h, 6h ou 8h) e veja se ficou com saldo positivo (hora extra) ou negativo (hora devida).",
+          howItWorks: "A ferramenta soma o tempo entre cada par de horário de entrada e saída que você registrar — funciona para dias com múltiplos intervalos, como manhã e tarde separadas por almoço. O total trabalhado é comparado com a jornada contratada escolhida (4h, 6h ou 8h). Se você trabalhou mais que a jornada, o saldo aparece como positivo (banco de horas a favor). Se trabalhou menos, aparece como negativo (horas a repor). Quando o horário de saída é menor que o de entrada, a calculadora assume que o expediente passou da meia-noite e ajusta automaticamente.",
+          example: {
+            title: "Exemplo: jornada de 8h com intervalo de almoço",
+            steps: [
+              "Registro 1: entrada 08:00, saída 12:00 (4h trabalhadas)",
+              "Registro 2: entrada 13:00, saída 17:00 (4h trabalhadas)",
+              "Total do dia: 8h00min",
+              "Jornada contratada selecionada: 8h",
+            ],
+            result: "Saldo do dia: 0h00min (bateu exatamente a jornada contratada)",
+          },
+          faqs: [
+            { question: "Serve para calcular banco de horas?", answer: "Sim, o saldo positivo ou negativo exibido é o equivalente ao que normalmente se registra num banco de horas diário. Para o acumulado do mês, some os saldos de vários dias." },
+            { question: "A ferramenta calcula hora extra com adicional de 50% ou 100%?", answer: "Não. Ela mostra apenas o saldo de tempo (horas a mais ou a menos). O valor em dinheiro da hora extra depende do acordo ou convenção coletiva da categoria, que a ferramenta não tem como saber." },
+            { question: "Posso registrar mais de dois intervalos no mesmo dia?", answer: "Sim, é possível adicionar até 14 pares de entrada e saída, útil para quem tem múltiplas pausas ao longo do expediente." },
+            { question: "E se eu trabalhar até depois da meia-noite?", answer: "Se o horário de saída for menor que o de entrada (ex: entrada 22:00, saída 02:00), a calculadora entende que o turno cruzou a meia-noite e soma corretamente." },
+          ],
+        }}
+      />
     </ToolLayout>
   );
 }

@@ -5,7 +5,6 @@ import React, { useState, useCallback } from "react";
 
 
 import { Shuffle } from "lucide-react";
-import { CONFIG } from "../config";
 
 interface Props {
   onBack: () => void;
@@ -139,23 +138,15 @@ export function PalpitesLoteria({ onBack }: Props) {
         )}
 
         <div className="p-4 rounded-xl border border-amber-500/20 bg-amber-500/5">
-          <p className="text-xs text-amber-400 font-semibold uppercase tracking-wider mb-3">Links Uteis</p>
+          <p className="text-xs text-amber-400 font-semibold uppercase tracking-wider mb-3">Link Útil</p>
           <div className="flex flex-wrap gap-2">
             <a
-              href={CONFIG.linkLoteria}
+              href="https://loterias.caixa.gov.br"
               target="_blank"
               rel="noopener noreferrer"
               className="px-4 py-2 rounded-lg bg-amber-500 hover:bg-amber-400 text-black text-sm font-semibold transition-colors"
             >
-              Registre em bolao oficial
-            </a>
-            <a
-              href={CONFIG.linkBet}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="px-4 py-2 rounded-lg bg-green-500 hover:bg-green-400 text-black text-sm font-semibold transition-colors"
-            >
-              Aposte Online
+              Site oficial da Caixa Loterias
             </a>
           </div>
         </div>

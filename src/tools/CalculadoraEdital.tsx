@@ -188,7 +188,7 @@ export function CalculadoraEdital({ onBack }: Props) {
         )}
       </div>
       <ToolContent
-        toolName="CalculadoraEdital"
+        toolName="Calculadora de Edital"
         category="Estudos"
         data={{
           directAnswer: "Com notas de 80 (matérias A e B) e 70 (matérias C e D) e pesos 2,1,2,1, a nota final é 76.7. A fórmula é: Σ (nota × peso) / Σ pesos.",

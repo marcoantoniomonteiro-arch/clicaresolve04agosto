@@ -121,7 +121,7 @@ export function MetrosQuadrados({ onBack }: Props) {
         )}
       </div>
       <ToolContent
-        toolName="MetrosQuadrados"
+        toolName="Metros Quadrados"
         category="Transportes"
         data={{
           directAnswer: "Uma sala de 4m de largura por 5m de comprimento tem 20 metros quadrados. Para L em forma, divida em retângulos e some.",

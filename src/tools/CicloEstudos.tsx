@@ -189,7 +189,7 @@ export function CicloEstudos({ onBack }: Props) {
         )}
       </div>
       <ToolContent
-        toolName="CicloEstudos"
+        toolName="Ciclo de Estudos"
         category="Estudos"
         data={{
           directAnswer: "O ciclo de estudos divide seu tempo em blocos de 50 minutos de foco + 10 minutos de pausa. Ideal para 4-6 ciclos por dia.",

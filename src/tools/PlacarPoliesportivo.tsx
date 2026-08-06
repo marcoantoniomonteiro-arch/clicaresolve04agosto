@@ -3,7 +3,6 @@ import { AffiliateBanner } from "../components/AffiliateBanner";
 import React, { useState, useEffect, useRef } from "react";
 
 
-import { CONFIG } from "../config";
 import { Play, Pause, RotateCcw, Plus, Minus } from "lucide-react";
 import { ToolContent } from "../components/ToolContent";
 
@@ -99,17 +98,6 @@ export function PlacarPoliesportivo({ onBack }: Props) {
     
     >
       <div className="space-y-4">
-        {/* Bet banner */}
-        <a
-          href={CONFIG.linkBet}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="flex items-center justify-between gap-3 p-3 rounded-xl bg-amber-500/10 border border-amber-500/30 hover:bg-amber-500/20 transition-colors"
-        >
-          <span className="text-sm text-amber-400 font-semibold">🎯 {CONFIG.nomeBet} — {CONFIG.textoBet}</span>
-          <span className="text-xs text-amber-300 shrink-0 underline">Apostar</span>
-        </a>
-
         {/* Modalidade */}
         <div className="flex gap-2 overflow-x-auto pb-1">
           {MODALIDADES.map((m) => (

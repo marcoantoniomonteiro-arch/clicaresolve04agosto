@@ -126,7 +126,7 @@ export function ConsumoEnergia({ onBack }: Props) {
         )}
       </div>
       <ToolContent
-        toolName="ConsumoEnergia"
+        toolName="Consumo de Energia"
         category="Transportes"
         data={{
           directAnswer: "Um ar-condicionado de 9.000 BTU ligado 8h/dia consome ~17.28 kWh/mês, custando aproximadamente R$ 14.70/mês (tarifa R$ 0.85/kWh).",

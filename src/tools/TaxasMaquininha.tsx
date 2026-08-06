@@ -1,5 +1,6 @@
 import { ToolLayout } from "../components/ToolLayout";
 import { AffiliateBanner } from "../components/AffiliateBanner";
+import { ToolContent } from "../components/ToolContent";
 import React, { useState, useMemo } from "react";
 
 
@@ -190,6 +191,36 @@ export function TaxasMaquininha({ onBack }: Props) {
           </div>
         )}
       </div>
+      <ToolContent
+        toolName="Taxas de Maquininha"
+        category="Finanças"
+        data={{
+          directAnswer: "A taxa da maquininha é descontada sobre o valor total da venda antes de cair na sua conta. Uma venda de R$ 100 com taxa de 3,4% (parcelado em 4x) resulta em R$ 96,60 líquidos, divididos entre as parcelas.",
+          howItWorks: "As operadoras de cartão (adquirentes) cobram uma taxa percentual sobre cada venda, conhecida como MDR (Merchant Discount Rate ou Taxa de Desconto do Lojista). Essa taxa varia conforme a modalidade: débito costuma ter a menor taxa e recebimento em 1 dia útil; crédito à vista tem taxa intermediária; e crédito parcelado tem taxa crescente conforme o número de parcelas, já que a operadora antecipa o recebimento e assume mais risco. A calculadora aplica a taxa da modalidade escolhida sobre o valor da venda, mostra quanto foi descontado e quanto efetivamente cai na sua conta, além do valor líquido de cada parcela quando aplicável. As taxas padrão exibidas são valores de referência de mercado — cada maquininha (Stone, Cielo, PagSeguro, InfinitePay, Mercado Pago, etc.) pratica taxas próprias, por isso a ferramenta permite editar manualmente cada percentual para refletir seu contrato real.",
+          example: {
+            title: "Exemplo: venda de R$ 200 em crédito 3x sem juros",
+            steps: [
+              "Valor da venda: R$ 200,00",
+              "Modalidade: 3x sem juros (taxa de referência: 3,2%)",
+              "Taxa descontada: R$ 200 × 3,2% = R$ 6,40",
+              "Valor líquido total: R$ 200 − R$ 6,40 = R$ 193,60",
+            ],
+            result: "Você recebe R$ 193,60 líquidos, divididos em 3 parcelas de aproximadamente R$ 64,53 cada",
+          },
+          glossary: [
+            { term: "MDR (Merchant Discount Rate)", definition: "É o nome técnico da taxa que a adquirente (operadora da maquininha) cobra sobre cada transação com cartão. Também chamada de 'taxa de desconto do lojista'." },
+            { term: "Adquirente", definition: "Empresa responsável por processar os pagamentos com cartão entre o cliente, a bandeira (Visa, Mastercard, etc.) e o lojista. Exemplos: Stone, Cielo, Rede, PagSeguro, GetNet." },
+            { term: "Antecipação de recebíveis", definition: "Serviço oferecido pelas adquirentes para receber o valor das vendas parceladas de forma imediata, em vez de esperar o prazo normal (geralmente 30 dias por parcela). Costuma ter um custo adicional." },
+            { term: "Taxa por bandeira", definition: "Algumas adquirentes cobram taxas diferentes conforme a bandeira do cartão (Visa, Mastercard, Elo, Amex costuma ser mais cara). Vale conferir seu contrato." },
+          ],
+          faqs: [
+            { question: "Por que o crédito parcelado tem taxa maior que o débito?", answer: "Porque no parcelado a adquirente antecipa o valor total ao lojista e assume o risco de inadimplência do cliente ao longo dos meses, além do custo de oportunidade do dinheiro parado. No débito, o valor é confirmado e descontado quase imediatamente." },
+            { question: "Essas taxas são iguais em todas as maquininhas?", answer: "Não. Cada adquirente (Stone, Cielo, PagSeguro, InfinitePay, Mercado Pago, GetNet, etc.) define suas próprias taxas, que também variam conforme seu volume de vendas e o tipo de plano contratado. Use o botão 'Editar taxas manualmente' para simular com os valores reais do seu contrato." },
+            { question: "O cliente paga taxa quando parcela no cartão?", answer: "Depende do lojista. Em 'parcelamento sem juros', quem absorve o custo da taxa é o estabelecimento (é isso que esta calculadora simula). Alguns lojistas repassam esse custo ao cliente via 'parcelamento com juros'." },
+            { question: "Quanto tempo demora para o dinheiro cair na conta?", answer: "Débito costuma cair em 1 dia útil. Crédito à vista e parcelado geralmente levam cerca de 30 dias por parcela, salvo se você contratar antecipação de recebíveis (com custo adicional) para receber antes." },
+          ],
+        }}
+      />
     </ToolLayout>
   );
 }

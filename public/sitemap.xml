@@ -76,6 +76,41 @@
     <priority>0.5</priority>
   </url>
   <url>
+    <loc>https://www.clicaresolve.com.br/guias</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.clicaresolve.com.br/categoria/pdf-documentos</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.clicaresolve.com.br/categoria/ferramentas-dev</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.clicaresolve.com.br/categoria/imagem-design</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.clicaresolve.com.br/guia/como-organizar-financas-pessoais</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.clicaresolve.com.br/guia/manutencao-preventiva-carro</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.clicaresolve.com.br/guia/entenda-seu-gasto-calorico</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://www.clicaresolve.com.br/privacidade</loc>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>

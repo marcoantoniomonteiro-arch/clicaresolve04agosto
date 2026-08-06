@@ -112,7 +112,7 @@ export function DepreciacaoVeiculo({ onBack }: Props) {
         )}
       </div>
       <ToolContent
-        toolName="DepreciacaoVeiculo"
+        toolName="Depreciação de Veículo"
         category="Transportes"
         data={{
           directAnswer: "Um carro de R$ 80.000 sofre depreciação de 20% no 1º ano (R$ 16.000), 15% no 2º (R$ 9.600), 10% no 3º (R$ 5.440), totalizando R$ 49.000 no valor residual.",

@@ -233,7 +233,7 @@ export function ComparadorPreco({ onBack }: Props) {
         )}
       </div>
       <ToolContent
-        toolName="ComparadorPreco"
+        toolName="Comparador de Preço"
         category="Finanças"
         data={{
           directAnswer: "Comparando 2kg de arroz a R$ 12.00 (R$ 6.00/kg) vs 5kg a R$ 25.00 (R$ 5.00/kg), a embalagem de 5kg tem melhor custo-benefício.",

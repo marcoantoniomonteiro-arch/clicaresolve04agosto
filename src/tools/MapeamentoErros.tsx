@@ -222,7 +222,7 @@ export function MapeamentoErros({ onBack }: Props) {
         )}
       </div>
       <ToolContent
-        toolName="MapeamentoErros"
+        toolName="Mapeamento de Erros"
         category="Estudos"
         data={{
           directAnswer: "Registrar erros de cada simulado revela padrões: se você erra 60% de questões de matemática, essa é sua área de foco.",

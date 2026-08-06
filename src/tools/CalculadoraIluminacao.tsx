@@ -141,7 +141,7 @@ export function CalculadoraIluminacao({ onBack }: Props) {
       </div>
 
       <ToolContent
-        toolName="Iluminação"
+        toolName="Calculadora de Iluminação"
         category="Casa"
         data={{
           directAnswer: "A quantidade ideal de iluminação para um ambiente é calculada multiplicando a área do cômodo pela faixa de lúmens por metro quadrado recomendada para aquele tipo de uso.",

@@ -132,7 +132,7 @@ export function ContadorCaracteres({ onBack }: Props) {
         </div>
       </div>
       <ToolContent
-        toolName="ContadorCaracteres"
+        toolName="Contador de Caracteres"
         category="Estudos"
         data={{
           directAnswer: "O texto 'Olá mundo' tem 9 caracteres (com espaço) e 2 palavras. O contador também mostra linhas e caracteres sem espaço.",

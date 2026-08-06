@@ -30,6 +30,9 @@ const CATEGORY_COLORS: Record<string, string> = {
   "Produtividade": "text-fuchsia-400 bg-fuchsia-400/10 border-fuchsia-400/20",
   "Culinária": "text-yellow-400 bg-yellow-400/10 border-yellow-400/20",
   "Sorte": "text-red-400 bg-red-400/10 border-red-400/20",
+  "PDF e Documentos": "text-slate-400 bg-slate-400/10 border-slate-400/20",
+  "Ferramentas Dev": "text-blue-300 bg-blue-300/10 border-blue-300/20",
+  "Imagem e Design": "text-pink-300 bg-pink-300/10 border-pink-300/20",
 };
 
 export function CategoryPage({ slug, onBack, onSelectTool, onSelectCategory }: CategoryPageProps) {
@@ -133,35 +136,35 @@ export function CategoryPage({ slug, onBack, onSelectTool, onSelectCategory }: C
 
       <div className="max-w-4xl mx-auto px-4 py-8">
         {/* Breadcrumb */}
-        <nav className="flex items-center gap-2 text-sm text-muted mb-6" aria-label="Breadcrumb">
+        <nav className="flex items-center gap-2 text-sm text-gray-500 mb-6" aria-label="Breadcrumb">
           <button onClick={onBack} className="hover:text-green-400 transition-colors">Início</button>
           <span>/</span>
-          <span className="text-muted">{data.categoryName}</span>
+          <span className="text-gray-300">{data.categoryName}</span>
         </nav>
 
         {/* H1 + Emoji */}
         <div className="mb-8">
           <div className="text-5xl mb-3">{data.emoji}</div>
-          <h1 className="text-3xl sm:text-4xl font-black text-text leading-tight mb-3">
+          <h1 className="text-3xl sm:text-4xl font-black text-white leading-tight mb-3">
             {data.h1}
           </h1>
-          <p className="text-sm text-muted">{categoryTools.length} ferramentas gratuitas</p>
+          <p className="text-sm text-gray-400">{categoryTools.length} ferramentas gratuitas</p>
         </div>
 
         {/* Intro text */}
-        <div className="p-6 rounded-2xl bg-card border border-border mb-8">
-          <h2 className="text-lg font-bold text-text mb-3">Sobre as ferramentas de {data.categoryName}</h2>
-          <p className="text-muted leading-relaxed text-sm">{data.intro}</p>
+        <div className="p-6 rounded-2xl bg-card border border-white/5 mb-8">
+          <h2 className="text-lg font-bold text-white mb-3">Sobre as ferramentas de {data.categoryName}</h2>
+          <p className="text-gray-300 leading-relaxed text-sm">{data.intro}</p>
         </div>
 
         {/* Diferenciais */}
         <div className="mb-8">
-          <h2 className="text-lg font-bold text-text mb-4">Por que usar nossas ferramentas de {data.categoryName.toLowerCase()}</h2>
+          <h2 className="text-lg font-bold text-white mb-4">Por que usar nossas ferramentas de {data.categoryName.toLowerCase()}</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
             {data.diferenciais.map((d, i) => (
-              <div key={i} className="flex items-start gap-3 p-4 rounded-xl bg-card border border-border">
+              <div key={i} className="flex items-start gap-3 p-4 rounded-xl bg-white/5 border border-white/10">
                 <CheckCircle className="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" />
-                <p className="text-sm text-muted">{d}</p>
+                <p className="text-sm text-gray-300">{d}</p>
               </div>
             ))}
           </div>
@@ -169,7 +172,7 @@ export function CategoryPage({ slug, onBack, onSelectTool, onSelectCategory }: C
 
         {/* Tools Grid */}
         <div className="mb-8">
-          <h2 className="text-lg font-bold text-text mb-4">Todas as ferramentas de {data.categoryName}</h2>
+          <h2 className="text-lg font-bold text-white mb-4">Todas as ferramentas de {data.categoryName}</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
             {categoryTools.map((tool) => {
               const catColor = CATEGORY_COLORS[tool.category] || "text-gray-400 bg-gray-400/10 border-gray-400/20";
@@ -177,15 +180,15 @@ export function CategoryPage({ slug, onBack, onSelectTool, onSelectCategory }: C
                 <button
                   key={tool.id}
                   onClick={() => onSelectTool(tool.slug)}
-                  className="group text-left p-4 rounded-xl bg-card border border-border hover:border-green-400/30 hover:bg-green-400/5 transition-all duration-200 flex items-start gap-3"
+                  className="group text-left p-4 rounded-xl bg-card border border-white/5 hover:border-green-400/30 hover:bg-green-400/5 transition-all duration-200 flex items-start gap-3"
                 >
                   <div className="text-2xl">{tool.emoji}</div>
                   <div className="flex-1">
                     <span className={`inline-block text-xs font-semibold px-2 py-0.5 rounded-full border mb-1 ${catColor}`}>
                       {tool.category}
                     </span>
-                    <h3 className="text-sm font-bold text-text leading-tight">{tool.name}</h3>
-                    <p className="text-xs text-muted mt-1 line-clamp-2">{tool.description}</p>
+                    <h3 className="text-sm font-bold text-white leading-tight">{tool.name}</h3>
+                    <p className="text-xs text-gray-500 mt-1 line-clamp-2">{tool.description}</p>
                     <div className="mt-2 flex items-center gap-1 text-xs text-green-400 opacity-0 group-hover:opacity-100 transition-opacity">
                       <span>Abrir</span>
                       <ArrowRight className="w-3 h-3" />
@@ -199,7 +202,7 @@ export function CategoryPage({ slug, onBack, onSelectTool, onSelectCategory }: C
 
         {/* FAQ Section */}
         <div className="mb-8">
-          <h2 className="text-lg font-bold text-text mb-4">Perguntas Frequentes sobre {data.categoryName}</h2>
+          <h2 className="text-lg font-bold text-white mb-4">Perguntas Frequentes sobre {data.categoryName}</h2>
           <div className="space-y-3">
             {[
               {
@@ -219,9 +222,9 @@ export function CategoryPage({ slug, onBack, onSelectTool, onSelectCategory }: C
                 a: `Sim. 100% dos cálculos acontecem no seu navegador. Nenhum dado é enviado a servidores. Sua privacidade é total.`,
               },
             ].map((faq, i) => (
-              <div key={i} className="p-4 rounded-xl bg-card border border-border">
-                <h3 className="text-sm font-semibold text-text mb-2">{faq.q}</h3>
-                <p className="text-sm text-muted leading-relaxed">{faq.a}</p>
+              <div key={i} className="p-4 rounded-xl bg-white/5 border border-white/10">
+                <h3 className="text-sm font-semibold text-white mb-2">{faq.q}</h3>
+                <p className="text-sm text-gray-400 leading-relaxed">{faq.a}</p>
               </div>
             ))}
           </div>
@@ -230,14 +233,14 @@ export function CategoryPage({ slug, onBack, onSelectTool, onSelectCategory }: C
         {/* Back to home */}
         <button
           onClick={onBack}
-          className="flex items-center gap-2 text-sm text-muted hover:text-green-400 transition-colors mb-8"
+          className="flex items-center gap-2 text-sm text-gray-400 hover:text-green-400 transition-colors mb-8"
         >
           <ArrowLeft className="w-4 h-4" />
           Voltar ao Início
         </button>
       </div>
 
-      <footer className="text-center text-xs text-muted py-8 border-t border-border">
+      <footer className="text-center text-xs text-gray-600 py-8 border-t border-white/5">
         © {new Date().getFullYear()} CLICAresolve — Ferramentas gratuitas para o dia a dia
       </footer>
     </div>

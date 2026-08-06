@@ -4,7 +4,6 @@ import { ToolContent } from "../components/ToolContent";
 import React, { useState } from "react";
 
 
-import { CONFIG } from "../config";
 
 interface Props { onBack: () => void; }
 
@@ -89,17 +88,6 @@ export function ProbabilidadesClassificacao({ onBack }: Props) {
     
     >
       <div className="space-y-4">
-        {/* Bet banner */}
-        <a
-          href={CONFIG.linkBet}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="flex items-center justify-between gap-3 p-3 rounded-xl bg-amber-500/10 border border-amber-500/30 hover:bg-amber-500/20 transition-colors"
-        >
-          <span className="text-sm text-amber-400 font-semibold">🎯 Aposte no seu time — {CONFIG.nomeBet}</span>
-          <span className="text-xs text-amber-300 shrink-0 underline">Apostar</span>
-        </a>
-
         <div className="grid grid-cols-2 gap-4">
           <label className="block">
             <span className="text-sm text-gray-400 mb-1 block">Pontos atuais</span>

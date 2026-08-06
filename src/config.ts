@@ -124,25 +124,6 @@ export const CONFIG = {
   },
 
   // ============================================
-  // APOSTAS / LOTERIA (MONETIZACAO CPA)
-  // ============================================
-  // Para ativar: 1) Cadastre-se em programa de afiliados de apostas
-  //              2) Obtenha seu link de tracking
-  //              3) Substitua abaixo
-
-  /** Link de afiliado da casa de apostas parceira — exibido em banner de apostas */
-  linkBet: "https://seu-link-bet.com",
-
-  /** Nome da casa de apostas parceira — exibido no banner */
-  nomeBet: "Bet Parceira",
-
-  /** Texto do bonus de boas-vindas — exibido no banner de apostas */
-  textoBet: "Ganhe bonus de boas-vindas",
-
-  /** Link de afiliado de loteria online — exibido em banner de loteria */
-  linkLoteria: "https://seu-link-loteria.com",
-
-  // ============================================
   // AMAZON PRIME (LINK DE AFILIADO)
   // ============================================
 

@@ -1,5 +1,6 @@
 import { ToolLayout } from "../components/ToolLayout";
 import { AffiliateBanner } from "../components/AffiliateBanner";
+import { ToolContent } from "../components/ToolContent";
 import React, { useState, useMemo } from "react";
 
 
@@ -216,6 +217,30 @@ export function GeradorRecibo({ onBack }: Props) {
           Clique em "Imprimir" e selecione "Salvar como PDF" para guardar o recibo
         </p>
       </div>
+      <ToolContent
+        toolName="Gerador de Recibo"
+        category="DP/RH"
+        data={{
+          directAnswer: "Preencha nome e documento de quem paga e de quem recebe, o valor e a descrição do serviço — o recibo é montado automaticamente, com o valor por extenso, pronto para imprimir ou salvar como PDF.",
+          howItWorks: "A ferramenta gera um recibo no formato tradicional: dados do pagador e do recebedor, valor numérico e por extenso (calculado automaticamente a partir do número digitado), descrição do serviço ou produto, data e um espaço para assinatura. Ao clicar em Imprimir, o navegador abre a janela de impressão já formatada como documento — nela você escolhe 'Salvar como PDF' em vez de uma impressora física para guardar o arquivo no computador ou celular. Nenhum dado digitado é enviado para servidor: tudo é processado localmente no seu navegador.",
+          example: {
+            title: "Exemplo: recibo de prestação de serviço",
+            steps: [
+              "Pagador: João da Silva — Recebedor: Maria Souza",
+              "Valor: R$ 350,00",
+              "Descrição: 'Serviços de manutenção prestados em julho/2026'",
+              "A ferramenta converte automaticamente: 'trezentos e cinquenta reais'",
+            ],
+            result: "Recibo pronto para impressão, com valor por extenso e campo de assinatura",
+          },
+          faqs: [
+            { question: "O recibo gerado tem validade legal?", answer: "Um recibo simples como este serve como comprovante de pagamento entre as partes. Para prestação de serviços com obrigações fiscais (como recolhimento de ISS), consulte um contador sobre a necessidade de nota fiscal." },
+            { question: "Preciso informar CPF ou CNPJ?", answer: "Não é obrigatório, mas incluir o documento de quem paga e de quem recebe reforça a validade do recibo como comprovante." },
+            { question: "Como salvo o recibo em PDF?", answer: "Clique em 'Imprimir', e na janela que abrir, escolha 'Salvar como PDF' (ou 'Microsoft Print to PDF') em vez de uma impressora física." },
+            { question: "Meus dados ficam salvos em algum servidor?", answer: "Não. O recibo é montado inteiramente no seu navegador — nada é enviado ou armazenado externamente." },
+          ],
+        }}
+      />
     </ToolLayout>
   );
 }

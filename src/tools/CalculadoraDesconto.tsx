@@ -147,23 +147,23 @@ export function CalculadoraDesconto({ onBack }: Props) {
         toolName="Calculadora de Desconto"
         category="Finanças"
         data={{
-          directAnswer: "O preço com desconto é calculado subtraindo do valor original a porcentagem de desconto aplicada.",
-          howItWorks: "A ferramenta calcula o valor final após aplicar uma porcentagem de desconto, e também de forma reversa: a partir do preço original e final, descobre a porcentagem aplicada. Fórmula: preço final = preço original × (1 − desconto/100).",
+          directAnswer: "O preço com desconto é calculado subtraindo do valor original a porcentagem de desconto aplicada: multiplique o preço original pela porcentagem (em decimal) para achar o valor descontado, e subtraia esse valor do preço original.",
+          howItWorks: "A ferramenta calcula o valor final após aplicar uma porcentagem de desconto, usando a fórmula preço final = preço original × (1 − desconto/100). Ela também funciona no sentido inverso: se você já sabe o preço original e o preço final (por exemplo, viu numa etiqueta 'de R$ 200 por R$ 140'), a calculadora descobre qual foi a porcentagem de desconto realmente aplicada — útil para conferir se uma promoção é tão vantajosa quanto anunciada. Um ponto que costuma gerar confusão é quando há descontos sucessivos (ex: '20% + 10%'): eles não se somam para virar 30%, porque o segundo desconto incide sobre o valor já reduzido pelo primeiro, resultando em um desconto total um pouco menor do que a soma simples.",
           example: {
             title: "Exemplo: produto de R$ 200 com 30% de desconto",
             steps: [
               "Preço original: R$ 200",
               "Desconto: 30%",
-              "Valor do desconto: R$ 60",
-              "Preço final: R$ 140",
+              "Valor do desconto: R$ 200 × 0,30 = R$ 60",
+              "Preço final: R$ 200 − R$ 60 = R$ 140",
             ],
             result: "Com 30% de desconto, o produto de R$ 200 sai por R$ 140, economia de R$ 60.",
           },
           faqs: [
-            { question: "Como calcular o preço com desconto?", answer: "Multiplique o preço original pela porcentagem para achar o valor do desconto, depois subtraia do preço original." },
-            { question: "Como descobrir a porcentagem aplicada?", answer: "Divida a diferença entre preço original e final pelo preço original, multiplique por 100." },
-            { question: "Descontos sucessivos se somam diretamente?", answer: "Não, pois o segundo desconto incide sobre o valor já reduzido." },
-            { question: "Como calcular o valor original a partir do preço com desconto?", answer: "Divida o preço final por (1 − desconto/100)." },
+            { question: "Como calcular o preço com desconto?", answer: "Multiplique o preço original pela porcentagem de desconto (em decimal, ex: 30% = 0,30) para achar o valor do desconto, depois subtraia esse valor do preço original. O resultado é o preço final." },
+            { question: "Como descobrir a porcentagem de desconto que foi aplicada?", answer: "Subtraia o preço final do preço original, divida essa diferença pelo preço original e multiplique por 100. Isso é útil para conferir se um desconto anunciado bate com o valor real cobrado." },
+            { question: "Descontos sucessivos (ex: 20% + 10%) se somam para 30%?", answer: "Não. O segundo desconto incide sobre o valor já reduzido pelo primeiro, não sobre o preço original. Exemplo: R$ 100 com 20% de desconto vira R$ 80; aplicando mais 10% sobre R$ 80, o preço final é R$ 72 — um desconto total de 28%, não 30%." },
+            { question: "Como calcular o valor original a partir do preço com desconto?", answer: "Divida o preço final por (1 − desconto/100). Por exemplo, se um produto custa R$ 140 com 30% de desconto já aplicado, o preço original era R$ 140 ÷ 0,70 = R$ 200." },
           ],
         }}
       />

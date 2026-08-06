@@ -192,7 +192,7 @@ export function AlcoolGasolina({ onBack }: Props) {
         )}
       </div>
       <ToolContent
-        toolName="AlcoolGasolina"
+        toolName="Álcool ou Gasolina"
         category="Finanças"
         data={{
           directAnswer:

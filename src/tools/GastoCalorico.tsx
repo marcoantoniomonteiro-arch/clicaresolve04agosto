@@ -121,7 +121,7 @@ export function GastoCalórico({ onBack }: Props) {
         )}
       </div>
       <ToolContent
-        toolName="GastoCalorico"
+        toolName="Calculadora de Gasto Calórico"
         category="Saúde"
         data={{
           directAnswer: "A média de gasto calórico diário varia de 1.500 a 2.500 kcal, dependendo do sexo, idade, peso e nível de atividade. Use a fórmula de Harris-Benedict para calcular o seu.",

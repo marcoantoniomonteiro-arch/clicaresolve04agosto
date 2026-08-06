@@ -145,7 +145,7 @@ export function CalculadoraTinta({ onBack }: Props) {
         )}
       </div>
       <ToolContent
-        toolName="CalculadoraTinta"
+        toolName="Calculadora de Tinta"
         category="Transportes"
         data={{
           directAnswer: "Para pintar uma parede de 15m² com 2 demãos e rendimento de 12m²/L, você precisa de 2.5 litros de tinta.",

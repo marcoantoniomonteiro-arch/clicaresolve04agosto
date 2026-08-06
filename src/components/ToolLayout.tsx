@@ -132,7 +132,7 @@ export function ToolLayout({
 
       <div className="max-w-2xl mx-auto px-4 py-8">
         {/* Breadcrumb */}
-        <nav className="flex items-center gap-2 text-sm text-muted mb-4" aria-label="Breadcrumb">
+        <nav className="flex items-center gap-2 text-sm text-gray-500 mb-4" aria-label="Breadcrumb">
           <button onClick={onBack} className="hover:text-green-400 transition-colors">{lang === "en" ? "Home" : "Início"}</button>
           <span>/</span>
           {categorySlug ? (
@@ -143,13 +143,13 @@ export function ToolLayout({
             <span>{categoryName}</span>
           )}
           <span>/</span>
-          <span className="text-muted">{title}</span>
+          <span className="text-gray-300">{title}</span>
         </nav>
 
         <button
           onClick={onBack}
           onTouchEnd={(e) => { e.preventDefault(); if (wasScrolling()) return; onBack(); }}
-          className="flex items-center gap-2 text-sm text-muted hover:text-green-400 transition-colors mb-4"
+          className="flex items-center gap-2 text-sm text-gray-400 hover:text-green-400 transition-colors mb-4"
           style={{ WebkitTapHighlightColor: 'transparent' }}
         >
           <ArrowLeft className="w-4 h-4" />
@@ -159,13 +159,13 @@ export function ToolLayout({
         <AdPlaceholder size="banner" slot="topo" />
 
         <div className="flex flex-col md:flex-row items-start gap-4 mb-10">
-          <div className="flex-1 bg-card rounded-2xl p-6 border border-border shadow-xl animate-fade-in-up">
+          <div className="flex-1 bg-card rounded-2xl p-6 border border-white/5 shadow-xl animate-fade-in-up">
             <div className="flex items-start gap-4 mb-6">
               <div className="w-14 h-14 rounded-2xl flex items-center justify-center text-3xl shrink-0" style={{ background: 'rgba(0,200,83,0.12)' }}>{emoji}</div>
               <div>
                 <span className="text-xs font-semibold text-green-400 uppercase tracking-wider">{category}</span>
-                <h1 className="text-2xl font-bold text-text mt-0.5">{seoEN ? seoEN.h1 : title}</h1>
-                <p className="text-sm text-muted mt-1">{seoEN ? seoEN.intro : description}</p>
+                <h1 className="text-2xl font-bold text-white mt-0.5">{seoEN ? seoEN.h1 : title}</h1>
+                <p className="text-sm text-gray-400 mt-1">{seoEN ? seoEN.intro : description}</p>
               </div>
             </div>
 
@@ -187,14 +187,14 @@ export function ToolLayout({
         )}
 
         {/* Expanded content sections */}
-        <div className="border-t border-border pt-8 mt-2">
+        <div className="border-t border-white/5 pt-8 mt-2">
           {content}
         </div>
 
         {/* Related Tools */}
         {relatedTools.length > 0 && (
-          <div className="mt-12 mb-8 border-t border-border pt-8">
-            <h2 className="text-lg font-bold text-text mb-4">
+          <div className="mt-12 mb-8 border-t border-white/5 pt-8">
+            <h2 className="text-lg font-bold text-white mb-4">
               Ferramentas relacionadas em {categoryName}
             </h2>
             <div className="space-y-3">
@@ -202,15 +202,15 @@ export function ToolLayout({
                 <button
                   key={tool.id}
                   onClick={() => onSelectTool(tool.slug)}
-                  className="w-full flex items-center gap-3 p-3 rounded-xl bg-card border border-border hover:bg-green-400/5 hover:border-green-400/30 transition-all duration-200 text-left group hover:translate-x-1 animate-fade-in-up"
+                  className="w-full flex items-center gap-3 p-3 rounded-xl bg-white/5 border border-white/10 hover:bg-green-400/5 hover:border-green-400/30 transition-all duration-200 text-left group hover:translate-x-1 animate-fade-in-up"
                   style={{ animationDelay: `${i * 60}ms` }}
                 >
                   <span className="text-xl transition-transform group-hover:scale-110">{tool.emoji}</span>
                   <div className="flex-1">
-                    <p className="text-sm font-semibold text-text">{tool.name}</p>
-                    <p className="text-xs text-muted line-clamp-1">{tool.description}</p>
+                    <p className="text-sm font-semibold text-white">{tool.name}</p>
+                    <p className="text-xs text-gray-500 line-clamp-1">{tool.description}</p>
                   </div>
-                  <ArrowRight className="w-4 h-4 text-muted group-hover:text-green-400 group-hover:translate-x-1 transition-all" />
+                  <ArrowRight className="w-4 h-4 text-gray-500 group-hover:text-green-400 group-hover:translate-x-1 transition-all" />
                 </button>
               ))}
             </div>
@@ -230,7 +230,7 @@ export function ToolLayout({
           </div>
         )}
 
-        <footer className="text-center text-xs text-muted mt-8 pb-6">
+        <footer className="text-center text-xs text-gray-600 mt-8 pb-6">
           © {new Date().getFullYear()} CLICAresolve — Ferramentas gratuitas para o dia a dia
         </footer>
       </div>

@@ -172,8 +172,8 @@ export function ConversorMoedas({ onBack }: Props) {
         toolName="Conversor de Moedas"
         category="Finanças"
         data={{
-          directAnswer: "A conversão de moedas multiplica o valor informado pela taxa de câmbio atual entre a moeda de origem e a de destino.",
-          howItWorks: "A ferramenta usa a taxa de câmbio de referência entre as duas moedas selecionadas para calcular o valor equivalente. É uma estimativa baseada em cotações de mercado, que variam ao longo do dia. Em transações reais, bancos e casas de câmbio costumam aplicar spread cambial e taxas adicionais.",
+          directAnswer: "A conversão multiplica (ou divide, dependendo do sentido) o valor informado pela taxa de câmbio entre a moeda de origem e a de destino. Essa taxa é uma referência de mercado — o valor final numa operação real de câmbio costuma ser diferente por causa do spread cobrado pela instituição financeira.",
+          howItWorks: "A ferramenta usa a taxa de câmbio de referência entre as duas moedas selecionadas para calcular o valor equivalente. É uma estimativa baseada em cotações de mercado, que variam continuamente ao longo do dia útil conforme a oferta e demanda no mercado internacional. É importante entender que essa cotação de referência (próxima da taxa PTAX, usada pelo Banco Central como parâmetro oficial) não é o valor que você efetivamente paga ou recebe numa operação real: bancos, corretoras e casas de câmbio aplicam um spread cambial — uma margem entre o preço de compra e o de venda da moeda — além de possíveis tarifas fixas por operação. Por isso, o valor mostrado aqui serve como referência para planejamento, não como cotação de fechamento de uma transação específica.",
           example: {
             title: "Exemplo: converter R$ 1.000 para Dólar, cotação R$ 5,20",
             steps: [
@@ -184,11 +184,16 @@ export function ConversorMoedas({ onBack }: Props) {
             ],
             result: "R$ 1.000 equivalem a aproximadamente US$ 192,31 na cotação informada.",
           },
+          glossary: [
+            { term: "Spread cambial", definition: "A diferença entre o preço de compra e o preço de venda de uma moeda, cobrada por bancos e casas de câmbio como margem da operação. É o motivo pelo qual o valor 'na prática' costuma ser pior do que a cotação de referência exibida em conversores." },
+            { term: "PTAX", definition: "Taxa de câmbio de referência calculada e divulgada pelo Banco Central do Brasil, usada como parâmetro oficial em contratos e balanços, embora não seja necessariamente a taxa aplicada em operações de varejo." },
+            { term: "Câmbio flutuante", definition: "Sistema em que o valor de uma moeda em relação a outra é definido pelo mercado (oferta e demanda), e não fixado por um governo — é o regime adotado pelo Brasil desde 1999." },
+          ],
           faqs: [
-            { question: "A cotação mostrada é a mesma do banco?", answer: "É uma referência de mercado. Bancos e casas de câmbio aplicam spread, então o valor final pode diferir." },
-            { question: "Com que frequência a cotação é atualizada?", answer: "As cotações variam ao longo do dia útil, seguindo o mercado financeiro internacional." },
-            { question: "Posso converter qualquer par de moedas?", answer: "Sim, entre as principais moedas disponíveis na lista de seleção." },
-            { question: "Por que compra e venda têm valores diferentes?", answer: "Instituições financeiras cobram uma margem (spread) entre o preço de compra e o de venda." },
+            { question: "A cotação mostrada é a mesma que vou pagar no banco ou casa de câmbio?", answer: "Não necessariamente. É uma referência de mercado próxima da cotação oficial. Bancos, corretoras e casas de câmbio aplicam spread (margem entre compra e venda) e, às vezes, tarifas fixas — por isso o valor final de uma operação real costuma ser um pouco pior do que a cotação de referência." },
+            { question: "Com que frequência a cotação muda?", answer: "As cotações de câmbio variam continuamente ao longo do dia útil, seguindo o mercado financeiro internacional, e ficam praticamente paradas nos fins de semana e feriados, quando os mercados estão fechados." },
+            { question: "Posso converter qualquer par de moedas na ferramenta?", answer: "Sim, entre as principais moedas disponíveis na lista de seleção — as mais usadas em viagens e comércio internacional, como dólar, euro, libra e peso argentino." },
+            { question: "Por que o preço de compra e o de venda de uma moeda são diferentes?", answer: "Instituições financeiras cobram uma margem (spread) entre o preço pelo qual compram e o preço pelo qual vendem a moeda estrangeira — é assim que remuneram o serviço de câmbio, além de eventuais tarifas adicionais." },
           ],
         }}
       />

@@ -96,7 +96,7 @@ export function DPP({ onBack }: Props) {
         )}
       </div>
       <ToolContent
-        toolName="DPP"
+        toolName="DPP - Data Provável do Parto"
         category="Saúde"
         data={{
           directAnswer: "A Data Provável do Parto (DPP) é calculada pela Regra de Naegele: adicione 7 dias à data da última menstruação, subtraia 3 meses e some 1 ano.",

@@ -65,25 +65,7 @@ tagShopee: "clicaresolve.shopee",
 - Substitua pela sua tag de afiliado
 - (Atualmente usado como referência — implementação futura)
 
-### 4. Apostas / Bet (CPA)
-```typescript
-linkBet: "https://seu-link-bet.com",
-nomeBet: "Bet Parceira",
-textoBet: "Ganhe bonus de boas-vindas",
-```
-- Cadastre-se em programa de afiliados de apostas (Betano, Bet365, etc.)
-- Substitua pelo seu link de tracking
-- O banner de apostas pode ser adicionado em ferramentas de esportes e sorte
-
-### 5. Loteria (CPA)
-```typescript
-linkLoteria: "https://seu-link-loteria.com",
-```
-- Cadastre-se em programa de afiliados de loteria online
-- Substitua pelo seu link de tracking
-- O banner aparece em ferramentas de palpites e probabilidades
-
-### 6. Google Analytics
+### 4. Google Analytics
 ```typescript
 googleAnalyticsId: "G-XXXXXXXXXX",
 ```
@@ -92,7 +74,7 @@ googleAnalyticsId: "G-XXXXXXXXXX",
 - Substitua no `config.ts`
 - O script de GA4 será injetado automaticamente via Helmet
 
-### 7. Google Search Console
+### 5. Google Search Console
 ```typescript
 searchConsoleVerification: "codigo-de-verificacao",
 ```

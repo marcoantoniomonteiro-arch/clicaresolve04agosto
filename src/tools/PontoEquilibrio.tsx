@@ -128,7 +128,7 @@ export function PontoEquilibrio({ onBack }: Props) {
         )}
       </div>
       <ToolContent
-        toolName="PontoEquilibrio"
+        toolName="Ponto de Equilíbrio"
         category="Finanças"
         data={{
           directAnswer: "Uma empresa com R$ 5.000 de custo fixo, preço de R$ 100 e custo variável de R$ 40 precisa vender 83 unidades para equilibrar.",

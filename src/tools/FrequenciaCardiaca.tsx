@@ -93,7 +93,7 @@ export function FrequenciaCardiaca({ onBack }: Props) {
         )}
       </div>
       <ToolContent
-        toolName="FrequenciaCardiaca"
+        toolName="Frequência Cardíaca"
         category="Saúde"
         data={{
           directAnswer: "A frequência cardíaca máxima estimada para uma pessoa de 30 anos é de 190 batimentos por minuto, usando a fórmula 220 − idade. Com FC de repouso, a fórmula de Karvonen define 5 zonas de treino.",

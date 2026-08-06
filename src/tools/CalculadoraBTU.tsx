@@ -104,7 +104,7 @@ export function CalculadoraBTU({ onBack }: Props) {
         )}
       </div>
       <ToolContent
-        toolName="CalculadoraBTU"
+        toolName="Calculadora de BTU"
         category="Transportes"
         data={{
           directAnswer: "Um quarto de 12m² com 2 pessoas e 1 computador precisa de 8.400 BTU/h. A fórmula é: área × 600 + pessoas × 600 + equipamentos × 600.",

@@ -124,7 +124,7 @@ export function PeriodoFertil({ onBack }: Props) {
         )}
       </div>
       <ToolContent
-        toolName="PeriodoFertil"
+        toolName="Período Fértil"
         category="Saúde"
         data={{
           directAnswer: "O período fértil ocorre em média 14 dias antes da próxima menstruação, com janela de 5 dias antes da ovulação + dia da ovulação.",

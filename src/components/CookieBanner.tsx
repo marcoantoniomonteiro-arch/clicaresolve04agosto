@@ -19,9 +19,9 @@ export function CookieBanner() {
   if (!show) return null;
 
   return (
-    <div className="fixed bottom-0 left-0 right-0 z-[60] bg-slate-900 text-white border-t border-slate-700 shadow-2xl">
-      <div className="max-w-4xl mx-auto px-4 py-4 flex items-center gap-3 flex-wrap sm:flex-nowrap">
-        <span className="text-sm text-gray-200 leading-snug">
+    <div className="fixed bottom-0 left-0 right-0 z-50 bg-card border-t border-white/10 shadow-2xl">
+      <div className="max-w-4xl mx-auto px-4 py-3 flex items-center gap-3 flex-wrap sm:flex-nowrap">
+        <span className="text-sm text-gray-300 leading-snug">
           🍪 CLICAresolve usa cookies para exibir anúncios. Ao continuar navegando, você concorda com nossa{" "}
           <a href={`${CONFIG.siteUrl}/privacidade`} className="text-green-400 hover:text-green-300 underline">
             Política de Privacidade

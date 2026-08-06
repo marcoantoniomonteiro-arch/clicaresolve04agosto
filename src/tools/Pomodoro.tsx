@@ -222,7 +222,7 @@ export function Pomodoro({ onBack }: Props) {
         </div>
       </div>
       <ToolContent
-        toolName="Pomodoro"
+        toolName="Técnica Pomodoro"
         category="Estudos"
         data={{
           directAnswer: "A técnica Pomodoro usa 25 minutos de foco intenso + 5 minutos de pausa. Após 4 ciclos, faça uma pausa longa de 15-30 minutos.",

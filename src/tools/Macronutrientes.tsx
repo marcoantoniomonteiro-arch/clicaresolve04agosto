@@ -92,7 +92,7 @@ export function Macronutrientes({ onBack }: Props) {
         )}
       </div>
       <ToolContent
-        toolName="Macronutrientes"
+        toolName="Calculadora de Macronutrientes"
         category="Saúde"
         data={{
           directAnswer: "Para uma pessoa de 70 kg com dieta de 2.000 kcal, a recomendação é: 250g de carboidratos, 100g de proteínas e 67g de gorduras. A distribuição varia conforme o objetivo.",

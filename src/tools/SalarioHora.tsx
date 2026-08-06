@@ -126,11 +126,11 @@ export function SalarioHora({ onBack }: Props) {
         )}
       </div>
       <ToolContent
-        toolName="SalarioHora"
+        toolName="Salário por Hora"
         category="Finanças"
         data={{
-          directAnswer: "Com salário de R$ 2.640 (mínimo 2026) e 220h mensais, o valor/hora é R$ 12.00. Com horas extras, o valor é R$ 18.00.",
-          howItWorks: "O conversor calcula o salário mensal a partir do valor-hora, considerando a jornada de trabalho. A fórmula: salário bruto = valor-hora × horas/dia × dias/semana × 4,33 semanas/mês. A ferramenta aplica a tabela do INSS vigente (alíquotas progressivas: 7,5%, 9%, 12%, 14%) e desconta o valor correspondente. Mostra 4 valores: salário bruto, INSS, salário líquido e horas/mês. A tabela do INSS é atualizada automaticamente conforme a legislação brasileira. O cálculo é aproximado e não considera dependentes, plano de saúde ou outros descontos opcionais.",
+          directAnswer: "Com salário mínimo de R$ 2.640 (2026) e jornada de 220h mensais, o valor da hora trabalhada é de R$ 12,00. Considerando hora extra com adicional de 50%, o valor sobe para R$ 18,00.",
+          howItWorks: "O conversor calcula o salário mensal a partir do valor-hora informado, considerando a jornada de trabalho escolhida. A fórmula usada é: salário bruto = valor-hora × horas por dia × dias por semana × 4,33 (média de semanas por mês). Em seguida, a ferramenta aplica a tabela vigente do INSS — que tem alíquotas progressivas de 7,5%, 9%, 12% e 14% conforme a faixa salarial — e desconta o valor correspondente para chegar ao salário líquido. O resultado mostra quatro números: salário bruto, desconto de INSS, salário líquido e o total de horas trabalhadas no mês. Vale lembrar que o cálculo é uma aproximação e não considera outros descontos possíveis, como imposto de renda, plano de saúde ou pensão alimentícia.",
           example: {
             title: "Exemplo: R$ 25/hora, 8h/dia, 5 dias/semana",
             steps: [
@@ -143,15 +143,15 @@ export function SalarioHora({ onBack }: Props) {
             result: "Bruto: R$ 4.332,50; INSS: R$ 398,71; Líquido: R$ 3.933,79; 173 horas/mês",
           },
           glossary: [
-            { term: "Jornada de Trabalho", definition: "Horas semanais contratadas. Padrão: 44h (220h/mês), 40h (200h/mês), 36h (180h/mês)." },
-            { term: "Hora Extra", definition: "Trabalho além da jornada. Valor: 50% a mais (100% em domingos/feriados)." }
+            { term: "Jornada de Trabalho", definition: "Total de horas semanais contratadas. As mais comuns no Brasil são 44h semanais (220h/mês), 40h (200h/mês) e 36h (180h/mês)." },
+            { term: "Hora Extra", definition: "Trabalho realizado além da jornada normal contratada. Por lei, deve ser remunerada com adicional mínimo de 50% em dias normais, e 100% em domingos e feriados, salvo acordo/convenção coletiva mais vantajoso." }
           ],
           faqs: [
-            { question: "Como calcular salário/hora?", answer: "A ferramenta faz o cálculo inverso: informe o valor-hora, horas/dia e dias/semana. O salário mensal é calculado automaticamente com desconto de INSS." },
-            { question: "Quanto ganho por hora extra?", answer: "Hora extra = valor-hora × 1,5. Em domingos/feriados = valor-hora × 2. Ex: R$ 25/hora → extra = R$ 37,50." },
-            { question: "Qual jornada de 44h semanais?", answer: "44 horas semanais = 220 horas mensais (considerando 4,33 semanas por mês). É a jornada padrão no Brasil." },
-            { question: "Salário/hora inclui benefícios?", answer: "Não, a ferramenta calcula apenas o salário bruto e INSS. Benefícios (VR, VT, plano de saúde) não são descontados do INSS na ferramenta." },
-            { question: "Como negociar salário por hora?", answer: "Calcule o valor-hora desejado considerando: 1) seu custo de vida; 2) horas que realmente trabalha; 3) benefícios que não terá (férias, 13º, INSS). Use a ferramenta para simular cenários." },
+            { question: "Como faço para calcular meu salário a partir do valor-hora?", answer: "A ferramenta faz o cálculo inverso: você informa o valor que quer ganhar por hora, mais as horas por dia e dias por semana que pretende trabalhar, e ela calcula o salário mensal correspondente, já com o desconto de INSS." },
+            { question: "Quanto vale minha hora extra?", answer: "A hora extra em dias normais equivale ao valor-hora multiplicado por 1,5 (adicional de 50%). Em domingos e feriados, multiplica-se por 2 (adicional de 100%). Exemplo: valor-hora de R$ 25 → hora extra normal de R$ 37,50." },
+            { question: "Por que a jornada de 44h semanais equivale a 220h por mês?", answer: "Porque o mês tem em média 4,33 semanas (52 semanas ÷ 12 meses). Multiplicando 44 horas semanais por 4,33, chega-se a aproximadamente 220 horas mensais — essa é a jornada padrão mais comum no Brasil." },
+            { question: "O valor calculado já inclui vale-refeição, vale-transporte ou plano de saúde?", answer: "Não. A ferramenta calcula apenas o salário bruto e o desconto de INSS. Benefícios como VR, VT e plano de saúde não entram nesse cálculo, pois variam de empresa para empresa." },
+            { question: "Como usar essa ferramenta para negociar um salário como freelancer ou PJ?", answer: "Ao definir seu valor-hora, considere não só o salário desejado, mas também seu custo de vida, as horas que realmente vai trabalhar (descontando período sem contrato) e benefícios que você não terá automaticamente, como férias remuneradas, 13º salário e recolhimento de INSS." },
           ],
         }}
       />

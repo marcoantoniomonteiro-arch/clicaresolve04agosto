@@ -141,7 +141,7 @@ export function SimuladorMarkup({ onBack }: Props) {
         )}
       </div>
       <ToolContent
-        toolName="SimuladorMarkup"
+        toolName="Simulador de Markup"
         category="Finanças"
         data={{
           directAnswer: "Para uma empresa com 20% de despesas fixas, 10% de despesas variáveis e 15% de lucro desejado, o markup é 1.82 (preço = custo × 1.82).",

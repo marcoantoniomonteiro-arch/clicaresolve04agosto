@@ -204,11 +204,16 @@ export function DiferencaDatas({ onBack }: Props) {
             ],
             result: "Entre as duas datas há 252 dias, equivalente a 8 meses e 7 dias.",
           },
+          glossary: [
+            { term: "Dias corridos", definition: "Contagem que inclui todos os dias do calendário, incluindo sábados, domingos e feriados. É o padrão usado por esta calculadora." },
+            { term: "Dias úteis", definition: "Contagem que exclui sábados, domingos e feriados — usada em prazos processuais e alguns contratos. Para saber prazos em dias úteis, é preciso descontar esses dias manualmente do total de dias corridos." },
+          ],
           faqs: [
             { question: "Como calcular a diferença entre duas datas?", answer: "Basta subtrair o número de dias entre a data inicial e a final, considerando o calendário real. A ferramenta faz isso automaticamente." },
             { question: "A ferramenta conta o dia inicial e o final juntos?", answer: "Calcula os dias corridos entre as datas, sem contar duas vezes o dia inicial." },
             { question: "Posso calcular datas futuras?", answer: "Sim, funciona tanto para prazos futuros quanto períodos passados." },
             { question: "A ferramenta considera anos bissextos?", answer: "Sim, o cálculo usa o calendário real, incluindo fevereiro com 29 dias em anos bissextos." },
+            { question: "O resultado é em dias corridos ou dias úteis?", answer: "Em dias corridos, ou seja, conta todos os dias do calendário, incluindo fins de semana e feriados. Se você precisa de um prazo em dias úteis (comum em processos judiciais), será preciso descontar manualmente os sábados, domingos e feriados do período." },
           ],
         }}
       />
