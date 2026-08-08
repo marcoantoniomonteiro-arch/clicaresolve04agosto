@@ -25,7 +25,7 @@ export function JurosCompostos({ onBack }: Props) {
     if (C <= 0 && P <= 0) return null;
     if (months <= 0) return null;
 
-    const i = r / 100 / 12;
+    const i = Math.pow(1 + r / 100, 1 / 12) - 1;
     let total = C;
     let invested = C;
     for (let m = 0; m < months; m++) {
@@ -92,7 +92,7 @@ export function JurosCompostos({ onBack }: Props) {
             />
           </label>
           <label className="block">
-            <span className="text-sm text-gray-400 mb-1 block">Taxa de Juros Anual (%)</span>
+            <span className="text-sm text-gray-400 mb-1 block">Taxa de Juros Anual Efetiva (%)</span>
             <input
               type="number"
               step="0.1"
@@ -155,18 +155,18 @@ export function JurosCompostos({ onBack }: Props) {
         category="Finanças"
         data={{
           directAnswer: "Juros compostos incidem sobre o capital somado aos juros já acumulados em períodos anteriores — por isso o rendimento cresce de forma acelerada (exponencial) com o tempo, ao contrário dos juros simples, que incidem sempre sobre o valor inicial fixo.",
-          howItWorks: `A ferramenta simula, mês a mês, o crescimento de um investimento com aportes mensais recorrentes. Em cada mês, aplica a taxa sobre o saldo acumulado até ali (capital inicial + rendimentos anteriores) e depois soma o novo aporte, repetindo esse processo pelo número total de meses informado. Isso é diferente de multiplicar o valor inicial pela taxa uma única vez: o efeito composto significa que o rendimento de um mês passa a gerar rendimento no mês seguinte, criando uma curva de crescimento cada vez mais acentuada. Ao final, a calculadora mostra três números: o total que você efetivamente investiu (soma de todos os aportes), o montante final acumulado, e o rendimento (a diferença entre os dois). Você pode simular com qualquer taxa — de poupança a CDBs, CDI, Selic, fundos ou Tesouro Direto; consulte a fonte oficial ou sua instituição financeira para saber a taxa vigente aplicável ao seu investimento.`,
+          howItWorks: `A ferramenta simula, mês a mês, o crescimento de um investimento com aportes mensais recorrentes, convertendo a taxa anual informada para uma taxa mensal equivalente através da fórmula de juros compostos: (1 + taxa anual)^(1/12) − 1. Essa conversão é importante porque taxas como o CDI costumam ser divulgadas como taxa efetiva anual — dividir simplesmente por 12 subestimaria o efeito composto e daria um resultado impreciso. Em cada mês, a ferramenta aplica a taxa mensal sobre o saldo acumulado até ali (capital inicial + rendimentos anteriores) e depois soma o novo aporte, repetindo esse processo pelo número total de meses informado. Ao final, mostra três números: o total que você efetivamente investiu (soma de todos os aportes), o montante final acumulado, e o rendimento (a diferença entre os dois). Você pode simular com qualquer taxa efetiva anual — de poupança a CDBs, CDI, Selic, fundos ou Tesouro Direto; consulte a fonte oficial ou sua instituição financeira para saber a taxa vigente aplicável ao seu investimento.`,
           example: {
-            title: "Exemplo: R$ 10.000 inicial, R$ 500/mês, 13,25% a.a. (taxa ilustrativa), 10 anos",
+            title: "Exemplo: R$ 10.000 inicial, R$ 500/mês, 13,25% a.a. efetiva (taxa ilustrativa), 10 anos",
             steps: [
               `Investimento inicial: R$ 10.000`,
               `Aporte mensal: R$ 500`,
-              `Taxa anual: 13.25% a.a. (valor ilustrativo — informe a taxa real do seu investimento)`,
+              `Taxa anual efetiva: 13,25% (valor ilustrativo — informe a taxa real do seu investimento)`,
               `Período: 10 anos (120 meses)`,
-              `Taxa mensal: 13.25% / 12 = ~1.10%`,
-              `Montante final: R$ 166.000+`
+              `Taxa mensal equivalente: (1,1325)^(1/12) − 1 ≈ 1,041%`,
+              `Montante final: R$ 153.213`
             ],
-            result: "Em 10 anos, você investe R$ 70.000 e recebe aproximadamente R$ 166.000 — rendimento de R$ 96.000 (137% de rentabilidade). Simulação com taxa ilustrativa; o resultado real depende da taxa efetivamente aplicada ao seu investimento.",
+            result: "Em 10 anos, você investe R$ 70.000 e recebe aproximadamente R$ 153.213 — rendimento de R$ 83.213 (119% de rentabilidade sobre o investido). Simulação com taxa ilustrativa; o resultado real depende da taxa efetivamente aplicada ao seu investimento.",
           },
           glossary: [
             { term: "Juros simples", definition: "Incidem apenas sobre o valor inicial (principal), sem considerar os rendimentos já acumulados. Crescem de forma linear, não exponencial." },
@@ -178,6 +178,7 @@ export function JurosCompostos({ onBack }: Props) {
             { question: "Como a simulação considera os aportes mensais?", answer: "A cada mês, a ferramenta aplica a taxa sobre o saldo acumulado até aquele momento e, em seguida, soma o novo aporte ao saldo — esse processo se repete mês a mês até completar o período total, o que reflete melhor a realidade de quem investe todo mês, em vez de um único depósito." },
             { question: "Qual a diferença entre CDI e Selic?", answer: "A Selic é a taxa básica de juros da economia, definida pelo Banco Central. O CDI é a taxa média dos empréstimos entre bancos e costuma ficar ligeiramente abaixo da Selic (diferença de cerca de 0,10 ponto percentual). A maioria dos investimentos de renda fixa usa o CDI como referência de rentabilidade." },
             { question: "Vale mais a pena investir um valor alto de uma vez ou aportar todo mês?", answer: "Depende do seu momento financeiro. Quem já tem o capital disponível se beneficia de mais tempo de rendimento composto sobre aquele valor. Já os aportes mensais são a forma mais realista de construir patrimônio para quem está poupando parte da renda mês a mês — o importante é começar e manter a constância." },
+            { question: "A taxa que eu informo deve ser efetiva ou nominal?", answer: "A ferramenta espera uma taxa anual efetiva — a rentabilidade real acumulada em 12 meses, que é como o CDI, a Selic e a maioria dos investimentos de renda fixa costumam divulgar suas taxas no Brasil. A conversão para taxa mensal usa a fórmula de juros compostos (1+taxa)^(1/12)−1, não uma simples divisão por 12, que subestimaria o efeito composto real." },
           ],
         }}
       />

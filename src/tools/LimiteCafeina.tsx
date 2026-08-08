@@ -20,7 +20,6 @@ interface Item { id: string; bebidaId: string; qtd: string; }
 let nextId = 1;
 
 export function LimiteCafeina({ onBack }: Props) {
-  const [peso, setPeso] = useState("");
   const [items, setItems] = useState<Item[]>([{ id: String(nextId++), bebidaId: "coado", qtd: "1" }]);
   const [result, setResult] = useState<null | { total: number; limite: number; pct: number }>(null);
 
@@ -38,8 +37,9 @@ export function LimiteCafeina({ onBack }: Props) {
   }
 
   function calcular() {
-    const p = parseFloat(peso.replace(",", ".")) || 70;
-    const limite = Math.min(400, p * 3);
+    // Referência geral para adultos saudáveis: até 400mg/dia (FDA/EFSA).
+    // Valor fixo — não há consenso científico forte para uma fórmula por peso em adultos.
+    const limite = 400;
     const total = items.reduce((s, item) => {
       const bev = BEBIDAS.find((b) => b.id === item.bebidaId);
       return s + (bev ? bev.mg * (parseFloat(item.qtd) || 0) : 0);
@@ -64,10 +64,9 @@ export function LimiteCafeina({ onBack }: Props) {
       disclaimer="Esta ferramenta é puramente informativa. Não substitui consulta médica ou diagnóstico profissional. Consulte sempre um profissional de saúde habilitado."
     >
       <div className="space-y-4">
-        <label className="block">
-          <span className="text-sm text-gray-400 mb-1 block">Peso (kg) — para calcular limite personalizado</span>
-          <input type="number" value={peso} onChange={(e) => setPeso(e.target.value)} placeholder="Ex: 70 (padrão)" className="input-field" />
-        </label>
+        <p className="text-xs text-gray-500">
+          Os valores de cafeína são estimativas de referência. O teor real pode variar conforme marca, produto, tamanho da porção e método de preparo.
+        </p>
 
         <div className="space-y-2">
           {items.map((item) => (
@@ -103,7 +102,7 @@ export function LimiteCafeina({ onBack }: Props) {
             <div className="flex items-end justify-between">
               <div>
                 <p className="text-3xl font-black text-white">{result.total.toFixed(0)} mg</p>
-                <p className="text-sm text-gray-400">de {result.limite.toFixed(0)} mg limite</p>
+                <p className="text-sm text-gray-400">de {result.limite.toFixed(0)} mg de referência</p>
               </div>
               <p className={`text-xl font-bold ${result.pct >= 100 ? "text-red-400" : result.pct >= 80 ? "text-yellow-400" : "text-green-400"}`}>
                 {result.pct.toFixed(0)}%
@@ -117,10 +116,10 @@ export function LimiteCafeina({ onBack }: Props) {
             </div>
             <p className="text-sm text-center">
               {result.total > result.limite
-                ? <span className="text-red-400 font-semibold">Acima do limite! Reduza o consumo.</span>
+                ? <span className="text-red-400 font-semibold">Acima da referência! Reduza o consumo.</span>
                 : result.pct >= 80
-                ? <span className="text-yellow-400">Perto do limite. Fique atento.</span>
-                : <span className="text-green-400">Dentro da referência estimada.</span>
+                ? <span className="text-yellow-400">Próximo da referência. Fique atento.</span>
+                : <span className="text-green-400">Dentro da referência geral.</span>
               }
             </p>
           </div>
@@ -131,19 +130,19 @@ export function LimiteCafeina({ onBack }: Props) {
         category="Saúde"
         data={{
           directAnswer: "A referência de ingestão de cafeína para a maioria dos adultos saudáveis é de até 400mg por dia (fonte: FDA), o equivalente a cerca de 4 xícaras de café. Esta ferramenta é informativa e não substitui orientação médica.",
-          howItWorks: "A ferramenta soma a quantidade de cafeína consumida ao longo do dia, considerando diferentes fontes (café, chá, energéticos, refrigerantes) e compara com o limite diário recomendado para o seu peso corporal. Também é possível ver o tempo estimado para a cafeína ser metabolizada, já que sua meia-vida no organismo é de cerca de 5 horas.",
+          howItWorks: "A ferramenta soma a cafeína estimada de cada bebida selecionada ao longo do dia (café, chá, energéticos, refrigerantes) e compara o total com uma referência geral diária de 400mg — o valor citado pela FDA como referência para a maioria dos adultos saudáveis. Esse número é uma referência geral, não uma avaliação médica individual: fatores como sensibilidade pessoal, gravidez, uso de certos medicamentos e condições de saúde podem mudar o que é adequado para cada pessoa. Também é possível ver o tempo estimado para a cafeína ser metabolizada, já que sua meia-vida no organismo é de cerca de 5 horas.",
           example: {
             title: "Exemplo: 3 xícaras de café + 1 lata de energético",
             steps: [
               "3 xícaras de café (95mg cada): 285mg",
               "1 lata de energético (80mg): 80mg",
               "Total consumido: 365mg",
-              "Limite diário recomendado: 400mg",
+              "Referência diária: 400mg",
             ],
-            result: "Com 365mg consumidos, a pessoa está próxima do limite diário recomendado de 400mg, mas ainda dentro da referência geral.",
+            result: "Com 365mg consumidos, a pessoa está próxima da referência diária de 400mg, mas ainda dentro do intervalo geral considerado adequado para adultos saudáveis.",
           },
           faqs: [
-            { question: "Qual o limite seguro de cafeína por dia?", answer: "Para adultos saudáveis, até 400mg por dia é a referência geral (FDA). Esta ferramenta não substitui orientação médica." },
+            { question: "Qual é a referência diária de cafeína para adultos?", answer: "Para adultos saudáveis, até 400mg por dia é a referência geral (FDA). Esta ferramenta não substitui orientação médica." },
             { question: "Quanto tempo a cafeína fica no organismo?", answer: "A meia-vida da cafeína é de cerca de 5 horas, podendo variar de pessoa para pessoa." },
             { question: "Gestantes podem consumir a mesma quantidade?", answer: "Não, recomenda-se limitar a cafeína a 200mg por dia durante a gravidez. Consulte um médico." },
             { question: "Quais alimentos além do café contêm cafeína?", answer: "Chá preto e verde, chocolate, refrigerantes tipo cola e bebidas energéticas também contêm cafeína." },

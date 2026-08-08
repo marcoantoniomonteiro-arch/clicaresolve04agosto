@@ -11,7 +11,7 @@ interface Props {
 interface Feriado {
   data: Date;
   nome: string;
-  tipo: "nacional" | "movel";
+  tipo: "nacional" | "facultativo";
 }
 
 function calcularPascoa(ano: number): Date {
@@ -38,6 +38,8 @@ function gerarFeriados(ano: number): Feriado[] {
   const pascoa = calcularPascoa(ano);
   const carnaval = new Date(pascoa);
   carnaval.setDate(carnaval.getDate() - 47);
+  const sextaSanta = new Date(pascoa);
+  sextaSanta.setDate(sextaSanta.getDate() - 2);
   const corpusChristi = new Date(pascoa);
   corpusChristi.setDate(corpusChristi.getDate() + 60);
 
@@ -61,9 +63,9 @@ function gerarFeriados(ano: number): Feriado[] {
   });
 
   feriados.push(
-    { data: carnaval, nome: "Carnaval", tipo: "movel" },
-    { data: pascoa, nome: "Pascoa", tipo: "movel" },
-    { data: corpusChristi, nome: "Corpus Christi", tipo: "movel" }
+    { data: sextaSanta, nome: "Sexta-feira Santa", tipo: "nacional" },
+    { data: carnaval, nome: "Carnaval", tipo: "facultativo" },
+    { data: corpusChristi, nome: "Corpus Christi", tipo: "facultativo" }
   );
 
   return feriados.sort((a, b) => a.data.getTime() - b.data.getTime());
@@ -209,7 +211,9 @@ export function CalendarioFeriados({ onBack }: Props) {
                     {feriadosMes.map((f, i) => (
                       <div key={i} className="flex items-center gap-2 text-xs">
                         <span className="w-6 text-gray-500">{f.data.getDate()}</span>
-                        <span className="text-green-400">{f.nome}</span>
+                        <span className={f.tipo === "facultativo" ? "text-amber-400" : "text-green-400"}>
+                          {f.nome}{f.tipo === "facultativo" ? " (ponto facultativo)" : ""}
+                        </span>
                       </div>
                     ))}
                   </div>
@@ -219,9 +223,12 @@ export function CalendarioFeriados({ onBack }: Props) {
           })}
         </div>
 
-        <div className="flex items-center gap-4 text-xs text-gray-500">
+        <div className="flex items-center gap-4 text-xs text-gray-500 flex-wrap">
           <span className="flex items-center gap-1">
-            <span className="w-3 h-3 rounded bg-green-500" /> Feriado
+            <span className="w-3 h-3 rounded bg-green-500" /> Feriado Nacional
+          </span>
+          <span className="flex items-center gap-1">
+            <span className="w-3 h-3 rounded bg-amber-500" /> Ponto Facultativo
           </span>
           <span className="flex items-center gap-1">
             <span className="w-3 h-3 rounded bg-blue-500/20" /> Final de Semana
@@ -232,8 +239,8 @@ export function CalendarioFeriados({ onBack }: Props) {
         toolName="Calendário de Feriados"
         category="Utilidades"
         data={{
-          directAnswer: "O calendário de feriados nacionais reúne as datas oficiais de feriados no Brasil ao longo do ano, incluindo feriados fixos e móveis.",
-          howItWorks: "A ferramenta organiza os feriados nacionais brasileiros (fixos, como Natal e Independência, e móveis, como Carnaval e Páscoa, que mudam de data a cada ano conforme o calendário lunar), ajudando no planejamento de viagens, folgas e organização do calendário anual.",
+          directAnswer: "O calendário de feriados nacionais reúne as datas oficiais de feriados no Brasil ao longo do ano, incluindo feriados fixos, móveis e pontos facultativos.",
+          howItWorks: "A ferramenta organiza os feriados nacionais brasileiros: os fixos (como Natal e Independência) e os móveis, calculados a partir da data da Páscoa (Sexta-feira Santa, 2 dias antes). Também mostra pontos facultativos amplamente observados — Carnaval e Corpus Christi — que, diferente dos feriados nacionais oficiais, não são obrigatórios por lei em todo o território nacional, mas costumam ser adotados por decreto municipal, estadual ou por convenção do empregador. Isso ajuda no planejamento de viagens, folgas e organização do calendário anual.",
           example: {
             title: "Exemplo: consultando feriados de um determinado ano",
             steps: [
@@ -248,7 +255,8 @@ export function CalendarioFeriados({ onBack }: Props) {
             { question: "Qual a diferença entre feriado fixo e feriado móvel?", answer: "Feriados fixos ocorrem sempre na mesma data todo ano (como 25 de dezembro), enquanto feriados móveis mudam de data conforme cálculos do calendário lunar/litúrgico, como a Páscoa e o Carnaval." },
             { question: "O calendário inclui feriados estaduais e municipais?", answer: "O foco principal costuma ser nos feriados nacionais; feriados estaduais e municipais variam por localidade e podem não estar incluídos." },
             { question: "Como é calculada a data da Páscoa a cada ano?", answer: "A Páscoa é calculada com base no primeiro domingo após a primeira lua cheia depois do equinócio de março, o que faz sua data variar anualmente." },
-            { question: "Pontos facultativos são incluídos no calendário?", answer: "Pontos facultativos (como Segunda-feira de Carnaval) geralmente são diferenciados dos feriados oficiais, já que não são obrigatórios por lei em todo o território nacional." },
+            { question: "Pontos facultativos são incluídos no calendário?", answer: "Sim — Carnaval e Corpus Christi aparecem marcados em laranja como 'ponto facultativo', diferente dos feriados nacionais oficiais (marcados em verde), já que não são obrigatórios por lei em todo o território nacional, mas costumam ser adotados amplamente por decreto local." },
+            { question: "A Sexta-feira Santa é um feriado nacional?", answer: "Sim, a Sexta-feira Santa é um feriado nacional amplamente observado em todo o Brasil, calculado como 2 dias antes do Domingo de Páscoa." },
           ],
         }}
       />
