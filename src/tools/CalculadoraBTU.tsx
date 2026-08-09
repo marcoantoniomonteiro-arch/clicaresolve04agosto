@@ -107,7 +107,7 @@ export function CalculadoraBTU({ onBack }: Props) {
         toolName="Calculadora de BTU"
         category="Transportes"
         data={{
-          directAnswer: "Um quarto de 12m² com 2 pessoas e 1 computador precisa de 8.400 BTU/h. A fórmula é: área × 600 + pessoas × 600 + equipamentos × 600.",
+          directAnswer: "Um quarto de 12m² com 2 pessoas e 1 computador (sem sol direto e com pé-direito padrão) precisa de 7.200 BTU/h. A fórmula é: área × 600, mais 600 BTU para cada pessoa além de 2, mais 400 BTU para cada equipamento além de 1 — nesse caso, pessoas e equipamentos não passam da base isenta, então nada é somado além dos 7.200 da área.",
           howItWorks: "A calculadora de BTU usa a fórmula padrão do mercado de climatização: BTU = área (m²) × 600 + (pessoas − 2) × 600 + (equipamentos − 1) × 400 + ajustes. Fatores de ajuste: pé-direito acima de 2,7m (+10%), sol incidindo diretamente (+10%). A área é comprimento × largura. Pessoas além de 2 geram +600 BTU cada. Equipamentos além do primeiro geram +400 BTU cada. O resultado é arredondado e comparado com modelos comerciais: 9.000, 12.000, 18.000, 24.000, 30.000, 36.000 BTUs. A ferramenta mostra a potência necessária e o modelo recomendado.",
           example: {
             title: "Exemplo: quarto 4m × 3m, 2 pessoas, 1 PC, sol direto",
@@ -116,9 +116,9 @@ export function CalculadoraBTU({ onBack }: Props) {
               "Informe pé-direito: 2,7m (padrão), pessoas: 2, equipamentos: 1",
               "Marque 'Incide sol direto' (verdadeiro)",
               "Calcula: área = 12m²; BTU = 12 × 600 = 7.200",
-              "Aplica ajuste sol: 7.200 × 1,1 = 7.920 → arredondado: 8.000 BTU/h"
+              "Aplica ajuste sol: 7.200 × 1,1 = 7.920 BTU/h"
             ],
-            result: "Potência necessária: 8.000 BTU/h; Modelo recomendado: 9.000 BTUs (modelo comercial mais próximo acima)",
+            result: "Potência necessária: 7.920 BTU/h; Modelo recomendado: 9.000 BTUs (modelo comercial mais próximo acima)",
           },
           faqs: [
             { question: "Como calcular BTU?", answer: "A ferramenta calcula automaticamente. Informe comprimento, largura, pessoas, equipamentos e se incide sol. A fórmula é: área × 600 + ajustes." },

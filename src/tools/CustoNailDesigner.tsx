@@ -40,8 +40,8 @@ export function CustoNailDesigner({ onBack }: Props) {
       {
         id: Date.now(),
         nome: novoInsumo.trim(),
-        custo: parseFloat(novoCusto) || 0,
-        quantidade: parseFloat(novaQtd) || 1,
+        custo: Math.max(0, parseFloat(novoCusto) || 0),
+        quantidade: Math.max(0, parseFloat(novaQtd) || 1),
       },
     ]);
     setNovoInsumo("");
@@ -59,16 +59,17 @@ export function CustoNailDesigner({ onBack }: Props) {
   };
 
   const updateInsumo = (id: number, field: "custo" | "quantidade", value: number) => {
-    setInsumos((prev) => prev.map((i) => (i.id === id ? { ...i, [field]: value } : i)));
+    const safeValue = Math.max(0, value);
+    setInsumos((prev) => prev.map((i) => (i.id === id ? { ...i, [field]: safeValue } : i)));
   };
 
   const resultado = useMemo(() => {
     const custoInsumos = insumos.reduce((acc, i) => acc + i.custo * i.quantidade, 0);
-    const minutos = parseInt(tempoMinutos) || 0;
-    const hora = parseFloat(valorHora) || 0;
+    const minutos = Math.max(0, parseInt(tempoMinutos) || 0);
+    const hora = Math.max(0, parseFloat(valorHora) || 0);
     const custoMaoDeObra = (minutos / 60) * hora;
     const precoMinimo = custoInsumos + custoMaoDeObra;
-    const precoMargem = precoMinimo * 1.3;
+    const precoMargem = precoMinimo / (1 - 0.30);
 
     return {
       custoInsumos,
@@ -223,21 +224,22 @@ export function CustoNailDesigner({ onBack }: Props) {
         category="Utilidades"
         data={{
           directAnswer: "O custo de um atendimento de nail designer é calculado somando o valor dos materiais utilizados, o tempo de trabalho e a margem de lucro desejada pela profissional.",
-          howItWorks: "A ferramenta ajuda a precificar corretamente os serviços de nail design, considerando o custo dos materiais usados (esmalte, produtos, descartáveis), o tempo gasto no atendimento, custos fixos do espaço de trabalho, e a margem de lucro desejada, evitando que a profissional cobre um valor abaixo do que realmente cobre seus custos e gera lucro.",
+          howItWorks: "A ferramenta ajuda a precificar corretamente os serviços de nail design, somando o custo dos materiais usados (esmalte, produtos, descartáveis) ao valor do tempo de trabalho, e aplicando uma margem de lucro real de 30% sobre o preço de venda final. Custos fixos do negócio — como aluguel do espaço, equipamentos ou assinaturas — não entram automaticamente nesse cálculo e podem precisar ser considerados à parte, por exemplo diluindo esse valor mensal entre o número de atendimentos que você faz.",
           example: {
             title: "Exemplo: precificando um alongamento em gel",
             steps: [
               "Custo de materiais: R$ 15",
               "Tempo de trabalho: 2 horas",
               "Valor da hora de trabalho desejado: R$ 25/hora = R$ 50",
-              "Preço sugerido: R$ 15 + R$ 50 = R$ 65 (antes da margem de lucro)",
+              "Preço mínimo: R$ 15 + R$ 50 = R$ 65 (antes da margem de lucro)",
+              "Preço com margem real de 30%: R$ 65 ÷ (1 − 0,30) = R$ 65 ÷ 0,70 = R$ 92,86",
             ],
-            result: "Considerando materiais e tempo de trabalho, o preço mínimo para cobrir custos do alongamento em gel seria R$ 65, antes de aplicar a margem de lucro desejada.",
+            result: "Considerando materiais e tempo de trabalho, o preço mínimo para cobrir custos do alongamento em gel seria R$ 65. Para obter uma margem de lucro real de 30% sobre o preço de venda, o valor cobrado deveria ser R$ 92,86.",
           },
           faqs: [
-            { question: "Por que é importante calcular o custo antes de definir o preço?", answer: "Para garantir que o valor cobrado cubra todos os gastos (materiais, tempo, espaço) e ainda gere lucro, evitando trabalhar no prejuízo sem perceber." },
-            { question: "Devo incluir o aluguel do espaço no cálculo?", answer: "Sim, se você paga aluguel ou usa um espaço compartilhado, esse custo fixo deve ser diluído entre os atendimentos realizados no mês." },
-            { question: "Como definir minha margem de lucro ideal?", answer: "Isso varia conforme a região e o mercado, mas uma margem comum no setor de beleza costuma ficar entre 30% e 50% sobre o custo total." },
+            { question: "Por que é importante calcular o custo antes de definir o preço?", answer: "Para garantir que o valor cobrado cubra todos os gastos (materiais, tempo) e ainda gere lucro, evitando trabalhar no prejuízo sem perceber." },
+            { question: "Devo incluir o aluguel do espaço no cálculo?", answer: "Esta ferramenta não tem um campo específico para isso — ela calcula apenas materiais, tempo de trabalho e margem de lucro. Se você paga aluguel ou usa um espaço compartilhado, esse custo fixo deve ser diluído entre os atendimentos do mês e somado separadamente ao preço final." },
+            { question: "Qual a diferença entre margem e markup?", answer: "Margem é o percentual de lucro em relação ao preço de venda (lucro ÷ preço). Markup é o percentual aplicado sobre o custo (multiplicar o custo por 1 + percentual). Os dois dão resultados diferentes para o mesmo percentual: um markup de 30% sobre um custo de R$65 dá um preço de R$84,50, mas isso equivale a uma margem real de apenas 23%. Esta ferramenta calcula margem real: para 30% de margem sobre o preço de venda, o cálculo é custo ÷ (1 − 0,30)." },
             { question: "Preciso recalcular o preço sempre que o preço dos materiais mudar?", answer: "Sim, é recomendado revisar a precificação periodicamente, especialmente quando há aumento significativo no custo dos materiais utilizados." },
           ],
         }}

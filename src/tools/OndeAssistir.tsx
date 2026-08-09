@@ -48,7 +48,7 @@ export function OndeAssistir({ onBack }: Props) {
       description="Guia completo dos canais esportivos do Brasil — TV aberta, fechada e streaming."
       onBack={onBack}
       affiliateBanner={<AffiliateBanner terms={["suporte tv parede"]} label="suporte tv parede" />}
-    
+      disclaimer="Esta é uma referência geral de quais canais e plataformas costumam transmitir cada tipo de conteúdo esportivo — não é uma agenda de jogos do dia. Direitos de transmissão mudam com o tempo; para saber onde um jogo específico vai passar, confirme diretamente com o canal ou a competição."
     >
       <div className="space-y-6">
         {/* Banners */}
@@ -91,23 +91,23 @@ export function OndeAssistir({ onBack }: Props) {
         toolName="Onde Assistir Hoje"
         category="Esportes"
         data={{
-          directAnswer: "A ferramenta 'Onde Assistir Hoje' reúne informações sobre em quais canais ou plataformas de streaming os jogos e eventos esportivos do dia estão sendo transmitidos.",
-          howItWorks: "A ferramenta organiza a programação esportiva do dia, indicando os jogos disponíveis e em quais canais de TV aberta, fechada ou plataformas de streaming cada partida pode ser assistida, facilitando o planejamento de quem não quer perder nenhum jogo importante.",
+          directAnswer: "Esta ferramenta reúne, por tipo de conteúdo esportivo, quais canais de TV aberta, TV fechada e plataformas de streaming costumam transmitir cada modalidade no Brasil — é um guia geral de referência, não uma agenda com os jogos específicos do dia.",
+          howItWorks: "A ferramenta organiza os principais canais e plataformas esportivas do Brasil em três grupos (TV aberta, TV fechada e streaming), indicando de forma geral que tipo de competição cada um costuma exibir — por exemplo, que a ESPN geralmente transmite NBA e tênis, ou que o Amazon Prime Video tem a NFL. A ideia é ajudar a decidir qual canal ou assinatura faz sentido para acompanhar os esportes que você gosta, não mostrar o placar ou horário de uma partida específica. Como direitos de transmissão mudam com contratos e temporadas, vale sempre confirmar com o canal a programação exata de um jogo específico.",
           example: {
-            title: "Exemplo: consultando os jogos de um sábado",
+            title: "Exemplo: quero saber onde assistir futebol europeu",
             steps: [
-              "Data consultada: sábado",
-              "Jogo 1: Campeonato Brasileiro — transmissão em canal fechado + streaming",
-              "Jogo 2: Campeonato Europeu — transmissão apenas em streaming",
-              "Horários organizados em ordem cronológica",
+              "Consulto os grupos de TV fechada e streaming na lista",
+              "TNT Sports (TV fechada): Champions League, Europa League",
+              "Disney+ / Star+ (streaming, via ESPN+): futebol europeu, NBA, UFC",
+              "DAZN (streaming): futebol europeu de menor expressão",
             ],
-            result: "A consulta mostrou 2 jogos disponíveis no sábado, com suas respectivas transmissões e horários organizados.",
+            result: "Com base na lista, dá pra ver que TNT Sports, Disney+/Star+ e DAZN são os canais/plataformas mais relevantes para futebol europeu no Brasil — mas o jogo específico que você quer assistir ainda precisa ser confirmado na programação do canal.",
           },
           faqs: [
-            { question: "A informação de transmissão é sempre atualizada?", answer: "A programação esportiva pode mudar por decisão das emissoras; sempre vale confirmar próximo ao horário do jogo." },
-            { question: "Cobre apenas futebol?", answer: "Depende da abrangência da ferramenta; muitas dessas ferramentas focam em futebol, mas podem incluir outros esportes populares." },
-            { question: "Mostra jogos de qualquer país?", answer: "Geralmente prioriza competições de maior interesse do público local, podendo incluir campeonatos internacionais relevantes." },
-            { question: "Preciso de assinatura para assistir aos jogos indicados?", answer: "Depende do canal ou plataforma de cada transmissão — alguns jogos são exibidos em canais abertos, gratuitos, enquanto outros exigem assinatura paga." },
+            { question: "Essa ferramenta mostra os jogos de hoje e seus horários?", answer: "Não. É uma lista de referência sobre qual canal ou plataforma costuma transmitir cada tipo de esporte, não uma agenda ao vivo com jogos e horários do dia. Para saber o horário de um jogo específico, consulte diretamente o canal ou a competição." },
+            { question: "Essa lista de canais é sempre atualizada?", answer: "Os direitos de transmissão de competições esportivas mudam periodicamente (por licitação, fim de contrato, etc.), então a associação entre canal e competição pode mudar com o tempo. Trate como uma referência geral, não como garantia definitiva." },
+            { question: "Cobre apenas futebol?", answer: "Não — a lista inclui canais e plataformas com conteúdo de diversos esportes, como NBA, NFL, UFC, tênis, automobilismo e ciclismo, além de futebol nacional e internacional." },
+            { question: "Preciso de assinatura para assistir ao conteúdo listado?", answer: "Depende do canal ou plataforma: alguns (como TV aberta e o YouTube da Cazé TV) são gratuitos, enquanto TV fechada e a maioria dos serviços de streaming exigem assinatura paga." },
           ],
         }}
       />

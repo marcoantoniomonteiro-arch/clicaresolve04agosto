@@ -83,7 +83,7 @@ export function ConversorMoedas({ onBack }: Props) {
       onBack={onBack}
       affiliateBanner={<AffiliateBanner terms={["livro educação financeira"]} label="livro educação financeira" />}
     
-      disclaimer="Cotacoes aproximadas. Atualize conforme o cambio do dia. Os valores podem variar entre corretoras."
+      disclaimer="Cotacoes aproximadas. Atualize conforme o cambio do dia. Os valores podem variar entre corretoras. Atenção: o Bitcoin tem volatilidade muito maior que moedas tradicionais e pode variar dezenas de % em poucos dias — a cotação padrão fica desatualizada com mais facilidade."
     >
       <div className="space-y-5">
         <div className="grid grid-cols-2 gap-4">
@@ -192,7 +192,7 @@ export function ConversorMoedas({ onBack }: Props) {
           faqs: [
             { question: "A cotação mostrada é a mesma que vou pagar no banco ou casa de câmbio?", answer: "Não necessariamente. É uma referência de mercado próxima da cotação oficial. Bancos, corretoras e casas de câmbio aplicam spread (margem entre compra e venda) e, às vezes, tarifas fixas — por isso o valor final de uma operação real costuma ser um pouco pior do que a cotação de referência." },
             { question: "Com que frequência a cotação muda?", answer: "As cotações de câmbio variam continuamente ao longo do dia útil, seguindo o mercado financeiro internacional, e ficam praticamente paradas nos fins de semana e feriados, quando os mercados estão fechados." },
-            { question: "Posso converter qualquer par de moedas na ferramenta?", answer: "Sim, entre as principais moedas disponíveis na lista de seleção — as mais usadas em viagens e comércio internacional, como dólar, euro, libra e peso argentino." },
+            { question: "Posso converter qualquer par de moedas na ferramenta?", answer: "Sim, entre as moedas disponíveis na lista de seleção — as mais usadas em viagens e comércio internacional (dólar, euro, libra, peso argentino) e também Bitcoin. Vale lembrar que a cotação do Bitcoin é muito mais volátil que a das moedas tradicionais e pode ficar desatualizada rapidamente." },
             { question: "Por que o preço de compra e o de venda de uma moeda são diferentes?", answer: "Instituições financeiras cobram uma margem (spread) entre o preço pelo qual compram e o preço pelo qual vendem a moeda estrangeira — é assim que remuneram o serviço de câmbio, além de eventuais tarifas adicionais." },
           ],
         }}

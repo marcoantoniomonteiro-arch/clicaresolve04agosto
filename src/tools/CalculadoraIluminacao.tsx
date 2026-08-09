@@ -152,9 +152,9 @@ export function CalculadoraIluminacao({ onBack }: Props) {
               "Ambiente: Cozinha, 10 m² (ex: 2m × 5m)",
               "Faixa recomendada: 300-500 lumens/m²",
               "Lúmens necessários: 3.000 a 5.000 lumens totais",
-              "Lâmpadas LED de 800 lumens necessárias: aproximadamente 4 a 6 lâmpadas",
+              "Lâmpadas LED de 800 lumens necessárias: aproximadamente 4 a 7 lâmpadas",
             ],
-            result: "Uma cozinha de 10m² precisa de aproximadamente 4 a 6 lâmpadas LED padrão para atingir a iluminação ideal para preparo de alimentos.",
+            result: "Uma cozinha de 10m² precisa de aproximadamente 4 a 7 lâmpadas LED padrão para atingir a iluminação ideal para preparo de alimentos.",
           },
           faqs: [
             { question: "Por que a cozinha precisa de mais luz que a sala?", answer: "Porque atividades de preparo de alimentos e uso de objetos cortantes exigem mais precisão visual, enquanto salas de estar priorizam ambiente aconchegante." },
