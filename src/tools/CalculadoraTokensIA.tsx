@@ -17,7 +17,7 @@ interface ModelPricing {
 
 const MODELS: ModelPricing[] = [
   { name: "Claude Sonnet 5", input: 2.0, output: 10.0 },
-  { name: "Claude Opus 4.5", input: 5.0, output: 25.0 },
+  { name: "Claude Opus 5", input: 5.0, output: 25.0 },
   { name: "Claude Haiku 4.5", input: 1.0, output: 5.0 },
   { name: "GPT-4o (OpenAI)", input: 2.5, output: 10.0, approximate: true },
   { name: "GPT-4o-mini (OpenAI)", input: 0.15, output: 0.6, approximate: true },
@@ -115,6 +115,9 @@ export function CalculadoraTokensIA({ onBack }: Props) {
             </div>
             <p className="text-xs text-gray-500 mt-2">
               Custo calculado para enviar o texto uma vez. O custo de output depende da resposta gerada pela IA.
+            </p>
+            <p className="text-xs text-blue-400 mt-2">
+              Observação: o preço do Claude Sonnet 5 (input $2,00 / output $10,00 por milhão de tokens) é promocional e válido até 31/08/2026. A partir de 01/09/2026, o preço padrão passa a ser $3,00 (input) / $15,00 (output) por milhão de tokens.
             </p>
           </div>
         )}

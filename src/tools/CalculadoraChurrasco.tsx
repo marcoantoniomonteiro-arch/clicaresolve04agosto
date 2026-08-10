@@ -21,10 +21,6 @@ export function CalculadoraChurrasco({ onBack }: Props) {
     const totalPessoas = h + m + c;
     const adultos = h + m;
 
-    const carneHomem = 0.4;
-    const carneMulher = 0.3;
-    const carneCrianca = 0.2;
-
     const picanha = (h * 0.15 + m * 0.1 + c * 0.05);
     const frango = (h * 0.1 + m * 0.1 + c * 0.08);
     const linguica = (h * 0.1 + m * 0.08 + c * 0.05);
@@ -167,8 +163,8 @@ export function CalculadoraChurrasco({ onBack }: Props) {
         </div>
 
         <div className="p-3 rounded-lg bg-white/5 text-xs text-gray-500">
-          <p className="font-semibold text-gray-400 mb-1">Calculo por pessoa:</p>
-          <p>Homens: 400g carne, Mulheres: 300g, Criancas: 200g</p>
+          <p className="font-semibold text-gray-400 mb-1">Calculo por pessoa (picanha + frango + linguica):</p>
+          <p>Homens: 350g carne, Mulheres: 280g, Criancas: 180g</p>
           <p>Cerveja: 3 latas/adulto, Refri: 1L/3 pessoas</p>
           <p>Carvao: 1kg/3 pessoas</p>
         </div>
@@ -177,23 +173,23 @@ export function CalculadoraChurrasco({ onBack }: Props) {
         toolName="Calculadora de Churrasco"
         category="Lazer"
         data={{
-          directAnswer: "A quantidade de churrasco por pessoa é calculada com base no número de convidados, multiplicando por uma média de 300-400g de carne por pessoa adulta.",
-          howItWorks: "A ferramenta estima a quantidade de carne, carvão, bebidas e acompanhamentos necessários para um churrasco, com base no número de convidados informado. A média usada é de 300 a 400g de carne por adulto (podendo variar conforme o perfil dos convidados), além de proporções de referência para carvão (cerca de 1kg de carvão para cada 3-4kg de carne) e bebidas.",
+          directAnswer: "A ferramenta soma três tipos de carne (picanha, frango e linguiça) usando uma média fixa por pessoa: 350g por homem, 280g por mulher e 180g por criança.",
+          howItWorks: "A ferramenta calcula, separadamente para homens, mulheres e crianças, a quantidade de picanha, frango e linguiça necessária, somando tudo em um total de carne. Na prática, isso equivale a uma média de 350g por homem, 280g por mulher e 180g por criança. O carvão é calculado com base no número total de convidados — aproximadamente 1kg de carvão para cada 3 pessoas, independentemente da quantidade de carne. As bebidas seguem a mesma lógica de contagem por pessoa: 3 latas de cerveja por adulto e 1 litro de refrigerante para cada 3 convidados.",
           example: {
-            title: "Exemplo: churrasco para 10 pessoas",
+            title: "Exemplo: churrasco para 10 homens, 10 mulheres e 5 crianças (25 pessoas)",
             steps: [
-              "Convidados: 10 pessoas adultas",
-              "Carne: 10 × 350g = 3,5kg",
-              "Carvão: aproximadamente 1kg",
-              "Bebidas: estimativa de 1,5L por pessoa = 15L",
+              "Convidados: 10 homens, 10 mulheres e 5 crianças (25 pessoas, 20 adultos)",
+              "Carne: 10 × 350g (homens) + 10 × 280g (mulheres) + 5 × 180g (crianças) ≈ 7,2kg de picanha, frango e linguiça",
+              "Carvão: 25 pessoas ÷ 3 ≈ 9kg (1kg a cada 3 convidados)",
+              "Bebidas: 60 latas de cerveja (3 por adulto) e 9L de refrigerante",
             ],
-            result: "Para 10 pessoas, a ferramenta sugere cerca de 3,5kg de carne, 1kg de carvão e 15L de bebidas como referência inicial.",
+            result: "Para esse grupo, a ferramenta sugere cerca de 7,2kg de carne no total, 9kg de carvão, 60 latas de cerveja e 9L de refrigerante.",
           },
           faqs: [
-            { question: "Quanto de carne por pessoa é o ideal?", answer: "A média usada é de 300 a 400g por adulto, mas pode variar conforme o perfil do grupo (mais ou menos carnívoro)." },
-            { question: "Crianças contam a mesma quantidade que adultos?", answer: "Não, geralmente se usa metade da quantidade estimada para adultos ao calcular para crianças." },
-            { question: "Quanto carvão é necessário?", answer: "Uma referência comum é cerca de 1kg de carvão para cada 3-4kg de carne a ser assada." },
-            { question: "A ferramenta considera diferentes tipos de carne?", answer: "Sim, é possível ajustar a estimativa considerando uma variedade de cortes (bovina, suína, frango) na quantidade total." },
+            { question: "Quanto de carne por pessoa é o ideal?", answer: "A ferramenta usa uma média fixa por grupo: 350g por homem, 280g por mulher e 180g por criança, somando picanha, frango e linguiça." },
+            { question: "Crianças contam a mesma quantidade que adultos?", answer: "Não. Na fórmula desta calculadora, cada criança consome cerca de 180g no total, valor próximo à metade da média entre homem (350g) e mulher (280g)." },
+            { question: "Quanto carvão é necessário?", answer: "A ferramenta calcula aproximadamente 1kg de carvão para cada 3 convidados, com base no número de pessoas — não na quantidade de carne." },
+            { question: "A ferramenta considera diferentes tipos de carne?", answer: "Sim. O total é dividido automaticamente entre picanha, frango e linguiça, em proporções diferentes para homens, mulheres e crianças. Não é possível escolher outros cortes ou ajustar essas proporções manualmente." },
           ],
         }}
       />

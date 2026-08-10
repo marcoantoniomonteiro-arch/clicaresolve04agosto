@@ -41,6 +41,9 @@ export function AcumuladorHoras({ onBack }: Props) {
     );
   }, []);
 
+  const horaValida = (hora: string): boolean =>
+    /^\d{1,2}:\d{2}$/.test(hora ?? "");
+
   const calcularMinutos = (hora: string): number => {
     const [h, m] = hora.split(":").map(Number);
     return h * 60 + m;
@@ -50,6 +53,10 @@ export function AcumuladorHoras({ onBack }: Props) {
     let minutosTotal = 0;
 
     registros.forEach((r) => {
+      // Ignora registros com horario vazio/invalido (ex: campo limpo pelo usuario)
+      // para nao produzir NaN no resultado.
+      if (!horaValida(r.entrada) || !horaValida(r.saida)) return;
+
       const entradaMin = calcularMinutos(r.entrada);
       let saidaMin = calcularMinutos(r.saida);
 

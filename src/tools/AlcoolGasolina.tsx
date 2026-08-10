@@ -56,6 +56,7 @@ export function AlcoolGasolina({ onBack }: Props) {
   const [alcool, setAlcool] = useState("");
   const [gasolina, setGasolina] = useState("");
   const [scenarioId, setScenarioId] = useState<string>("new");
+  const [erro, setErro] = useState<string | null>(null);
   const [result, setResult] = useState<
     null | {
       compensa: "alcool" | "gasolina";
@@ -70,7 +71,12 @@ export function AlcoolGasolina({ onBack }: Props) {
   function calcular() {
     const a = parseFloat(alcool.replace(",", "."));
     const g = parseFloat(gasolina.replace(",", "."));
-    if (!a || !g || g === 0) return;
+    if (!Number.isFinite(a) || !Number.isFinite(g) || a <= 0 || g <= 0) {
+      setErro("Informe preços válidos e maiores que zero para álcool e gasolina.");
+      setResult(null);
+      return;
+    }
+    setErro(null);
     const ratio = a / g;
     setResult({
       compensa: ratio < scenario.breakEvenRatio ? "alcool" : "gasolina",
@@ -132,6 +138,8 @@ export function AlcoolGasolina({ onBack }: Props) {
             </span>
             <input
               type="number"
+              min="0"
+              step="0.01"
               value={alcool}
               onChange={(e) => setAlcool(e.target.value)}
               placeholder="Ex: 3.89"
@@ -144,6 +152,8 @@ export function AlcoolGasolina({ onBack }: Props) {
             </span>
             <input
               type="number"
+              min="0"
+              step="0.01"
               value={gasolina}
               onChange={(e) => setGasolina(e.target.value)}
               placeholder="Ex: 5.79"
@@ -155,6 +165,10 @@ export function AlcoolGasolina({ onBack }: Props) {
         <button onClick={calcular} className="btn-primary w-full">
           Calcular
         </button>
+
+        {erro && (
+          <p className="text-sm text-red-400 text-center">{erro}</p>
+        )}
 
         {result && (
           <div
@@ -196,7 +210,7 @@ export function AlcoolGasolina({ onBack }: Props) {
         category="Finanças"
         data={{
           directAnswer:
-            "Em junho/2026, com gasolina a R$ 6.29 e etanol a R$ 4.89, a relação é 77.7%, portanto a gasolina compensa mais (limite: 70%).",
+            "Exemplo ilustrativo: com etanol a R$ 4,89/L e gasolina a R$ 6,29/L (valores informados por você), a relação é 77,7%, portanto a gasolina compensaria mais (limite: 70%). Informe os preços atuais do seu posto para o resultado real.",
           howItWorks:
             "A ferramenta calcula a relação álcool/gasolina: preço do litro de álcool ÷ preço do litro de gasolina. A regra prática brasileira é: se a relação for menor que o ponto de equilíbrio (aproximadamente 70%), o álcool compensa mais; se for maior, a gasolina é mais vantajosa. Isso se deve ao fato de que o álcool tem menor rendimento energético (aproximadamente 30% a menos que a gasolina). O ponto de equilíbrio exato depende do teor de etanol anidro misturado na gasolina comercial: com o novo padrão de 32% (antes 30%), a gasolina tem ligeiramente menos energia por litro, o que eleva o ponto de equilíbrio de 0,70 para aproximadamente 0,704. A ferramenta permite alternar entre os dois cenários para comparar.",
           example: {

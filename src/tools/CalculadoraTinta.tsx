@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { ToolLayout } from "../components/ToolLayout";
 import { AffiliateBanner } from "../components/AffiliateBanner";
 import { ToolContent } from "../components/ToolContent";
-import { CONFIG } from "../config";
 import { Plus, Trash2 } from "lucide-react";
 
 interface Props { onBack: () => void; }
@@ -49,7 +48,8 @@ export function CalculadoraTinta({ onBack }: Props) {
       areaTotal += Math.max(0, area);
     });
 
-    const rend = parseFloat(rendimento.replace(",", ".")) || 10;
+    const parsedRend = parseFloat(rendimento.replace(",", "."));
+    const rend = parsedRend > 0 ? parsedRend : 10;
     const numMaos = parseInt(maos) || 2;
     const litros = (areaTotal * numMaos) / rend;
     const latas36 = Math.ceil(litros / 3.6);
@@ -76,7 +76,7 @@ export function CalculadoraTinta({ onBack }: Props) {
         <div className="grid grid-cols-2 gap-4">
           <label className="block">
             <span className="text-sm text-gray-400 mb-1 block">Rendimento (m²/L)</span>
-            <input type="number" value={rendimento} onChange={(e) => setRendimento(e.target.value)} placeholder="10" className="input-field" />
+            <input type="number" min="0" step="0.1" value={rendimento} onChange={(e) => setRendimento(e.target.value)} placeholder="10" className="input-field" />
           </label>
           <label className="block">
             <span className="text-sm text-gray-400 mb-1 block">Nº de Demãos</span>
@@ -146,7 +146,7 @@ export function CalculadoraTinta({ onBack }: Props) {
       </div>
       <ToolContent
         toolName="CalculadoraTinta"
-        category="Transportes"
+        category="Casa"
         data={{
           directAnswer: "Para pintar uma parede de 15m² com 2 demãos e rendimento de 12m²/L, você precisa de 2.5 litros de tinta.",
           howItWorks: "A calculadora estima a quantidade de tinta necessária baseando-se na área total das paredes, no rendimento informado (m²/L) e no número de demãos. Para cada parede, a área é comprimento × altura. Se marcada a opção de descontar, subtrai-se a área de janelas e portas. A área total é multiplicada pelo número de demãos e dividida pelo rendimento. O resultado em litros é arredondado para latas comerciais: 3,6L e 18L. A ferramenta mostra: área total, litros necessários, quantidade de latas de 3,6L e latas de 18L (arredondando para cima).",
