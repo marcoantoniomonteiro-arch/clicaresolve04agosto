@@ -30,6 +30,11 @@
 }
 
 @layer components {
+  .input-field {
+    background-color: var(--color-card);
+    color: var(--color-text);
+  }
+
   .text-gradient-primary {
     background: var(--gradient-primary);
     -webkit-background-clip: text;
