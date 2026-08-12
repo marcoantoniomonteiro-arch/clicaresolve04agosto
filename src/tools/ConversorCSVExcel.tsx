@@ -124,6 +124,12 @@ export function ConversorCSVExcel({ onBack }: Props) {
               <p className="text-xs text-gray-500 mt-1">Arquivo: {fileName}</p>
             </div>
 
+            {direction === "xlsx-to-csv" && (
+              <div className="p-3 rounded-xl bg-yellow-500/10 border border-yellow-500/20 text-xs text-yellow-400">
+                Atenção: apenas a primeira aba da planilha é convertida. Se o arquivo tiver múltiplas abas, as demais não serão incluídas no CSV.
+              </div>
+            )}
+
             <div>
               <h3 className="text-sm font-semibold text-white mb-2">Preview (primeiras {Math.min(10, preview.length)} linhas)</h3>
               <div className="overflow-x-auto">
@@ -155,7 +161,7 @@ export function ConversorCSVExcel({ onBack }: Props) {
         category="Utilidades"
         data={{
           directAnswer: "A conversão entre CSV e Excel (XLSX) transforma dados tabulares de um formato de texto simples separado por vírgulas para uma planilha formatada, ou vice-versa.",
-          howItWorks: "CSV (Comma-Separated Values) é um formato de texto simples onde cada linha representa uma linha da planilha e as colunas são separadas por vírgula ou ponto-e-vírgula. XLSX é o formato nativo do Excel, que suporta formatação, múltiplas abas e fórmulas. A ferramenta detecta automaticamente o formato do arquivo enviado e realiza a conversão para o formato oposto, processando tudo localmente no seu navegador, sem enviar os dados para nenhum servidor.",
+          howItWorks: "CSV (Comma-Separated Values) é um formato de texto simples onde cada linha representa uma linha da planilha e as colunas são separadas por vírgula ou ponto-e-vírgula. XLSX é o formato nativo do Excel, que suporta formatação, múltiplas abas e fórmulas. A ferramenta detecta automaticamente o formato do arquivo enviado e realiza a conversão para o formato oposto, processando tudo localmente no seu navegador, sem enviar os dados para nenhum servidor. Importante: ao converter de Excel para CSV, apenas a primeira aba da planilha é processada — outras abas não são incluídas no arquivo CSV gerado.",
           example: {
             title: "Exemplo: convertendo um CSV simples para Excel",
             steps: [

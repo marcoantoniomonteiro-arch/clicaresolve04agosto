@@ -10,19 +10,19 @@ interface Props {
 type Ingredient = "farinha" | "acucar" | "manteiga" | "leite" | "oleo";
 
 const CONVERSIONS: Record<Ingredient, { xicara: number; colherSopa: number; colherCha: number; copo: number }> = {
-  farinha: { xicara: 120, colherSopa: 7.5, colherCha: 2.5, copo: 180 },
-  acucar: { xicara: 200, colherSopa: 12.5, colherCha: 4.2, copo: 300 },
-  manteiga: { xicara: 225, colherSopa: 14, colherCha: 4.7, copo: 340 },
-  leite: { xicara: 240, colherSopa: 15, colherCha: 5, copo: 360 },
-  oleo: { xicara: 200, colherSopa: 12.5, colherCha: 4.2, copo: 300 },
+  farinha: { xicara: 120, colherSopa: 7.5, colherCha: 2.5, copo: 100 },
+  acucar: { xicara: 200, colherSopa: 12.5, colherCha: 4.2, copo: 166.7 },
+  manteiga: { xicara: 225, colherSopa: 14, colherCha: 4.7, copo: 187.5 },
+  leite: { xicara: 240, colherSopa: 15, colherCha: 5, copo: 200 },
+  oleo: { xicara: 200, colherSopa: 12.5, colherCha: 4.2, copo: 166.7 },
 };
 
 const INGREDIENT_NAMES: Record<Ingredient, string> = {
   farinha: "Farinha de Trigo",
-  acucar: "Acucar",
+  acucar: "Açúcar",
   manteiga: "Manteiga",
   leite: "Leite",
-  oleo: "Oleo",
+  oleo: "Óleo",
 };
 
 type MeasureUnit = "xicara" | "colherSopa" | "colherCha" | "copo";
@@ -31,7 +31,7 @@ const MEASURE_NAMES: Record<MeasureUnit, string> = {
   xicara: "Xicara de Cha",
   colherSopa: "Colher de Sopa",
   colherCha: "Colher de Cha",
-  copo: "Copo (250ml)",
+  copo: "Copo Americano (200ml)",
 };
 
 export function ConversorCozinha({ onBack }: Props) {
@@ -60,7 +60,7 @@ export function ConversorCozinha({ onBack }: Props) {
     <ToolLayout
       title="Conversor de Cozinha"
       emoji="🥄"
-      category="Utilidades"
+      category="Culinária"
       description="Converta medidas de cozinha entre xicaras, colheres e gramas."
       onBack={onBack}
       affiliateBanner={
@@ -149,7 +149,7 @@ export function ConversorCozinha({ onBack }: Props) {
       </div>
       <ToolContent
         toolName="Conversor de Cozinha"
-        category="Utilidades"
+        category="Culinária"
         data={{
           directAnswer: "O conversor de medidas de cozinha transforma xícaras, colheres e gramas entre si, permitindo seguir qualquer receita independente da unidade usada originalmente.",
           howItWorks: "A ferramenta converte entre as unidades mais comuns em receitas culinárias: xícaras, colheres de sopa, colheres de chá, mililitros e gramas. Como a conversão de volume para peso varia conforme o ingrediente (farinha, açúcar e líquidos têm densidades diferentes), a ferramenta usa tabelas de referência específicas por tipo de ingrediente para garantir maior precisão.",

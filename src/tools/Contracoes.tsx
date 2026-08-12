@@ -85,8 +85,10 @@ export function Contracoes({ onBack }: Props) {
       <div className="space-y-4">
         {alerta511 && (
           <div className="p-4 rounded-xl bg-red-500/20 border border-red-500/50 text-center animate-pulse">
-            <p className="text-red-400 font-bold text-lg">PADRÃO 5-1-1 DETECTADO</p>
-            <p className="text-red-300 text-sm">Contrações a cada ~5 min. Contate seu médico ou vá à maternidade!</p>
+            <p className="text-red-400 font-bold text-lg">INTERVALO DE ~5 MIN DETECTADO</p>
+            <p className="text-red-300 text-sm">
+              Suas últimas contrações estão com intervalo de cerca de 5 minutos. Esta é uma indicação simplificada baseada apenas no intervalo — não confirma sozinha a regra 5-1-1 completa (que também leva em conta duração de ~1 minuto e persistência por pelo menos 1 hora). Contate seu médico ou vá à maternidade para avaliação.
+            </p>
           </div>
         )}
 
@@ -157,6 +159,7 @@ export function Contracoes({ onBack }: Props) {
           faqs: [
             { question: "Quando devo ir para a maternidade?", answer: "Isso varia por gestação; siga sempre a orientação específica do seu médico ou obstetra." },
             { question: "O que é a regra 5-1-1?", answer: "Um padrão de referência: contrações a cada 5 minutos, durando 1 minuto, por pelo menos 1 hora — mas cada caso deve ser avaliado individualmente." },
+            { question: "O alerta da ferramenta confirma a regra 5-1-1 completa?", answer: "Não. O alerta é uma indicação simplificada baseada apenas no intervalo entre as contrações. Duração de cerca de 1 minuto e persistência por pelo menos 1 hora — as outras partes da regra 5-1-1 — não são verificadas automaticamente; avalie esses pontos você mesma ou com seu médico." },
             { question: "A ferramenta substitui acompanhamento médico?", answer: "Não, é uma ferramenta de apoio para registro. O acompanhamento médico durante o trabalho de parto é essencial." },
             { question: "Posso registrar contrações irregulares?", answer: "Sim, a ferramenta registra cada contração individualmente, mesmo que os intervalos não sejam regulares no início do trabalho de parto." },
           ],

@@ -12,6 +12,10 @@ function jsonToCsv(json: string): string {
   if (!Array.isArray(data)) throw new Error("O JSON deve ser um array de objetos.");
   if (data.length === 0) return "";
 
+  if (typeof data[0] !== "object" || data[0] === null || Array.isArray(data[0])) {
+    throw new Error("O JSON deve ser um array de objetos (ex: [{\"nome\":\"João\"}]), não um array de valores simples como números ou textos.");
+  }
+
   const keys = Object.keys(data[0]);
   const escapeVal = (v: unknown): string => {
     const s = v === null || v === undefined ? "" : typeof v === "object" ? JSON.stringify(v) : String(v);
@@ -27,7 +31,8 @@ function jsonToCsv(json: string): string {
 }
 
 function csvToJson(csv: string): string {
-  const rows = parseCsvRows(csv);
+  const delimiter = detectDelimiter(csv);
+  const rows = parseCsvRows(csv, delimiter);
   if (rows.length < 1) return "[]";
   const headers = rows[0];
   const result = rows.slice(1).map((row) => {
@@ -40,7 +45,29 @@ function csvToJson(csv: string): string {
   return JSON.stringify(result, null, 2);
 }
 
-function parseCsvRows(text: string): string[][] {
+// Detecta o delimitador predominante (',' ou ';') olhando a primeira linha do CSV,
+// ignorando caracteres dentro de aspas. Isso evita tratar ',' e ';' como equivalentes,
+// o que corrompia valores decimais em formato brasileiro (ex: "1234,56" em CSV
+// delimitado por ';' virava "1234", perdendo os centavos).
+function detectDelimiter(text: string): "," | ";" {
+  let inQuotes = false;
+  let commaCount = 0;
+  let semicolonCount = 0;
+  for (let i = 0; i < text.length; i++) {
+    const ch = text[i];
+    if (ch === '"') {
+      inQuotes = !inQuotes;
+      continue;
+    }
+    if (inQuotes) continue;
+    if (ch === "\n") break;
+    if (ch === ",") commaCount++;
+    else if (ch === ";") semicolonCount++;
+  }
+  return semicolonCount > commaCount ? ";" : ",";
+}
+
+function parseCsvRows(text: string, delimiter: "," | ";"): string[][] {
   const rows: string[][] = [];
   let current: string[] = [];
   let field = "";
@@ -62,7 +89,7 @@ function parseCsvRows(text: string): string[][] {
     } else {
       if (ch === '"') {
         inQuotes = true;
-      } else if (ch === "," || ch === ";") {
+      } else if (ch === delimiter) {
         current.push(field);
         field = "";
       } else if (ch === "\n") {

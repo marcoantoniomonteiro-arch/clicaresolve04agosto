@@ -82,7 +82,7 @@ export function CiclosSono({ onBack }: Props) {
             <p className="text-sm text-gray-400">
               {modo === "acordar" ? "Melhores horários para dormir:" : "Você vai acordar às:"}
             </p>
-            {result.opcoes.reverse().map((op, i) => (
+            {[...result.opcoes].reverse().map((op, i) => (
               <div
                 key={i}
                 className={`flex items-center justify-between p-4 rounded-xl border transition-all ${
