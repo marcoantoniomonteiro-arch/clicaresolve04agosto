@@ -32,13 +32,14 @@ export function StaticPage({
       />
 
       <div className="max-w-3xl mx-auto px-4 py-8">
-        <button
-          onClick={onBack}
+        <a
+          href="/"
+          onClick={(e) => { if (e.ctrlKey || e.metaKey || e.shiftKey || e.button !== 0) return; e.preventDefault(); onBack(); }}
           className="flex items-center gap-2 text-sm text-muted hover:text-green-400 transition-colors mb-6"
         >
           <ArrowLeft className="w-4 h-4" />
           Voltar ao Início
-        </button>
+        </a>
 
         <div className="bg-card rounded-2xl p-6 sm:p-8 border border-border shadow-xl">
           {children}

@@ -133,12 +133,12 @@ export function ToolLayout({
       <div className="max-w-2xl mx-auto px-4 py-8">
         {/* Breadcrumb */}
         <nav className="flex items-center gap-2 text-sm text-muted mb-4" aria-label="Breadcrumb">
-          <button onClick={onBack} className="hover:text-green-400 transition-colors">{lang === "en" ? "Home" : "Início"}</button>
+          <a href="/" onClick={(e) => { if (e.ctrlKey || e.metaKey || e.shiftKey || e.button !== 0) return; e.preventDefault(); onBack(); }} className="hover:text-green-400 transition-colors">{lang === "en" ? "Home" : "Início"}</a>
           <span>/</span>
           {categorySlug ? (
-            <button onClick={() => onSelectCategory(categorySlug)} className="hover:text-green-400 transition-colors">
+            <a href={`/categoria/${categorySlug}`} onClick={(e) => { if (e.ctrlKey || e.metaKey || e.shiftKey || e.button !== 0) return; e.preventDefault(); onSelectCategory(categorySlug); }} className="hover:text-green-400 transition-colors">
               {categoryName}
-            </button>
+            </a>
           ) : (
             <span>{categoryName}</span>
           )}
@@ -146,15 +146,16 @@ export function ToolLayout({
           <span className="text-muted">{title}</span>
         </nav>
 
-        <button
-          onClick={onBack}
+        <a
+          href="/"
+          onClick={(e) => { if (e.ctrlKey || e.metaKey || e.shiftKey || e.button !== 0) return; e.preventDefault(); onBack(); }}
           onTouchEnd={(e) => { e.preventDefault(); if (wasScrolling()) return; onBack(); }}
           className="flex items-center gap-2 text-sm text-muted hover:text-green-400 transition-colors mb-4"
           style={{ WebkitTapHighlightColor: 'transparent' }}
         >
           <ArrowLeft className="w-4 h-4" />
           {lang === "en" ? "Back to Menu" : "Voltar ao Menu"}
-        </button>
+        </a>
 
         <AdPlaceholder size="banner" slot="topo" />
 
@@ -199,9 +200,10 @@ export function ToolLayout({
             </h2>
             <div className="space-y-3">
               {relatedTools.map((tool, i) => (
-                <button
+                <a
                   key={tool.id}
-                  onClick={() => onSelectTool(tool.slug)}
+                  href={`/${tool.slug}`}
+                  onClick={(e) => { if (e.ctrlKey || e.metaKey || e.shiftKey || e.button !== 0) return; e.preventDefault(); onSelectTool(tool.slug); }}
                   className="w-full flex items-center gap-3 p-3 rounded-xl bg-card border border-border hover:bg-green-400/5 hover:border-green-400/30 transition-all duration-200 text-left group hover:translate-x-1 animate-fade-in-up"
                   style={{ animationDelay: `${i * 60}ms` }}
                 >
@@ -211,7 +213,7 @@ export function ToolLayout({
                     <p className="text-xs text-muted line-clamp-1">{tool.description}</p>
                   </div>
                   <ArrowRight className="w-4 h-4 text-muted group-hover:text-green-400 group-hover:translate-x-1 transition-all" />
-                </button>
+                </a>
               ))}
             </div>
           </div>
@@ -220,13 +222,14 @@ export function ToolLayout({
         {/* Link to category page */}
         {categorySlug && (
           <div className="mt-6 mb-6">
-            <button
-              onClick={() => onSelectCategory(categorySlug)}
+            <a
+              href={`/categoria/${categorySlug}`}
+              onClick={(e) => { if (e.ctrlKey || e.metaKey || e.shiftKey || e.button !== 0) return; e.preventDefault(); onSelectCategory(categorySlug); }}
               className="w-full p-3 rounded-xl bg-green-400/10 border border-green-400/20 hover:bg-green-400/20 transition-all text-sm font-semibold text-green-400 flex items-center justify-center gap-2"
             >
               <span>Ver todas as ferramentas de {categoryName}</span>
               <ArrowRight className="w-4 h-4" />
-            </button>
+            </a>
           </div>
         )}
 

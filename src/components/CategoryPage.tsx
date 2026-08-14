@@ -134,7 +134,7 @@ export function CategoryPage({ slug, onBack, onSelectTool, onSelectCategory }: C
       <div className="max-w-4xl mx-auto px-4 py-8">
         {/* Breadcrumb */}
         <nav className="flex items-center gap-2 text-sm text-muted mb-6" aria-label="Breadcrumb">
-          <button onClick={onBack} className="hover:text-green-400 transition-colors">Início</button>
+          <a href="/" onClick={(e) => { if (e.ctrlKey || e.metaKey || e.shiftKey || e.button !== 0) return; e.preventDefault(); onBack(); }} className="hover:text-green-400 transition-colors">Início</a>
           <span>/</span>
           <span className="text-muted">{data.categoryName}</span>
         </nav>
@@ -174,9 +174,10 @@ export function CategoryPage({ slug, onBack, onSelectTool, onSelectCategory }: C
             {categoryTools.map((tool) => {
               const catColor = CATEGORY_COLORS[tool.category] || "text-gray-400 bg-gray-400/10 border-gray-400/20";
               return (
-                <button
+                <a
                   key={tool.id}
-                  onClick={() => onSelectTool(tool.slug)}
+                  href={`/${tool.slug}`}
+                  onClick={(e) => { if (e.ctrlKey || e.metaKey || e.shiftKey || e.button !== 0) return; e.preventDefault(); onSelectTool(tool.slug); }}
                   className="group text-left p-4 rounded-xl bg-card border border-border hover:border-green-400/30 hover:bg-green-400/5 transition-all duration-200 flex items-start gap-3"
                 >
                   <div className="text-2xl">{tool.emoji}</div>
@@ -191,7 +192,7 @@ export function CategoryPage({ slug, onBack, onSelectTool, onSelectCategory }: C
                       <ArrowRight className="w-3 h-3" />
                     </div>
                   </div>
-                </button>
+                </a>
               );
             })}
           </div>
@@ -228,13 +229,14 @@ export function CategoryPage({ slug, onBack, onSelectTool, onSelectCategory }: C
         </div>
 
         {/* Back to home */}
-        <button
-          onClick={onBack}
+        <a
+          href="/"
+          onClick={(e) => { if (e.ctrlKey || e.metaKey || e.shiftKey || e.button !== 0) return; e.preventDefault(); onBack(); }}
           className="flex items-center gap-2 text-sm text-muted hover:text-green-400 transition-colors mb-8"
         >
           <ArrowLeft className="w-4 h-4" />
           Voltar ao Início
-        </button>
+        </a>
       </div>
 
       <footer className="text-center text-xs text-muted py-8 border-t border-border">

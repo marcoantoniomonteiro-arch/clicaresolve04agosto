@@ -362,9 +362,10 @@ function FeaturedTools({ onSelectTool }: { onSelectTool: (slug: string) => void 
       </div>
       <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
         {featured.map((tool, i) => (
-          <button
+          <a
             key={tool.id}
-            onClick={() => onSelectTool(tool.slug)}
+            href={`/${tool.slug}`}
+            onClick={(e) => { if (e.ctrlKey || e.metaKey || e.shiftKey || e.button !== 0) return; e.preventDefault(); onSelectTool(tool.slug); }}
             onTouchEnd={(e) => { e.preventDefault(); if (wasScrolling()) return; onSelectTool(tool.slug); }}
             className="card-hover-effect group text-left p-4 rounded-2xl bg-card border border-border hover:border-green-400/30 animate-fade-in-up"
             style={{ WebkitTapHighlightColor: 'transparent', animationDelay: `${i * 60}ms` }}
@@ -374,7 +375,7 @@ function FeaturedTools({ onSelectTool }: { onSelectTool: (slug: string) => void 
             </div>
             <p className="text-sm font-semibold text-text leading-tight">{tool.name}</p>
             <p className="text-xs text-muted mt-1 line-clamp-1">{tool.description}</p>
-          </button>
+          </a>
         ))}
       </div>
     </section>
@@ -684,9 +685,10 @@ export default function App() {
               {filtered.map((tool, i) => {
                 const catColor = CATEGORY_COLORS[tool.category] || "text-gray-400 bg-gray-400/10 border-gray-400/20";
                 return (
-                  <button
+                  <a
                     key={tool.id}
-                    onClick={() => navigateToTool(tool.slug)}
+                    href={`/${tool.slug}`}
+                    onClick={(e) => { if (e.ctrlKey || e.metaKey || e.shiftKey || e.button !== 0) return; e.preventDefault(); navigateToTool(tool.slug); }}
                     onTouchEnd={(e) => { e.preventDefault(); if (wasScrolling()) return; navigateToTool(tool.slug); }}
                     className="group relative text-left p-5 rounded-2xl bg-card border border-border hover:border-green-400/30 hover:bg-green-400/5 transition-all duration-[200ms] ease-out hover:-translate-y-[3px] hover:shadow-xl hover:shadow-green-400/[0.15] animate-fade-in-up"
                     style={{ WebkitTapHighlightColor: 'transparent', animationDelay: `${Math.min(i * 30, 600)}ms` }}
@@ -704,7 +706,7 @@ export default function App() {
                       <span>Abrir</span>
                       <span>→</span>
                     </div>
-                  </button>
+                  </a>
                 );
               })}
             </div>
