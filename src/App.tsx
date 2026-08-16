@@ -3,6 +3,7 @@ import { Header } from "./components/Header";
 import { SEOHead } from "./components/SEOHead";
 import { CategoryPage } from "./components/CategoryPage";
 import { CookieBanner } from "./components/CookieBanner";
+import { ErrorBoundary } from "./components/ErrorBoundary";
 import { NavigationContext } from "./context/NavigationContext";
 import { wasScrolling } from "./utils/touchHandler";
 import { TOOLS, CATEGORIES, Category } from "./data/tools";
@@ -590,9 +591,11 @@ export default function App() {
             lang={lang}
             onToggleLang={() => setLang(lang === "en" ? "pt" : "en")}
           />
-          <Suspense fallback={<div className="max-w-2xl mx-auto px-4 py-16 text-center text-muted text-sm">Carregando ferramenta...</div>}>
-            <ToolComponent onBack={() => { setActiveTool(null); setInitialName(undefined); }} initialName={activeTool === "significado-nomes" ? initialName : undefined} />
-          </Suspense>
+          <ErrorBoundary>
+            <Suspense fallback={<div className="max-w-2xl mx-auto px-4 py-16 text-center text-muted text-sm">Carregando ferramenta...</div>}>
+              <ToolComponent onBack={() => { setActiveTool(null); setInitialName(undefined); }} initialName={activeTool === "significado-nomes" ? initialName : undefined} />
+            </Suspense>
+          </ErrorBoundary>
           <CookieBanner />
         </div>
         </NavigationContext.Provider>
