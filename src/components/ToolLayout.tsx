@@ -192,6 +192,21 @@ export function ToolLayout({
           {content}
         </div>
 
+        {/* FAQ visível — reaproveita seo.faqs, já usado no JSON-LD acima */}
+        {seo.hasFAQ && seo.faqs && seo.faqs.length > 0 && (
+          <div className="mt-10 border-t border-border pt-8">
+            <h2 className="text-lg font-bold text-text mb-4">Perguntas Frequentes</h2>
+            <div className="space-y-4">
+              {seo.faqs.map((faq, i) => (
+                <div key={i}>
+                  <h3 className="text-sm font-semibold text-text mb-1">{faq.question}</h3>
+                  <p className="text-sm text-muted leading-relaxed">{faq.answer}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+
         {/* Related Tools */}
         {relatedTools.length > 0 && (
           <div className="mt-12 mb-8 border-t border-border pt-8">
