@@ -13,6 +13,7 @@ interface SEOHeadProps {
   speakable?: boolean;
   lang?: "pt" | "en";
   alternateUrl?: string;
+  noindex?: boolean;
 }
 
 const SITE_URL = "https://www.clicaresolve.com.br";
@@ -29,6 +30,7 @@ export function SEOHead({
   speakable,
   lang = "pt",
   alternateUrl,
+  noindex = false,
 }: SEOHeadProps) {
   const fullTitle = title ? `${title} | CLICAresolve` : "CLICAresolve — Ferramentas Gratuitas para o Dia a Dia";
   const og = ogTitle || title || "CLICAresolve";
@@ -75,6 +77,7 @@ export function SEOHead({
     <Helmet htmlAttributes={{ lang: lang === "en" ? "en" : "pt-BR" }}>
       <title>{fullTitle}</title>
       <meta name="description" content={description} />
+      {noindex && <meta name="robots" content="noindex, follow" />}
       <link rel="canonical" href={url} />
       {lang === "en" ? (
         <>

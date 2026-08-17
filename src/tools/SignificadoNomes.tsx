@@ -205,6 +205,7 @@ export function SignificadoNomes({ onBack, initialName }: Props) {
         title={seoTitle}
         description={seoDescription}
         canonical={seoCanonical}
+        noindex={!!(initialName && result)}
       />
       <div className="space-y-5">
         {/* Search input */}
