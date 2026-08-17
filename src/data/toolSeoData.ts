@@ -101,7 +101,12 @@ export const TOOL_SEO_DATA: Record<string, ToolSEOData> = {
     title: "Compare Taxas de Maquininha de Cartão Grátis | CLICAresolve",
     description: "Compare taxas de Cielo, Rede, Stone, PagSeguro e mais. Gratuito, sem cadastro. Encontre a melhor!",
     schemaType: "SoftwareApplication",
-    hasFAQ: false,
+    hasFAQ: true,
+    faqs: [
+      { question: "Como calcular o valor líquido de uma venda no cartão?", answer: "Digite o valor da venda, escolha a bandeira e a modalidade (débito, crédito à vista ou parcelado). A calculadora aplica a taxa da modalidade escolhida e mostra o valor da taxa e o valor líquido que você vai receber." },
+      { question: "Por que a taxa muda conforme o número de parcelas?", answer: "As taxas podem variar conforme a modalidade e o número de parcelas contratados com a operadora. Por isso, uma venda parcelada pode ter uma taxa diferente de uma venda no débito ou no crédito à vista." },
+      { question: "Posso usar as taxas reais da minha maquininha em vez das taxas padrão?", answer: "Sim. Use a opção \"Editar taxas manualmente\" para informar os percentuais cobrados pela sua operadora ou pelo seu plano." },
+    ],
   },
   "parcelamento-multas": {
     title: "Simule Parcelamento de Multas de Trânsito Grátis | CLICAresolve",
@@ -162,7 +167,12 @@ export const TOOL_SEO_DATA: Record<string, ToolSEOData> = {
     title: "Gere Recibo de Pagamento Online Grátis | CLICAresolve",
     description: "Gere recibos formatados prontos para imprimir. Gratuito, sem cadastro. Crie seu recibo em segundos!",
     schemaType: "LegalService",
-    hasFAQ: false,
+    hasFAQ: true,
+    faqs: [
+      { question: "O recibo gerado pode servir como comprovante de pagamento?", answer: "O recibo gerado pode servir como comprovante de pagamento, desde que contenha informações adequadas, como identificação das partes, valor, data e descrição do pagamento. Quando houver exigência de documento fiscal, o recibo não substitui a nota fiscal ou outro documento fiscal obrigatório." },
+      { question: "Como funciona a conversão do valor por extenso?", answer: "Ao digitar o valor numérico, como 1500,00, a ferramenta converte automaticamente o valor para texto por extenso, como \"mil e quinhentos reais\", no formato utilizado no recibo." },
+      { question: "Como eu salvo o recibo em PDF?", answer: "Depois de preencher os dados, clique em \"Imprimir / Salvar PDF\". Na janela de impressão do navegador, escolha \"Salvar como PDF\" em vez de uma impressora física." },
+    ],
   },
   // Saúde
   "imc-avancada": {
@@ -611,7 +621,12 @@ export const TOOL_SEO_DATA: Record<string, ToolSEOData> = {
     title: "Converta Horas em Decimais e Vice-Versa Grátis | CLICAresolve",
     description: "Converta entre formato horário e decimal. Gratuito, sem cadastro. Converta horas!",
     schemaType: "LegalService",
-    hasFAQ: false,
+    hasFAQ: true,
+    faqs: [
+      { question: "Por que converter horas para o formato decimal?", answer: "Sistemas de folha de pagamento, planilhas e softwares de faturamento podem utilizar horas decimais, como 1,75, em vez do formato de horas e minutos, como 1h45min, facilitando determinados cálculos." },
+      { question: "Como converter manualmente horas e minutos para decimal?", answer: "Divida os minutos por 60 e some o resultado às horas. Por exemplo: 1 hora e 45 minutos = 1 + (45 ÷ 60) = 1,75 horas decimais." },
+      { question: "Essa ferramenta calcula quanto vou receber pelas horas trabalhadas?", answer: "Não. Ela apenas converte entre os formatos de horário e horas decimais. Não calcula pagamento nem considera horas extras, adicionais ou regras de convenção coletiva." },
+    ],
   },
   // Astrologia
   "descobridor-signo": {
