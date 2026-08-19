@@ -111,14 +111,9 @@ export function ZPLParaPDF({ onBack }: Props) {
       affiliateBanner={<AffiliateBanner terms={["etiqueta adesiva"]} label="Etiquetas e rótulos" />}
     >
       <div className="space-y-4">
-        <div className="p-3 rounded-xl bg-blue-400/5 border border-blue-400/10">
-          <p className="text-xs text-blue-400 leading-relaxed flex items-start gap-2">
-            <AlertTriangle className="w-4 h-4 shrink-0 mt-0.5" />
-            <span>
-              Esta ferramenta envia o código ZPL para o serviço gratuito Labelary.com para gerar a visualização — diferente das demais ferramentas do site, que processam tudo localmente. Não envie códigos ZPL com informações pessoais sensíveis.
-            </span>
-          </p>
-        </div>
+        <p className="text-xs text-gray-500">
+          ℹ️ Processamento externo: o código ZPL é enviado a um serviço especializado para conversão.
+        </p>
 
         <div>
           <div className="flex items-center justify-between mb-1">
@@ -148,6 +143,7 @@ export function ZPLParaPDF({ onBack }: Props) {
               value={width}
               onChange={(e) => setWidth(e.target.value)}
               className="input-field"
+              placeholder="Ex: 4"
             />
           </label>
           <label className="block">
@@ -158,6 +154,7 @@ export function ZPLParaPDF({ onBack }: Props) {
               value={height}
               onChange={(e) => setHeight(e.target.value)}
               className="input-field"
+              placeholder="Ex: 6"
             />
           </label>
           <label className="block">
