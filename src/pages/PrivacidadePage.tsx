@@ -162,10 +162,6 @@ export function PrivacidadePage({ onBack }: Props) {
               de acesso (como endereço IP e navegador) para segurança e funcionamento.
             </li>
             <li>
-              <strong>Fontes:</strong> as fontes do site são carregadas do{" "}
-              <Ext href="https://policies.google.com/privacy">Google Fonts</Ext>.
-            </li>
-            <li>
               <strong>Links de afiliado:</strong> algumas páginas têm links para Amazon, Mercado Livre e
               Shopee. Se você comprar por eles, podemos receber uma comissão, sem custo extra para você.
               Ao clicar, valem as políticas de privacidade dessas lojas.
