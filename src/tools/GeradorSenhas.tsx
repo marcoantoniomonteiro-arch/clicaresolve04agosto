@@ -150,7 +150,7 @@ export function GeradorSenhas({ onBack }: Props) {
             </div>
 
             <div className="flex items-center gap-2 mt-3">
-              <span className="text-xs text-gray-400">Forca:</span>
+              <span className="text-xs text-gray-400">Força:</span>
               <div className="flex-1 h-2 bg-white/10 rounded-full overflow-hidden">
                 <div
                   className={`h-full transition-all ${

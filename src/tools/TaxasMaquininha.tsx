@@ -14,7 +14,7 @@ type Modalidade = "debito" | "credito_vista" | "2x" | "3x" | "4x" | "5x" | "6x" 
 
 const MODALIDADES: { value: Modalidade; label: string }[] = [
   { value: "debito", label: "Debito" },
-  { value: "credito_vista", label: "Credito a vista" },
+  { value: "credito_vista", label: "Crédito a vista" },
   { value: "2x", label: "2x sem juros" },
   { value: "3x", label: "3x sem juros" },
   { value: "4x", label: "4x sem juros" },
@@ -77,7 +77,7 @@ export function TaxasMaquininha({ onBack }: Props) {
       title="Taxas de Maquininha"
       emoji="💳"
       category="Financas"
-      description="Calcule o valor liquido das vendas com cartao considerando taxas."
+      description="Calcule o valor líquido das vendas com cartão considerando taxas."
       onBack={onBack}
       affiliateBanner={<AffiliateBanner terms={["maquininha cartão"]} label="maquininha cartão" />}
     
@@ -129,7 +129,7 @@ export function TaxasMaquininha({ onBack }: Props) {
           onClick={() => setShowEdit((s) => !s)}
           className="w-full text-sm text-gray-400 hover:text-white text-center underline"
         >
-          {showEdit ? "Ocultar edicao de taxas" : "Editar taxas manualmente"}
+          {showEdit ? "Ocultar edição de taxas" : "Editar taxas manualmente"}
         </button>
 
         {showEdit && (
@@ -166,7 +166,7 @@ export function TaxasMaquininha({ onBack }: Props) {
               </div>
               <div className="p-4 rounded-xl bg-green-500/10 border border-green-500/20 text-center">
                 <DollarSign className="w-5 h-5 text-green-400 mx-auto mb-1" />
-                <p className="text-xs text-green-400">Voce Recebe</p>
+                <p className="text-xs text-green-400">Você Recebe</p>
                 <p className="text-lg font-bold text-green-400">R$ {result.liquido.toFixed(2)}</p>
               </div>
             </div>
@@ -178,12 +178,12 @@ export function TaxasMaquininha({ onBack }: Props) {
                   <span className="text-sm text-gray-400">Recebimento</span>
                 </div>
                 <span className="text-sm font-semibold text-white">
-                  {result.diasRecebimento === 1 ? "1 dia util" : `${result.diasRecebimento} dias`}
+                  {result.diasRecebimento === 1 ? "1 dia útil" : `${result.diasRecebimento} dias`}
                 </span>
               </div>
               {result.parcelas > 1 && (
                 <p className="text-xs text-gray-500 mt-2">
-                  {result.parcelas}x de R$ {result.valorParcela.toFixed(2)} (liquido por parcela)
+                  {result.parcelas}x de R$ {result.valorParcela.toFixed(2)} (líquido por parcela)
                 </p>
               )}
             </div>

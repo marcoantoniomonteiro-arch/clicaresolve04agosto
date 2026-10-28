@@ -100,7 +100,7 @@ export function AlertaAgua({ onBack }: Props) {
       category="Saúde"
       description="Configure lembretes periódicos para beber água, alongar e descansar os olhos."
       onBack={onBack}
-      affiliateBanner={<AffiliateBanner terms={["garrafa de agua com marcacao de horas", "squeeze motivacional"]} label="Hidratação e bem-estar" />}
+      affiliateBanner={<AffiliateBanner terms={["garrafa de água com marcação de horas", "squeeze motivacional"]} label="Hidratação e bem-estar" />}
       disclaimer="Esta ferramenta é puramente informativa. Não substitui consulta médica ou diagnóstico profissional. Consulte sempre um profissional de saúde habilitado."
     >
       <div className="space-y-6">

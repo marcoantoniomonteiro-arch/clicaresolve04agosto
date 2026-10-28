@@ -3,7 +3,6 @@ import { ToolLayout } from "../components/ToolLayout";
 import { AffiliateBanner } from "../components/AffiliateBanner";
 import { ToolContent } from "../components/ToolContent";
 import { FileDown, X, Image as ImageIcon, Loader2 } from "lucide-react";
-import heic2any from "heic2any";
 
 interface Props {
   onBack: () => void;
@@ -46,6 +45,7 @@ export function HEICParaJPG({ onBack }: Props) {
       const resultId = newResults[i].id;
 
       try {
+        const heic2any = (await import("heic2any")).default;
         const converted = await heic2any({
           blob: file,
           toType: "image/jpeg",

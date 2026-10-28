@@ -61,7 +61,7 @@ export function ConversorDPI({ onBack }: Props) {
         <div className="p-4 rounded-xl bg-white/5 border border-white/8">
           <div className="flex items-center gap-2 mb-3">
             <Mouse className="w-4 h-4 text-blue-400" />
-            <p className="text-xs text-blue-400 font-semibold">Configuracao Atual</p>
+            <p className="text-xs text-blue-400 font-semibold">Configuração Atual</p>
           </div>
           <div className="grid grid-cols-2 gap-3">
             <label className="block">
@@ -89,7 +89,7 @@ export function ConversorDPI({ onBack }: Props) {
         <div className="p-4 rounded-xl bg-white/5 border border-white/8">
           <div className="flex items-center gap-2 mb-3">
             <Crosshair className="w-4 h-4 text-green-400" />
-            <p className="text-xs text-green-400 font-semibold">Nova Configuracao</p>
+            <p className="text-xs text-green-400 font-semibold">Nova Configuração</p>
           </div>
           <label className="block">
             <span className="text-xs text-gray-400 mb-1 block">Novo DPI</span>
@@ -132,7 +132,7 @@ export function ConversorDPI({ onBack }: Props) {
               <span className="text-gray-400">Baixo:</span> <span className="text-white">200-400</span>
             </div>
             <div className="p-2 rounded bg-white/5">
-              <span className="text-gray-400">Medio:</span> <span className="text-white">800-1600</span>
+              <span className="text-gray-400">Médio:</span> <span className="text-white">800-1600</span>
             </div>
             <div className="p-2 rounded bg-white/5">
               <span className="text-gray-400">Alto:</span> <span className="text-white">2000-3200</span>

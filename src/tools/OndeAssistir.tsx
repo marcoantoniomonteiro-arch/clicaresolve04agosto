@@ -62,6 +62,7 @@ export function OndeAssistir({ onBack }: Props) {
             <span className="text-sm text-green-400 font-semibold">📺 Assine o Amazon Prime Video e assista ao Brasileirão + NFL</span>
             <span className="text-xs text-green-300 shrink-0 underline">Assinar</span>
           </a>
+          {CONFIG.betBannersEnabled && (
           <a
             href={CONFIG.linkBet}
             target="_blank"
@@ -71,6 +72,7 @@ export function OndeAssistir({ onBack }: Props) {
             <span className="text-sm text-amber-400 font-semibold">🎯 {CONFIG.textoBet} — {CONFIG.nomeBet}</span>
             <span className="text-xs text-amber-300 shrink-0 underline">Apostar</span>
           </a>
+          )}
         </div>
 
         {GRUPOS.map((tipo) => {

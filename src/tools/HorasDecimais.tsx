@@ -40,17 +40,17 @@ export function HorasDecimais({ onBack }: Props) {
       title="Conversor Horas Decimais"
       emoji="🔢"
       category="DP/RH"
-      description="Converta entre formato horario e horas decimais."
+      description="Converta entre formato horário e horas decimais."
       onBack={onBack}
       affiliateBanner={<AffiliateBanner terms={["calculadora científica"]} label="calculadora científica" />}
     
-      disclaimer="Calculo matematico. Nao inclui adicionais de Convencoes Coletivas (CCT)."
+      disclaimer="Cálculo matematico. Não inclui adicionais de Convenções Coletivas (CCT)."
     >
       <div className="space-y-5">
         <div className="p-5 rounded-xl bg-white/5 border border-white/8">
           <div className="flex items-center gap-2 mb-3">
             <ArrowLeftRight className="w-4 h-4 text-blue-400" />
-            <p className="text-xs text-blue-400 font-semibold">Horario → Decimal</p>
+            <p className="text-xs text-blue-400 font-semibold">Horário → Decimal</p>
           </div>
           <div className="flex items-center gap-3">
             <div className="flex-1">
@@ -86,7 +86,7 @@ export function HorasDecimais({ onBack }: Props) {
         <div className="p-5 rounded-xl bg-white/5 border border-white/8">
           <div className="flex items-center gap-2 mb-3">
             <ArrowLeftRight className="w-4 h-4 text-green-400" />
-            <p className="text-xs text-green-400 font-semibold">Decimal → Horario</p>
+            <p className="text-xs text-green-400 font-semibold">Decimal → Horário</p>
           </div>
           <label className="block">
             <span className="text-xs text-gray-400 mb-1 block">Horas Decimais</span>
@@ -100,7 +100,7 @@ export function HorasDecimais({ onBack }: Props) {
             />
           </label>
           <div className="mt-4 p-4 rounded-lg bg-green-500/10 text-center">
-            <p className="text-xs text-green-400">Horario</p>
+            <p className="text-xs text-green-400">Horário</p>
             <p className="text-3xl font-black text-green-400">
               {deDecimalParaHorario.horas}:{deDecimalParaHorario.minutos.toString().padStart(2, "0")}
             </p>
@@ -132,7 +132,7 @@ export function HorasDecimais({ onBack }: Props) {
 
         <div className="flex items-center justify-center gap-2 text-xs text-gray-500">
           <Clock className="w-3 h-3" />
-          <span>Usado para calculo de folha de pagamento e faturamento</span>
+          <span>Usado para cálculo de folha de pagamento e faturamento</span>
         </div>
       </div>
     </ToolLayout>

@@ -207,7 +207,7 @@ export const tools: Tool[] = [
     emoji: "📊",
     category: "Educação",
     name: "Mapeamento de Erros",
-    description: "Registre e analise seus erros de estudo.",
+    description: "Registre e análise seus erros de estudo.",
   },
   {
     id: 26,
@@ -615,7 +615,7 @@ export const tools: Tool[] = [
     emoji: "♈",
     category: "Astrologia",
     name: "Descobridor de Signo",
-    description: "Descubra seu signo solar e caracteristicas principais.",
+    description: "Descubra seu signo solar e características principais.",
   },
   {
     id: 88,
@@ -623,7 +623,7 @@ export const tools: Tool[] = [
     emoji: "💞",
     category: "Astrologia",
     name: "Compatibilidade entre Signos",
-    description: "Descubra a afinidade entre dois signos do zodiaco.",
+    description: "Descubra a afinidade entre dois signos do zodíaco.",
   },
   {
     id: 89,
@@ -631,15 +631,15 @@ export const tools: Tool[] = [
     emoji: "🔢",
     category: "Astrologia",
     name: "MapaNumerologico",
-    description: "Descubra seu Numero do Destino pela data de nascimento.",
+    description: "Descubra seu Número do Destino pela data de nascimento.",
   },
   {
     id: 90,
     slug: "sugestor-livros",
     emoji: "📚",
     category: "Livros e Leitura",
-    name: "Descubra Seu Proximo Livro",
-    description: "Quiz com 4 perguntas para encontrar seu proximo livro.",
+    name: "Descubra Seu Próximo Livro",
+    description: "Quiz com 4 perguntas para encontrar seu próximo livro.",
   },
   {
     id: 81,

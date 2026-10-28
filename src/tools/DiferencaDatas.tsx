@@ -70,7 +70,7 @@ export function DiferencaDatas({ onBack }: Props) {
       onBack={onBack}
       affiliateBanner={<AffiliateBanner terms={["agenda planner anual"]} label="agenda planner anual" />}
     
-      disclaimer="Calculo matematico. Nao inclui adicionais de Convencoes Coletivas (CCT)."
+      disclaimer="Cálculo matematico. Não inclui adicionais de Convenções Coletivas (CCT)."
     >
       <div className="space-y-5">
         <div className="grid grid-cols-2 gap-3">
@@ -131,7 +131,7 @@ export function DiferencaDatas({ onBack }: Props) {
 
         {modo === "idade" && data1 && (
           <p className="text-xs text-gray-500 text-center">
-            Calculando ate hoje ({new Date().toLocaleDateString("pt-BR")})
+            Calculando até hoje ({new Date().toLocaleDateString("pt-BR")})
           </p>
         )}
 
@@ -181,7 +181,7 @@ export function DiferencaDatas({ onBack }: Props) {
 
             {modo === "diferenca" && (
               <div className="p-3 rounded-lg bg-white/5 text-xs text-gray-400 text-center">
-                De {resultado.inicio.toLocaleDateString("pt-BR")} ate {resultado.fim.toLocaleDateString("pt-BR")}
+                De {resultado.inicio.toLocaleDateString("pt-BR")} até {resultado.fim.toLocaleDateString("pt-BR")}
               </div>
             )}
           </div>

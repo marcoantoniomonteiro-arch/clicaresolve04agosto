@@ -40,7 +40,7 @@ export function PontoEquilibrio({ onBack }: Props) {
           label="Aprenda mais sobre gestao"
         />
       }
-      disclaimer="Simplificacao didatica. Nao considera impostos variaveis, sazonalidade ou custos semi-variaveis."
+      disclaimer="Simplificação didatica. Não considera impostos variaveis, sazonalidade ou custos semi-variaveis."
     >
       <div className="space-y-5">
         <label className="block">
@@ -52,11 +52,11 @@ export function PontoEquilibrio({ onBack }: Props) {
             placeholder="Ex: 5000"
             className="input-field"
           />
-          <p className="text-xs text-gray-600 mt-1">Aluguel, salario, energia, etc.</p>
+          <p className="text-xs text-gray-600 mt-1">Aluguel, salário, energia, etc.</p>
         </label>
 
         <label className="block">
-          <span className="text-sm text-gray-400 mb-1 block">Custo Variavel por Unidade (R$)</span>
+          <span className="text-sm text-gray-400 mb-1 block">Custo Variável por Unidade (R$)</span>
           <input
             type="number"
             value={custoVariavel}
@@ -68,7 +68,7 @@ export function PontoEquilibrio({ onBack }: Props) {
         </label>
 
         <label className="block">
-          <span className="text-sm text-gray-400 mb-1 block">Preco de Venda por Unidade (R$)</span>
+          <span className="text-sm text-gray-400 mb-1 block">Preço de Venda por Unidade (R$)</span>
           <input
             type="number"
             value={precoVenda}
@@ -89,13 +89,13 @@ export function PontoEquilibrio({ onBack }: Props) {
 
             <div className="grid grid-cols-3 gap-3">
               <div className="p-4 rounded-xl bg-white/5 text-center">
-                <p className="text-xs text-gray-400">Faturamento Minimo</p>
+                <p className="text-xs text-gray-400">Faturamento Mínimo</p>
                 <p className="text-lg font-bold text-white">
                   R$ {result.faturamento.toLocaleString("pt-BR", { minimumFractionDigits: 2 })}
                 </p>
               </div>
               <div className="p-4 rounded-xl bg-blue-500/10 border border-blue-500/20 text-center">
-                <p className="text-xs text-blue-400">Margem Contribuicao</p>
+                <p className="text-xs text-blue-400">Margem Contribuição</p>
                 <p className="text-lg font-bold text-blue-400">
                   R$ {result.mc.toFixed(2)}/un
                 </p>
@@ -111,7 +111,7 @@ export function PontoEquilibrio({ onBack }: Props) {
             <div className="p-4 rounded-xl bg-white/5 border border-white/8">
               <p className="text-xs text-gray-400 mb-2">O que significa?</p>
               <p className="text-sm text-gray-300">
-                Voce precisa vender pelo menos <strong className="text-white">{Math.ceil(result.unidades)} unidades</strong> por mes
+                Você precisa vender pelo menos <strong className="text-white">{Math.ceil(result.unidades)} unidades</strong> por mês
                 (faturando R$ {result.faturamento.toLocaleString("pt-BR", { minimumFractionDigits: 2 })}) para cobrir todos os custos.
                 Acima disso, cada unidade vendida gera lucro de R$ {result.mc.toFixed(2)}.
               </p>
@@ -122,7 +122,7 @@ export function PontoEquilibrio({ onBack }: Props) {
         {result === null && precoVenda && custoVariavel && parseFloat(precoVenda) <= parseFloat(custoVariavel) && (
           <div className="p-4 rounded-xl bg-red-500/10 border border-red-500/20 text-center">
             <p className="text-sm text-red-400">
-              Preco de venda menor ou igual ao custo variavel. Nao havera lucro.
+              Preço de venda menor ou igual ao custo variável. Não havera lucro.
             </p>
           </div>
         )}

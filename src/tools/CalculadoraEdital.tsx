@@ -78,7 +78,7 @@ export function CalculadoraEdital({ onBack }: Props) {
       title="Calculadora de Edital"
       emoji="📋"
       category="Estudos"
-      description="Acompanhe seu progresso nos topicos do edital com peso e exportacao."
+      description="Acompanhe seu progresso nos topicos do edital com peso e exportação."
       onBack={onBack}
       affiliateBanner={<AffiliateBanner terms={["livros concurso público"]} label="livros concurso público" />}
     
@@ -125,7 +125,7 @@ export function CalculadoraEdital({ onBack }: Props) {
                 />
               </div>
               <p className="text-xs text-gray-500 mt-1">
-                {progresso.concluidos} de {progresso.total} topicos concluidos
+                {progresso.concluidos} de {progresso.total} topicos concluídos
               </p>
             </div>
 

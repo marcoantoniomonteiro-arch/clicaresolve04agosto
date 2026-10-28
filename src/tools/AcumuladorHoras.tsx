@@ -96,7 +96,7 @@ export function AcumuladorHoras({ onBack }: Props) {
       onBack={onBack}
       affiliateBanner={<AffiliateBanner terms={["relógio de ponto digital"]} label="relógio de ponto digital" />}
     
-      disclaimer="Calculo matematico. Nao inclui adicionais de Convencoes Coletivas (CCT)."
+      disclaimer="Cálculo matematico. Não inclui adicionais de Convenções Coletivas (CCT)."
     >
       <div className="space-y-5">
         <label className="block">
@@ -188,7 +188,7 @@ export function AcumuladorHoras({ onBack }: Props) {
         </div>
 
         <p className="text-xs text-gray-500 text-center">
-          {registros.length} registro(s) | Maximo 14 por dia
+          {registros.length} registro(s) | Máximo 14 por dia
         </p>
       </div>
     </ToolLayout>

@@ -59,7 +59,7 @@ export function GeradorBolao({ onBack }: Props) {
     const footer = [
       "",
       "─────────────────",
-      `🎰 Aposte de forma oficial: ${CONFIG.linkBet}`,
+      ...(CONFIG.betBannersEnabled ? [`🎰 Aposte de forma oficial: ${CONFIG.linkBet}`] : []),
       "_Gerado pelo CLICAresolve_",
     ].join("\n");
 
@@ -90,6 +90,7 @@ export function GeradorBolao({ onBack }: Props) {
     >
       <div className="space-y-4">
         {/* Bet banner */}
+        {CONFIG.betBannersEnabled && (
         <a
           href={CONFIG.linkBet}
           target="_blank"
@@ -99,6 +100,7 @@ export function GeradorBolao({ onBack }: Props) {
           <span className="text-sm text-amber-400 font-semibold">🎰 {CONFIG.nomeBet} — {CONFIG.textoBet}</span>
           <span className="text-xs text-amber-300 shrink-0 underline">Apostar agora</span>
         </a>
+        )}
 
         <div className="grid grid-cols-2 gap-3">
           <label className="block col-span-2">

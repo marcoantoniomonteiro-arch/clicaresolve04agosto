@@ -12,6 +12,8 @@ export interface CategorySEOData {
   emoji: string;
   toolCount?: number;
   schemaKeywords: string[];
+  /** Lista fixa de ferramentas (quando a categoria não corresponde a um único filtro) */
+  toolSlugs?: string[];
 }
 
 export const CATEGORY_SEO_DATA: Record<string, CategorySEOData> = {
@@ -28,7 +30,7 @@ export const CATEGORY_SEO_DATA: Record<string, CategorySEOData> = {
       "Mais de 10 ferramentas especializadas em casa e transporte"
     ],
     ogTitle: "Calculadoras para Casa e Transporte — BTU, Tinta, Energia e Mais",
-    ogDescription: "Ferramentas gratuitas para casa e veículo. Sem cadastro, sem anúncios, total privacidade.",
+    ogDescription: "Ferramentas gratuitas para casa e veículo. Sem cadastro e com total privacidade.",
     categoryName: "Casa e Transporte",
     categoryFilter: "Casa",
     emoji: "🏠",
@@ -47,11 +49,11 @@ export const CATEGORY_SEO_DATA: Record<string, CategorySEOData> = {
       "Ferramentas para toda a família: gestantes, atletas, idosos e crianças"
     ],
     ogTitle: "Calculadoras de Saúde e Bem-Estar — IMC, Calorias, Sono e Mais",
-    ogDescription: "Mais de 10 ferramentas de saúde gratuitas. Sem cadastro, sem anúncios, privacidade total.",
+    ogDescription: "Mais de 10 ferramentas de saúde gratuitas. Sem cadastro e com privacidade total.",
     categoryName: "Saúde e Bem-Estar",
     categoryFilter: "Saúde",
     emoji: "❤️",
-    schemaKeywords: ["calculadora imc", "gasto calorico", "frequencia cardiaca", "ciclos sono", "periodo fertil", "dpp", "macronutrientes", "limite cafeina", "alerta agua", "contracoes"]
+    schemaKeywords: ["calculadora imc", "gasto calorico", "frequência cardíaca", "ciclos sono", "período fertil", "dpp", "macronutrientes", "limite cafeína", "alerta água", "contracoes"]
   },
   "viagem": {
     slug: "viagem",
@@ -62,7 +64,7 @@ export const CATEGORY_SEO_DATA: Record<string, CategorySEOData> = {
     diferenciais: [
       "Planejamento completo em um só lugar — roteiro, divisão de custos e streaming",
       "Compartilhamento fácil — gera links prontos para WhatsApp",
-      "100% gratuito — sem anúncios, sem assinatura",
+      "100% gratuito — sem assinatura e sem anúncios invasivos",
       "Privacidade total — seus planos de viagem não são compartilhados com ninguém"
     ],
     ogTitle: "Ferramentas para Viagem e Lazer — Roteiros, Streaming e Mais",
@@ -74,22 +76,22 @@ export const CATEGORY_SEO_DATA: Record<string, CategorySEOData> = {
   },
   "esportes": {
     slug: "esportes",
-    title: "Ferramentas para Esportes e Apostas — Bolão, Equipes, Placar e Mais",
-    h1: "Ferramentas para Esportes e Apostas Online Grátis",
+    title: "Ferramentas para Esportes e Jogos — Bolão, Equipes, Placar e Mais",
+    h1: "Ferramentas para Esportes e Jogos Online Grátis",
     metaDescription: "Ferramentas esportivas gratuitas: gerador de bolão, sorteador de equipes, placar poliesportivo, probabilidades de classificação, palpites de loteria e mais. Sem cadastro.",
-    intro: "Seja você um jogador de futebol de final de semana, um organizador de campeonatos ou um fã de apostas esportivas, o CLICAresolve tem as ferramentas que você precisa. Nosso gerador de bolão cria palpites aleatórios para a Mega-Sena e outras loterias. O sorteador de equipes divide jogadores em times equilibrados automaticamente. O placar poliesportivo funciona como cronômetro e marcador para diversos esportes. A calculadora de probabilidades de classificação simula cenários de campeonatos. E o painel de bingo é perfeito para jogos em família e eventos. Cada ferramenta é gratuita, sem cadastro e funciona offline no navegador. Organize seu jogo, aposte com inteligência e acompanhe cada ponto com precisão.",
+    intro: "Seja você um jogador de futebol de final de semana, um organizador de campeonatos ou alguém que gosta de reunir os amigos para um bolão, o CLICAresolve tem as ferramentas que você precisa. Nosso gerador de bolão organiza os palpites e a divisão de custos do grupo. O sorteador de equipes divide jogadores em times equilibrados automaticamente. O placar poliesportivo funciona como cronômetro e marcador para diversos esportes. A calculadora de probabilidades de classificação simula cenários de campeonatos. E o painel de bingo é perfeito para jogos em família e eventos. Cada ferramenta é gratuita, sem cadastro e funciona offline no navegador. Organize seu jogo e acompanhe cada ponto com precisão.",
     diferenciais: [
-      "Ferramentas para todos os perfis: jogadores, organizadores e apostadores",
+      "Ferramentas para todos os perfis: jogadores, técnicos e organizadores",
       "Funciona offline — sem depender de conexão durante o jogo",
       "Sorteios justos e aleatórios com algoritmos transparentes",
       "100% gratuito — sem limites de uso, sem assinatura"
     ],
-    ogTitle: "Ferramentas para Esportes e Apostas — Bolão, Equipes, Placar e Mais",
+    ogTitle: "Ferramentas para Esportes e Jogos — Bolão, Equipes, Placar e Mais",
     ogDescription: "Bolão, sorteio de equipes, placar poliesportivo e probabilidades. Gratuito, sem cadastro.",
-    categoryName: "Esportes e Apostas",
+    categoryName: "Esportes e Jogos",
     categoryFilter: "Esportes",
     emoji: "⚽",
-    schemaKeywords: ["gerador bolao", "sorteador equipes", "placar poliesportivo", "probabilidades classificacao", "palpites loteria", "painel bingo"]
+    schemaKeywords: ["gerador bolão", "sorteador equipes", "placar poliesportivo", "probabilidades classificação", "palpites loteria", "painel bingo"]
   },
   "financas": {
     slug: "financas",
@@ -108,7 +110,7 @@ export const CATEGORY_SEO_DATA: Record<string, CategorySEOData> = {
     categoryName: "Finanças",
     categoryFilter: "Finanças",
     emoji: "💰",
-    schemaKeywords: ["juros compostos", "simulador markup", "ponto equilibrio", "conversor moedas", "salario hora", "comparador preco", "taxas maquininha", "calculadora desconto", "porcentagem reversa", "gerador recibo"]
+    schemaKeywords: ["juros compostos", "simulador markup", "ponto equilibrio", "conversor moedas", "salário hora", "comparador preço", "taxas maquininha", "calculadora desconto", "porcentagem reversa", "gerador recibo"]
   },
   "estudos": {
     slug: "estudos",
@@ -127,7 +129,7 @@ export const CATEGORY_SEO_DATA: Record<string, CategorySEOData> = {
     categoryName: "Estudos e Educação",
     categoryFilter: "Educação",
     emoji: "📚",
-    schemaKeywords: ["ciclo estudos", "simulador sisu", "calculadora edital", "mapeamento erros", "pomodoro", "velocidade digitacao", "contador caracteres", "simulador sisu"]
+    schemaKeywords: ["ciclo estudos", "simulador sisu", "calculadora edital", "mapeamento erros", "pomodoro", "velocidade digitação", "contador caracteres", "simulador sisu"]
   },
   "religioso": {
     slug: "religioso",
@@ -146,10 +148,11 @@ export const CATEGORY_SEO_DATA: Record<string, CategorySEOData> = {
     categoryName: "Estudos Religiosos",
     categoryFilter: "Religioso",
     emoji: "📖",
-    schemaKeywords: ["plano leitura biblica", "cronologia biblica", "calendario hebraico", "roteiro judaismo", "fichamento soap"]
+    schemaKeywords: ["plano leitura bíblica", "cronologia bíblica", "calendario hebraico", "roteiro judaismo", "fichamento soap"]
   },
   "calendario-tempo": {
     slug: "calendario-tempo",
+    toolSlugs: ["calendario-feriados", "diferenca-datas", "contador-tempo-decorrido", "dias-vida", "acumulador-horas", "horas-decimais", "planejador-fuso-horario", "calendario-hebraico", "pomodoro"],
     title: "Ferramentas de Calendário e Tempo — Feriados, Diferença de Datas, Horas e Mais",
     h1: "Ferramentas de Calendário e Tempo Online Grátis",
     metaDescription: "Ferramentas de calendário e tempo gratuitas: calendário de feriados, diferença entre datas, acumulador de horas, conversor de horas decimais, dias de vida e contadores. Sem cadastro.",
@@ -184,10 +187,11 @@ export const CATEGORY_SEO_DATA: Record<string, CategorySEOData> = {
     categoryName: "Utilitários",
     categoryFilter: "Utilidades",
     emoji: "🛠️",
-    schemaKeywords: ["gerador qrcode", "gerador senhas", "organizador listas", "conversor dpi", "conversor proporcao", "paleta cores", "link whatsapp", "formatador texto", "descobridor anagramas", "calculadora churrasco"]
+    schemaKeywords: ["gerador qrcode", "gerador senhas", "organizador listas", "conversor dpi", "conversor proporção", "paleta cores", "link whatsapp", "formatador texto", "descobridor anagramas", "calculadora churrasco"]
   },
   "micro-nichos": {
     slug: "micro-nichos",
+    toolSlugs: ["pomodoro", "velocidade-digitacao", "acumulador-horas", "horas-decimais", "gerador-recibo", "taxa-engajamento", "formatador-legendas", "conversor-cozinha", "calculadora-churrasco", "backlog-gamer", "spawn-timer", "gerador-nicks", "conversor-dpi", "cronograma-capilar", "custo-nail", "agenda-unhas"],
     title: "Ferramentas para Nichos Específicos — Produtividade, DP/RH, Redes Sociais e Mais",
     h1: "Ferramentas para Nichos Específicos Online Grátis",
     metaDescription: "Ferramentas especializadas gratuitas: produtividade, DP/RH, redes sociais, culinária, calculadoras gerais e muito mais. Sem cadastro, tudo no navegador.",
@@ -215,14 +219,14 @@ export const CATEGORY_SEO_DATA: Record<string, CategorySEOData> = {
       "Base de dados com 150+ nomes de bebês com origem, significado e curiosidades",
       "Calculadoras de gravidez validadas por referências médicas",
       "Privacidade absoluta — dados de saúde familiar nunca saem do navegador",
-      "100% gratuito — sem limites, sem cadastro, sem anúncios"
+      "100% gratuito — sem limites e sem cadastro"
     ],
     ogTitle: "Ferramentas para Família e Bebês — Significado de Nomes, DPP e Mais",
     ogDescription: "Significado de nomes, DPP, período fértil e cronômetro de contrações. Gratuito, sem cadastro.",
     categoryName: "Família e Bebês",
     categoryFilter: "Família e Bebês",
     emoji: "👶",
-    schemaKeywords: ["significado nomes", "dpp", "periodo fertil", "contracoes", "nomes bebe"]
+    schemaKeywords: ["significado nomes", "dpp", "período fertil", "contracoes", "nomes bebê"]
   },
   "pet": {
     slug: "pet",
@@ -234,14 +238,14 @@ export const CATEGORY_SEO_DATA: Record<string, CategorySEOData> = {
       "Calculadoras veterinárias baseadas em protocolos médicos de cães e gatos",
       "Gerador de nomes com 100+ opções por tema e característica",
       "Rastreador de vacinas com alertas visuais e persistência local",
-      "100% gratuito — sem limites, sem cadastro, sem anúncios"
+      "100% gratuito — sem limites e sem cadastro"
     ],
     ogTitle: "Ferramentas para Pets — Idade, Ração, Nomes e Vacinas",
     ogDescription: "Calculadora de idade pet, consumo de ração, gerador de nomes e rastreador de vacinas. Gratuito.",
     categoryName: "Pets",
     categoryFilter: "Pet",
     emoji: "🐾",
-    schemaKeywords: ["idade pet", "consumo racao", "nomes pets", "vacinas pet", "calculadora pet", "rastreador vacinas"]
+    schemaKeywords: ["idade pet", "consumo ração", "nomes pets", "vacinas pet", "calculadora pet", "rastreador vacinas"]
   },
   "astrologia": {
     slug: "astrologia",
@@ -253,7 +257,7 @@ export const CATEGORY_SEO_DATA: Record<string, CategorySEOData> = {
       "Informações astrológicas completas: signo, elemento, regente, qualidade e características",
       "Compatibilidade amorosa, amizade e profissional entre todos os signos",
       "Numerologia do destino com interpretação detalhada",
-      "100% gratuito — sem limites, sem cadastro, sem anúncios"
+      "100% gratuito — sem limites e sem cadastro"
     ],
     ogTitle: "Ferramentas de Astrologia — Signo, Compatibilidade, Numerologia e Mais",
     ogDescription: "Descubra seu signo, compatibilidade amorosa e mapa numerológico. Gratuito, sem cadastro.",
@@ -272,15 +276,33 @@ export const CATEGORY_SEO_DATA: Record<string, CategorySEOData> = {
       "Quiz de sugestão de livros com 4 perguntas personalizadas",
       "Plano de leitura bíblica completo com progresso salvo no navegador",
       "Cronologia interativa de eventos bíblicos e históricos",
-      "100% gratuito — sem limites, sem cadastro, sem anúncios"
+      "100% gratuito — sem limites e sem cadastro"
     ],
     ogTitle: "Ferramentas para Livros e Leitura — Sugestões, Cronologia e Mais",
     ogDescription: "Sugestor de livros, cronologia bíblica, plano de leitura e mais. Gratuito, sem cadastro.",
     categoryName: "Livros e Leitura",
     categoryFilter: "Livros e Leitura",
     emoji: "📚",
-    schemaKeywords: ["sugestor livros", "cronologia biblica", "plano leitura biblica", "roteiro judaismo", "fichamento soap"]
+    schemaKeywords: ["sugestor livros", "cronologia bíblica", "plano leitura bíblica", "roteiro judaismo", "fichamento soap"]
   }
 };
 
 export const CATEGORY_SLUGS = Object.keys(CATEGORY_SEO_DATA);
+
+const CATEGORY_FILTER_MAP: Record<string, string[]> = {
+  "Casa": ["Casa", "Calculadoras"],
+  "Esportes": ["Esportes", "Sorte"],
+  "Educação": ["Educação", "Produtividade"],
+  "Produtividade": ["Produtividade", "Educação"],
+};
+
+/** Ferramentas exibidas (e contadas) em cada página de categoria. */
+export function getCategoryTools<T extends { slug: string; category: string }>(data: CategorySEOData, tools: T[]): T[] {
+  if (data.toolSlugs) {
+    return data.toolSlugs
+      .map((slug) => tools.find((t) => t.slug === slug))
+      .filter((t): t is T => Boolean(t));
+  }
+  const cats = CATEGORY_FILTER_MAP[data.categoryFilter] || [data.categoryFilter];
+  return tools.filter((t) => cats.includes(t.category));
+}

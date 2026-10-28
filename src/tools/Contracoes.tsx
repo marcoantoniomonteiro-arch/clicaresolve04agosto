@@ -79,7 +79,7 @@ export function Contracoes({ onBack }: Props) {
       category="Saúde"
       description="Registre e monitore contrações com alertas para o padrão 5-1-1."
       onBack={onBack}
-      affiliateBanner={<AffiliateBanner terms={["bolsa maternidade", "travesseiro amamentacao"]} label="Prepare sua bolsa maternidade" />}
+      affiliateBanner={<AffiliateBanner terms={["bolsa maternidade", "travesseiro amamentação"]} label="Prepare sua bolsa maternidade" />}
       disclaimer="Esta ferramenta é puramente informativa. Não substitui consulta médica ou diagnóstico profissional. Consulte sempre um profissional de saúde habilitado."
     >
       <div className="space-y-4">

@@ -107,7 +107,7 @@ export function RemovedorAcentos({ onBack }: Props) {
             steps: [
               `Texto original: "Programação em Português é ótima"`,
               `Ação: Remover acentos`,
-              `Resultado: "Programacao em Portugues e otima"`,
+              `Resultado: "Programação em Portugues e otima"`,
             ],
             result: "O texto perdeu os acentos mas manteve todas as letras e a estrutura original, pronto para uso em sistemas que não aceitam acentuação.",
           },

@@ -54,14 +54,14 @@ export function PainelBingo({ onBack }: Props) {
       title="Painel de Bingo"
       emoji="🎱"
       category="Utilidades"
-      description="Sorteie numeros para jogar bingo com amigos."
+      description="Sorteie números para jogar bingo com amigos."
       onBack={onBack}
       affiliateBanner={<AffiliateBanner terms={["kit bingo família"]} label="kit bingo família" />}
     
     >
       <div className="space-y-5">
         <div className="p-6 rounded-xl bg-white/5 border border-white/8 text-center">
-          <p className="text-xs text-gray-500 mb-2">Ultimo numero sorteado</p>
+          <p className="text-xs text-gray-500 mb-2">Último número sorteado</p>
           {lastDrawn !== null ? (
             <div className="inline-flex items-center gap-3">
               <span className="text-3xl font-black text-yellow-400">
@@ -75,7 +75,7 @@ export function PainelBingo({ onBack }: Props) {
             <p className="text-3xl font-bold text-gray-600">---</p>
           )}
           <p className="text-sm text-gray-400 mt-2">
-            {drawn.size}/75 numeros sorteados
+            {drawn.size}/75 números sorteados
           </p>
         </div>
 
@@ -86,7 +86,7 @@ export function PainelBingo({ onBack }: Props) {
             className="btn-primary flex-1 flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
           >
             <Sparkles className="w-4 h-4" />
-            Sortear Proximo
+            Sortear Próximo
           </button>
           <button
             onClick={reset}
@@ -142,7 +142,7 @@ export function PainelBingo({ onBack }: Props) {
           <div className="p-4 rounded-xl bg-white/5 border border-white/8">
             <div className="flex items-center justify-between mb-2">
               <p className="text-xs text-gray-400 font-semibold uppercase tracking-wider">
-                Historico
+                Histórico
               </p>
               <button
                 onClick={() => setHistory([])}

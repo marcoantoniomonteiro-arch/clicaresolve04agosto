@@ -103,7 +103,7 @@ export function DiasVida({ onBack }: Props) {
       title="Contador de Dias de Vida"
       emoji="🎂"
       category="Utilidades"
-      description="Descubra quantos dias, horas e minutos voce ja viveu."
+      description="Descubra quantos dias, horas e minutos você já viveu."
       onBack={onBack}
       affiliateBanner={<AffiliateBanner terms={["diário pessoal caderno"]} label="diário pessoal caderno" />}
     
@@ -156,7 +156,7 @@ export function DiasVida({ onBack }: Props) {
               <div className="p-4 rounded-xl bg-amber-500/10 border border-amber-500/20">
                 <div className="flex items-center gap-2 mb-2">
                   <Star className="w-4 h-4 text-amber-400" />
-                  <p className="text-xs text-amber-400 font-semibold">Proximo Marco</p>
+                  <p className="text-xs text-amber-400 font-semibold">Próximo Marco</p>
                 </div>
                 <div className="flex items-center justify-between">
                   <span className="text-sm text-white">{resultado.proximoMarco.dias.toLocaleString()} dias</span>
@@ -193,7 +193,7 @@ export function DiasVida({ onBack }: Props) {
               <div className="p-4 rounded-xl bg-pink-500/10 border border-pink-500/20">
                 <div className="flex items-center gap-2 mb-2">
                   <Gift className="w-4 h-4 text-pink-400" />
-                  <p className="text-xs text-pink-400 font-semibold">Proximo Aniversario</p>
+                  <p className="text-xs text-pink-400 font-semibold">Próximo Aniversario</p>
                 </div>
                 <div className="flex items-center justify-between">
                   <span className="text-sm text-white">

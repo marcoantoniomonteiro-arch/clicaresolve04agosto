@@ -54,9 +54,9 @@ const NUMEROS: Record<number, NumeroInfo> = {
   },
   6: {
     titulo: "O Nutridor",
-    descricao: "Amorosos, responsaveis e harmoniosos. Cuidam da familia e do lar.",
+    descricao: "Amorosos, responsaveis e harmoniosos. Cuidam da família e do lar.",
     caracteristicas: ["Amor", "Responsabilidade", "Harmonia", "Cuidado"],
-    desafios: ["Autossacrificio", "Preocupacao excessiva", "Perfeccionismo", "Controle"],
+    desafios: ["Autossacrificio", "Preocupação excessiva", "Perfeccionismo", "Controle"],
     cores: ["Rosa", "Azul", "Indigo"],
   },
   7: {
@@ -70,28 +70,28 @@ const NUMEROS: Record<number, NumeroInfo> = {
     titulo: "O Poder",
     descricao: "Ambiciosos, executivos e materialistas. Atingem sucesso e autoridade.",
     caracteristicas: ["Sucesso", "Autoridade", "Organizacao", "Prosperidade"],
-    desafios: ["Ambicao cega", "Materialismo", "Controle", "Arrogancia"],
+    desafios: ["Ambição cega", "Materialismo", "Controle", "Arrogancia"],
     cores: ["Dourado", "Preto", "Cinza escuro"],
   },
   9: {
     titulo: "O Humanitario",
     descricao: "Compassivos, universais e artisticos. Servem a humanidade.",
     caracteristicas: ["Compaixao", "Universalidade", "Generosidade", "Sabedoria"],
-    desafios: ["Desapego excessivo", "Vitimizacao", "Idealismo irreal", "Emocoes ciclicas"],
+    desafios: ["Desapego excessivo", "Vitimizacao", "Idealismo irreal", "Emoções ciclicas"],
     cores: ["Dourado", "Vermelho", "Rosa"],
   },
   11: {
     titulo: "O Mestre Iluminador",
-    descricao: "Numeros mestres trazem maior potencial espiritual e intuicao. Visionarios e inspiradores.",
-    caracteristicas: ["Intuicao elevada", "Inspiracao", "Visionario", "Espiritualidade"],
-    desafios: ["Nervosismo", "Autocrítica", "Idealismo excessivo", "Pressao interna"],
+    descricao: "Números mestres trazem maior potencial espiritual e intuição. Visionarios e inspiradores.",
+    caracteristicas: ["Intuição elevada", "Inspiracao", "Visionario", "Espiritualidade"],
+    desafios: ["Nervosismo", "Autocrítica", "Idealismo excessivo", "Pressão interna"],
     cores: ["Prata", "Violeta", "Dourado"],
   },
   22: {
     titulo: "O Mestre Construtor",
-    descricao: "Numeros mestres trazem maior potencial de realizacao. Constroem grandes projetos.",
-    caracteristicas: ["Mestre construtor", "Visao pratica", "Lideranca global", "Realizacoes"],
-    desafios: ["Pressao enorme", "Autocobranca", "Rigidez", "Desesperanca"],
+    descricao: "Números mestres trazem maior potencial de realização. Constroem grandes projetos.",
+    caracteristicas: ["Mestre construtor", "Visao prática", "Lideranca global", "Realizacoes"],
+    desafios: ["Pressão enorme", "Autocobranca", "Rigidez", "Desesperanca"],
     cores: ["Dourado", "Branco", "Preto"],
   },
 };
@@ -173,7 +173,7 @@ export function MapaNumerologico({ onBack }: Props) {
             <div className={`p-6 rounded-2xl bg-gradient-to-br ${corGradiente} text-center`}>
               <div className="flex items-center justify-center gap-2 mb-2">
                 {numeroDestino >= 11 && <Sparkles className="w-5 h-5 text-yellow-400" />}
-                <p className="text-xs text-gray-400">Numero do Destino</p>
+                <p className="text-xs text-gray-400">Número do Destino</p>
               </div>
               <p className="text-6xl font-black text-white mb-2">{numeroDestino}</p>
               <p className="text-xl font-bold text-blue-400">{info.titulo}</p>
@@ -182,7 +182,7 @@ export function MapaNumerologico({ onBack }: Props) {
 
             <div className="grid grid-cols-2 gap-3">
               <div className="p-4 rounded-xl bg-green-500/10 border border-green-500/20">
-                <p className="text-xs text-green-400 font-semibold mb-2">Caracteristicas</p>
+                <p className="text-xs text-green-400 font-semibold mb-2">Características</p>
                 <ul className="space-y-1">
                   {info.caracteristicas.map((c, i) => (
                     <li key={i} className="text-sm text-gray-300">{c}</li>
@@ -212,12 +212,12 @@ export function MapaNumerologico({ onBack }: Props) {
 
         <div className="p-3 rounded-lg bg-yellow-500/10 border border-yellow-500/20">
           <p className="text-xs text-yellow-300">
-            <span className="font-semibold">Como calcular:</span> Soma-se todos os digitos da data de nascimentoo ate obter um nmero de 1 a 9 (ou 11/22 que saoo nmeros mestres).
+            <span className="font-semibold">Como calcular:</span> Soma-se todos os digitos da data de nascimentoo até obter um nmero de 1 a 9 (ou 11/22 que saoo nmeros mestres).
           </p>
         </div>
 
         <p className="text-xs text-gray-500 text-center">
-          Conteudo de entretenimento e autoconhecimento, sem carar cientifico.
+          Conteúdo de entretenimento e autoconhecimento, sem carar cientifico.
         </p>
       </div>
       <ToolContent

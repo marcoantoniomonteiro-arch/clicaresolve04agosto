@@ -11,9 +11,9 @@ interface Props {
 }
 
 const TEXTOS_EXEMPLO = [
-  "O desenvolvimento de softwares modernos exige cada vez mais atencão a questões de usabilidade e experiencia do usuario. Interfaces intuitivas e responsivas sao fundamentais para garantir que aplicacoes sejam acessiveis a todos os tipos de usuarios, independemente de seu nivel de conhecimento tecnologico.",
-  "A tecnologia evolui rapidamente e transforma a maneira como nos comunicamos trabalhamos e vivemos. Smartphones inteligencia artificial e internet das coisas sao apenas algumas das inovacoes que revolucionaram nosso cotidiano nos ultimos anos.",
-  "A educacao e a base para o desenvolvimento de qualquer sociedade. Investir em conhecimento e formacao de pessoas qualificadas garante um futuro mais prospero e sustentavel para todos os cidadaos de um pais.",
+  "O desenvolvimento de softwares modernos exige cada vez mais atencão a questões de usabilidade e experiência do usuário. Interfaces intuitivas e responsivas são fundamentais para garantir que aplicações sejam acessiveis a todos os tipos de usuários, independemente de seu nível de conhecimento tecnologico.",
+  "A tecnologia evolui rapidamente e transforma a maneira como nos comunicamos trabalhamos e vivemos. Smartphones inteligencia artificial e internet das coisas são apenas algumas das inovações que revolucionaram nosso cotidiano nos últimos anos.",
+  "A educação e a base para o desenvolvimento de qualquer sociedade. Investir em conhecimento e formação de pessoas qualificadas garante um futuro mais prospero e sustentavel para todos os cidadaos de um pais.",
 ];
 
 const CLASSIFICACOES = [
@@ -90,10 +90,10 @@ export function VelocidadeDigitacao({ onBack }: Props) {
 
   return (
     <ToolLayout
-      title="Velocidade de Digitacao"
+      title="Velocidade de Digitação"
       emoji="⌨️"
       category="Estudos"
-      description="Teste sua velocidade de digitacao e veja sua classificacao."
+      description="Teste sua velocidade de digitação e veja sua classificação."
       onBack={onBack}
       affiliateBanner={<AffiliateBanner terms={["curso digitação teclado"]} label="curso digitação teclado" />}
     
@@ -144,7 +144,7 @@ export function VelocidadeDigitacao({ onBack }: Props) {
                 <p className="text-xs text-gray-500">palavras/min</p>
               </div>
               <div className="p-4 rounded-xl bg-blue-500/10 border border-blue-500/20 text-center">
-                <p className="text-xs text-blue-400">Precisao</p>
+                <p className="text-xs text-blue-400">Precisão</p>
                 <p className="text-3xl font-black text-blue-400">{resultado.precisao.toFixed(0)}%</p>
               </div>
               <div className="p-4 rounded-xl bg-red-500/10 border border-red-500/20 text-center">
@@ -156,7 +156,7 @@ export function VelocidadeDigitacao({ onBack }: Props) {
             <div className="p-4 rounded-xl bg-white/5 border border-white/8 flex items-center justify-between">
               <div className="flex items-center gap-2">
                 <Trophy className="w-5 h-5 text-yellow-400" />
-                <span className="text-sm text-gray-400">Classificacao</span>
+                <span className="text-sm text-gray-400">Classificação</span>
               </div>
               <span className={`text-xl font-bold ${resultado.classificacao.cor}`}>
                 {resultado.classificacao.label}

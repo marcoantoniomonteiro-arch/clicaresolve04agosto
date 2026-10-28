@@ -22,9 +22,9 @@ interface Evento {
 const EVENTOS: Evento[] = [
   {
     id: "criacao",
-    nome: "Criacao do Mundo",
+    nome: "Criação do Mundo",
     anoAC: 3760, // Ano 1 AM segundo tradicao judaica
-    descricao: "Segundo a tradicao judaica, o mundo foi criado em 3760 AEC (Ano 1 do calendario hebraico).",
+    descricao: "Segundo a tradição judaica, o mundo foi criado em 3760 AEC (Ano 1 do calendario hebraico).",
     fontes: ["Genesis 1-2", "Tradição Judaica"],
   },
   {
@@ -39,7 +39,7 @@ const EVENTOS: Evento[] = [
     id: "noe",
     nome: "Diluvio e Noe",
     anoAC: 2104,
-    descricao: "O diluvio universal ocorreu cerca de 1.656 anos apos a criacao. Noe e sua familia foram salvos na arca.",
+    descricao: "O diluvio universal ocorreu cerca de 1.656 anos após a criação. Noe e sua família foram salvos na arca.",
     personagem: "Noe",
     fontes: ["Genesis 6-9", "Tradição Judaica"],
   },
@@ -47,7 +47,7 @@ const EVENTOS: Evento[] = [
     id: "torre",
     nome: "Torre de Babel",
     anoAC: 2000,
-    descricao: "A humanidade foi dispersa e as linguagens confundidas apos tentar construir uma torre ate o ceu.",
+    descricao: "A humanidade foi dispersa e as linguagens confundidas após tentar construir uma torre até o ceu.",
     fontes: ["Genesis 11"],
   },
   {
@@ -70,7 +70,7 @@ const EVENTOS: Evento[] = [
     id: "jose",
     nome: "Jose no Egito",
     anoAC: 1522,
-    descricao: "Jose vendido pelos irmaos, chega ao Egito e se torna governador.",
+    descricao: "Jose vendido pelos irmãos, chega ao Egito e se torna governador.",
     personagem: "Jose",
     fontes: ["Genesis 37-50"],
   },
@@ -99,7 +99,7 @@ const EVENTOS: Evento[] = [
   },
   {
     id: "juizes",
-    nome: "Periodo dos Juizes",
+    nome: "Período dos Juizes",
     anoAC: 1270,
     descricao: "Cerca de 300 anos de lideranca dos Juizes antes da monarquia.",
     fontes: ["Juizes"],
@@ -130,9 +130,9 @@ const EVENTOS: Evento[] = [
   },
   {
     id: "reinos",
-    nome: "Divisao dos Reinos",
+    nome: "Divisão dos Reinos",
     anoAC: 796,
-    descricao: "Apos Salomao, Israel se divide: Reino do Norte (Israel) e Reino do Sul (Juda).",
+    descricao: "Após Salomao, Israel se divide: Reino do Norte (Israel) e Reino do Sul (Juda).",
     fontes: ["1 Reis 12"],
   },
   {
@@ -146,7 +146,7 @@ const EVENTOS: Evento[] = [
     id: "retorno",
     nome: "Retorno e Segundo Templo",
     anoAC: 516,
-    descricao: "Retorno do exilio e reconstrucao do Segundo Templo sob Esdras e Neemias.",
+    descricao: "Retorno do exilio e reconstrução do Segundo Templo sob Esdras e Neemias.",
     personagem: "Esdras, Neemias",
     fontes: ["Esdras", "Neemias"],
   },
@@ -162,7 +162,7 @@ const EVENTOS: Evento[] = [
     id: "ministerio",
     nome: "Ministerio de Jesus",
     anoAC: 30,
-    descricao: "Ministerio publico de Jesus, crucificacao e ressureicao (circa 30 EC).",
+    descricao: "Ministerio público de Jesus, crucificação e ressureição (circa 30 EC).",
     fontes: ["Mateus", "Marcos", "Lucas", "Joao"],
   },
 ];
@@ -179,18 +179,18 @@ export function CronologiaBiblica({ onBack }: Props) {
 
   return (
     <ToolLayout
-      title="Cronologia Biblica"
+      title="Cronologia Bíblica"
       emoji="⏳"
       category="Religioso"
-      description="Linha do tempo interativa dos principais eventos biblicos."
+      description="Linha do tempo interativa dos principais eventos bíblicos."
       onBack={onBack}
       affiliateBanner={<AffiliateBanner terms={["Bíblia estudo comentada"]} label="Bíblia estudo comentada" />}
     
     >
       <div className="space-y-5">
         <p className="text-xs text-gray-500">
-          Cronologia aproximada baseada em tradicao judaica e pesquisas academicas.
-          Os anos sao antes de Cristo (AEC) ou era comum (EC).
+          Cronologia aproximada baseada em tradição judaica e pesquisas academicas.
+          Os anos são antes de Cristo (AEC) ou era comum (EC).
         </p>
 
         <div className="relative">

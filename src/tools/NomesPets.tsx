@@ -669,7 +669,7 @@ export function NomesPets({ onBack }: Props) {
       onBack={onBack}
       affiliateBanner={
         <AffiliateBanner
-          terms={["coleira personalizada", "plaquinha de identificacao pet"]}
+          terms={["coleira personalizada", "plaquinha de identificação pet"]}
           label="Personalize seu pet"
           shopeeTerms={["coleira pet personalizada"]} shopeeLabel="Ver na Shopee"
         />

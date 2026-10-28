@@ -1,3 +1,5 @@
+import { TOOLS } from "./tools";
+
 export interface ToolSEOData {
   title: string;       // 50-60 chars
   description: string; // 150-155 chars
@@ -309,7 +311,7 @@ export const TOOL_SEO_DATA: Record<string, ToolSEOData> = {
   },
   "mapeamento-erros": {
     title: "Mapeie Erros de Estudo e Melhore Notas Grátis | CLICAresolve",
-    description: "Registre e analise erros de estudo para melhorar. Gratuito, sem cadastro. Mapeie seus erros!",
+    description: "Registre e análise erros de estudo para melhorar. Gratuito, sem cadastro. Mapeie seus erros!",
     schemaType: "SoftwareApplication",
     hasFAQ: false,
   },
@@ -647,7 +649,7 @@ export const TOOL_SEO_DATA: Record<string, ToolSEOData> = {
     schemaType: "SoftwareApplication",
     hasFAQ: true,
     faqs: [
-      { question: "A compatibilidade de signos tem comprovação científica?", answer: "Não, a astrologia é uma tradição cultural sem validação científica; deve ser vista como entretenimento." },
+      { question: "A compatibilidade de signos tem comprovação científica?", answer: "Não, a astrologia é uma tradição cultural sem válidação científica; deve ser vista como entretenimento." },
       { question: "O que são os elementos dos signos?", answer: "Cada signo é associado a um dos 4 elementos: Fogo, Terra, Ar ou Água, usados na tradição astrológica para descrever características." },
       { question: "Compatibilidade baixa significa que o relacionamento não vai dar certo?", answer: "Não, relacionamentos reais dependem de fatores muito mais complexos do que a astrologia, como comunicação, valores e experiências compartilhadas." },
       { question: "Todos os astrólogos concordam com essas combinações?", answer: "Não necessariamente; a astrologia tem diferentes escolas e interpretações, e as combinações podem variar conforme a tradição seguida." },
@@ -851,7 +853,7 @@ export const TOOL_SEO_DATA: Record<string, ToolSEOData> = {
     faqs: [
       { question: "Essa ferramenta confirma se o CPF/CNPJ realmente existe?", answer: "Não. Ela verifica apenas se os dígitos verificadores são matematicamente válidos. Para saber se o documento existe e está regular, é necessário consultar diretamente o site da Receita Federal." },
       { question: "Como funciona o cálculo do dígito verificador?", answer: "É um algoritmo matemático (módulo 11) que usa os primeiros dígitos do documento, multiplicados por pesos específicos, para calcular os 2 últimos dígitos de verificação." },
-      { question: "Meus dados são enviados para algum servidor?", answer: "Não, toda a validação acontece no seu navegador, sem enviar o CPF/CNPJ digitado a nenhum lugar." },
+      { question: "Meus dados são enviados para algum servidor?", answer: "Não, toda a válidação acontece no seu navegador, sem enviar o CPF/CNPJ digitado a nenhum lugar." },
       { question: "Um CPF com dígitos iguais (111.111.111-11) é válido?", answer: "Não, a ferramenta rejeita automaticamente sequências de dígitos repetidos, que nunca são CPFs/CNPJs reais válidos." },
     ],
   },
@@ -909,7 +911,7 @@ export const TOOL_SEO_DATA: Record<string, ToolSEOData> = {
     schemaType: "SoftwareApplication",
     hasFAQ: true,
     faqs: [
-      { question: "O que é uma expressão regular?", answer: "É um padrão de busca usado para encontrar, validar ou substituir textos que seguem uma estrutura específica, muito usado em validação de formulários e processamento de texto." },
+      { question: "O que é uma expressão regular?", answer: "É um padrão de busca usado para encontrar, validar ou substituir textos que seguem uma estrutura específica, muito usado em válidação de formulários e processamento de texto." },
       { question: "O que significa a flag \"g\" no regex?", answer: "Significa \"global\" - faz o regex encontrar TODAS as correspondências no texto, não apenas a primeira." },
       { question: "Por que meu regex não encontra nada?", answer: "Verifique se a sintaxe está correta e se as flags necessárias (como \"i\" para ignorar maiúsculas/minúsculas) estão marcadas." },
       { question: "Meu texto é enviado para algum servidor?", answer: "Não, todo o processamento acontece localmente no seu navegador." },
@@ -1410,9 +1412,14 @@ export const TOOL_SEO_DATA: Record<string, ToolSEOData> = {
 };
 
 export function getToolSEO(slug: string): ToolSEOData {
-  return TOOL_SEO_DATA[slug] || {
-    title: "Ferramenta Gratuita Online | CLICAresolve",
-    description: "Ferramenta gratuita e fácil de usar. Sem cadastro, tudo no navegador.",
+  if (TOOL_SEO_DATA[slug]) return TOOL_SEO_DATA[slug];
+  // Sem dados próprios: monta título e descrição únicos a partir do cadastro da ferramenta
+  const tool = TOOLS.find((t) => t.slug === slug);
+  return {
+    title: tool ? `${tool.name} Online Grátis | CLICAresolve` : "Ferramenta Gratuita Online | CLICAresolve",
+    description: tool
+      ? `${tool.description} Ferramenta gratuita, sem cadastro e direto no navegador.`
+      : "Ferramenta gratuita e fácil de usar. Sem cadastro, tudo no navegador.",
     schemaType: "SoftwareApplication",
     hasFAQ: false,
   };

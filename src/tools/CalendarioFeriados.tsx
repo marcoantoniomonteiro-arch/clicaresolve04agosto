@@ -42,13 +42,13 @@ function gerarFeriados(ano: number): Feriado[] {
   corpusChristi.setDate(corpusChristi.getDate() + 60);
 
   const fixos: [number, number, string][] = [
-    [1, 1, "Confraternizacao Universal"],
+    [1, 1, "Confraternização Universal"],
     [21, 4, "Tiradentes"],
     [1, 5, "Dia do Trabalho"],
     [7, 9, "Independencia do Brasil"],
     [12, 10, "Nossa Senhora Aparecida"],
     [2, 11, "Finados"],
-    [15, 11, "Proclamacao da Republica"],
+    [15, 11, "Proclamação da Republica"],
     [25, 12, "Natal"],
   ];
 
@@ -136,7 +136,7 @@ export function CalendarioFeriados({ onBack }: Props) {
           label="Prepare sua viagem"
         />
       }
-      disclaimer="Calculo matematico. Nao inclui adicionais de Convencoes Coletivas (CCT)."
+      disclaimer="Cálculo matematico. Não inclui adicionais de Convenções Coletivas (CCT)."
     >
       <div className="space-y-5">
         <div className="flex items-center justify-between">
@@ -160,7 +160,7 @@ export function CalendarioFeriados({ onBack }: Props) {
             <div className="flex items-center gap-3">
               <Clock className="w-5 h-5 text-green-400" />
               <div className="flex-1">
-                <p className="text-xs text-green-400">Proximo Feriado</p>
+                <p className="text-xs text-green-400">Próximo Feriado</p>
                 <p className="text-sm font-bold text-white">{proximoFeriado.nome}</p>
                 <p className="text-xs text-gray-400">
                   {proximoFeriado.data.toLocaleDateString("pt-BR")} - {diasAteProximo} dias

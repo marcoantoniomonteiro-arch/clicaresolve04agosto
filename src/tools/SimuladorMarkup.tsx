@@ -40,7 +40,7 @@ export function SimuladorMarkup({ onBack }: Props) {
       title="Simulador de Markup"
       emoji="🛒"
       category="Financas"
-      description="Calcule o preco de venda ideal considerando custos, impostos e margem de lucro."
+      description="Calcule o preço de venda ideal considerando custos, impostos e margem de lucro."
       onBack={onBack}
       affiliateBanner={<AffiliateBanner terms={["curso vendas online"]} label="curso vendas online" />}
     
@@ -69,7 +69,7 @@ export function SimuladorMarkup({ onBack }: Props) {
             />
           </label>
           <label className="block">
-            <span className="text-sm text-gray-400 mb-1 block">Comissao (%)</span>
+            <span className="text-sm text-gray-400 mb-1 block">Comissão (%)</span>
             <input
               type="number"
               value={comissao}
@@ -93,7 +93,7 @@ export function SimuladorMarkup({ onBack }: Props) {
         {result && (
           <div className="space-y-4">
             <div className="p-5 rounded-xl bg-green-500/10 border border-green-500/20 text-center">
-              <p className="text-xs text-green-400 mb-1">Preco de Venda Ideal</p>
+              <p className="text-xs text-green-400 mb-1">Preço de Venda Ideal</p>
               <p className="text-4xl font-black text-green-400">
                 R$ {result.precoVenda.toFixed(2)}
               </p>
@@ -110,7 +110,7 @@ export function SimuladorMarkup({ onBack }: Props) {
                 <p className="text-sm font-bold text-red-400">R$ {result.valorImpostos.toFixed(2)}</p>
               </div>
               <div className="p-3 rounded-xl bg-yellow-500/10 border border-yellow-500/20 text-center">
-                <p className="text-xs text-yellow-400">Comissao</p>
+                <p className="text-xs text-yellow-400">Comissão</p>
                 <p className="text-sm font-bold text-yellow-400">R$ {result.valorComissao.toFixed(2)}</p>
               </div>
               <div className="p-3 rounded-xl bg-green-500/10 border border-green-500/20 text-center">
@@ -135,7 +135,7 @@ export function SimuladorMarkup({ onBack }: Props) {
             </div>
 
             <p className="text-xs text-gray-500 text-center">
-              Cada venda de R$ {result.precoVenda.toFixed(2)} gera R$ {result.lucroBruto.toFixed(2)} de lucro liquido.
+              Cada venda de R$ {result.precoVenda.toFixed(2)} gera R$ {result.lucroBruto.toFixed(2)} de lucro líquido.
             </p>
           </div>
         )}

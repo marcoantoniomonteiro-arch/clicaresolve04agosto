@@ -88,10 +88,10 @@ export function ComparadorPreco({ onBack }: Props) {
 
   return (
     <ToolLayout
-      title="Comparador de Preco"
+      title="Comparador de Preço"
       emoji="⚖️"
       category="Financas"
-      description="Compare precos e encontre o produto mais vantajoso."
+      description="Compare preços e encontre o produto mais vantajoso."
       onBack={onBack}
       affiliateBanner={<AffiliateBanner terms={["organizador compras lista"]} label="organizador compras lista" />}
     
@@ -124,7 +124,7 @@ export function ComparadorPreco({ onBack }: Props) {
                   />
                   <div className="grid grid-cols-3 gap-2">
                     <div>
-                      <label className="text-xs text-gray-500 mb-1 block">Preco (R$)</label>
+                      <label className="text-xs text-gray-500 mb-1 block">Preço (R$)</label>
                       <input
                         type="number"
                         value={product.price}
@@ -219,7 +219,7 @@ export function ComparadorPreco({ onBack }: Props) {
                           R$ {item.pricePerUnit.toFixed(4)}/{item.unit}
                         </p>
                         {isCheapest && (
-                          <span className="text-xs text-green-400 font-semibold">MELHOR PRECO</span>
+                          <span className="text-xs text-green-400 font-semibold">MELHOR PREÇO</span>
                         )}
                         {isExpensive && (
                           <span className="text-xs text-red-400 font-semibold">MAIS CARO</span>

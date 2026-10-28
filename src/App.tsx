@@ -7,7 +7,7 @@ import { ErrorBoundary } from "./components/ErrorBoundary";
 import { NavigationContext } from "./context/NavigationContext";
 import { wasScrolling } from "./utils/touchHandler";
 import { TOOLS, CATEGORIES, Category } from "./data/tools";
-import { CATEGORY_SEO_DATA } from "./data/seoData";
+import { CATEGORY_SEO_DATA, getCategoryTools } from "./data/seoData";
 const AlcoolGasolina = React.lazy(() => import("./tools/AlcoolGasolina").then(m => ({ default: m.AlcoolGasolina })));
 const DivisorCarona = React.lazy(() => import("./tools/DivisorCarona").then(m => ({ default: m.DivisorCarona })));
 const ConsumoEnergia = React.lazy(() => import("./tools/ConsumoEnergia").then(m => ({ default: m.ConsumoEnergia })));
@@ -383,51 +383,71 @@ function FeaturedTools({ onSelectTool }: { onSelectTool: (slug: string) => void 
   );
 }
 
-export default function App() {
+interface RouteState {
+  activeTool: string | null;
+  activeCategoryPage: string | null;
+  lang: "pt" | "en";
+  initialName?: string;
+}
+
+/** Converte um caminho de URL no estado inicial da aplicação.
+ *  Usado no navegador (window.location) e na pré-renderização do build. */
+export function parsePath(pathname: string): RouteState {
+  const path = decodeURIComponent(pathname).replace(/^\//, "").replace(/\/$/, "").replace(/\.html$/, "");
+  const empty: RouteState = { activeTool: null, activeCategoryPage: null, lang: "pt" };
+  if (!path) return empty;
+  if (path.startsWith("en/")) {
+    const ptSlug = enSlugToPtSlug[path.replace("en/", "")];
+    if (ptSlug && TOOL_COMPONENTS[ptSlug]) return { ...empty, lang: "en", activeTool: ptSlug };
+    return empty;
+  }
+  if (path.startsWith("significado-nome/")) {
+    const nameFromSlug = path
+      .replace("significado-nome/", "")
+      .split("-")
+      .map((w) => w.charAt(0).toUpperCase() + w.slice(1))
+      .join(" ");
+    return { ...empty, activeTool: "significado-nomes", initialName: nameFromSlug };
+  }
+  if (STATIC_PAGES[path]) return { ...empty, activeCategoryPage: path };
+  if (path.startsWith("categoria/")) {
+    const slug = path.replace("categoria/", "");
+    return CATEGORY_SEO_DATA[slug] ? { ...empty, activeCategoryPage: slug } : empty;
+  }
+  if (TOOL_COMPONENTS[path]) return { ...empty, activeTool: path };
+  return empty;
+}
+
+/** Todas as rotas que devem virar páginas HTML estáticas no build. */
+export function getPrerenderRoutes(): string[] {
+  return [
+    "/",
+    ...Object.keys(STATIC_PAGES).map((s) => `/${s}`),
+    ...Object.keys(CATEGORY_SEO_DATA).map((s) => `/categoria/${s}`),
+    ...Object.keys(TOOL_COMPONENTS).map((s) => `/${s}`),
+    ...Object.keys(enSlugToPtSlug)
+      .filter((en) => TOOL_COMPONENTS[enSlugToPtSlug[en]])
+      .map((en) => `/en/${en}`),
+  ];
+}
+
+export default function App({ initialPath }: { initialPath?: string } = {}) {
+  const [initialRoute] = useState<RouteState>(() =>
+    parsePath(initialPath ?? (typeof window !== "undefined" ? window.location.pathname : "/"))
+  );
   const [theme, setTheme] = useState<"dark" | "light">("dark");
   const [search, setSearch] = useState("");
   const [activeCategory, setActiveCategory] = useState<Category>("Todas");
-  const [activeTool, setActiveTool] = useState<string | null>(null);
+  const [activeTool, setActiveTool] = useState<string | null>(initialRoute.activeTool);
   const [cafeOpen, setCafeOpen] = useState(false);
-  const [activeCategoryPage, setActiveCategoryPage] = useState<string | null>(null);
-  const [lang, setLang] = useState<"pt" | "en">("pt");
-  const [initialName, setInitialName] = useState<string | undefined>(undefined);
-
-  // Restore state from URL on mount (F5 / direct access)
-  useEffect(() => {
-    const path = window.location.pathname.replace(/^\//, "").replace(/\/$/, "");
-    if (!path) return;
-    if (path.startsWith("en/")) {
-      const enSlug = path.replace("en/", "");
-      const ptSlug = enSlugToPtSlug[enSlug];
-      if (ptSlug && TOOL_COMPONENTS[ptSlug]) {
-        setLang("en");
-        setActiveTool(ptSlug);
-      }
-      return;
-    }
-    if (path.startsWith("significado-nome/")) {
-      const slug = path.replace("significado-nome/", "");
-      const nameFromSlug = slug
-        .split("-")
-        .map((w) => w.charAt(0).toUpperCase() + w.slice(1))
-        .join(" ");
-      setInitialName(nameFromSlug);
-      setActiveTool("significado-nomes");
-      return;
-    }
-    if (STATIC_PAGES[path]) {
-      setActiveCategoryPage(path);
-    } else if (path.startsWith("categoria/")) {
-      const slug = path.replace("categoria/", "");
-      if (CATEGORY_SEO_DATA[slug]) setActiveCategoryPage(slug);
-    } else if (TOOL_COMPONENTS[path]) {
-      setActiveTool(path);
-    }
-  }, []);
+  const [activeCategoryPage, setActiveCategoryPage] = useState<string | null>(initialRoute.activeCategoryPage);
+  const [lang, setLang] = useState<"pt" | "en">(initialRoute.lang);
+  const [initialName, setInitialName] = useState<string | undefined>(initialRoute.initialName);
 
   // Sync URL when navigation state changes
   useEffect(() => {
+    // Páginas de nome (/significado-nome/x) mantêm a própria URL
+    if (activeTool === "significado-nomes" && initialName && window.location.pathname.startsWith("/significado-nome/")) return;
     let url = "/";
     if (activeTool) {
       if (lang === "en" && ptSlugToEnSlug[activeTool]) {
@@ -445,7 +465,7 @@ export default function App() {
     if (url !== window.location.pathname) {
       window.history.pushState({ url }, "", url);
     }
-  }, [activeTool, activeCategoryPage, lang]);
+  }, [activeTool, activeCategoryPage, lang, initialName]);
 
   // Handle browser back/forward
   useEffect(() => {
@@ -533,7 +553,7 @@ export default function App() {
   if (activeCategoryPage && STATIC_PAGES[activeCategoryPage]) {
     const StaticComponent = STATIC_PAGES[activeCategoryPage];
     return (
-      <NavigationContext.Provider value={{ onSelectCategory: navigateToCategory, onSelectTool: navigateToTool, lang }}>
+      <NavigationContext.Provider value={{ onSelectCategory: navigateToCategory, onSelectTool: navigateToTool, lang, activeTool }}>
       <div className={theme === "light" ? "light" : ""}>
         <Header
           theme={theme}
@@ -580,7 +600,7 @@ export default function App() {
     const ToolComponent = TOOL_COMPONENTS[activeTool];
     if (ToolComponent) {
       return (
-        <NavigationContext.Provider value={{ onSelectCategory: navigateToCategory, onSelectTool: navigateToTool, lang }}>
+        <NavigationContext.Provider value={{ onSelectCategory: navigateToCategory, onSelectTool: navigateToTool, lang, activeTool }}>
         <div className={theme === "light" ? "light" : ""}>
           <Header
             theme={theme}
@@ -604,7 +624,7 @@ export default function App() {
   }
 
   return (
-    <NavigationContext.Provider value={{ onSelectCategory: navigateToCategory, onSelectTool: navigateToTool, lang }}>
+    <NavigationContext.Provider value={{ onSelectCategory: navigateToCategory, onSelectTool: navigateToTool, lang, activeTool }}>
     <div className={theme === "light" ? "light" : ""}>
       <Header
         theme={theme}
@@ -622,7 +642,7 @@ export default function App() {
           "@type": "WebSite",
           name: "CLICAresolve",
           url: "https://www.clicaresolve.com.br",
-          description: "84 ferramentas gratuitas para o seu dia a dia — sem cadastro, sem complicação.",
+          description: `${TOOLS.length} ferramentas gratuitas para o seu dia a dia — sem cadastro, sem complicação.`,
           potentialAction: {
             "@type": "SearchAction",
             target: "https://www.clicaresolve.com.br/?search={search_term_string}",
@@ -725,32 +745,12 @@ export default function App() {
           </h2>
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-5">
             {Object.values(CATEGORY_SEO_DATA).map((cat, i) => {
-              const count = TOOLS.filter((t) => {
-                const map: Record<string, string[]> = {
-                  "Casa": ["Casa", "Calculadoras"],
-                  "Saúde": ["Saúde"],
-                  "Finanças": ["Finanças"],
-                  "Esportes": ["Esportes", "Sorte"],
-                  "Educação": ["Educação", "Produtividade"],
-                  "Utilidades": ["Utilidades"],
-                  "DP/RH": ["DP/RH"],
-                  "Redes Sociais": ["Redes Sociais"],
-                  "Religioso": ["Religioso"],
-                  "Astrologia": ["Astrologia"],
-                  "Livros e Leitura": ["Livros e Leitura"],
-                  "Família e Bebês": ["Família e Bebês"],
-                  "Pet": ["Pet"],
-                  "Lazer": ["Lazer"],
-                  "Produtividade": ["Produtividade", "Educação"],
-                  "Culinária": ["Culinária"],
-                };
-                const cats = map[cat.categoryFilter] || [cat.categoryFilter];
-                return cats.includes(t.category);
-              }).length;
+              const count = getCategoryTools(cat, TOOLS).length;
               return (
-                <button
+                <a
                   key={cat.slug}
-                  onClick={() => setActiveCategoryPage(cat.slug)}
+                  href={`/categoria/${cat.slug}`}
+                  onClick={(e) => { if (e.ctrlKey || e.metaKey || e.shiftKey || e.button !== 0) return; e.preventDefault(); navigateToCategory(cat.slug); }}
                   className="group text-left p-5 rounded-2xl bg-card border border-border hover:border-green-400/40 hover:bg-green-400/5 transition-all duration-200 hover:-translate-y-0.5 animate-fade-in-up"
                   style={{ animationDelay: `${Math.min(i * 40, 500)}ms` }}
                 >
@@ -761,7 +761,7 @@ export default function App() {
                     <span>Explorar</span>
                     <span>→</span>
                   </div>
-                </button>
+                </a>
               );
             })}
           </div>
@@ -786,7 +786,7 @@ function Footer({ onNavigate, cafeOpen, setCafeOpen }: { onNavigate: (page: stri
               <span className="text-sm font-bold leading-none"><span className="text-text">CLICA</span><span className="text-green-400">resolve</span></span>
             </div>
             <p className="text-xs text-muted leading-relaxed">
-              84 ferramentas gratuitas para o dia a dia — sem cadastro, sem complicação.
+              {TOOLS.length} ferramentas gratuitas para o dia a dia — sem cadastro, sem complicação.
             </p>
           </div>
           <div>
@@ -797,13 +797,14 @@ function Footer({ onNavigate, cafeOpen, setCafeOpen }: { onNavigate: (page: stri
                 { label: "Metodologia", slug: "metodologia" },
                 { label: "Contato", slug: "contato" },
               ].map((l) => (
-                <button
+                <a
                   key={l.slug}
-                  onClick={() => onNavigate(l.slug)}
+                  href={`/${l.slug}`}
+                  onClick={(e) => { if (e.ctrlKey || e.metaKey || e.shiftKey || e.button !== 0) return; e.preventDefault(); onNavigate(l.slug); }}
                   className="block text-xs text-muted hover:text-green-400 transition-colors text-left"
                 >
                   {l.label}
-                </button>
+                </a>
               ))}
             </div>
           </div>
@@ -814,13 +815,14 @@ function Footer({ onNavigate, cafeOpen, setCafeOpen }: { onNavigate: (page: stri
                 { label: "Política de Privacidade", slug: "privacidade" },
                 { label: "Termos de Uso", slug: "termos" },
               ].map((l) => (
-                <button
+                <a
                   key={l.slug}
-                  onClick={() => onNavigate(l.slug)}
+                  href={`/${l.slug}`}
+                  onClick={(e) => { if (e.ctrlKey || e.metaKey || e.shiftKey || e.button !== 0) return; e.preventDefault(); onNavigate(l.slug); }}
                   className="block text-xs text-muted hover:text-green-400 transition-colors text-left"
                 >
                   {l.label}
-                </button>
+                </a>
               ))}
             </div>
           </div>

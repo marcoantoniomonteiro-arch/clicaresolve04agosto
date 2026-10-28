@@ -1,7 +1,8 @@
 import React from "react";
 import { SEOHead } from "./SEOHead";
+import { SiteFooterLinks } from "./SiteFooterLinks";
 import { TOOLS } from "../data/tools";
-import { CATEGORY_SEO_DATA, CategorySEOData } from "../data/seoData";
+import { CATEGORY_SEO_DATA, CategorySEOData, getCategoryTools } from "../data/seoData";
 import { ArrowLeft, ArrowRight, CheckCircle } from "lucide-react";
 
 interface CategoryPageProps {
@@ -36,29 +37,7 @@ export function CategoryPage({ slug, onBack, onSelectTool, onSelectCategory }: C
   const data: CategorySEOData = CATEGORY_SEO_DATA[slug];
   if (!data) return null;
 
-  const categoryTools = TOOLS.filter((t) => {
-    // Map category filter to actual tool categories
-    const map: Record<string, string[]> = {
-      "Casa": ["Casa", "Calculadoras"],
-      "Saúde": ["Saúde"],
-      "Finanças": ["Finanças"],
-      "Esportes": ["Esportes", "Sorte"],
-      "Educação": ["Educação", "Produtividade"],
-      "Utilidades": ["Utilidades"],
-      "DP/RH": ["DP/RH"],
-      "Redes Sociais": ["Redes Sociais"],
-      "Religioso": ["Religioso"],
-      "Astrologia": ["Astrologia"],
-      "Livros e Leitura": ["Livros e Leitura"],
-      "Família e Bebês": ["Família e Bebês"],
-      "Pet": ["Pet"],
-      "Lazer": ["Lazer"],
-      "Produtividade": ["Produtividade", "Educação"],
-      "Culinária": ["Culinária"],
-    };
-    const cats = map[data.categoryFilter] || [data.categoryFilter];
-    return cats.includes(t.category);
-  });
+  const categoryTools = getCategoryTools(data, TOOLS);
 
   const collectionSchema = {
     "@context": "https://schema.org",
@@ -240,6 +219,7 @@ export function CategoryPage({ slug, onBack, onSelectTool, onSelectCategory }: C
       </div>
 
       <footer className="text-center text-xs text-muted py-8 border-t border-border">
+        <SiteFooterLinks />
         © {new Date().getFullYear()} CLICAresolve — Ferramentas gratuitas para o dia a dia
       </footer>
     </div>

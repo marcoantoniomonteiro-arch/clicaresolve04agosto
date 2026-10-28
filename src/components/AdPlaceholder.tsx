@@ -38,7 +38,7 @@ export function AdPlaceholder({ size, slot }: AdPlaceholderProps) {
         style={{ width: dim.width, height: dim.height, maxWidth: "100%" }}
         className="flex items-center justify-center border border-dashed border-gray-600 rounded-lg bg-card text-gray-500 text-sm text-center px-4"
       >
-        <span>Espaco Publicitario — AdSense ativo apos aprovacao ({dim.label})</span>
+        <span>Espaço Publicitário — AdSense ativo após aprovação ({dim.label})</span>
       </div>
     </div>
   );

@@ -58,7 +58,7 @@ export function GeradorLinkWhatsApp({ onBack }: Props) {
     >
       <div className="space-y-5">
         <label className="block">
-          <span className="text-sm text-gray-400 mb-1 block">Numero do celular</span>
+          <span className="text-sm text-gray-400 mb-1 block">Número do celular</span>
           <div className="flex gap-2">
             <span className="px-3 py-2 rounded-lg bg-white/5 text-gray-400 text-sm flex items-center">+55</span>
             <input
@@ -69,7 +69,7 @@ export function GeradorLinkWhatsApp({ onBack }: Props) {
               className="input-field flex-1"
             />
           </div>
-          <p className="text-xs text-gray-500 mt-1">Apenas numeros, incluindo DDD</p>
+          <p className="text-xs text-gray-500 mt-1">Apenas números, incluindo DDD</p>
         </label>
 
         <label className="block">
@@ -112,7 +112,7 @@ export function GeradorLinkWhatsApp({ onBack }: Props) {
 
         <div className="p-3 rounded-lg bg-white/5 text-xs text-gray-500 space-y-2">
           <p className="font-semibold text-gray-400">Como usar:</p>
-          <p>1. Digite o numero com DDD (apenas numeros)</p>
+          <p>1. Digite o número com DDD (apenas números)</p>
           <p>2. Adicione uma mensagem opcional</p>
           <p>3. Copie o link e compartilhe</p>
           <p>4. Cole no Instagram, site, email...</p>

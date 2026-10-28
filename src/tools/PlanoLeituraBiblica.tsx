@@ -152,7 +152,7 @@ export function PlanoLeituraBiblica({ onBack }: Props) {
 
   const compartilhar = useCallback(() => {
     if (!leituraDeHoje) return;
-    const texto = `📖 *Leitura Biblica do Dia ${diaAtual}*\n\n📚 ${leituraDeHoje.livro} ${leituraDeHoje.capitulos}\n\n_CLICAresolve - Ferramentas para o dia a dia_`;
+    const texto = `📖 *Leitura Bíblica do Dia ${diaAtual}*\n\n📚 ${leituraDeHoje.livro} ${leituraDeHoje.capitulos}\n\n_CLICAresolve - Ferramentas para o dia a dia_`;
     const url = `https://wa.me/?text=${encodeURIComponent(texto)}`;
     window.open(url, "_blank");
   }, [diaAtual, leituraDeHoje]);
@@ -166,10 +166,10 @@ export function PlanoLeituraBiblica({ onBack }: Props) {
 
   return (
     <ToolLayout
-      title="Plano de Leitura Biblica"
+      title="Plano de Leitura Bíblica"
       emoji="📖"
       category="Religioso"
-      description="Plano de 365 dias para ler a Biblia inteira. Progresso salvo automaticamente."
+      description="Plano de 365 dias para ler a Bíblia inteira. Progresso salvo automaticamente."
       onBack={onBack}
       affiliateBanner={<AffiliateBanner terms={["Bíblia leitura diária"]} label="Bíblia leitura diária" />}
     
@@ -200,7 +200,7 @@ export function PlanoLeituraBiblica({ onBack }: Props) {
                 <Book className="w-6 h-6 text-blue-400" />
                 <div className="flex-1">
                   <p className="text-lg font-bold text-white">{leituraDeHoje.livro}</p>
-                  <p className="text-sm text-gray-400">Capitulos {leituraDeHoje.capitulos}</p>
+                  <p className="text-sm text-gray-400">Capítulos {leituraDeHoje.capitulos}</p>
                 </div>
                 <button
                   onClick={() => toggleDia(diaAtual)}
@@ -233,7 +233,7 @@ export function PlanoLeituraBiblica({ onBack }: Props) {
                   onClick={() => setDiaAtual((d) => Math.min(365, d + 1))}
                   className="px-4 py-2 rounded-lg bg-white/10 text-gray-400 text-sm hover:bg-white/20 disabled:opacity-50 disabled:cursor-not-allowed"
                 >
-                  Proximo
+                  Próximo
                 </button>
               </div>
             </>
@@ -241,7 +241,7 @@ export function PlanoLeituraBiblica({ onBack }: Props) {
         </div>
 
         <div className="p-4 rounded-xl bg-white/5 border border-white/8 max-h-64 overflow-y-auto">
-          <p className="text-xs text-gray-400 mb-2">Historico</p>
+          <p className="text-xs text-gray-400 mb-2">Histórico</p>
           <div className="grid grid-cols-7 gap-1">
             {PLANO.slice(0, Math.max(diaAtual + 7, 35)).map((p) => (
               <button

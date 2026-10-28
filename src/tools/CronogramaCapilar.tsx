@@ -35,7 +35,7 @@ const DICAS: Record<string, Record<string, string[]>> = {
     cor: "bg-blue-500",
     dicas: [
       "Use mascaras com glicerina, aloe vera, pantenol",
-      "Lave com agua morna, nao quente",
+      "Lave com água morna, não quente",
       "Deixe a mascara agir por 15-20 min",
       "Use touca termica para potencializar",
     ],
@@ -47,7 +47,7 @@ const DICAS: Record<string, Record<string, string[]>> = {
       "Use mascaras com oleos: argan, coco, rícino",
       "Aplique do comprimento as pontas",
       "Evite na raiz se tiver cabelo oleoso",
-      "Leave-in apos o procedimento",
+      "Leave-in após o procedimento",
     ],
   },
   R: {
@@ -55,9 +55,9 @@ const DICAS: Record<string, Record<string, string[]>> = {
     cor: "bg-red-500",
     dicas: [
       "Use produtos com queratina, colageno, cisteina",
-      "Nao exagere: maximo 1x por semana",
+      "Não exagere: máximo 1x por semana",
       "Siga tempo de pausa indicado no produto",
-      "Hidrate apos reconstrucao",
+      "Hidrate após reconstrução",
     ],
   },
 };
@@ -93,9 +93,9 @@ export function CronogramaCapilar({ onBack }: Props) {
             <span className="text-sm text-gray-400 mb-2 block">Porosidade</span>
             <div className="space-y-2">
               {[
-                { value: "baixa", label: "Baixa", desc: "Cabelo resistente, nao absorve bem" },
+                { value: "baixa", label: "Baixa", desc: "Cabelo resistente, não absorve bem" },
                 { value: "media", label: "Media", desc: "Equilibrado, absorve e retem" },
-                { value: "alta", label: "Alta", desc: "Absorve rapido, perde facil" },
+                { value: "alta", label: "Alta", desc: "Absorve rápido, perde fácil" },
               ].map((p) => (
                 <button
                   key={p.value}
@@ -160,13 +160,13 @@ export function CronogramaCapilar({ onBack }: Props) {
           </div>
           <div className="flex justify-center gap-4 mt-3 text-xs">
             <span className="flex items-center gap-1">
-              <span className="w-3 h-3 rounded bg-blue-500" /> Hidratacao
+              <span className="w-3 h-3 rounded bg-blue-500" /> Hidratação
             </span>
             <span className="flex items-center gap-1">
-              <span className="w-3 h-3 rounded bg-yellow-500" /> Nutricao
+              <span className="w-3 h-3 rounded bg-yellow-500" /> Nutrição
             </span>
             <span className="flex items-center gap-1">
-              <span className="w-3 h-3 rounded bg-red-500" /> Reconstrucao
+              <span className="w-3 h-3 rounded bg-red-500" /> Reconstrução
             </span>
           </div>
         </div>

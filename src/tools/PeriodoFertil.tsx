@@ -87,7 +87,7 @@ export function PeriodoFertil({ onBack }: Props) {
       category="Saúde"
       description="Calcule seu período fértil e data de ovulação com calendário visual."
       onBack={onBack}
-      affiliateBanner={<AffiliateBanner terms={["teste de ovulacao", "vitamina acido folico"]} label="Saúde reprodutiva" />}
+      affiliateBanner={<AffiliateBanner terms={["teste de ovulação", "vitamina acido folico"]} label="Saúde reprodutiva" />}
       disclaimer="Esta ferramenta é puramente informativa. Não substitui consulta médica ou diagnóstico profissional. Consulte sempre um profissional de saúde habilitado. Este método de estimativa NÃO é método contraceptivo."
     >
       <div className="space-y-4">

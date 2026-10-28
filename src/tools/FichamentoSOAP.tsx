@@ -54,18 +54,18 @@ Estudo via CLICAresolve`;
       title="Fichamento SOAP"
       emoji="✍️"
       category="Religioso"
-      description="Metodo SOAP para estudo biblico: Scripture, Observation, Application, Prayer."
+      description="Método SOAP para estudo bíblico: Scripture, Observation, Application, Prayer."
       onBack={onBack}
       affiliateBanner={
         <AffiliateBanner
-          terms={["diario de estudos biblicos", "caderno devocional", "bloco de notas espirituais"]}
+          terms={["diário de estudos bíblicos", "caderno devocional", "bloco de notas espirituais"]}
           label="Registre seus estudos"
         />
       }
     >
       <div className="space-y-5">
         <div className="p-4 rounded-xl bg-blue-500/10 border border-blue-500/20">
-          <p className="text-xs text-blue-400 mb-2">Metodo SOAP</p>
+          <p className="text-xs text-blue-400 mb-2">Método SOAP</p>
           <div className="grid grid-cols-4 gap-2 text-xs text-center">
             <div className="p-2 rounded bg-white/5">
               <p className="font-bold text-blue-400">S</p>
@@ -116,7 +116,7 @@ Estudo via CLICAresolve`;
           <div>
             <label className="flex items-center gap-2 text-sm text-yellow-400 mb-1">
               <span className="w-4 h-4 flex items-center justify-center text-xs font-bold bg-yellow-500/20 rounded">A</span>
-              Application (Aplicacao pessoal)
+              Application (Aplicação pessoal)
             </label>
             <textarea
               value={application}
@@ -129,7 +129,7 @@ Estudo via CLICAresolve`;
           <div>
             <label className="flex items-center gap-2 text-sm text-pink-400 mb-1">
               <span className="w-4 h-4 flex items-center justify-center text-xs font-bold bg-pink-500/20 rounded">P</span>
-              Prayer (Oracao)
+              Prayer (Oração)
             </label>
             <textarea
               value={prayer}

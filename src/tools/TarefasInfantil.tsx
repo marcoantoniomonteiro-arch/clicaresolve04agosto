@@ -118,12 +118,12 @@ export function TarefasInfantil({ onBack }: Props) {
       title="Quadro de Tarefas Infantil"
       emoji="👶"
       category="Utilidades"
-      description="Quadro gamificado de tarefas com estrelinhas para criancas."
+      description="Quadro gamificado de tarefas com estrelinhas para crianças."
       onBack={onBack}
       affiliateBanner={
         <AffiliateBanner
           terms={["quadro de rotina infantil", "livro de habitos infantil", "quadro de tarejas"]}
-          label="Motivacao para os pequenos"
+          label="Motivação para os pequenos"
         />
       }
     >
@@ -131,13 +131,13 @@ export function TarefasInfantil({ onBack }: Props) {
         {filhos.length === 0 ? (
           <div className={`p-6 rounded-2xl bg-gradient-to-br ${corGradiente} bg-opacity-20 border border-white/20 text-center`}>
             <p className="text-4xl mb-2">🌟</p>
-            <p className="text-white font-semibold mb-4">Adicione uma crianca para comecar</p>
+            <p className="text-white font-semibold mb-4">Adicione uma criança para comecar</p>
             <div className="grid grid-cols-2 gap-3 mb-3">
               <input
                 type="text"
                 value={novoNome}
                 onChange={(e) => setNovoNome(e.target.value)}
-                placeholder="Nome da crianca"
+                placeholder="Nome da criança"
                 className="input-field"
               />
               <input
@@ -176,7 +176,7 @@ export function TarefasInfantil({ onBack }: Props) {
                   setNovaIdade("5");
                   const shouldShow = true;
                   if (shouldShow) {
-                    const nome = prompt("Nome da crianca?");
+                    const nome = prompt("Nome da criança?");
                     if (nome) {
                       const idade = prompt("Idade?", "5");
                       setFilhos((prev) => [

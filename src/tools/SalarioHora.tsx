@@ -48,14 +48,14 @@ export function SalarioHora({ onBack }: Props) {
 
   return (
     <ToolLayout
-      title="Conversor Salario Hora/Mensal"
+      title="Conversor Salário Hora/Mensal"
       emoji="💼"
       category="DP/RH"
-      description="Calcule o salario mensal a partir do valor por hora."
+      description="Calcule o salário mensal a partir do valor por hora."
       onBack={onBack}
       affiliateBanner={<AffiliateBanner terms={["livro CLT comentada"]} label="livro CLT comentada" />}
     
-      disclaimer="Valores aproximados. O calculo do INSS segue a tabela oficial e nao considera dependentes ou outras deducoes."
+      disclaimer="Valores aproximados. O cálculo do INSS segue a tabela oficial e não considera dependentes ou outras deduções."
     >
       <div className="space-y-5">
         <div className="grid grid-cols-3 gap-3">
@@ -92,7 +92,7 @@ export function SalarioHora({ onBack }: Props) {
         {result.hora > 0 && (
           <div className="space-y-4">
             <div className="p-5 rounded-xl bg-green-500/10 border border-green-500/20 text-center">
-              <p className="text-xs text-green-400 mb-1">Salario Liquido Estimado</p>
+              <p className="text-xs text-green-400 mb-1">Salário Líquido Estimado</p>
               <p className="text-4xl font-black text-green-400">
                 R$ {result.liquido.toLocaleString("pt-BR", { minimumFractionDigits: 2 })}
               </p>

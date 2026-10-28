@@ -86,14 +86,14 @@ export function CicloEstudos({ onBack }: Props) {
       title="Montador de Ciclo de Estudos"
       emoji="📚"
       category="Estudos"
-      description="Distribua horas de estudo proporcionalmente ao peso de cada materia."
+      description="Distribua horas de estudo proporcionalmente ao peso de cada matéria."
       onBack={onBack}
       affiliateBanner={<AffiliateBanner terms={["planner estudos organização"]} label="planner estudos organização" />}
     
     >
       <div className="space-y-5">
         <label className="block">
-          <span className="text-sm text-gray-400 mb-1 block">Horas disponiveis por semana</span>
+          <span className="text-sm text-gray-400 mb-1 block">Horas disponíveis por semana</span>
           <input
             type="number"
             value={horasSemana}
@@ -107,7 +107,7 @@ export function CicloEstudos({ onBack }: Props) {
             type="text"
             value={novaMateria}
             onChange={(e) => setNovaMateria(e.target.value)}
-            placeholder="Nome da materia"
+            placeholder="Nome da matéria"
             className="input-field flex-1"
             onKeyDown={(e) => e.key === "Enter" && addMateria()}
           />

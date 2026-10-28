@@ -1,6 +1,8 @@
 import React, { useEffect, useMemo, useState } from "react";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import { AdPlaceholder } from "./AdPlaceholder";
+import { SiteFooterLinks } from "./SiteFooterLinks";
+import { ToolContent } from "./ToolContent";
 import { SEOHead } from "./SEOHead";
 import { TOOLS } from "../data/tools";
 import { CATEGORY_SEO_DATA } from "../data/seoData";
@@ -8,6 +10,24 @@ import { getToolSEO } from "../data/toolSeoData";
 import { useNavigation } from "../context/NavigationContext";
 import { toolsSeoENByPtSlug } from "../i18n/tools/en";
 import { wasScrolling } from "../utils/touchHandler";
+
+type FAQ = { question: string; answer: string };
+
+/** Procura um <ToolContent> entre os filhos e devolve as perguntas dele. */
+function findContentFaqs(node: React.ReactNode, depth = 0): FAQ[] | null {
+  if (depth > 3) return null;
+  let found: FAQ[] | null = null;
+  React.Children.forEach(node, (child) => {
+    if (found || !React.isValidElement(child)) return;
+    const el = child as React.ReactElement<{ data?: { faqs?: FAQ[] }; children?: React.ReactNode }>;
+    if (el.type === ToolContent && el.props.data?.faqs?.length) {
+      found = el.props.data.faqs;
+    } else if (el.props.children) {
+      found = findContentFaqs(el.props.children, depth + 1);
+    }
+  });
+  return found;
+}
 
 interface ToolLayoutProps {
   title: string;
@@ -55,8 +75,8 @@ export function ToolLayout({
   slug,
   content,
 }: ToolLayoutProps) {
-  const { onSelectCategory, onSelectTool, lang } = useNavigation();
-  const toolSlug = slug || TOOLS.find((t) => t.name === title)?.slug || "";
+  const { onSelectCategory, onSelectTool, lang, activeTool } = useNavigation();
+  const toolSlug = slug || activeTool || TOOLS.find((t) => t.name === title)?.slug || "";
   const seoEN = lang === "en" ? toolsSeoENByPtSlug[toolSlug] : null;
   const categorySlug = CATEGORY_SLUG_MAP[category] || "";
   const categoryData = CATEGORY_SEO_DATA[categorySlug];
@@ -99,11 +119,19 @@ export function ToolLayout({
 
   const schemas: Record<string, unknown>[] = [baseSchema];
 
-  if (seo.hasFAQ && seo.faqs && seo.faqs.length > 0) {
+  // As perguntas da própria ferramenta (ToolContent) têm prioridade; as do
+  // arquivo de SEO só aparecem quando a ferramenta não tem FAQ própria.
+  // Assim a página nunca mostra duas seções de FAQ com respostas diferentes.
+  const contentFaqs = findContentFaqs(children);
+  const seoFaqs = seo.hasFAQ && seo.faqs && seo.faqs.length > 0 ? seo.faqs : null;
+  const pageFaqs = contentFaqs || seoFaqs;
+  const showSeoFaqBlock = !contentFaqs && !!seoFaqs;
+
+  if (pageFaqs) {
     schemas.push({
       "@context": "https://schema.org",
       "@type": "FAQPage",
-      mainEntity: seo.faqs.map((faq) => ({
+      mainEntity: pageFaqs.map((faq) => ({
         "@type": "Question",
         name: faq.question,
         acceptedAnswer: {
@@ -193,11 +221,11 @@ export function ToolLayout({
         </div>
 
         {/* FAQ visível — reaproveita seo.faqs, já usado no JSON-LD acima */}
-        {seo.hasFAQ && seo.faqs && seo.faqs.length > 0 && (
+        {showSeoFaqBlock && seoFaqs && (
           <div className="mt-10 border-t border-border pt-8">
             <h2 className="text-lg font-bold text-text mb-4">Perguntas Frequentes</h2>
             <div className="space-y-4">
-              {seo.faqs.map((faq, i) => (
+              {seoFaqs.map((faq, i) => (
                 <div key={i}>
                   <h3 className="text-sm font-semibold text-text mb-1">{faq.question}</h3>
                   <p className="text-sm text-muted leading-relaxed">{faq.answer}</p>
@@ -248,7 +276,8 @@ export function ToolLayout({
           </div>
         )}
 
-        <footer className="text-center text-xs text-muted mt-8 pb-6">
+        <footer className="text-center text-xs text-muted mt-8 pb-6 border-t border-border pt-6">
+          <SiteFooterLinks />
           © {new Date().getFullYear()} CLICAresolve — Ferramentas gratuitas para o dia a dia
         </footer>
       </div>

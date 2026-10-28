@@ -98,7 +98,7 @@ export function AgendaUnhas({ onBack }: Props) {
       title="Agenda de Unhas"
       emoji="💅"
       category="Utilidades"
-      description="Gerencie clientes e calcule proximas manutencoes de unhas."
+      description="Gerencie clientes e calcule próximas manutenções de unhas."
       onBack={onBack}
       affiliateBanner={<AffiliateBanner terms={["kit alongamento unhas gel"]} label="kit alongamento unhas gel" shopeeTerms={["kit manicure"]} shopeeLabel="Ver na Shopee" />}
     
@@ -115,7 +115,7 @@ export function AgendaUnhas({ onBack }: Props) {
           </div>
           <div className="p-3 rounded-xl bg-yellow-500/10 border border-yellow-500/20 text-center">
             <p className="text-2xl font-bold text-yellow-400">{estatisticas.proximos}</p>
-            <p className="text-xs text-yellow-400">Proximos</p>
+            <p className="text-xs text-yellow-400">Próximos</p>
           </div>
         </div>
 

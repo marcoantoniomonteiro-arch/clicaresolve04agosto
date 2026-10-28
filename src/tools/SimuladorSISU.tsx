@@ -78,7 +78,7 @@ export function SimuladorSISU({ onBack }: Props) {
       title="Simulador SISU"
       emoji="🎓"
       category="Estudos"
-      description="Calcule sua media do ENEM com pesos por curso."
+      description="Calcule sua média do ENEM com pesos por curso."
       onBack={onBack}
       affiliateBanner={<AffiliateBanner terms={["redação ENEM livro"]} label="redação ENEM livro" />}
     
@@ -156,18 +156,18 @@ export function SimuladorSISU({ onBack }: Props) {
 
         <div className="grid grid-cols-2 gap-3">
           <div className="p-4 rounded-xl bg-white/5 text-center">
-            <p className="text-xs text-gray-400">Media Simples</p>
+            <p className="text-xs text-gray-400">Média Simples</p>
             <p className="text-3xl font-black text-white">{resultados.mediaSimples.toFixed(1)}</p>
           </div>
           <div className="p-4 rounded-xl bg-green-500/10 border border-green-500/20 text-center">
-            <p className="text-xs text-green-400">Media Ponderada</p>
+            <p className="text-xs text-green-400">Média Ponderada</p>
             <p className="text-3xl font-black text-green-400">{resultados.mediaPonderada.toFixed(1)}</p>
           </div>
         </div>
 
         <div className="p-4 rounded-xl bg-white/5 border border-white/8">
           <div className="flex justify-between items-center">
-            <span className="text-sm text-gray-400">Classificacao</span>
+            <span className="text-sm text-gray-400">Classificação</span>
             <span className={`text-lg font-bold ${resultados.faixaCor}`}>{resultados.faixa}</span>
           </div>
           <div className="h-2 bg-white/10 rounded-full mt-2 relative">
@@ -189,7 +189,7 @@ export function SimuladorSISU({ onBack }: Props) {
         </div>
 
         <p className="text-xs text-gray-500 text-center">
-          Simulacao aproximada. A nota de corte real varia por instituicao e semestre.
+          Simulação aproximada. A nota de corte real varia por instituição e semestre.
         </p>
       </div>
       <ToolContent

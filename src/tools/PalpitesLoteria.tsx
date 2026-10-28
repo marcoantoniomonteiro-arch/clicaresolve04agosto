@@ -64,11 +64,11 @@ export function PalpitesLoteria({ onBack }: Props) {
       title="Palpites Loteria"
       emoji="🍀"
       category="Financas"
-      description="Gere palpites aleatorios para Mega-Sena ou Lotofacil."
+      description="Gere palpites aleatórios para Mega-Sena ou Lotofacil."
       onBack={onBack}
       affiliateBanner={<AffiliateBanner terms={["kit loteria bolão"]} label="kit loteria bolão" />}
     
-      disclaimer="Esta ferramenta e apenas para entretenimento. Jogo responsavel. Os numeros sao gerados aleatoriamente e nao garantem qualquer resultado."
+      disclaimer="Esta ferramenta e apenas para entretenimento. Jogo responsável. Os números são gerados aleatoriamente e não garantem qualquer resultado."
     >
       <div className="space-y-5">
         <div className="grid grid-cols-2 gap-3">
@@ -138,8 +138,9 @@ export function PalpitesLoteria({ onBack }: Props) {
           </div>
         )}
 
+        {CONFIG.betBannersEnabled && (
         <div className="p-4 rounded-xl border border-amber-500/20 bg-amber-500/5">
-          <p className="text-xs text-amber-400 font-semibold uppercase tracking-wider mb-3">Links Uteis</p>
+          <p className="text-xs text-amber-400 font-semibold uppercase tracking-wider mb-3">Links Úteis</p>
           <div className="flex flex-wrap gap-2">
             <a
               href={CONFIG.linkLoteria}
@@ -147,7 +148,7 @@ export function PalpitesLoteria({ onBack }: Props) {
               rel="noopener noreferrer"
               className="px-4 py-2 rounded-lg bg-amber-500 hover:bg-amber-400 text-black text-sm font-semibold transition-colors"
             >
-              Registre em bolao oficial
+              Registre em bolão oficial
             </a>
             <a
               href={CONFIG.linkBet}
@@ -159,6 +160,7 @@ export function PalpitesLoteria({ onBack }: Props) {
             </a>
           </div>
         </div>
+        )}
       </div>
       <ToolContent
         toolName="Palpites de Loteria"

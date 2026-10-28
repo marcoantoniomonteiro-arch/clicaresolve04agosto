@@ -79,7 +79,7 @@ export function MapeamentoErros({ onBack }: Props) {
       title="Mapeamento de Erros"
       emoji="📉"
       category="Estudos"
-      description="Identifique suas materias mais fracas com base na taxa de acertos."
+      description="Identifique suas matérias mais fracas com base na taxa de acertos."
       onBack={onBack}
       affiliateBanner={<AffiliateBanner terms={["caderno questões concurso"]} label="caderno questões concurso" />}
     
@@ -110,7 +110,7 @@ export function MapeamentoErros({ onBack }: Props) {
           />
         </div>
         <button onClick={addMateria} className="btn-primary w-full">
-          Adicionar Materia
+          Adicionar Matéria
         </button>
 
         {materias.length > 0 && (
@@ -164,7 +164,7 @@ export function MapeamentoErros({ onBack }: Props) {
             {stats && (
               <>
                 <div className="p-4 rounded-xl bg-white/5 border border-white/8">
-                  <p className="text-xs text-gray-400 mb-3">Grafico de Acertos por Materia</p>
+                  <p className="text-xs text-gray-400 mb-3">Gráfico de Acertos por Matéria</p>
                   <div className="space-y-2">
                     {stats.sorted.map((m) => {
                       const pct = m.total > 0 ? (m.acertos / m.total) * 100 : 0;
@@ -208,7 +208,7 @@ export function MapeamentoErros({ onBack }: Props) {
                   </div>
                   <div className="p-4 rounded-xl bg-blue-500/10 border border-blue-500/20 text-center">
                     <TrendingDown className="w-5 h-5 text-blue-400 mx-auto mb-1" />
-                    <p className="text-xs text-blue-400">Media Geral</p>
+                    <p className="text-xs text-blue-400">Média Geral</p>
                     <p className="text-sm font-bold text-blue-400">{stats.mediaGeral.toFixed(1)}%</p>
                   </div>
                 </div>

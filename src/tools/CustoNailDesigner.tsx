@@ -83,7 +83,7 @@ export function CustoNailDesigner({ onBack }: Props) {
       title="Custo Nail Designer"
       emoji="💅"
       category="Utilidades"
-      description="Calcule o custo real dos seus servicos de nail designer."
+      description="Calcule o custo real dos seus serviços de nail designer."
       onBack={onBack}
       affiliateBanner={
         <AffiliateBanner
@@ -196,7 +196,7 @@ export function CustoNailDesigner({ onBack }: Props) {
         <div className="p-4 rounded-xl bg-pink-500/10 border border-pink-500/20">
           <div className="flex items-center gap-2 mb-3">
             <Calculator className="w-4 h-4 text-pink-400" />
-            <p className="text-xs text-pink-400 font-semibold">Precificacao</p>
+            <p className="text-xs text-pink-400 font-semibold">Precificação</p>
           </div>
           <div className="space-y-2">
             <div className="flex justify-between text-sm">
@@ -204,11 +204,11 @@ export function CustoNailDesigner({ onBack }: Props) {
               <span className="text-white">R$ {resultado.custoInsumos.toFixed(2)}</span>
             </div>
             <div className="flex justify-between text-sm">
-              <span className="text-gray-400">Mao de obra</span>
+              <span className="text-gray-400">Mão de obra</span>
               <span className="text-white">R$ {resultado.custoMaoDeObra.toFixed(2)}</span>
             </div>
             <div className="border-t border-white/10 pt-2 flex justify-between">
-              <span className="text-sm font-semibold text-gray-300">Preco minimo</span>
+              <span className="text-sm font-semibold text-gray-300">Preço mínimo</span>
               <span className="font-bold text-white">R$ {resultado.precoMinimo.toFixed(2)}</span>
             </div>
             <div className="flex justify-between bg-white/5 rounded p-2">

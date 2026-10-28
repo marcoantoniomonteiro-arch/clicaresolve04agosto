@@ -14,7 +14,7 @@ interface Props {
 const LIMITES = [
   { nome: "Twitter/X", limite: 280, cor: "bg-sky-500" },
   { nome: "Instagram", limite: 2200, cor: "bg-pink-500" },
-  { nome: "Redacao ENEM", limite: 1800, cor: "bg-green-500" },
+  { nome: "Redação ENEM", limite: 1800, cor: "bg-green-500" },
 ];
 
 export function ContadorCaracteres({ onBack }: Props) {
@@ -77,7 +77,7 @@ export function ContadorCaracteres({ onBack }: Props) {
             <p className="text-lg font-bold text-white">{stats.charsComEspaco}</p>
           </div>
           <div className="p-3 rounded-xl bg-white/5 text-center">
-            <p className="text-xs text-gray-400 mt-2">Sem espaco</p>
+            <p className="text-xs text-gray-400 mt-2">Sem espaço</p>
             <p className="text-lg font-bold text-white">{stats.charsSemEspaco}</p>
           </div>
           <div className="p-3 rounded-xl bg-white/5 text-center">

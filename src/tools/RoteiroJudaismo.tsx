@@ -29,11 +29,11 @@ const FASES: Fase[] = [
     titulo: "Fase 1: Tora e Tehilim",
     descricao: "Fundamento - Os 5 livros de Moises e os Salmos",
     obras: [
-      { id: "genesis", nome: "Genesis (Bereshit)", descricao: "Criacao, patriarcas e origem do povo hebreu", termoAmazon: "Genesis Bereshit Hebraico" },
+      { id: "genesis", nome: "Genesis (Bereshit)", descricao: "Criação, patriarcas e origem do povo hebreu", termoAmazon: "Genesis Bereshit Hebraico" },
       { id: "exodo", nome: "Exodo (Shemot)", descricao: "Saida do Egito, entrega da Tora no Sinai", termoAmazon: "Exodo Shemot Hebraico" },
-      { id: "levitico", nome: "Levitico (Vayicra)", descricao: "Leis de santidade e servico no Templo", termoAmazon: "Levitico Vayicra" },
-      { id: "numeros", nome: "Numeros (Bamidbar)", descricao: "Jornada pelo deserto, censos e preparacao", termoAmazon: "Numeros Bamidbar" },
-      { id: "deuteronomio", nome: "Deuteronomio (Devarim)", descricao: "Revisao da lei antes da entrada em Canaa", termoAmazon: "Deuteronomio Devarim" },
+      { id: "levitico", nome: "Levitico (Vayicra)", descricao: "Leis de santidade e serviço no Templo", termoAmazon: "Levitico Vayicra" },
+      { id: "numeros", nome: "Números (Bamidbar)", descricao: "Jornada pelo deserto, censos e preparação", termoAmazon: "Números Bamidbar" },
+      { id: "deuteronomio", nome: "Deuteronomio (Devarim)", descricao: "Revisão da lei antes da entrada em Canaa", termoAmazon: "Deuteronomio Devarim" },
       { id: "tehilim", nome: "Tehilim (Salmos)", descricao: "150 salmos de louvor, suplica e gratidao", termoAmazon: "Salmos Tehilim Hebraico" },
     ],
   },
@@ -50,7 +50,7 @@ const FASES: Fase[] = [
   {
     id: 3,
     titulo: "Fase 3: Filosofia Judaica",
-    descricao: "Reflexao - Maimonides e pensamento",
+    descricao: "Reflexão - Maimonides e pensamento",
     obras: [
       { id: "guia", nome: "Guia dos Perplexos", descricao: "Obra filosofica de Maimonides sobre fe e razao", termoAmazon: "Guia dos Perplexos Maimonides" },
     ],
@@ -58,10 +58,10 @@ const FASES: Fase[] = [
   {
     id: 4,
     titulo: "Fase 4: Etica e Misticismo",
-    descricao: "Elevacao - Etica, Kabalah e Zohar",
+    descricao: "Elevação - Etica, Kabalah e Zohar",
     obras: [
       { id: "pirkei", nome: "Pirkei Avot (Etica dos Pais)", descricao: "Ensinamentos eticos dos sabios", termoAmazon: "Pirkei Avot Etica dos Pais" },
-      { id: "kabalah", nome: "Introducao a Kabalah", descricao: "Conceitos basicos do misticismo judeu", termoAmazon: "Introducao Cabala Judaica" },
+      { id: "kabalah", nome: "Introdução a Kabalah", descricao: "Conceitos basicos do misticismo judeu", termoAmazon: "Introdução Cabala Judaica" },
       { id: "zohar", nome: "Zohar (Brilho)", descricao: "Obra central da Kabalah", termoAmazon: "Zohar Livro Esplendor" },
     ],
   },
@@ -111,7 +111,7 @@ export function RoteiroJudaismo({ onBack }: Props) {
       onBack={onBack}
       affiliateBanner={
         <AffiliateBanner
-          terms={["Tora em portugues", "Biblia Hebraica", "Tanakh completo"]}
+          terms={["Tora em portugues", "Bíblia Hebraica", "Tanakh completo"]}
           label="Adquira os livros"
         />
       }

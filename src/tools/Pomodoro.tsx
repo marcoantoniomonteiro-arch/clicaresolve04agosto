@@ -21,8 +21,13 @@ const PHASE_CONFIG = {
 
 export function Pomodoro({ onBack }: Props) {
   const [config, setConfig] = useState(() => {
-    const saved = localStorage.getItem("pomodoro-config");
-    return saved ? JSON.parse(saved) : { foco: 25, pausaCurta: 5, pausaLonga: 15 };
+    const fallback = { foco: 25, pausaCurta: 5, pausaLonga: 15 };
+    try {
+      const saved = typeof window !== "undefined" ? window.localStorage.getItem("pomodoro-config") : null;
+      return saved ? JSON.parse(saved) : fallback;
+    } catch {
+      return fallback;
+    }
   });
   const [phase, setPhase] = useState<Phase>("foco");
   const [seconds, setSeconds] = useState(config.foco * 60);
@@ -89,7 +94,7 @@ export function Pomodoro({ onBack }: Props) {
     if ("Notification" in window && Notification.permission === "granted") {
       const phaseLabel = PHASE_CONFIG[phase].label;
       new Notification("Pomodoro - CLICAresolve", {
-        body: `${phaseLabel} concluido!`,
+        body: `${phaseLabel} concluído!`,
         icon: "🍅",
       });
     }
@@ -147,7 +152,7 @@ export function Pomodoro({ onBack }: Props) {
       title="Pomodoro"
       emoji="🍅"
       category="Estudos"
-      description="Timer de foco com pausas configuraveis e notificacoes."
+      description="Timer de foco com pausas configuraveis e notificações."
       onBack={onBack}
       affiliateBanner={<AffiliateBanner terms={["timer físico estudo"]} label="timer físico estudo" />}
     
@@ -181,13 +186,13 @@ export function Pomodoro({ onBack }: Props) {
           onClick={skipPhase}
           className="w-full text-sm text-gray-400 hover:text-white underline"
         >
-          Pular para proxima fase
+          Pular para próxima fase
         </button>
 
         <div className="p-4 rounded-xl bg-white/5 border border-white/8">
           <div className="flex items-center gap-2 mb-3">
             <Settings className="w-4 h-4 text-gray-400" />
-            <p className="text-xs text-gray-400 font-semibold uppercase tracking-wider">Configuracao</p>
+            <p className="text-xs text-gray-400 font-semibold uppercase tracking-wider">Configuração</p>
           </div>
           <div className="grid grid-cols-3 gap-3">
             {[
@@ -218,7 +223,7 @@ export function Pomodoro({ onBack }: Props) {
 
         <div className="flex items-center justify-center gap-2 text-xs text-gray-500">
           <Bell className="w-3 h-3" />
-          <span>Notificacoes {Notification.permission === "granted" ? "ativas" : "inativas"}</span>
+          <span>Notificações {typeof Notification !== "undefined" && Notification.permission === "granted" ? "ativas" : "inativas"}</span>
         </div>
       </div>
       <ToolContent

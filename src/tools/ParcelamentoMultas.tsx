@@ -52,7 +52,7 @@ export function ParcelamentoMultas({ onBack }: Props) {
       onBack={onBack}
       affiliateBanner={
         <AffiliateBanner
-          terms={["curso legislacao transito", "livro CNH"]}
+          terms={["curso legislação transito", "livro CNH"]}
           label="Aprenda sobre trânsito"
         />
       }

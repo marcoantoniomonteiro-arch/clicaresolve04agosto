@@ -90,6 +90,7 @@ export function ProbabilidadesClassificacao({ onBack }: Props) {
     >
       <div className="space-y-4">
         {/* Bet banner */}
+        {CONFIG.betBannersEnabled && (
         <a
           href={CONFIG.linkBet}
           target="_blank"
@@ -99,6 +100,7 @@ export function ProbabilidadesClassificacao({ onBack }: Props) {
           <span className="text-sm text-amber-400 font-semibold">🎯 Aposte no seu time — {CONFIG.nomeBet}</span>
           <span className="text-xs text-amber-300 shrink-0 underline">Apostar</span>
         </a>
+        )}
 
         <div className="grid grid-cols-2 gap-4">
           <label className="block">

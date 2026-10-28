@@ -11,7 +11,7 @@ interface Props {
 }
 
 const CLASSIFICACOES = [
-  { min: 0, max: 1, label: "Abaixo da media", cor: "text-red-400", bg: "bg-red-500/20" },
+  { min: 0, max: 1, label: "Abaixo da média", cor: "text-red-400", bg: "bg-red-500/20" },
   { min: 1, max: 3, label: "Media", cor: "text-yellow-400", bg: "bg-yellow-500/20" },
   { min: 3, max: 6, label: "Bom", cor: "text-green-400", bg: "bg-green-500/20" },
   { min: 6, max: 999, label: "Excelente", cor: "text-emerald-400", bg: "bg-emerald-500/20" },
@@ -57,7 +57,7 @@ export function TaxaEngajamento({ onBack }: Props) {
       title="Taxa de Engajamento"
       emoji="📱"
       category="Redes Sociais"
-      description="Calcule a taxa de engajamento do seu perfil e veja sua classificacao."
+      description="Calcule a taxa de engajamento do seu perfil e veja sua classificação."
       onBack={onBack}
       affiliateBanner={<AffiliateBanner terms={["curso instagram marketing"]} label="curso instagram marketing" />}
     
@@ -141,7 +141,7 @@ export function TaxaEngajamento({ onBack }: Props) {
             </div>
 
             <div className="p-4 rounded-xl bg-white/5 border border-white/8">
-              <p className="text-xs text-gray-400 mb-2">Classificacao de Engajamento</p>
+              <p className="text-xs text-gray-400 mb-2">Classificação de Engajamento</p>
               <div className="space-y-2">
                 {CLASSIFICACOES.map((c) => (
                   <div key={c.label} className="flex items-center gap-2">

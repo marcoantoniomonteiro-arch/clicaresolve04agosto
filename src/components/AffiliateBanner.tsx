@@ -31,7 +31,7 @@ export function AffiliateBanner({ terms, label, mercadoLivreTerms, mercadoLivreL
         ))}
       </div>
       <p className="text-xs text-gray-500 mt-2">
-        Links de afiliado — voce nao paga mais por isso
+        Links de afiliado — você não paga mais por isso
       </p>
 
       {mercadoLivreTerms && mercadoLivreTerms.length > 0 && (
@@ -54,7 +54,7 @@ export function AffiliateBanner({ terms, label, mercadoLivreTerms, mercadoLivreL
             ))}
           </div>
           <p className="text-xs text-gray-500 mt-2">
-            Links de afiliado — voce nao paga mais por isso
+            Links de afiliado — você não paga mais por isso
           </p>
         </div>
       )}
@@ -79,7 +79,7 @@ export function AffiliateBanner({ terms, label, mercadoLivreTerms, mercadoLivreL
             ))}
           </div>
           <p className="text-xs text-gray-500 mt-2">
-            Links de afiliado — voce nao paga mais por isso
+            Links de afiliado — você não paga mais por isso
           </p>
         </div>
       )}

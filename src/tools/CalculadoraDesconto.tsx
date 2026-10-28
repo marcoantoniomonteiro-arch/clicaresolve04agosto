@@ -81,7 +81,7 @@ export function CalculadoraDesconto({ onBack }: Props) {
 
         <div className="space-y-3">
           <label className="block">
-            <span className="text-sm text-gray-400 mb-1 block">Preco Original (R$)</span>
+            <span className="text-sm text-gray-400 mb-1 block">Preço Original (R$)</span>
             <input
               type="number"
               value={originalPrice}
@@ -105,7 +105,7 @@ export function CalculadoraDesconto({ onBack }: Props) {
             </label>
           ) : (
             <label className="block">
-              <span className="text-sm text-gray-400 mb-1 block">Preco Final (R$)</span>
+              <span className="text-sm text-gray-400 mb-1 block">Preço Final (R$)</span>
               <input
                 type="number"
                 value={finalPrice}
@@ -120,7 +120,7 @@ export function CalculadoraDesconto({ onBack }: Props) {
         {result && result.original > 0 && (
           <div className="space-y-3">
             <div className="p-5 rounded-xl bg-green-500/10 border border-green-500/20 text-center">
-              <p className="text-xs text-green-400 mb-1">Preco com Desconto</p>
+              <p className="text-xs text-green-400 mb-1">Preço com Desconto</p>
               <p className="text-4xl font-black text-green-400">
                 R$ {result.final.toFixed(2)}
               </p>

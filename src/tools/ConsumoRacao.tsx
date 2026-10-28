@@ -54,7 +54,7 @@ export function ConsumoRacao({ onBack }: Props) {
       onBack={onBack}
       affiliateBanner={
         <AffiliateBanner
-          terms={["racao para caes", "comedouro automatico"]}
+          terms={["ração para caes", "comedouro automático"]}
           label="Produtos para alimentação do seu pet"
           mercadoLivreTerms={["comedouro automático pet"]} mercadoLivreLabel="Encontre no Mercado Livre"
           shopeeTerms={["comedouro automático pet"]} shopeeLabel="Ver na Shopee"

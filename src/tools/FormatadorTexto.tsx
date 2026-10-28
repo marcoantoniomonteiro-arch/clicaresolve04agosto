@@ -172,7 +172,7 @@ export function FormatadorTexto({ onBack }: Props) {
         )}
 
         <div className="p-3 rounded-lg bg-white/5 text-xs text-gray-500">
-          <p className="font-semibold text-gray-400 mb-1">Atalhos uteis:</p>
+          <p className="font-semibold text-gray-400 mb-1">Atalhos úteis:</p>
           <p>Capitalizado: primeira letra de cada palavra em maiuscula</p>
           <p>iNVERTIDO: troca maiusculas por minusculas e vice-versa</p>
         </div>

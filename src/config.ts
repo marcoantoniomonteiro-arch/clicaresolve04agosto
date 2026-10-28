@@ -130,6 +130,12 @@ export const CONFIG = {
   //              2) Obtenha seu link de tracking
   //              3) Substitua abaixo
 
+  /** Banners de apostas/loteria ficam DESLIGADOS: promoção de jogos de azar
+   *  é conteúdo restrito nas políticas do Google AdSense e os links abaixo
+   *  ainda são exemplos (não funcionam). Só ligue com links reais e depois
+   *  de conferir as políticas do AdSense. */
+  betBannersEnabled: false,
+
   /** Link de afiliado da casa de apostas parceira — exibido em banner de apostas */
   linkBet: "https://seu-link-bet.com",
 

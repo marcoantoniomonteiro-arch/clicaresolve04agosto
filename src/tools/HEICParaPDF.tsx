@@ -4,7 +4,6 @@ import { AffiliateBanner } from "../components/AffiliateBanner";
 import { ToolContent } from "../components/ToolContent";
 import { FileDown, X, ChevronUp, ChevronDown, Image as ImageIcon, Loader2 } from "lucide-react";
 import jsPDF from "jspdf";
-import heic2any from "heic2any";
 
 interface Props {
   onBack: () => void;
@@ -52,6 +51,7 @@ export function HEICParaPDF({ onBack }: Props) {
       const itemId = newItems[i].id;
 
       try {
+        const heic2any = (await import("heic2any")).default;
         const converted = await heic2any({
           blob: file,
           toType: "image/jpeg",

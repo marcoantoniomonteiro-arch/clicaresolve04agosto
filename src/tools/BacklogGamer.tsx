@@ -95,7 +95,7 @@ export function BacklogGamer({ onBack }: Props) {
           </div>
           <div className="p-3 rounded-xl bg-yellow-500/10 border border-yellow-500/20 text-center">
             <p className="text-2xl font-bold text-yellow-400">{estatisticas.mediaHoras.toFixed(0)}h</p>
-            <p className="text-xs text-gray-400">Media</p>
+            <p className="text-xs text-gray-400">Média</p>
           </div>
         </div>
 

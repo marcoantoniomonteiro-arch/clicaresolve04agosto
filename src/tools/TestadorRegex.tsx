@@ -165,7 +165,7 @@ export function TestadorRegex({ onBack }: Props) {
         category="Utilidades"
         data={{
           directAnswer: "Uma expressão regular (regex) é um padrão de busca usado para encontrar, validar ou substituir trechos de texto que seguem uma estrutura específica, como e-mails, telefones ou CEPs.",
-          howItWorks: "A ferramenta aplica o padrão de expressão regular informado sobre o texto de teste, usando o motor de regex nativo do JavaScript. Cada trecho do texto que corresponde ao padrão é destacado visualmente, e a lista de todas as correspondências (matches) é exibida abaixo, incluindo grupos de captura quando o padrão os utiliza. É uma ferramenta essencial para desenvolvedores testarem padrões de validação antes de usá-los em código.",
+          howItWorks: "A ferramenta aplica o padrão de expressão regular informado sobre o texto de teste, usando o motor de regex nativo do JavaScript. Cada trecho do texto que corresponde ao padrão é destacado visualmente, e a lista de todas as correspondências (matches) é exibida abaixo, incluindo grupos de captura quando o padrão os utiliza. É uma ferramenta essencial para desenvolvedores testarem padrões de válidação antes de usá-los em código.",
           example: {
             title: "Exemplo: testando um regex de e-mail",
             steps: [
@@ -177,7 +177,7 @@ export function TestadorRegex({ onBack }: Props) {
             result: "O regex encontrou corretamente os 2 endereços de e-mail presentes no texto.",
           },
           faqs: [
-            { question: "O que é uma expressão regular?", answer: "É um padrão de busca usado para encontrar, validar ou substituir textos que seguem uma estrutura específica, muito usado em validação de formulários e processamento de texto." },
+            { question: "O que é uma expressão regular?", answer: "É um padrão de busca usado para encontrar, validar ou substituir textos que seguem uma estrutura específica, muito usado em válidação de formulários e processamento de texto." },
             { question: "O que significa a flag \"g\" no regex?", answer: "Significa \"global\" - faz o regex encontrar TODAS as correspondências no texto, não apenas a primeira." },
             { question: "Por que meu regex não encontra nada?", answer: "Verifique se a sintaxe está correta e se as flags necessárias (como \"i\" para ignorar maiúsculas/minúsculas) estão marcadas." },
             { question: "Meu texto é enviado para algum servidor?", answer: "Não, todo o processamento acontece localmente no seu navegador." },

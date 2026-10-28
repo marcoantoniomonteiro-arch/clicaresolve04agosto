@@ -81,10 +81,10 @@ export function ConversorProporcao({ onBack }: Props) {
 
   return (
     <ToolLayout
-      title="Conversor de Proporcao"
+      title="Conversor de Proporção"
       emoji="📐"
       category="Utilidades"
-      description="Calcule aspect ratio ou converte entre dimensoes mantendo a proporcao."
+      description="Calcule aspect ratio ou converte entre dimensões mantendo a proporção."
       onBack={onBack}
       affiliateBanner={<AffiliateBanner terms={["tripé celular vídeo"]} label="tripé celular vídeo" />}
     
@@ -105,7 +105,7 @@ export function ConversorProporcao({ onBack }: Props) {
               modo === "converter" ? "bg-blue-500 text-white" : "bg-white/5 text-gray-400"
             }`}
           >
-            Converter Dimensoes
+            Converter Dimensões
           </button>
         </div>
 
@@ -216,7 +216,7 @@ export function ConversorProporcao({ onBack }: Props) {
         </div>
       </div>
       <ToolContent
-        toolName="Conversor de Proporcao"
+        toolName="Conversor de Proporção"
         category="Utilidades"
         data={{
           directAnswer: "A proporção (aspect ratio) determina a relação entre largura e altura de uma imagem ou tela, como 16:9 ou 4:3.",

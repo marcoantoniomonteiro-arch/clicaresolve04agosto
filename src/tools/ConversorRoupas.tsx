@@ -121,7 +121,7 @@ export function ConversorRoupas({ onBack }: Props) {
 
         <p className="text-xs text-gray-500 text-center">
           Tamanhos aproximados. Podem variar entre marcas e fabricantes.
-          Lojas como Shein, Shopee e AliExpress geralmente seguem o padrao da China.
+          Lojas como Shein, Shopee e AliExpress geralmente seguem o padrão da China.
         </p>
       </div>
       <ToolContent

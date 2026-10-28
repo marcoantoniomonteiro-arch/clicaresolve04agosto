@@ -1,5 +1,6 @@
 import React from "react";
 import { SEOHead } from "./SEOHead";
+import { SiteFooterLinks } from "./SiteFooterLinks";
 import { ArrowLeft } from "lucide-react";
 
 interface StaticPageProps {
@@ -44,6 +45,11 @@ export function StaticPage({
         <div className="bg-card rounded-2xl p-6 sm:p-8 border border-border shadow-xl">
           {children}
         </div>
+
+        <footer className="text-center text-xs text-muted mt-8 pb-6">
+          <SiteFooterLinks />
+          © {new Date().getFullYear()} CLICAresolve — Ferramentas gratuitas para o dia a dia
+        </footer>
       </div>
     </div>
   );

@@ -149,7 +149,7 @@ export function VacinasPet({ onBack }: Props) {
             Produtos Relacionados — Amazon
           </p>
           <div className="flex flex-wrap gap-2">
-            {["carteira de vacinacao pet", "petiscos"].map((term) => (
+            {["carteira de vacinação pet", "petiscos"].map((term) => (
               <a
                 key={term}
                 href={CONFIG.urlAmazon(term)}
@@ -376,7 +376,7 @@ export function VacinasPet({ onBack }: Props) {
           </div>
           <div className="grid grid-cols-2 gap-3">
             {[
-              { emoji: "🚰", name: "Fonte de água para gatos", term: "fonte de agua para gatos" },
+              { emoji: "🚰", name: "Fonte de água para gatos", term: "fonte de água para gatos" },
               { emoji: "🧸", name: "Brinquedo interativo", term: "brinquedo interativo para pets" },
               { emoji: "🍽️", name: "Comedouro lento", term: "comedouro lento anti engasgo para cachorro" },
               { emoji: "🪵", name: "Arranhador para gatos", term: "arranhador para gatos" },

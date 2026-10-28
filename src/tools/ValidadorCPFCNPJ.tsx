@@ -119,7 +119,7 @@ export function ValidadorCPFCNPJ({ onBack }: Props) {
 
         <div className="p-3 rounded-xl bg-white/5 border border-white/10">
           <p className="text-xs text-gray-500 leading-relaxed">
-            Esta validação verifica apenas os dígitos verificadores matemáticos. NÃO consulta a Receita Federal — um documento matematicamente válido pode não existir ou estar cancelado.
+            Esta válidação verifica apenas os dígitos verificadores matemáticos. NÃO consulta a Receita Federal — um documento matematicamente válido pode não existir ou estar cancelado.
           </p>
         </div>
       </div>
@@ -128,8 +128,8 @@ export function ValidadorCPFCNPJ({ onBack }: Props) {
         toolName="Validador de CPF/CNPJ"
         category="Utilidades"
         data={{
-          directAnswer: "A validação de CPF e CNPJ verifica se os dígitos verificadores (os últimos números) conferem matematicamente com o restante do documento, usando o algoritmo oficial da Receita Federal.",
-          howItWorks: "CPF e CNPJ possuem dígitos verificadores calculados a partir dos demais números do documento, usando um algoritmo matemático padronizado (módulo 11). A ferramenta aplica esse cálculo para conferir se o número informado é matematicamente válido. IMPORTANTE: esta validação NÃO consulta a Receita Federal - ela apenas verifica se os dígitos conferem matematicamente. Um CPF pode ser matematicamente válido e mesmo assim não existir, estar cancelado ou irregular.",
+          directAnswer: "A válidação de CPF e CNPJ verifica se os dígitos verificadores (os últimos números) conferem matematicamente com o restante do documento, usando o algoritmo oficial da Receita Federal.",
+          howItWorks: "CPF e CNPJ possuem dígitos verificadores calculados a partir dos demais números do documento, usando um algoritmo matemático padronizado (módulo 11). A ferramenta aplica esse cálculo para conferir se o número informado é matematicamente válido. IMPORTANTE: esta válidação NÃO consulta a Receita Federal - ela apenas verifica se os dígitos conferem matematicamente. Um CPF pode ser matematicamente válido e mesmo assim não existir, estar cancelado ou irregular.",
           example: {
             title: "Exemplo: validando um CPF",
             steps: [
@@ -139,12 +139,12 @@ export function ValidadorCPFCNPJ({ onBack }: Props) {
               `Cálculo do 2º dígito verificador conforme algoritmo`,
               `Resultado: os dígitos conferem = CPF matematicamente válido`,
             ],
-            result: "O CPF informado passou na validação matemática dos dígitos verificadores.",
+            result: "O CPF informado passou na válidação matemática dos dígitos verificadores.",
           },
           faqs: [
             { question: "Essa ferramenta confirma se o CPF/CNPJ realmente existe?", answer: "Não. Ela verifica apenas se os dígitos verificadores são matematicamente válidos. Para saber se o documento existe e está regular, é necessário consultar diretamente o site da Receita Federal." },
             { question: "Como funciona o cálculo do dígito verificador?", answer: "É um algoritmo matemático (módulo 11) que usa os primeiros dígitos do documento, multiplicados por pesos específicos, para calcular os 2 últimos dígitos de verificação." },
-            { question: "Meus dados são enviados para algum servidor?", answer: "Não, toda a validação acontece no seu navegador, sem enviar o CPF/CNPJ digitado a nenhum lugar." },
+            { question: "Meus dados são enviados para algum servidor?", answer: "Não, toda a válidação acontece no seu navegador, sem enviar o CPF/CNPJ digitado a nenhum lugar." },
             { question: "Um CPF com dígitos iguais (111.111.111-11) é válido?", answer: "Não, a ferramenta rejeita automaticamente sequências de dígitos repetidos, que nunca são CPFs/CNPJs reais válidos." },
           ],
         }}

@@ -83,7 +83,7 @@ export function ConversorMoedas({ onBack }: Props) {
       onBack={onBack}
       affiliateBanner={<AffiliateBanner terms={["livro educação financeira"]} label="livro educação financeira" />}
     
-      disclaimer="Cotacoes aproximadas. Atualize conforme o cambio do dia. Os valores podem variar entre corretoras."
+      disclaimer="Cotações aproximadas. Atualize conforme o cambio do dia. Os valores podem variar entre corretoras."
     >
       <div className="space-y-5">
         <div className="grid grid-cols-2 gap-4">
@@ -117,7 +117,7 @@ export function ConversorMoedas({ onBack }: Props) {
           onClick={() => setShowEdit((s) => !s)}
           className="w-full text-sm text-gray-400 hover:text-white text-center underline"
         >
-          {showEdit ? "Ocultar edicao de taxas" : "Editar cotacoes"}
+          {showEdit ? "Ocultar edição de taxas" : "Editar cotações"}
         </button>
 
         {showEdit && (
@@ -142,7 +142,7 @@ export function ConversorMoedas({ onBack }: Props) {
         {valor && parseFloat(valor) > 0 && (
           <div className="space-y-3">
             <p className="text-xs text-gray-400 font-semibold uppercase tracking-wider">
-              Conversoes
+              Conversões
             </p>
             {results.map((r) => (
               <div

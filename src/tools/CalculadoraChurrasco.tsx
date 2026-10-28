@@ -58,7 +58,7 @@ export function CalculadoraChurrasco({ onBack }: Props) {
       title="Calculadora de Churrasco"
       emoji="🥩"
       category="Utilidades"
-      description="Calcule a quantidade de carne, carvao e bebidas para seu churrasco."
+      description="Calcule a quantidade de carne, carvão e bebidas para seu churrasco."
       onBack={onBack}
       affiliateBanner={
         <AffiliateBanner
@@ -90,7 +90,7 @@ export function CalculadoraChurrasco({ onBack }: Props) {
             />
           </label>
           <label className="block">
-            <span className="text-xs text-gray-400 mb-1 block">Criancas</span>
+            <span className="text-xs text-gray-400 mb-1 block">Crianças</span>
             <input
               type="number"
               min="0"
@@ -122,7 +122,7 @@ export function CalculadoraChurrasco({ onBack }: Props) {
               <span className="text-white font-semibold">{resultado.carnes.frango} kg</span>
             </div>
             <div className="flex justify-between text-sm">
-              <span className="text-gray-400">Linguica</span>
+              <span className="text-gray-400">Linguiça</span>
               <span className="text-white font-semibold">{resultado.carnes.linguica} kg</span>
             </div>
             <div className="border-t border-white/10 pt-2 flex justify-between">
@@ -136,12 +136,12 @@ export function CalculadoraChurrasco({ onBack }: Props) {
           <div className="p-4 rounded-xl bg-amber-500/10 border border-amber-500/20">
             <Flame className="w-4 h-4 text-amber-400 mb-2" />
             <p className="text-2xl font-bold text-white">{resultado.carvao} kg</p>
-            <p className="text-xs text-gray-400">Carvao</p>
+            <p className="text-xs text-gray-400">Carvão</p>
           </div>
           <div className="p-4 rounded-xl bg-yellow-500/10 border border-yellow-500/20">
             <span className="text-2xl">🍞</span>
             <p className="text-2xl font-bold text-white">{resultado.acompanhamentos.paoAlho}</p>
-            <p className="text-xs text-gray-400">Paes de alho</p>
+            <p className="text-xs text-gray-400">Pães de alho</p>
           </div>
         </div>
 
@@ -163,10 +163,10 @@ export function CalculadoraChurrasco({ onBack }: Props) {
         </div>
 
         <div className="p-3 rounded-lg bg-white/5 text-xs text-gray-500">
-          <p className="font-semibold text-gray-400 mb-1">Calculo por pessoa (picanha + frango + linguica):</p>
-          <p>Homens: 350g carne, Mulheres: 280g, Criancas: 180g</p>
+          <p className="font-semibold text-gray-400 mb-1">Cálculo por pessoa (picanha + frango + linguiça):</p>
+          <p>Homens: 350g carne, Mulheres: 280g, Crianças: 180g</p>
           <p>Cerveja: 3 latas/adulto, Refri: 1L/3 pessoas</p>
-          <p>Carvao: 1kg/3 pessoas</p>
+          <p>Carvão: 1kg/3 pessoas</p>
         </div>
       </div>
       <ToolContent

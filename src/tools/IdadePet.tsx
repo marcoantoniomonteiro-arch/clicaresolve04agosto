@@ -93,7 +93,7 @@ export function IdadePet({ onBack }: Props) {
       onBack={onBack}
       affiliateBanner={
         <AffiliateBanner
-          terms={["racao premium", "brinquedo interativo pet"]}
+          terms={["ração premium", "brinquedo interativo pet"]}
           label="Cuide do seu pet com produtos de qualidade"
         />
       }

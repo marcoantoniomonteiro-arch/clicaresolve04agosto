@@ -3,10 +3,14 @@ import { ToolLayout } from "../components/ToolLayout";
 import { AffiliateBanner } from "../components/AffiliateBanner";
 import { ToolContent } from "../components/ToolContent";
 import { Copy, Download, FileText, Loader2, Upload, AlertTriangle, ScanSearch } from "lucide-react";
-import * as pdfjsLib from "pdfjs-dist";
 import workerUrl from "pdfjs-dist/build/pdf.worker.min.mjs?url";
 
-pdfjsLib.GlobalWorkerOptions.workerSrc = workerUrl;
+// pdfjs só é carregado no navegador, quando o usuário envia um arquivo
+async function loadPdfjs() {
+  const pdfjsLib = await import("pdfjs-dist");
+  pdfjsLib.GlobalWorkerOptions.workerSrc = workerUrl;
+  return pdfjsLib;
+}
 
 interface Props {
   onBack: () => void;
@@ -96,6 +100,7 @@ export function PDFParaMarkdown({ onBack }: Props) {
 
     try {
       const arrayBuffer = await file.arrayBuffer();
+      const pdfjsLib = await loadPdfjs();
       const pdf = await pdfjsLib.getDocument({ data: arrayBuffer }).promise;
       const totalPages = pdf.numPages;
       const allPages: string[] = [];

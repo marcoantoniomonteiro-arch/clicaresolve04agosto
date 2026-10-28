@@ -35,7 +35,7 @@ const FESTAS = [
   { nome: "Yom Kippur", dia: 10, mes: 7, mesNome: "Tishrei", descricao: "Dia do Perdao" },
   { nome: "Sucot (Cabanas)", dia: 15, mes: 7, mesNome: "Tishrei", descricao: "Festa das Cabanas" },
   { nome: "Chanuca", dia: 25, mes: 9, mesNome: "Kislev", descricao: "Festa das Luzes (8 dias)" },
-  { nome: "Purim", dia: 14, mes: 12, mesNome: "Adar", descricao: "Sorte e Libertacao" },
+  { nome: "Purim", dia: 14, mes: 12, mesNome: "Adar", descricao: "Sorte e Libertação" },
 ];
 
 // Aproximacao simples: ano hebraico = ano gregoriano + 3760
@@ -95,7 +95,7 @@ export function CalendarioHebraico({ onBack }: Props) {
       status: f.mes === heb.mesH && f.dia === heb.diaH
         ? "Hoje!"
         : f.mes === heb.mesH
-        ? "Este mes"
+        ? "Este mês"
         : "Proximo",
     }));
 
@@ -111,11 +111,11 @@ export function CalendarioHebraico({ onBack }: Props) {
       title="Conversor Calendario Hebraico"
       emoji="🕍"
       category="Religioso"
-      description="Converta datas gregorianas para o calendario hebraico e veja festas proximas."
+      description="Converta datas gregorianas para o calendario hebraico e veja festas próximas."
       onBack={onBack}
       affiliateBanner={<AffiliateBanner terms={["Torá em português livro"]} label="Torá em português livro" />}
     
-      disclaimer="Esta conversao e uma aproximacao didatica. O calendario hebraico real baseia-se em ciclos lunissolares complexos. Para datas precisas, consulte um calendario oficial."
+      disclaimer="Esta conversão e uma aproximação didatica. O calendario hebraico real baseia-se em ciclos lunissolares complexos. Para datas precisas, consulte um calendario oficial."
     >
       <div className="space-y-5">
         <label className="block">
@@ -139,7 +139,7 @@ export function CalendarioHebraico({ onBack }: Props) {
                 {resultado.hebraico.anoH} AM
               </p>
               <p className="text-xs text-gray-500 mt-1">
-                (Anno Mundi - Ano desde a Criacao)
+                (Anno Mundi - Ano desde a Criação)
               </p>
             </div>
 
@@ -147,7 +147,7 @@ export function CalendarioHebraico({ onBack }: Props) {
               <div className="flex items-center gap-2 mb-3">
                 <Calendar className="w-4 h-4 text-gray-400" />
                 <p className="text-xs text-gray-400 font-semibold uppercase tracking-wider">
-                  Comparacao
+                  Comparação
                 </p>
               </div>
               <div className="grid grid-cols-2 gap-4 text-center">
@@ -187,7 +187,7 @@ export function CalendarioHebraico({ onBack }: Props) {
                       className={`text-xs px-2 py-0.5 rounded ${
                         f.status === "Hoje!"
                           ? "bg-green-500/20 text-green-400"
-                          : f.status === "Este mes"
+                          : f.status === "Este mês"
                           ? "bg-blue-500/20 text-blue-400"
                           : "bg-white/5 text-gray-400"
                       }`}

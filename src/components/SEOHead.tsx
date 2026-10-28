@@ -20,7 +20,7 @@ const SITE_URL = "https://www.clicaresolve.com.br";
 
 export function SEOHead({
   title,
-  description = "CLICAresolve — 95+ ferramentas gratuitas: calculadoras, conversores, utilitários e muito mais. Sem cadastro, tudo no navegador.",
+  description = "CLICAresolve — mais de 130 ferramentas gratuitas: calculadoras, conversores, ferramentas de PDF e utilitários. Sem cadastro, tudo no navegador.",
   canonical,
   ogTitle,
   ogDescription,
@@ -32,7 +32,9 @@ export function SEOHead({
   alternateUrl,
   noindex = false,
 }: SEOHeadProps) {
-  const fullTitle = title ? `${title} | CLICAresolve` : "CLICAresolve — Ferramentas Gratuitas para o Dia a Dia";
+  const fullTitle = title
+    ? (/CLICAresolve/i.test(title) ? title : `${title} | CLICAresolve`)
+    : "CLICAresolve — Ferramentas Gratuitas para o Dia a Dia";
   const og = ogTitle || title || "CLICAresolve";
   const ogDesc = ogDescription || description;
   const url = canonical ? `${SITE_URL}${canonical}` : SITE_URL;

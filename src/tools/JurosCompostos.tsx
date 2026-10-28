@@ -104,7 +104,7 @@ export function JurosCompostos({ onBack }: Props) {
             />
           </label>
           <label className="block">
-            <span className="text-sm text-gray-400 mb-1 block">Periodo ({periodType})</span>
+            <span className="text-sm text-gray-400 mb-1 block">Período ({periodType})</span>
             <input
               type="number"
               value={period}

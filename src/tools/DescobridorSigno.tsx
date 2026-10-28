@@ -36,7 +36,7 @@ const SIGNOS: Signo[] = [
     elemento: "Terra",
     qualidade: "Fixo",
     regente: "Venus",
-    caracteristicas: ["Pratico e determinado", "Amante de conforto", "Paciente e leal", "Sensual e artistico"],
+    caracteristicas: ["Prático e determinado", "Amante de conforto", "Paciente e leal", "Sensual e artistico"],
     inicio: { mes: 4, dia: 20 },
     fim: { mes: 5, dia: 20 },
   },
@@ -56,7 +56,7 @@ const SIGNOS: Signo[] = [
     elemento: "Agua",
     qualidade: "Cardinal",
     regente: "Lua",
-    caracteristicas: ["Emotivo e intutivo", "Protetor e carinhoso", "Ligado a familia e lar", "Sensivel e imaginativo"],
+    caracteristicas: ["Emotivo e intutivo", "Protetor e carinhoso", "Ligado a família e lar", "Sensivel e imaginativo"],
     inicio: { mes: 6, dia: 21 },
     fim: { mes: 7, dia: 22 },
   },
@@ -76,7 +76,7 @@ const SIGNOS: Signo[] = [
     elemento: "Terra",
     qualidade: "Mutavel",
     regente: "Mercurio",
-    caracteristicas: ["Analitico e perfeccionista", "Trabalhador e organizado", "Modesto e util", "Detalhista e eficiente"],
+    caracteristicas: ["Analitico e perfeccionista", "Trabalhador e organizado", "Modesto e útil", "Detalhista e eficiente"],
     inicio: { mes: 8, dia: 23 },
     fim: { mes: 9, dia: 22 },
   },
@@ -116,7 +116,7 @@ const SIGNOS: Signo[] = [
     elemento: "Terra",
     qualidade: "Cardinal",
     regente: "Saturno",
-    caracteristicas: ["Ambicioso e disciplinado", "Responsavel e prudente", "Determinado e paciente", "Tradicional e serio"],
+    caracteristicas: ["Ambicioso e disciplinado", "Responsável e prudente", "Determinado e paciente", "Tradicional e serio"],
     inicio: { mes: 12, dia: 22 },
     fim: { mes: 1, dia: 19 },
   },
@@ -192,7 +192,7 @@ export function DescobridorSigno({ onBack }: Props) {
       title="Descobridor de Signo"
       emoji="♈"
       category="Astrologia"
-      description="Descubra seu signo solar e suas caracteristicas principais."
+      description="Descubra seu signo solar e suas características principais."
       onBack={onBack}
       affiliateBanner={
         <AffiliateBanner
@@ -238,7 +238,7 @@ export function DescobridorSigno({ onBack }: Props) {
             </div>
 
             <div className="p-4 rounded-xl bg-white/5 border border-white/10">
-              <p className="text-xs text-gray-400 mb-2">Caracteristicas principais</p>
+              <p className="text-xs text-gray-400 mb-2">Características principais</p>
               <ul className="space-y-1">
                 {signo.caracteristicas.map((c, i) => (
                   <li key={i} className="text-sm text-white flex items-center gap-2">
@@ -253,12 +253,12 @@ export function DescobridorSigno({ onBack }: Props) {
 
         {!signo && dataNascimento && (
           <div className="p-4 rounded-xl bg-white/5 border border-white/10 text-center">
-            <p className="text-sm text-gray-400">Selecione uma data valida</p>
+            <p className="text-sm text-gray-400">Selecione uma data válida</p>
           </div>
         )}
 
         <p className="text-xs text-gray-500 text-center">
-          O signo solar e determinado pela posicao do Sol no momento do seu nascimento
+          O signo solar e determinado pela posição do Sol no momento do seu nascimento
         </p>
       </div>
       <ToolContent

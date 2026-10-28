@@ -100,6 +100,7 @@ export function PlacarPoliesportivo({ onBack }: Props) {
     >
       <div className="space-y-4">
         {/* Bet banner */}
+        {CONFIG.betBannersEnabled && (
         <a
           href={CONFIG.linkBet}
           target="_blank"
@@ -109,6 +110,7 @@ export function PlacarPoliesportivo({ onBack }: Props) {
           <span className="text-sm text-amber-400 font-semibold">🎯 {CONFIG.nomeBet} — {CONFIG.textoBet}</span>
           <span className="text-xs text-amber-300 shrink-0 underline">Apostar</span>
         </a>
+        )}
 
         {/* Modalidade */}
         <div className="flex gap-2 overflow-x-auto pb-1">

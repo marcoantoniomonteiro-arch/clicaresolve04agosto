@@ -154,11 +154,11 @@ export function GeradorRecibo({ onBack }: Props) {
         </div>
 
         <label className="block">
-          <span className="text-xs text-gray-400 mb-1 block">Descricao do servico</span>
+          <span className="text-xs text-gray-400 mb-1 block">Descrição do serviço</span>
           <textarea
             value={descricao}
             onChange={(e) => setDescricao(e.target.value)}
-            placeholder="Ex: Servicos de consultoria prestados em junho/2026"
+            placeholder="Ex: Serviços de consultoria prestados em junho/2026"
             className="input-field w-full h-20 resize-none p-3"
           />
         </label>
@@ -191,7 +191,7 @@ export function GeradorRecibo({ onBack }: Props) {
                     Recebi de <strong>{pagadorNome}</strong>
                     {pagadorDoc && <span>, CPF/CNPJ: {pagadorDoc}</span>}, a quantia de <strong>{valorExtenso}</strong> ({valorFormatado}), referente a:
                   </p>
-                  <p className="mt-2 font-semibold">{descricao || "Servicos prestados"}</p>
+                  <p className="mt-2 font-semibold">{descricao || "Serviços prestados"}</p>
                 </div>
 
                 <div className="mt-8">

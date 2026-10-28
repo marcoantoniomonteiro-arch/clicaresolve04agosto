@@ -180,7 +180,7 @@ export function SignificadoNomes({ onBack, initialName }: Props) {
                 Crie sua Lista de Bebê Oficial na Amazon com descontos exclusivos.
               </p>
               <a
-                href={CONFIG.urlAmazon("lista de bebe enxoval")}
+                href={CONFIG.urlAmazon("lista de bebê enxoval")}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-white/80 hover:bg-white text-pink-700 text-sm font-bold shadow-sm transition-all duration-200"

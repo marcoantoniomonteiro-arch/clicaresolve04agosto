@@ -1,6 +1,6 @@
 # CLICAresolve
 
-> Portal brasileiro de 90+ ferramentas e calculadoras gratuitas, 100% client-side, cobrindo saúde, finanças, transportes, estudos, esportes, religião e utilidades diárias.
+> Portal brasileiro de mais de 130 ferramentas e calculadoras gratuitas, 100% client-side, cobrindo saúde, finanças, transportes, estudos, esportes, religião e utilidades diárias.
 
 ## Visão Geral
 

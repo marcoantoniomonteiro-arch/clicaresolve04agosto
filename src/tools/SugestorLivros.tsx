@@ -8,7 +8,7 @@ interface Props {
   onBack: () => void;
 }
 
-type CategoriaEmocional = "Emocao e Drama" | "Aventura e Suspense" | "Crescimento Pessoal" | "Conhecimento Pratico" | "Espiritualidade e Fe" | "Risadas e Leveza";
+type CategoriaEmocional = "Emoção e Drama" | "Aventura e Suspense" | "Crescimento Pessoal" | "Conhecimento Prático" | "Espiritualidade e Fe" | "Risadas e Leveza";
 type Tamanho = "curto" | "medio" | "longo" | "qualquer";
 type Tipo = "ficcao" | "nao-ficcao" | "qualquer";
 type Nivel = "iniciante" | "intermediario" | "avancado";
@@ -26,24 +26,24 @@ interface Livro {
 
 const LIVROS: Livro[] = [
   // Emocao e Drama (10)
-  { titulo: "A Moreninha", autor: "Joaquim Manuel de Macedo", categoria: "Emocao e Drama", tamanho: "curto", tipo: "ficcao", nivel: "iniciante", sinopse: "Romance classico brasileiro sobre amor e transformacao em uma ilha.", buscaAmazon: "A Moreninha Joaquim Manuel de Macedo" },
-  { titulo: "Dom Casmurro", autor: "Machado de Assis", categoria: "Emocao e Drama", tamanho: "curto", tipo: "ficcao", nivel: "intermediario", sinopse: "Classico sobre ciume, duvida e memria - obrrima-prima da literatura brasileira.", buscaAmazon: "Dom Casmurro Machado de Assis" },
-  { titulo: "O Cortico", autor: "Aluisio Azevedo", categoria: "Emocao e Drama", tamanho: "medio", tipo: "ficcao", nivel: "intermediario", sinopse: "Retrato cru da vida nos corticos cariocas do seculo XIX.", buscaAmazon: "O Cortico Aluisio Azevedo" },
-  { titulo: "Capitoes da Areia", autor: "Jorge Amado", categoria: "Emocao e Drama", tamanho: "medio", tipo: "ficcao", nivel: "iniciante", sinopse: "Historia de um grupo de adolescentes que vivem em um trapiche em Salvador.", buscaAmazon: "Capitaes da Areia Jorge Amado" },
-  { titulo: "As Vinhas da Ira", autor: "John Steinbeck", categoria: "Emocao e Drama", tamanho: "longo", tipo: "ficcao", nivel: "intermediario", sinopse: "Epopeia de uma familia durante a Grande Depressao americana.", buscaAmazon: "As Vinhas da Ira John Steinbeck" },
-  { titulo: "Orgulho e Preconceito", autor: "Jane Austen", categoria: "Emocao e Drama", tamanho: "medio", tipo: "ficcao", nivel: "iniciante", sinopse: "Romance classico sobre amor, sociedade e segundas chances.", buscaAmazon: "Orgulho e Preconceito Jane Austen" },
-  { titulo: "A Revolucao dos Bichos", autor: "George Orwell", categoria: "Emocao e Drama", tamanho: "curto", tipo: "ficcao", nivel: "iniciante", sinopse: "Fabula sobre poder, manipulaco e a natureza humana.", buscaAmazon: "A Revolucao dos Bichos George Orwell" },
-  { titulo: "Memorias Postumas de Bras Cubas", autor: "Machado de Assis", categoria: "Emocao e Drama", tamanho: "medio", tipo: "ficcao", nivel: "avancado", sinopse: "Um defunto autor narra sua vida com ironia e reflexao.", buscaAmazon: "Memorias Postumas de Bras Cubas Machado de Assis" },
-  { titulo: "O Pequeno Principe", autor: "Antoine de Saint-Exupery", categoria: "Emocao e Drama", tamanho: "curto", tipo: "ficcao", nivel: "iniciante", sinopse: "Fabula poetica sobre amor, amizade e o essencial e invisivel.", buscaAmazon: "O Pequeno Principe Antoine de Saint-Exupery" },
-  { titulo: "A Hora da Estrela", autor: "Clarice Lispector", categoria: "Emocao e Drama", tamanho: "curto", tipo: "ficcao", nivel: "intermediario", sinopse: "Historia de uma nordestina no Rio e sua busca por identidade.", buscaAmazon: "A Hora da Estrela Clarice Lispector" },
+  { titulo: "A Moreninha", autor: "Joaquim Manuel de Macedo", categoria: "Emoção e Drama", tamanho: "curto", tipo: "ficcao", nivel: "iniciante", sinopse: "Romance clássico brasileiro sobre amor e transformação em uma ilha.", buscaAmazon: "A Moreninha Joaquim Manuel de Macedo" },
+  { titulo: "Dom Casmurro", autor: "Machado de Assis", categoria: "Emoção e Drama", tamanho: "curto", tipo: "ficcao", nivel: "intermediario", sinopse: "Clássico sobre ciúme, dúvida e memria - obrrima-prima da literatura brasileira.", buscaAmazon: "Dom Casmurro Machado de Assis" },
+  { titulo: "O Cortico", autor: "Aluisio Azevedo", categoria: "Emoção e Drama", tamanho: "medio", tipo: "ficcao", nivel: "intermediario", sinopse: "Retrato cru da vida nos corticos cariocas do século XIX.", buscaAmazon: "O Cortico Aluisio Azevedo" },
+  { titulo: "Capitoes da Areia", autor: "Jorge Amado", categoria: "Emoção e Drama", tamanho: "medio", tipo: "ficcao", nivel: "iniciante", sinopse: "História de um grupo de adolescentes que vivem em um trapiche em Salvador.", buscaAmazon: "Capitaes da Areia Jorge Amado" },
+  { titulo: "As Vinhas da Ira", autor: "John Steinbeck", categoria: "Emoção e Drama", tamanho: "longo", tipo: "ficcao", nivel: "intermediario", sinopse: "Epopeia de uma família durante a Grande Depressão americana.", buscaAmazon: "As Vinhas da Ira John Steinbeck" },
+  { titulo: "Orgulho e Preconceito", autor: "Jane Austen", categoria: "Emoção e Drama", tamanho: "medio", tipo: "ficcao", nivel: "iniciante", sinopse: "Romance clássico sobre amor, sociedade e segundas chances.", buscaAmazon: "Orgulho e Preconceito Jane Austen" },
+  { titulo: "A Revolução dos Bichos", autor: "George Orwell", categoria: "Emoção e Drama", tamanho: "curto", tipo: "ficcao", nivel: "iniciante", sinopse: "Fábula sobre poder, manipulaco e a natureza humana.", buscaAmazon: "A Revolução dos Bichos George Orwell" },
+  { titulo: "Memórias Póstumas de Bras Cubas", autor: "Machado de Assis", categoria: "Emoção e Drama", tamanho: "medio", tipo: "ficcao", nivel: "avancado", sinopse: "Um defunto autor narra sua vida com ironia e reflexão.", buscaAmazon: "Memórias Póstumas de Bras Cubas Machado de Assis" },
+  { titulo: "O Pequeno Príncipe", autor: "Antoine de Saint-Exupery", categoria: "Emoção e Drama", tamanho: "curto", tipo: "ficcao", nivel: "iniciante", sinopse: "Fábula poética sobre amor, amizade e o essencial e invisível.", buscaAmazon: "O Pequeno Príncipe Antoine de Saint-Exupery" },
+  { titulo: "A Hora da Estrela", autor: "Clarice Lispector", categoria: "Emoção e Drama", tamanho: "curto", tipo: "ficcao", nivel: "intermediario", sinopse: "História de uma nordestina no Rio e sua busca por identidade.", buscaAmazon: "A Hora da Estrela Clarice Lispector" },
 
   // Aventura e Suspense (10)
   { titulo: "O Senhor dos Aneis", autor: "J.R.R. Tolkien", categoria: "Aventura e Suspense", tamanho: "longo", tipo: "ficcao", nivel: "avancado", sinopse: "Epopeia fantastica sobre a jornada para destruir o Um Anel.", buscaAmazon: "O Senhor dos Aneis Tolkien" },
-  { titulo: "Harry Potter e a Pedra Filosofal", autor: "J.K. Rowling", categoria: "Aventura e Suspense", tamanho: "medio", tipo: "ficcao", nivel: "iniciante", sinopse: "O inicio da saga do bruxo mais famoso do mundo.", buscaAmazon: "Harry Potter Pedra Filosofal J.K. Rowling" },
-  { titulo: "O Codigo Da Vinci", autor: "Dan Brown", categoria: "Aventura e Suspense", tamanho: "medio", tipo: "ficcao", nivel: "iniciante", sinopse: "Thriller sobre segredos da Igreja e simbolos misteriosos.", buscaAmazon: "O Codigo Da Vinci Dan Brown" },
-  { titulo: "Jogos Vorazes", autor: "Suzanne Collins", categoria: "Aventura e Suspense", tamanho: "medio", tipo: "ficcao", nivel: "iniciante", sinopse: "Distopia sobre uma competicao mortal em um futuro sombrio.", buscaAmazon: "Jogos Vorazes Suzanne Collins" },
+  { titulo: "Harry Potter e a Pedra Filosofal", autor: "J.K. Rowling", categoria: "Aventura e Suspense", tamanho: "medio", tipo: "ficcao", nivel: "iniciante", sinopse: "O início da saga do bruxo mais famoso do mundo.", buscaAmazon: "Harry Potter Pedra Filosofal J.K. Rowling" },
+  { titulo: "O Código Da Vinci", autor: "Dan Brown", categoria: "Aventura e Suspense", tamanho: "medio", tipo: "ficcao", nivel: "iniciante", sinopse: "Thriller sobre segredos da Igreja e símbolos misteriosos.", buscaAmazon: "O Código Da Vinci Dan Brown" },
+  { titulo: "Jogos Vorazes", autor: "Suzanne Collins", categoria: "Aventura e Suspense", tamanho: "medio", tipo: "ficcao", nivel: "iniciante", sinopse: "Distopia sobre uma competição mortal em um futuro sombrio.", buscaAmazon: "Jogos Vorazes Suzanne Collins" },
   { titulo: "Sherlock Holmes: Estudo em Vermelho", autor: "Arthur Conan Doyle", categoria: "Aventura e Suspense", tamanho: "curto", tipo: "ficcao", nivel: "iniciante", sinopse: "A primeira aventura do detetive mais famoso do mundo.", buscaAmazon: "Sherlock Holmes Estudo em Vermelho" },
-  { titulo: "O Nome do Vento", autor: "Patrick Rothfuss", categoria: "Aventura e Suspense", tamanho: "longo", tipo: "ficcao", nivel: "intermediario", sinopse: "A historia de Kvothe, o maior mago que ja existiu.", buscaAmazon: "O Nome do Vento Patrick Rothfuss" },
+  { titulo: "O Nome do Vento", autor: "Patrick Rothfuss", categoria: "Aventura e Suspense", tamanho: "longo", tipo: "ficcao", nivel: "intermediario", sinopse: "A história de Kvothe, o maior mago que já existiu.", buscaAmazon: "O Nome do Vento Patrick Rothfuss" },
   { titulo: "Percy Jackson e o Ladr de Raio", autor: "Rick Riordan", categoria: "Aventura e Suspense", tamanho: "medio", tipo: "ficcao", nivel: "iniciante", sinopse: "Um adolescente descobre que e filho de um deus grego.", buscaAmazon: "Percy Jackson Ladrao de Raio" },
   { titulo: "O Silencio dos Inocentes", autor: "Thomas Harris", categoria: "Aventura e Suspense", tamanho: "medio", tipo: "ficcao", nivel: "intermediario", sinopse: "Thriller psicologico sobre um serial killer e uma agente do FBI.", buscaAmazon: "O Silencio dos Inocentes Thomas Harris" },
   { titulo: "As Cronicas de Narnia", autor: "C.S. Lewis", categoria: "Aventura e Suspense", tamanho: "medio", tipo: "ficcao", nivel: "iniciante", sinopse: "Aventura magica em um mundo encantado por tras de um guarda-roupa.", buscaAmazon: "As Cronicas de Narnia C.S. Lewis" },
@@ -52,66 +52,66 @@ const LIVROS: Livro[] = [
   // Crescimento Pessoal (10)
   { titulo: "Os 7 Habitos das Pessoas Altamente Eficazes", autor: "Stephen R. Covey", categoria: "Crescimento Pessoal", tamanho: "medio", tipo: "nao-ficcao", nivel: "intermediario", sinopse: "Principios para uma vida pessoal e profissional mais eficaz.", buscaAmazon: "Os 7 Habitos Stephen Covey" },
   { titulo: "O Poder do Habito", autor: "Charles Duhigg", categoria: "Crescimento Pessoal", tamanho: "medio", tipo: "nao-ficcao", nivel: "iniciante", sinopse: "Como habitos se formam e como mudar o seu destino.", buscaAmazon: "O Poder do Habito Charles Duhigg" },
-  { titulo: "Atitude Mental Positiva", autor: "Napoleon Hill", categoria: "Crescimento Pessoal", tamanho: "curto", tipo: "nao-ficcao", nivel: "iniciante", sinopse: "Classico sobre mentalidade de sucesso e realizacao.", buscaAmazon: "Atitude Mental Positiva Napoleon Hill" },
+  { titulo: "Atitude Mental Positiva", autor: "Napoleon Hill", categoria: "Crescimento Pessoal", tamanho: "curto", tipo: "nao-ficcao", nivel: "iniciante", sinopse: "Clássico sobre mentalidade de sucesso e realização.", buscaAmazon: "Atitude Mental Positiva Napoleon Hill" },
   { titulo: "Mindset: A Nova Psicologia do Sucesso", autor: "Carol S. Dweck", categoria: "Crescimento Pessoal", tamanho: "medio", tipo: "nao-ficcao", nivel: "intermediario", sinopse: "Sobre mentalidade fixa vs. mentalidade de crescimento.", buscaAmazon: "Mindset Carol Dweck" },
   { titulo: "Essencialismo", autor: "Greg McKeown", categoria: "Crescimento Pessoal", tamanho: "curto", tipo: "nao-ficcao", nivel: "iniciante", sinopse: "Foque no essencial e elimine o resto.", buscaAmazon: "Essencialismo Greg McKeown" },
   { titulo: "Atomic Habits", autor: "James Clear", categoria: "Crescimento Pessoal", tamanho: "medio", tipo: "nao-ficcao", nivel: "iniciante", sinopse: "Pequenas mudancas para resultados extraordinarios.", buscaAmazon: "Atomic Habits James Clear" },
-  { titulo: "O Segredo", autor: "Rhonda Byrne", categoria: "Crescimento Pessoal", tamanho: "curto", tipo: "nao-ficcao", nivel: "iniciante", sinopse: "Sobre a lei da atracao e poder dos pensamentos.", buscaAmazon: "O Segredo Rhonda Byrne" },
-  { titulo: "Como Fazer Amigos e Influenciar Pessoas", autor: "Dale Carnegie", categoria: "Crescimento Pessoal", tamanho: "medio", tipo: "nao-ficcao", nivel: "iniciante", sinopse: "Classico sobre relacionamentos e comunicacao eficaz.", buscaAmazon: "Como Fazer Amigos Dale Carnegie" },
+  { titulo: "O Segredo", autor: "Rhonda Byrne", categoria: "Crescimento Pessoal", tamanho: "curto", tipo: "nao-ficcao", nivel: "iniciante", sinopse: "Sobre a lei da atração e poder dos pensamentos.", buscaAmazon: "O Segredo Rhonda Byrne" },
+  { titulo: "Como Fazer Amigos e Influenciar Pessoas", autor: "Dale Carnegie", categoria: "Crescimento Pessoal", tamanho: "medio", tipo: "nao-ficcao", nivel: "iniciante", sinopse: "Clássico sobre relacionamentos e comunicação eficaz.", buscaAmazon: "Como Fazer Amigos Dale Carnegie" },
   { titulo: "O Milagre da Manha", autor: "Hal Elrod", categoria: "Crescimento Pessoal", tamanho: "curto", tipo: "nao-ficcao", nivel: "iniciante", sinopse: "Transforme sua vida antes das 8h da manha.", buscaAmazon: "O Milagre da Manha Hal Elrod" },
-  { titulo: "Grit: O Poder da Passao e Perseveranca", autor: "Angela Duckworth", categoria: "Crescimento Pessoal", tamanho: "medio", tipo: "nao-ficcao", nivel: "intermediario", sinopse: "Por que esforco conta mais que talento.", buscaAmazon: "Grit Angela Duckworth" },
+  { titulo: "Grit: O Poder da Passão e Perseveranca", autor: "Angela Duckworth", categoria: "Crescimento Pessoal", tamanho: "medio", tipo: "nao-ficcao", nivel: "intermediario", sinopse: "Por que esforco conta mais que talento.", buscaAmazon: "Grit Angela Duckworth" },
 
   // Conhecimento Pratico (10)
-  { titulo: "Pai Rico, Pai Pobre", autor: "Robert Kiyosaki", categoria: "Conhecimento Pratico", tamanho: "medio", tipo: "nao-ficcao", nivel: "iniciante", sinopse: "Educacao financeira para quem quer mudar sua vida.", buscaAmazon: "Pai Rico Pai Pobre Robert Kiyosaki" },
-  { titulo: "Os Segredos da Mente Milionaria", autor: "T. Harv Eker", categoria: "Conhecimento Pratico", tamanho: "medio", tipo: "nao-ficcao", nivel: "iniciante", sinopse: "Como seu mindset financeiro determina sua riqueza.", buscaAmazon: "Segredos da Mente Milionaria T. Harv Eker" },
-  { titulo: "A Estrategia do Oceano Azul", autor: "W. Chan Kim", categoria: "Conhecimento Pratico", tamanho: "medio", tipo: "nao-ficcao", nivel: "avancado", sinopse: "Como criar mercados inexplorados e vencer a competicao.", buscaAmazon: "A Estrategia do Oceano Azul" },
-  { titulo: "Rendimento Zero a Um", autor: "Peter Thiel", categoria: "Conhecimento Pratico", tamanho: "curto", tipo: "nao-ficcao", nivel: "intermediario", sinopse: "Notas sobre startups e como construir o futuro.", buscaAmazon: "Zero a Um Peter Thiel" },
-  { titulo: "A Arte da Guerra", autor: "Sun Tzu", categoria: "Conhecimento Pratico", tamanho: "curto", tipo: "nao-ficcao", nivel: "intermediario", sinopse: "Estrategia militar aplicada a negocios e vida.", buscaAmazon: "A Arte da Guerra Sun Tzu" },
-  { titulo: "Financas para nao Financeiros", autor: "Humberto Veiga", categoria: "Conhecimento Pratico", tamanho: "curto", tipo: "nao-ficcao", nivel: "iniciante", sinopse: "Entenda financas sem ser expert.", buscaAmazon: "Financas para nao Financeiros Humberto Veiga" },
-  { titulo: "O Metodo Lean Startup", autor: "Eric Ries", categoria: "Conhecimento Pratico", tamanho: "medio", tipo: "nao-ficcao", nivel: "intermediario", sinopse: "Como startups inovam e prosperam.", buscaAmazon: "Lean Startup Eric Ries" },
-  { titulo: "Investimentos Inteligentes", autor: "Gustavo Cerbasi", categoria: "Conhecimento Pratico", tamanho: "medio", tipo: "nao-ficcao", nivel: "iniciante", sinopse: "Guia para construir patrimonio no Brasil.", buscaAmazon: "Investimentos Inteligentes Gustavo Cerbasi" },
-  { titulo: "Do Caos ao Lucro", autor: "Eliyahu Goldratt", categoria: "Conhecimento Pratico", tamanho: "medio", tipo: "nao-ficcao", nivel: "intermediario", sinopse: "Teoria das restricoes em formato de romance empresarial.", buscaAmazon: "A Meta Goldratt" },
-  { titulo: "UX Strategy", autor: "Jaime Levy", categoria: "Conhecimento Pratico", tamanho: "medio", tipo: "nao-ficcao", nivel: "avancado", sinopse: "Estrategia de experiencia do usuario para produtos digitais.", buscaAmazon: "UX Strategy Jaime Levy" },
+  { titulo: "Pai Rico, Pai Pobre", autor: "Robert Kiyosaki", categoria: "Conhecimento Prático", tamanho: "medio", tipo: "nao-ficcao", nivel: "iniciante", sinopse: "Educação financeira para quem quer mudar sua vida.", buscaAmazon: "Pai Rico Pai Pobre Robert Kiyosaki" },
+  { titulo: "Os Segredos da Mente Milionaria", autor: "T. Harv Eker", categoria: "Conhecimento Prático", tamanho: "medio", tipo: "nao-ficcao", nivel: "iniciante", sinopse: "Como seu mindset financeiro determina sua riqueza.", buscaAmazon: "Segredos da Mente Milionaria T. Harv Eker" },
+  { titulo: "A Estrategia do Oceano Azul", autor: "W. Chan Kim", categoria: "Conhecimento Prático", tamanho: "medio", tipo: "nao-ficcao", nivel: "avancado", sinopse: "Como criar mercados inexplorados e vencer a competição.", buscaAmazon: "A Estrategia do Oceano Azul" },
+  { titulo: "Rendimento Zero a Um", autor: "Peter Thiel", categoria: "Conhecimento Prático", tamanho: "curto", tipo: "nao-ficcao", nivel: "intermediario", sinopse: "Notas sobre startups e como construir o futuro.", buscaAmazon: "Zero a Um Peter Thiel" },
+  { titulo: "A Arte da Guerra", autor: "Sun Tzu", categoria: "Conhecimento Prático", tamanho: "curto", tipo: "nao-ficcao", nivel: "intermediario", sinopse: "Estrategia militar aplicada a negocios e vida.", buscaAmazon: "A Arte da Guerra Sun Tzu" },
+  { titulo: "Financas para não Financeiros", autor: "Humberto Veiga", categoria: "Conhecimento Prático", tamanho: "curto", tipo: "nao-ficcao", nivel: "iniciante", sinopse: "Entenda financas sem ser expert.", buscaAmazon: "Financas para não Financeiros Humberto Veiga" },
+  { titulo: "O Método Lean Startup", autor: "Eric Ries", categoria: "Conhecimento Prático", tamanho: "medio", tipo: "nao-ficcao", nivel: "intermediario", sinopse: "Como startups inovam e prosperam.", buscaAmazon: "Lean Startup Eric Ries" },
+  { titulo: "Investimentos Inteligentes", autor: "Gustavo Cerbasi", categoria: "Conhecimento Prático", tamanho: "medio", tipo: "nao-ficcao", nivel: "iniciante", sinopse: "Guia para construir patrimonio no Brasil.", buscaAmazon: "Investimentos Inteligentes Gustavo Cerbasi" },
+  { titulo: "Do Caos ao Lucro", autor: "Eliyahu Goldratt", categoria: "Conhecimento Prático", tamanho: "medio", tipo: "nao-ficcao", nivel: "intermediario", sinopse: "Teoria das restrições em formato de romance empresarial.", buscaAmazon: "A Meta Goldratt" },
+  { titulo: "UX Strategy", autor: "Jaime Levy", categoria: "Conhecimento Prático", tamanho: "medio", tipo: "nao-ficcao", nivel: "avancado", sinopse: "Estrategia de experiência do usuário para produtos digitais.", buscaAmazon: "UX Strategy Jaime Levy" },
 
   // Espiritualidade e Fe (10)
-  { titulo: "A Biblia de Jerusalm", autor: "Varios", categoria: "Espiritualidade e Fe", tamanho: "longo", tipo: "nao-ficcao", nivel: "intermediario", sinopse: "Traducao ecuminica com notas e introducoes.", buscaAmazon: "Biblia de Jerusalem" },
-  { titulo: "O Alcorao Sagrado", autor: "Varios", categoria: "Espiritualidade e Fe", tamanho: "longo", tipo: "nao-ficcao", nivel: "avancado", sinopse: "Texto sagrado do Isla com traducao e notas.", buscaAmazon: "Alcor Sagrado portugues" },
+  { titulo: "A Bíblia de Jerusalm", autor: "Varios", categoria: "Espiritualidade e Fe", tamanho: "longo", tipo: "nao-ficcao", nivel: "intermediario", sinopse: "Tradução ecuminica com notas e introduções.", buscaAmazon: "Bíblia de Jerusalem" },
+  { titulo: "O Alcorao Sagrado", autor: "Varios", categoria: "Espiritualidade e Fe", tamanho: "longo", tipo: "nao-ficcao", nivel: "avancado", sinopse: "Texto sagrado do Isla com tradução e notas.", buscaAmazon: "Alcor Sagrado portugues" },
   { titulo: "O Profeta", autor: "Kahlil Gibran", categoria: "Espiritualidade e Fe", tamanho: "curto", tipo: "ficcao", nivel: "iniciante", sinopse: "Poemas sobre amor, trabalho, alegria e vida.", buscaAmazon: "O Profeta Kahlil Gibran" },
-  { titulo: "O Poder do Agora", autor: "Eckhart Tolle", categoria: "Espiritualidade e Fe", tamanho: "medio", tipo: "nao-ficcao", nivel: "iniciante", sinopse: "Guia para iluminacao espiritual e paz interior.", buscaAmazon: "O Poder do Agora Eckhart Tolle" },
-  { titulo: "Um Curso em Milagres", autor: "Fundacao Paz Interior", categoria: "Espiritualidade e Fe", tamanho: "longo", tipo: "nao-ficcao", nivel: "intermediario", sinopse: "Sistema de treinamento espiritual para perdao e paz.", buscaAmazon: "Um Curso em Milagres" },
-  { titulo: "Cabala para Iniciantes", autor: "Michael Berg", categoria: "Espiritualidade e Fe", tamanho: "curto", tipo: "nao-ficcao", nivel: "iniciante", sinopse: "Introducao a sabedoria cabalistica.", buscaAmazon: "Cabala para Iniciantes Michael Berg" },
+  { titulo: "O Poder do Agora", autor: "Eckhart Tolle", categoria: "Espiritualidade e Fe", tamanho: "medio", tipo: "nao-ficcao", nivel: "iniciante", sinopse: "Guia para iluminação espiritual e paz interior.", buscaAmazon: "O Poder do Agora Eckhart Tolle" },
+  { titulo: "Um Curso em Milagres", autor: "Fundação Paz Interior", categoria: "Espiritualidade e Fe", tamanho: "longo", tipo: "nao-ficcao", nivel: "intermediario", sinopse: "Sistema de treinamento espiritual para perdao e paz.", buscaAmazon: "Um Curso em Milagres" },
+  { titulo: "Cabala para Iniciantes", autor: "Michael Berg", categoria: "Espiritualidade e Fe", tamanho: "curto", tipo: "nao-ficcao", nivel: "iniciante", sinopse: "Introdução a sabedoria cabalistica.", buscaAmazon: "Cabala para Iniciantes Michael Berg" },
   { titulo: "Conversas com Deus", autor: "Neale Donald Walsch", categoria: "Espiritualidade e Fe", tamanho: "medio", tipo: "nao-ficcao", nivel: "iniciante", sinopse: "Dialogos espirituais sobre vida, amor e Deus.", buscaAmazon: "Conversas com Deus Neale Donald Walsch" },
   { titulo: "Autobiografia de um Yogue", autor: "Paramahansa Yogananda", categoria: "Espiritualidade e Fe", tamanho: "medio", tipo: "nao-ficcao", nivel: "intermediario", sinopse: "Jornada espiritual de um mestre indiano.", buscaAmazon: "Autobiografia de um Yogui" },
-  { titulo: "O Livro Tibetano dos Mortos", autor: "Varios", categoria: "Espiritualidade e Fe", tamanho: "medio", tipo: "nao-ficcao", nivel: "avancado", sinopse: "Texto budista sobre a transicao entre vidas.", buscaAmazon: "O Livro Tibetano dos Mortos" },
+  { titulo: "O Livro Tibetano dos Mortos", autor: "Varios", categoria: "Espiritualidade e Fe", tamanho: "medio", tipo: "nao-ficcao", nivel: "avancado", sinopse: "Texto budista sobre a transição entre vidas.", buscaAmazon: "O Livro Tibetano dos Mortos" },
   { titulo: "Mere Christianity", autor: "C.S. Lewis", categoria: "Espiritualidade e Fe", tamanho: "curto", tipo: "nao-ficcao", nivel: "intermediario", sinopse: "Argumentos racionais para a fe cristaa.", buscaAmazon: "Cristianismo Puro e Simples C.S. Lewis" },
 
   // Risadas e Leveza (10)
   { titulo: "O Diabo Veste Prada", autor: "Lauren Weisberger", categoria: "Risadas e Leveza", tamanho: "medio", tipo: "ficcao", nivel: "iniciante", sinopse: "Sátire sobre o mundo da moda em Nova York.", buscaAmazon: "O Diabo Veste Prada Lauren Weisberger" },
-  { titulo: "O Diario de um Banana", autor: "Jeff Kinney", categoria: "Risadas e Leveza", tamanho: "curto", tipo: "ficcao", nivel: "iniciante", sinopse: "Diario hilario de um garoto no ensino fundamental.", buscaAmazon: "Diario de um Banana Jeff Kinney" },
-  { titulo: "O Guia do Mochileiro das Galaxias", autor: "Douglas Adams", categoria: "Risadas e Leveza", tamanho: "curto", tipo: "ficcao", nivel: "iniciante", sinopse: "Comedia sci-fi sobre o fim do mundo e espaco.", buscaAmazon: "O Guia do Mochileiro das Galaxias Douglas Adams" },
+  { titulo: "O Diário de um Banana", autor: "Jeff Kinney", categoria: "Risadas e Leveza", tamanho: "curto", tipo: "ficcao", nivel: "iniciante", sinopse: "Diário hilario de um garoto no ensino fundamental.", buscaAmazon: "Diário de um Banana Jeff Kinney" },
+  { titulo: "O Guia do Mochileiro das Galaxias", autor: "Douglas Adams", categoria: "Risadas e Leveza", tamanho: "curto", tipo: "ficcao", nivel: "iniciante", sinopse: "Comedia sci-fi sobre o fim do mundo e espaço.", buscaAmazon: "O Guia do Mochileiro das Galaxias Douglas Adams" },
   { titulo: "Cronicas Brasileiras", autor: "Luis Fernando Verissimo", categoria: "Risadas e Leveza", tamanho: "curto", tipo: "nao-ficcao", nivel: "iniciante", sinopse: "Cronicas humoristicas sobre o cotidiano brasileiro.", buscaAmazon: "Cronicas Brasileiras Luis Fernando Verissimo" },
-  { titulo: "Comedia na Standing Ovation", autor: "Fabio Porchat", categoria: "Risadas e Leveza", tamanho: "curto", tipo: "nao-ficcao", nivel: "iniciante", sinopse: "Humor sobre namoro, familia e dia a dia.", buscaAmazon: "Comedia Porchat" },
+  { titulo: "Comedia na Standing Ovation", autor: "Fabio Porchat", categoria: "Risadas e Leveza", tamanho: "curto", tipo: "nao-ficcao", nivel: "iniciante", sinopse: "Humor sobre namoro, família e dia a dia.", buscaAmazon: "Comedia Porchat" },
   { titulo: "O Almoco da Sexta-feira", autor: "Tereza Rachel", categoria: "Risadas e Leveza", tamanho: "curto", tipo: "ficco", nivel: "iniciante", sinopse: "Romance leve e divertido com humor brasileiro.", buscaAmazon: "O Almoco da Sexta-feira Tereza Rachel" },
   { titulo: "Cara de Pomo", autor: "Clarice Lispector", categoria: "Risadas e Leveza", tamanho: "curto", tipo: "ficcao", nivel: "intermediario", sinopse: "Contos infantis e poeticos com delicadeza.", buscaAmazon: "Cara de Pomo Clarice Lispector" },
-  { titulo: "Confissoes de Adolescente", autor: "Maria Mariana", categoria: "Risadas e Leveza", tamanho: "curto", tipo: "ficcao", nivel: "iniciante", sinopse: "Anseios de uma adolescente do Rio dos anos 80.", buscaAmazon: "Confissoes de Adolescente Maria Mariana" },
-  { titulo: "Toda Nudez Sera Punida", autor: "Nelson Rodrigues", categoria: "Risadas e Leveza", tamanho: "curto", tipo: "ficcao", nivel: "intermediario", sinopse: "Peca carioca com humor tragico sobre familia.", buscaAmazon: "Toda Nudez Sera Punida Nelson Rodrigues" },
+  { titulo: "Confissões de Adolescente", autor: "Maria Mariana", categoria: "Risadas e Leveza", tamanho: "curto", tipo: "ficcao", nivel: "iniciante", sinopse: "Anseios de uma adolescente do Rio dos anos 80.", buscaAmazon: "Confissões de Adolescente Maria Mariana" },
+  { titulo: "Toda Nudez Será Punida", autor: "Nelson Rodrigues", categoria: "Risadas e Leveza", tamanho: "curto", tipo: "ficcao", nivel: "intermediario", sinopse: "Peca carioca com humor tragico sobre família.", buscaAmazon: "Toda Nudez Será Punida Nelson Rodrigues" },
   { titulo: "A Falecida", autor: "Nelson Rodrigues", categoria: "Risadas e Leveza", tamanho: "curto", tipo: "ficcao", nivel: "intermediario", sinopse: "Tragicomedia sobre sonhos populares e realidade.", buscaAmazon: "A Falecida Nelson Rodrigues" },
 ];
 
 const CATEGORIA_CORES: Record<CategoriaEmocional, string> = {
-  "Emocao e Drama": "from-rose-500/30 to-pink-500/30 border-rose-500/40",
+  "Emoção e Drama": "from-rose-500/30 to-pink-500/30 border-rose-500/40",
   "Aventura e Suspense": "from-orange-500/30 to-red-500/30 border-orange-500/40",
   "Crescimento Pessoal": "from-green-500/30 to-emerald-500/30 border-green-500/40",
-  "Conhecimento Pratico": "from-blue-500/30 to-indigo-500/30 border-blue-500/40",
+  "Conhecimento Prático": "from-blue-500/30 to-indigo-500/30 border-blue-500/40",
   "Espiritualidade e Fe": "from-purple-500/30 to-violet-500/30 border-purple-500/40",
   "Risadas e Leveza": "from-yellow-500/30 to-amber-500/30 border-yellow-500/40",
 };
 
 const CATEGORIA_ICONS: Record<CategoriaEmocional, React.ReactNode> = {
-  "Emocao e Drama": <Heart className="w-6 h-6" />,
+  "Emoção e Drama": <Heart className="w-6 h-6" />,
   "Aventura e Suspense": <Zap className="w-6 h-6" />,
   "Crescimento Pessoal": <Brain className="w-6 h-6" />,
-  "Conhecimento Pratico": <BookOpen className="w-6 h-6" />,
+  "Conhecimento Prático": <BookOpen className="w-6 h-6" />,
   "Espiritualidade e Fe": <Feather className="w-6 h-6" />,
   "Risadas e Leveza": <Smile className="w-6 h-6" />,
 };
@@ -125,37 +125,37 @@ interface Resposta {
 
 const PERGUNTAS = [
   {
-    titulo: "O que voce quer sentir lendo?",
+    titulo: "O que você quer sentir lendo?",
     opcoes: [
-      { valor: "Emocao e Drama", label: "Emocoes profundas", sublabel: "Drama, romance, reflexoes" },
-      { valor: "Aventura e Suspense", label: "Aventura e tensao", sublabel: "Acao, misterio, fantastia" },
+      { valor: "Emoção e Drama", label: "Emoções profundas", sublabel: "Drama, romance, reflexoes" },
+      { valor: "Aventura e Suspense", label: "Aventura e tensão", sublabel: "Acao, misterio, fantastia" },
       { valor: "Crescimento Pessoal", label: "Crescer como pessoa", sublabel: "Autoajuda, mentalidade, habitos" },
-      { valor: "Conhecimento Pratico", label: "Aprender algo util", sublabel: "Finanças, negocios, produtividade" },
+      { valor: "Conhecimento Prático", label: "Aprender algo útil", sublabel: "Finanças, negocios, produtividade" },
       { valor: "Espiritualidade e Fe", label: "Espiritualidade", sublabel: "Religiao, filosofia, autoconhecimento" },
       { valor: "Risadas e Leveza", label: "Rir e relaxar", sublabel: "Humor, cronicas, leitura leve" },
     ],
   },
   {
-    titulo: "Quanto tempo voce tem para ler?",
+    titulo: "Quanto tempo você tem para ler?",
     opcoes: [
-      { valor: "curto", label: "Pouco tempo", sublabel: "Livros curtos, ate 200 paginas" },
-      { valor: "medio", label: "Tempo medio", sublabel: "200 a 400 paginas" },
-      { valor: "qualquer", label: "Nao importa", sublabel: "Aceito qualquer tamanho" },
+      { valor: "curto", label: "Pouco tempo", sublabel: "Livros curtos, até 200 páginas" },
+      { valor: "medio", label: "Tempo médio", sublabel: "200 a 400 páginas" },
+      { valor: "qualquer", label: "Não importa", sublabel: "Aceito qualquer tamanho" },
     ],
   },
   {
-    titulo: "Voce prefere?",
+    titulo: "Você prefere?",
     opcoes: [
-      { valor: "ficcao", label: "Ficcao", sublabel: "Historias inventadas" },
-      { valor: "nao-ficcao", label: "Nao-ficcao", sublabel: "Conteudo real, pragmatico" },
-      { valor: "qualquer", label: "Tanto faz", sublabel: "Boa historia ou conteudo util" },
+      { valor: "ficcao", label: "Ficcao", sublabel: "Histórias inventadas" },
+      { valor: "nao-ficcao", label: "Nao-ficcao", sublabel: "Conteúdo real, pragmatico" },
+      { valor: "qualquer", label: "Tanto faz", sublabel: "Boa história ou conteúdo útil" },
     ],
   },
   {
-    titulo: "Seu nivel de leitura?",
+    titulo: "Seu nível de leitura?",
     opcoes: [
       { valor: "iniciante", label: "Voltando a ler", sublabel: "Preciso retomar o habito" },
-      { valor: "intermediario", label: "Leio as vezes", sublabel: "Um livro por mes ou dois" },
+      { valor: "intermediario", label: "Leio as vezes", sublabel: "Um livro por mês ou dois" },
       { valor: "avancado", label: "Leio bastante", sublabel: "Pode ser denso e extenso" },
     ],
   },
@@ -213,7 +213,7 @@ export function SugestorLivros({ onBack }: Props) {
   };
 
   const compartilhar = () => {
-    const texto = `Minhas 5 recomendacoes de livros do CLICAresolve:\n\n${livrosRecomendados.map((l, i) => `${i + 1}. ${l.titulo} - ${l.autor}`).join("\n")}\n\nDescubra seu proximo livro em CLICAresolve!`;
+    const texto = `Minhas 5 recomendações de livros do CLICAresolve:\n\n${livrosRecomendados.map((l, i) => `${i + 1}. ${l.titulo} - ${l.autor}`).join("\n")}\n\nDescubra seu próximo livro em CLICAresolve!`;
     const url = `https://wa.me/?text=${encodeURIComponent(texto)}`;
     window.open(url, "_blank");
   };
@@ -221,10 +221,10 @@ export function SugestorLivros({ onBack }: Props) {
   if (finalizado) {
     return (
       <ToolLayout
-        title="Descubra Seu Proximo Livro"
+        title="Descubra Seu Próximo Livro"
         emoji="📚"
         category="Livros e Leitura"
-        description="Respondo 4 perguntas e recebe 5 recomendacoes."
+        description="Respondo 4 perguntas e recebe 5 recomendações."
         onBack={onBack}
       affiliateBanner={<AffiliateBanner terms={["kindle e-reader"]} label="kindle e-reader" />}
     
@@ -293,10 +293,10 @@ export function SugestorLivros({ onBack }: Props) {
 
   return (
     <ToolLayout
-      title="Descubra Seu Proximo Livro"
+      title="Descubra Seu Próximo Livro"
       emoji="📚"
       category="Livros e Leitura"
-      description="Responda 4 perguntas e receba 5 recomendacoes."
+      description="Responda 4 perguntas e receba 5 recomendações."
       onBack={onBack}
     >
       <div className="space-y-5">
