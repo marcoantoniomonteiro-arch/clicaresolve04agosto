@@ -46,7 +46,7 @@ export function ZPLParaPDF({ onBack }: Props) {
 
     try {
       const response = await fetch(
-        `http://api.labelary.com/v1/printers/${dpmm}dpmm/labels/${w}x${h}/0/`,
+        `https://api.labelary.com/v1/printers/${dpmm}dpmm/labels/${w}x${h}/0/`,
         {
           method: "POST",
           headers: {

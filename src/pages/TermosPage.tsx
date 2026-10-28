@@ -91,6 +91,17 @@ export function TermosPage({ onBack }: Props) {
           </p>
         </div>
 
+        {/* Anúncios e terceiros */}
+        <div className="p-5 rounded-xl bg-white/5 border border-white/10">
+          <h2 className="text-lg font-bold text-white mb-3">Anúncios, links de afiliado e sites de terceiros</h2>
+          <p className="text-sm text-gray-300 leading-relaxed">
+            O site é mantido com anúncios do Google AdSense e com links de afiliado (Amazon, Mercado Livre e Shopee),
+            sempre identificados como tal. Os anúncios são escolhidos pelo Google, e o CLICAresolve não se
+            responsabiliza pelo conteúdo, produtos ou serviços anunciados nem pelas políticas de sites externos.
+            Detalhes sobre cookies e anúncios estão na nossa <a href="/privacidade" className="text-green-400 hover:text-green-300 underline">Política de Privacidade</a>.
+          </p>
+        </div>
+
         {/* Alterações */}
         <div className="p-5 rounded-xl bg-white/5 border border-white/10">
           <h2 className="text-lg font-bold text-white mb-3">Alterações nos termos</h2>

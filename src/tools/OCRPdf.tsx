@@ -2,7 +2,7 @@ import React, { useState, useCallback } from "react";
 import { ToolLayout } from "../components/ToolLayout";
 import { AffiliateBanner } from "../components/AffiliateBanner";
 import { ToolContent } from "../components/ToolContent";
-import { FileText, Copy, Download, Loader2, ScanText, Lock } from "lucide-react";
+import { FileText, Copy, Download, Loader2, ScanText } from "lucide-react";
 import workerUrl from "pdfjs-dist/build/pdf.worker.min.mjs?url";
 import { createWorker } from "tesseract.js";
 
@@ -245,15 +245,6 @@ export function OCRPdf({ onBack }: Props) {
                 className="input-field text-sm font-mono w-full min-h-[300px] resize-y"
                 placeholder="O texto extraído aparecerá aqui..."
               />
-            </div>
-
-            <div className="p-3 rounded-xl bg-white/5 border border-white/10">
-              <div className="flex items-center gap-2 text-gray-500">
-                <Lock className="w-4 h-4" />
-                <p className="text-xs">
-                  <span className="text-gray-400 font-medium">PDF pesquisável</span> — Em breve. Por enquanto, use os botões acima para copiar ou baixar o texto extraído.
-                </p>
-              </div>
             </div>
 
             <button

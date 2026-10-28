@@ -35,7 +35,7 @@ export function SobrePage({ onBack }: Props) {
             Somos um portal brasileiro de ferramentas e calculadoras gratuitas, sem cadastro e sem custo.
             Com mais de 130 ferramentas cobrindo Saúde, Finanças, Transportes, Estudos, Esportes, DP/RH, Pet e mais.
             Nossa missão é democratizar o acesso a informações úteis de forma gratuita para todos os brasileiros.
-            Todos os cálculos funcionam 100% no navegador — nenhum dado é enviado a servidores.
+            Os cálculos funcionam no próprio navegador — o que você digita nas calculadoras não é enviado ao CLICAresolve.
           </p>
         </div>
 
@@ -91,9 +91,10 @@ export function SobrePage({ onBack }: Props) {
             <h2 className="text-lg font-bold text-white">Nosso Compromisso com a Privacidade</h2>
           </div>
           <p className="text-sm text-gray-300 leading-relaxed">
-            <strong>100% dos cálculos acontecem no seu navegador.</strong> Nenhum dado digitado em nossas 
-            calculadoras é enviado a servidores. Não coletamos dados pessoais, não usamos cookies de 
-            rastreamento (exceto os necessários para o Google AdSense), não vendemos informações. 
+            <strong>Os cálculos acontecem no seu navegador.</strong> O que você digita nas calculadoras
+            não é enviado ao CLICAresolve (as poucas exceções, como o conversor ZPL e o roteirizador,
+            estão descritas na Política de Privacidade). Não coletamos dados pessoais, não usamos cookies de
+            rastreamento próprios (apenas os do Google AdSense para anúncios), não vendemos informações. 
             Suas senhas, seus dados de saúde, suas informações financeiras — tudo permanece no seu 
             dispositivo. Quando usamos localStorage, os dados ficam apenas no seu navegador, não em 
             nossos servidores.
@@ -111,8 +112,8 @@ export function SobrePage({ onBack }: Props) {
               "Sem cadastro — use qualquer ferramenta sem criar conta",
               "Sem anúncios invasivos — apenas banners discretos e relevantes",
               "Metodologia transparente — cada cálculo tem fonte documentada",
-              "Código aberto — metodologia e lógica visíveis para quem quiser auditar",
-              "Privacidade absoluta — dados nunca saem do navegador",
+              "Metodologia aberta — fórmulas e fontes explicadas em cada ferramenta",
+              "Privacidade em primeiro lugar — cálculos feitos no seu navegador, sem cadastro",
               "Acesso offline — funciona sem internet após carregamento",
               "100% gratuito — sem limites de uso, sem upsell"
             ].map((d, i) => (

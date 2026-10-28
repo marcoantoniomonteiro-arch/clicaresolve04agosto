@@ -111,7 +111,7 @@ export const tools: Tool[] = [
     emoji: "💱",
     category: "Finanças",
     name: "Conversor de Moedas",
-    description: "Converta moedas estrangeiras para reais com taxas atualizadas.",
+    description: "Converta moedas estrangeiras para reais usando cotações de referência que você pode ajustar.",
   },
   {
     id: 14,
@@ -423,7 +423,7 @@ export const tools: Tool[] = [
     emoji: "📆",
     category: "Utilidades",
     name: "Calendário de Feriados",
-    description: "Veja feriados nacionais e móveis de 2025-2026 com contador regressivo.",
+    description: "Veja os feriados nacionais e móveis de qualquer ano, com contador regressivo.",
   },
   {
     id: 53,

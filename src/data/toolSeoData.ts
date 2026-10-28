@@ -586,7 +586,7 @@ export const TOOL_SEO_DATA: Record<string, ToolSEOData> = {
   },
   // Calendário
   "calendario-feriados": {
-    title: "Calendário de Feriados 2025-2026 com Contador | CLICAresolve",
+    title: "Calendário de Feriados Nacionais com Contador | CLICAresolve",
     description: "Veja feriados nacionais e móveis com contador. Gratuito, sem cadastro. Confira os feriados!",
     schemaType: "SoftwareApplication",
     hasFAQ: true,
