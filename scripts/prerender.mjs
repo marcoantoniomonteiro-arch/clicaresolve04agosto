@@ -18,7 +18,7 @@ const { render, getPrerenderRoutes, checkEnglishSlugs } = await import(pathToFil
 
 const missingSlugs = checkEnglishSlugs();
 if (missingSlugs.length) {
-  console.error("[prerender] Faltam pares em src/i18n/tools/slugs.ts:\n  " + missingSlugs.join("\n  "));
+  console.error("[prerender] Dados incompletos:\n  " + missingSlugs.join("\n  "));
   process.exit(1);
 }
 
@@ -78,5 +78,21 @@ if (failures.length) {
   // Não derruba o deploy por uma página, mas falha se a maioria quebrar
   if (failures.length > routes.length / 2) process.exit(1);
 }
+
+// Sitemap gerado a partir das páginas que existem de fato
+const today = new Date().toISOString().slice(0, 10);
+const okRoutes = routes.filter((r) => !failures.some((f) => f.route === r));
+const priority = (r) => (r === "/" ? "1.0" : r.startsWith("/categoria/") || r === "/guias" ? "0.8" : r.startsWith("/guia/") ? "0.8" : "0.6");
+const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+${okRoutes.map((r) => `  <url>
+    <loc>https://www.clicaresolve.com.br${r === "/" ? "/" : r}</loc>
+    <lastmod>${today}</lastmod>
+    <priority>${priority(r)}</priority>
+  </url>`).join("\n")}
+</urlset>
+`;
+fs.writeFileSync(path.join(distDir, "sitemap.xml"), sitemap);
+console.log(`[prerender] sitemap.xml com ${okRoutes.length} endereços.`);
 
 fs.rmSync(path.join(root, "dist-ssr"), { recursive: true, force: true });

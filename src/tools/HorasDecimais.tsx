@@ -37,7 +37,7 @@ export function HorasDecimais({ onBack }: Props) {
 
   return (
     <ToolLayout
-      title="Conversor Horas Decimais"
+      title="Conversor de Horas em Decimais"
       emoji="🔢"
       category="DP/RH"
       description="Converta entre formato horário e horas decimais."

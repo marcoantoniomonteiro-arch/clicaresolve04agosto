@@ -100,7 +100,7 @@ export function DiasVida({ onBack }: Props) {
 
   return (
     <ToolLayout
-      title="Contador de Dias de Vida"
+      title="Calculadora de Horas e Dias de Vida"
       emoji="🎂"
       category="Utilidades"
       description="Descubra quantos dias, horas e minutos você já viveu."

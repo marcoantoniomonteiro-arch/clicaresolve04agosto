@@ -2,6 +2,7 @@
 // revisão do AdSense: Sobre, Contato, Privacidade e Termos sempre acessíveis).
 const LINKS = [
   { label: "Início", href: "/" },
+  { label: "Guias", href: "/guias" },
   { label: "Sobre", href: "/sobre" },
   { label: "Metodologia", href: "/metodologia" },
   { label: "Contato", href: "/contato" },

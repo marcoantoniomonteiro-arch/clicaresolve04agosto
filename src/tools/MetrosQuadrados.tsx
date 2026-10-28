@@ -51,7 +51,7 @@ export function MetrosQuadrados({ onBack }: Props) {
 
   return (
     <ToolLayout
-      title="Calculadora de m²"
+      title="Calculadora de Metro Quadrado (m²)"
       emoji="📐"
       category="Utilidades"
       description="Meça a área de até 5 ambientes e calcule o total com margem para quebra de piso."

@@ -56,7 +56,7 @@ export function ConversorRoupas({ onBack }: Props) {
 
   return (
     <ToolLayout
-      title="Conversor de Roupas"
+      title="Conversor de Tamanho de Roupa (EUA, Europa e Brasil)"
       emoji="👕"
       category="Utilidades"
       description="Converta tamanhos de roupas entre padroes BR, EUA, Europa e China."

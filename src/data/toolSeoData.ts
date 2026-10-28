@@ -30,8 +30,8 @@ export const TOOL_SEO_DATA: Record<string, ToolSEOData> = {
     ],
   },
   "metros-quadrados": {
-    title: "Calcule Metros Quadrados de Ambiente Grátis | CLICAresolve",
-    description: "Calcule a área de qualquer ambiente retangular em segundos. Gratuito, sem cadastro e direto no navegador. Calcule agora!",
+    title: "Calcular Metro Quadrado Online (m²) Grátis | CLICAresolve",
+    description: "Calcule o metro quadrado online: informe largura e comprimento e veja a área em m² de até 5 cômodos, com margem para quebra de piso. Grátis e sem cadastro.",
     schemaType: "SoftwareApplication",
     hasFAQ: false,
   },
@@ -343,8 +343,8 @@ export const TOOL_SEO_DATA: Record<string, ToolSEOData> = {
   },
   // Utilidades
   "conversor-roupas": {
-    title: "Conversor de Tamanhos de Roupas BR/EUA/Europa | CLICAresolve",
-    description: "Converta tamanhos de roupas entre BR, EUA e Europa. Gratuito, sem cadastro. Converta agora!",
+    title: "Tamanho de Roupa EUA, Europa e Brasil: Conversor | CLICAresolve",
+    description: "Converta tamanhos de roupa dos EUA, Europa e China para o Brasil (P, M, G, 38, 40...). Tabela de tamanho de roupa internacional, grátis e sem cadastro.",
     schemaType: "SoftwareApplication",
     hasFAQ: false,
   },
@@ -370,8 +370,8 @@ export const TOOL_SEO_DATA: Record<string, ToolSEOData> = {
     hasFAQ: false,
   },
   "conversor-dpi": {
-    title: "Converta Sensibilidade de DPI do Mouse Grátis | CLICAresolve",
-    description: "Converta sensibilidade entre diferentes DPIs. Gratuito, sem cadastro. Ajuste seu mouse!",
+    title: "Conversor de DPI do Mouse e Sensibilidade | CLICAresolve",
+    description: "Mudou o DPI do mouse? Descubra a nova sensibilidade para manter a mesma mira em CS2, Valorant, Fortnite e outros jogos. Conversor de DPI grátis.",
     schemaType: "SoftwareApplication",
     hasFAQ: false,
   },
@@ -604,8 +604,8 @@ export const TOOL_SEO_DATA: Record<string, ToolSEOData> = {
     hasFAQ: false,
   },
   "dias-vida": {
-    title: "Conte Dias, Horas e Minutos de Vida Grátis | CLICAresolve",
-    description: "Descubra quanto tempo você já viveu. Gratuito, sem cadastro. Descubra agora!",
+    title: "Horas de Vida — Quantos Dias Você Já Viveu? | CLICAresolve",
+    description: "Calcule suas horas de vida: digite a data de nascimento e veja quantos dias, horas, minutos e segundos você já viveu até hoje. Grátis e sem cadastro.",
     schemaType: "SoftwareApplication",
     hasFAQ: false,
   },
@@ -620,8 +620,8 @@ export const TOOL_SEO_DATA: Record<string, ToolSEOData> = {
     ],
   },
   "horas-decimais": {
-    title: "Converta Horas em Decimais e Vice-Versa Grátis | CLICAresolve",
-    description: "Converta entre formato horário e decimal. Gratuito, sem cadastro. Converta horas!",
+    title: "Horas em Decimais — Converter Horas para Decimal | CLICAresolve",
+    description: "Converta horas em decimais e decimais em horas (8h30 = 8,5). Ideal para folha de ponto, banco de horas e cálculo de salário. Grátis e com exemplos.",
     schemaType: "LegalService",
     hasFAQ: true,
     faqs: [

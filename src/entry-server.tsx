@@ -8,12 +8,17 @@ import { HelmetProvider, HelmetServerState } from "react-helmet-async";
 import App, { getPrerenderRoutes } from "./App";
 import { toolsSeoEN } from "./i18n/tools/en";
 import { ptSlugToEnSlug } from "./i18n/tools/slugs";
+import { GUIDE_SLUGS } from "./data/guidesMeta";
+import { GUIDES } from "./data/guides";
 
-/** Confere se slugs.ts está em dia com en.ts (o build para se não estiver). */
+/** Confere se slugs.ts está em dia com en.ts e se todo guia tem conteúdo
+ *  (o build para se algo estiver faltando). */
 export function checkEnglishSlugs(): string[] {
-  return toolsSeoEN
+  const en = toolsSeoEN
     .filter((t) => ptSlugToEnSlug[t.ptSlug] !== t.enSlug)
-    .map((t) => `${t.ptSlug} -> ${t.enSlug}`);
+    .map((t) => `slugs.ts: ${t.ptSlug} -> ${t.enSlug}`);
+  const guides = GUIDE_SLUGS.filter((s) => !GUIDES[s]).map((s) => `guides.ts: falta o conteúdo do guia "${s}"`);
+  return [...en, ...guides];
 }
 
 export { getPrerenderRoutes };

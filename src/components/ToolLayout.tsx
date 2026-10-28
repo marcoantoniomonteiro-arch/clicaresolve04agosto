@@ -2,6 +2,8 @@ import React, { useEffect, useMemo, useState } from "react";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import { AdPlaceholder } from "./AdPlaceholder";
 import { SiteFooterLinks } from "./SiteFooterLinks";
+import { ShareButtons } from "./ShareButtons";
+import { getGuidesForTool } from "../data/guidesMeta";
 import { ToolContent } from "./ToolContent";
 import { SEOHead } from "./SEOHead";
 import { TOOLS } from "../data/tools";
@@ -89,7 +91,7 @@ export function ToolLayout({
   }, []);
 
   const relatedTools = TOOLS
-    .filter((t) => t.category === category && t.name !== title)
+    .filter((t) => t.category === category && t.slug !== toolSlug)
     .slice(0, 4);
 
   const breadcrumbs = [
@@ -204,6 +206,27 @@ export function ToolLayout({
           {/* Internal promo banner */}
           <SolarPromoBanner currentSlug={toolSlug} onNavigate={onSelectTool} />
         </div>
+
+        <ShareButtons
+          url={`https://www.clicaresolve.com.br${seoEN ? `/en/${seoEN.enSlug}` : `/${toolSlug}`}`}
+          text={seoEN ? seoEN.h1 : `${title} — grátis no CLICAresolve`}
+          className="mb-6"
+        />
+
+        {getGuidesForTool(toolSlug).map((g) => (
+          <a
+            key={g.slug}
+            href={`/guia/${g.slug}`}
+            className="flex items-center gap-3 p-4 mb-6 rounded-xl bg-blue-400/5 border border-blue-400/20 hover:bg-blue-400/10 transition-colors"
+          >
+            <span className="text-2xl">{g.emoji}</span>
+            <span className="flex-1">
+              <span className="block text-xs font-semibold text-blue-400 uppercase tracking-wider">Guia completo</span>
+              <span className="block text-sm font-bold text-text">{g.title}</span>
+            </span>
+            <ArrowRight className="w-4 h-4 text-blue-400" />
+          </a>
+        ))}
 
         {affiliateBanner}
 

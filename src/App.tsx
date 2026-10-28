@@ -8,6 +8,7 @@ import { NavigationContext } from "./context/NavigationContext";
 import { wasScrolling } from "./utils/touchHandler";
 import { TOOLS, CATEGORIES, Category } from "./data/tools";
 import { CATEGORY_SEO_DATA, getCategoryTools } from "./data/seoData";
+import { GUIDES_META, GUIDE_SLUGS } from "./data/guidesMeta";
 const AlcoolGasolina = React.lazy(() => import("./tools/AlcoolGasolina").then(m => ({ default: m.AlcoolGasolina })));
 const DivisorCarona = React.lazy(() => import("./tools/DivisorCarona").then(m => ({ default: m.DivisorCarona })));
 const ConsumoEnergia = React.lazy(() => import("./tools/ConsumoEnergia").then(m => ({ default: m.ConsumoEnergia })));
@@ -151,12 +152,23 @@ const TermosPage = React.lazy(() => import("./pages/TermosPage").then(m => ({ de
 import { CafeButton, CafeFooterLink } from "./components/CafeButton";
 import { enSlugToPtSlug, ptSlugToEnSlug } from "./i18n/tools/slugs";
 
+const GuidesIndexPage = React.lazy(() => import("./pages/GuidesIndexPage").then(m => ({ default: m.GuidesIndexPage })));
+const GuidePage = React.lazy(() => import("./pages/GuidePage").then(m => ({ default: m.GuidePage })));
+
 const STATIC_PAGES: Record<string, React.ComponentType<{ onBack: () => void }>> = {
   "sobre": SobrePage,
   "metodologia": MetodologiaPage,
   "contato": ContatoPage,
   "privacidade": PrivacidadePage,
   "termos": TermosPage,
+  "guias": GuidesIndexPage,
+  // Cada guia vira uma página em /guia/<slug>
+  ...Object.fromEntries(
+    GUIDE_SLUGS.map((slug) => [
+      `guia/${slug}`,
+      (props: { onBack: () => void }) => <GuidePage slug={slug} {...props} />,
+    ])
+  ),
 };
 
 const TOOL_COMPONENTS: Record<string, React.ComponentType<{ onBack: () => void; initialName?: string }>> = {
@@ -744,6 +756,23 @@ export default function App({ initialPath }: { initialPath?: string } = {}) {
               })}
             </div>
           )}
+        </section>
+
+        {/* Guias práticos */}
+        <section className="max-w-screen-2xl mx-auto px-4 py-12 border-t border-border">
+          <div className="flex items-end justify-between gap-4 mb-6 flex-wrap">
+            <h2 className="text-xl font-bold text-text">Guias práticos</h2>
+            <a href="/guias" className="text-sm text-green-400 hover:text-green-300">Ver todos os guias →</a>
+          </div>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            {GUIDES_META.map((g) => (
+              <a key={g.slug} href={`/guia/${g.slug}`} className="p-5 rounded-2xl bg-card border border-border hover:border-green-400/30 hover:bg-green-400/5 transition-all">
+                <div className="text-2xl mb-2">{g.emoji}</div>
+                <h3 className="text-sm font-bold text-text mb-1 leading-snug">{g.title}</h3>
+                <p className="text-xs text-muted leading-relaxed line-clamp-2">{g.description}</p>
+              </a>
+            ))}
+          </div>
         </section>
 
         {/* Explore por Categoria */}
