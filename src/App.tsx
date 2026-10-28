@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useMemo, useCallback, useRef, Suspense } from "react";
 import { Header } from "./components/Header";
 import { SEOHead } from "./components/SEOHead";
-import { CategoryPage } from "./components/CategoryPage";
+const CategoryPage = React.lazy(() => import("./components/CategoryPage").then(m => ({ default: m.CategoryPage })));
 import { CookieBanner } from "./components/CookieBanner";
 import { ErrorBoundary } from "./components/ErrorBoundary";
 import { NavigationContext } from "./context/NavigationContext";
@@ -143,13 +143,13 @@ const CalculadoraTamanhoTapete = React.lazy(() => import("./tools/CalculadoraTam
 const RegaPlantas = React.lazy(() => import("./tools/RegaPlantas").then(m => ({ default: m.RegaPlantas })));
 const PlanejadorFusoHorario = React.lazy(() => import("./tools/PlanejadorFusoHorario").then(m => ({ default: m.PlanejadorFusoHorario })));
 const ZPLParaPDF = React.lazy(() => import("./tools/ZPLParaPDF").then(m => ({ default: m.ZPLParaPDF })));
-import { SobrePage } from "./pages/SobrePage";
-import { MetodologiaPage } from "./pages/MetodologiaPage";
-import { ContatoPage } from "./pages/ContatoPage";
-import { PrivacidadePage } from "./pages/PrivacidadePage";
-import { TermosPage } from "./pages/TermosPage";
+const SobrePage = React.lazy(() => import("./pages/SobrePage").then(m => ({ default: m.SobrePage })));
+const MetodologiaPage = React.lazy(() => import("./pages/MetodologiaPage").then(m => ({ default: m.MetodologiaPage })));
+const ContatoPage = React.lazy(() => import("./pages/ContatoPage").then(m => ({ default: m.ContatoPage })));
+const PrivacidadePage = React.lazy(() => import("./pages/PrivacidadePage").then(m => ({ default: m.PrivacidadePage })));
+const TermosPage = React.lazy(() => import("./pages/TermosPage").then(m => ({ default: m.TermosPage })));
 import { CafeButton, CafeFooterLink } from "./components/CafeButton";
-import { enSlugToPtSlug, ptSlugToEnSlug } from "./i18n/tools/en";
+import { enSlugToPtSlug, ptSlugToEnSlug } from "./i18n/tools/slugs";
 
 const STATIC_PAGES: Record<string, React.ComponentType<{ onBack: () => void }>> = {
   "sobre": SobrePage,
@@ -296,6 +296,10 @@ const TOOL_COMPONENTS: Record<string, React.ComponentType<{ onBack: () => void; 
   "planejador-fuso-horario": PlanejadorFusoHorario,
   "zpl-para-pdf": ZPLParaPDF,
 };
+
+function PageFallback() {
+  return <div className="min-h-screen bg-bg pt-16" />;
+}
 
 const CATEGORY_COLORS: Record<string, string> = {
   Transportes: "text-blue-400 bg-blue-400/10 border-blue-400/20",
@@ -564,7 +568,9 @@ export default function App({ initialPath }: { initialPath?: string } = {}) {
           lang={lang}
           onToggleLang={() => setLang(lang === "en" ? "pt" : "en")}
         />
-        <StaticComponent onBack={() => setActiveCategoryPage(null)} />
+        <Suspense fallback={<PageFallback />}>
+          <StaticComponent onBack={() => setActiveCategoryPage(null)} />
+        </Suspense>
         <CookieBanner />
         <CafeButton externalOpen={cafeOpen} onExternalClose={() => setCafeOpen(false)} />
       </div>
@@ -584,12 +590,14 @@ export default function App({ initialPath }: { initialPath?: string } = {}) {
           lang={lang}
           onToggleLang={() => setLang(lang === "en" ? "pt" : "en")}
         />
+        <Suspense fallback={<PageFallback />}>
         <CategoryPage
           slug={activeCategoryPage}
           onBack={() => setActiveCategoryPage(null)}
           onSelectTool={navigateToTool}
           onSelectCategory={(cat) => { setActiveCategoryPage(null); setActiveCategory(cat as Category); }}
         />
+        </Suspense>
         <CookieBanner />
         <CafeButton externalOpen={cafeOpen} onExternalClose={() => setCafeOpen(false)} />
       </div>

@@ -1,5 +1,14 @@
-import React, { useState, useEffect, useCallback } from "react";
-import { QRCodeSVG } from "qrcode.react";
+import React, { useState, useEffect, useCallback, Suspense } from "react";
+
+// O gerador de QR Code só é baixado quando o QR aparece na tela
+const QRCodeSVGLazy = React.lazy(() => import("qrcode.react").then((m) => ({ default: m.QRCodeSVG })));
+function QRCodeSVG(props: { value: string; size: number; level: "L" | "M" | "Q" | "H" }) {
+  return (
+    <Suspense fallback={<div style={{ width: props.size, height: props.size }} />}>
+      <QRCodeSVGLazy {...props} />
+    </Suspense>
+  );
+}
 import { X, Copy, Check, Coffee, Heart } from "lucide-react";
 
 const PIX_CODE =

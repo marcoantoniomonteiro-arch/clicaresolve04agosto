@@ -14,7 +14,13 @@ if (!template.includes('<div id="root"></div>')) {
   console.error("[prerender] dist/index.html já foi pré-renderado. Rode `npm run build` completo.");
   process.exit(1);
 }
-const { render, getPrerenderRoutes } = await import(pathToFileURL(ssrEntry).href);
+const { render, getPrerenderRoutes, checkEnglishSlugs } = await import(pathToFileURL(ssrEntry).href);
+
+const missingSlugs = checkEnglishSlugs();
+if (missingSlugs.length) {
+  console.error("[prerender] Faltam pares em src/i18n/tools/slugs.ts:\n  " + missingSlugs.join("\n  "));
+  process.exit(1);
+}
 
 // Tags do index.html que cada página define por conta própria (via Helmet)
 const PER_PAGE_TAGS = [

@@ -6,6 +6,15 @@ import { Writable } from "node:stream";
 import { StringDecoder } from "node:string_decoder";
 import { HelmetProvider, HelmetServerState } from "react-helmet-async";
 import App, { getPrerenderRoutes } from "./App";
+import { toolsSeoEN } from "./i18n/tools/en";
+import { ptSlugToEnSlug } from "./i18n/tools/slugs";
+
+/** Confere se slugs.ts está em dia com en.ts (o build para se não estiver). */
+export function checkEnglishSlugs(): string[] {
+  return toolsSeoEN
+    .filter((t) => ptSlugToEnSlug[t.ptSlug] !== t.enSlug)
+    .map((t) => `${t.ptSlug} -> ${t.enSlug}`);
+}
 
 export { getPrerenderRoutes };
 

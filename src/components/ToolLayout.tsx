@@ -292,10 +292,12 @@ const SOLAR_PROMO_MESSAGES = [
 ];
 
 function SolarPromoBanner({ currentSlug, onNavigate }: { currentSlug: string; onNavigate: (slug: string) => void }) {
-  const promo = useMemo(
-    () => SOLAR_PROMO_MESSAGES[Math.floor(Math.random() * SOLAR_PROMO_MESSAGES.length)],
-    []
-  );
+  // Escolha fixa por página (o HTML pré-renderizado e o navegador mostram o mesmo texto)
+  const promo = useMemo(() => {
+    let h = 0;
+    for (const c of currentSlug) h = (h * 31 + c.charCodeAt(0)) >>> 0;
+    return SOLAR_PROMO_MESSAGES[h % SOLAR_PROMO_MESSAGES.length];
+  }, [currentSlug]);
   if (currentSlug === "economia-energia-solar") return null;
   return (
     <button
