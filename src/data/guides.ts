@@ -20,6 +20,7 @@ import { GUIDES_EXTRA_1 } from "./guidesExtra1";
 import { GUIDES_EXTRA_2 } from "./guidesExtra2";
 import { GUIDES_EXTRA_3 } from "./guidesExtra3";
 import { GUIDES_EXTRA_4 } from "./guidesExtra4";
+import { GUIDES_EXTRA_5 } from "./guidesExtra5";
 
 const GUIDES_BASE: Record<string, GuideContent> = {
   "quantos-btus-preciso": {
@@ -350,4 +351,5 @@ export const GUIDES: Record<string, GuideContent> = {
   ...GUIDES_EXTRA_2,
   ...GUIDES_EXTRA_3,
   ...GUIDES_EXTRA_4,
+  ...GUIDES_EXTRA_5,
 };

@@ -11,7 +11,7 @@ interface Props {
 interface Feriado {
   data: Date;
   nome: string;
-  tipo: "nacional" | "movel";
+  tipo: "nacional" | "facultativo";
 }
 
 function calcularPascoa(ano: number): Date {
@@ -32,49 +32,73 @@ function calcularPascoa(ano: number): Date {
   return new Date(ano, mes - 1, dia);
 }
 
-function gerarFeriados(ano: number): Feriado[] {
-  const feriados: Feriado[] = [];
+function somarDias(base: Date, dias: number): Date {
+  const d = new Date(base);
+  d.setDate(d.getDate() + dias);
+  return d;
+}
 
+// Feriados nacionais (Lei 662/1949, Lei 6.802/1980, Lei 9.093/1995 e Lei 14.759/2023)
+// e pontos facultativos federais divulgados todo ano pelo governo
+function gerarFeriados(ano: number): Feriado[] {
   const pascoa = calcularPascoa(ano);
-  const carnaval = new Date(pascoa);
-  carnaval.setDate(carnaval.getDate() - 47);
-  const corpusChristi = new Date(pascoa);
-  corpusChristi.setDate(corpusChristi.getDate() + 60);
 
   const fixos: [number, number, string][] = [
     [1, 1, "Confraternização Universal"],
     [21, 4, "Tiradentes"],
     [1, 5, "Dia do Trabalho"],
-    [7, 9, "Independencia do Brasil"],
+    [7, 9, "Independência do Brasil"],
     [12, 10, "Nossa Senhora Aparecida"],
     [2, 11, "Finados"],
-    [15, 11, "Proclamação da Republica"],
+    [15, 11, "Proclamação da República"],
     [25, 12, "Natal"],
   ];
 
-  fixos.forEach(([dia, mes, nome]) => {
-    feriados.push({
-      data: new Date(ano, mes - 1, dia),
-      nome,
-      tipo: "nacional",
-    });
-  });
+  const feriados: Feriado[] = fixos.map(([dia, mes, nome]) => ({
+    data: new Date(ano, mes - 1, dia),
+    nome,
+    tipo: "nacional" as const,
+  }));
+
+  // Dia Nacional de Zumbi e da Consciência Negra: feriado nacional desde 2024
+  if (ano >= 2024) {
+    feriados.push({ data: new Date(ano, 10, 20), nome: "Consciência Negra", tipo: "nacional" });
+  }
 
   feriados.push(
-    { data: carnaval, nome: "Carnaval", tipo: "movel" },
-    { data: pascoa, nome: "Pascoa", tipo: "movel" },
-    { data: corpusChristi, nome: "Corpus Christi", tipo: "movel" }
+    { data: somarDias(pascoa, -2), nome: "Sexta-feira Santa", tipo: "nacional" },
+    { data: somarDias(pascoa, -48), nome: "Carnaval (segunda)", tipo: "facultativo" },
+    { data: somarDias(pascoa, -47), nome: "Carnaval (terça)", tipo: "facultativo" },
+    { data: somarDias(pascoa, -46), nome: "Quarta-feira de Cinzas (até 14h)", tipo: "facultativo" },
+    { data: somarDias(pascoa, 60), nome: "Corpus Christi", tipo: "facultativo" }
   );
 
   return feriados.sort((a, b) => a.data.getTime() - b.data.getTime());
 }
 
+const DIAS_SEMANA_LONGO = ["domingo", "segunda", "terça", "quarta", "quinta", "sexta", "sábado"];
+
+// Feriados que caem perto do fim de semana e formam folga longa
+function feriadosProlongados(feriados: Feriado[]): { feriado: Feriado; dica: string }[] {
+  const lista: { feriado: Feriado; dica: string }[] = [];
+  feriados.forEach((f) => {
+    if (f.nome.startsWith("Carnaval (terça)") || f.nome.startsWith("Quarta")) return;
+    const dia = f.data.getDay();
+    if (f.nome.startsWith("Carnaval")) lista.push({ feriado: f, dica: "sábado a terça (e quarta até 14h)" });
+    else if (dia === 1) lista.push({ feriado: f, dica: "fim de semana de 3 dias (sábado a segunda)" });
+    else if (dia === 5) lista.push({ feriado: f, dica: "fim de semana de 3 dias (sexta a domingo)" });
+    else if (dia === 2) lista.push({ feriado: f, dica: "emenda na segunda: 4 dias de folga" });
+    else if (dia === 4) lista.push({ feriado: f, dica: "emenda na sexta: 4 dias de folga" });
+  });
+  return lista;
+}
+
 const MESES = [
-  "Janeiro", "Fevereiro", "Marco", "Abril", "Maio", "Junho",
+  "Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho",
   "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"
 ];
 
-const DIAS_SEMANA = ["Dom", "Seg", "Ter", "Qua", "Qui", "Sex", "Sab"];
+const DIAS_SEMANA = ["Dom", "Seg", "Ter", "Qua", "Qui", "Sex", "Sáb"];
 
 export function CalendarioFeriados({ onBack }: Props) {
   const [ano, setAno] = useState(new Date().getFullYear());
@@ -86,6 +110,7 @@ export function CalendarioFeriados({ onBack }: Props) {
   }, []);
 
   const feriados = useMemo(() => gerarFeriados(ano), [ano]);
+  const prolongados = useMemo(() => feriadosProlongados(feriados), [feriados]);
 
   const proximoFeriado = useMemo(() => {
     const hoje = new Date();
@@ -125,10 +150,10 @@ export function CalendarioFeriados({ onBack }: Props) {
 
   return (
     <ToolLayout
-      title="Calendario de Feriados"
+      title="Calendário de Feriados"
       emoji="📆"
       category="Utilidades"
-      description="Calendário com os feriados nacionais e móveis de qualquer ano."
+      description="Feriados nacionais, pontos facultativos e feriados prolongados de 2026, 2027 e qualquer outro ano."
       onBack={onBack}
       affiliateBanner={
         <AffiliateBanner
@@ -136,7 +161,7 @@ export function CalendarioFeriados({ onBack }: Props) {
           label="Prepare sua viagem"
         />
       }
-      disclaimer="Cálculo matematico. Não inclui adicionais de Convenções Coletivas (CCT)."
+      disclaimer="Feriados nacionais e pontos facultativos federais. Feriados estaduais e municipais variam conforme a cidade."
     >
       <div className="space-y-5">
         <div className="flex items-center justify-between">
@@ -192,7 +217,9 @@ export function CalendarioFeriados({ onBack }: Props) {
                         key={i}
                         className={`h-7 flex items-center justify-center rounded text-xs ${
                           feriado
-                            ? "bg-green-500 text-black font-bold"
+                            ? feriado.tipo === "nacional"
+                              ? "bg-green-500 text-black font-bold"
+                              : "bg-yellow-500/70 text-black font-bold"
                             : emenda
                             ? "bg-blue-500/20 text-blue-400"
                             : "text-gray-400"
@@ -209,7 +236,9 @@ export function CalendarioFeriados({ onBack }: Props) {
                     {feriadosMes.map((f, i) => (
                       <div key={i} className="flex items-center gap-2 text-xs">
                         <span className="w-6 text-gray-500">{f.data.getDate()}</span>
-                        <span className="text-green-400">{f.nome}</span>
+                        <span className={f.tipo === "nacional" ? "text-green-400" : "text-yellow-400"}>
+                          {f.nome}{f.tipo === "facultativo" ? " · ponto facultativo" : ""}
+                        </span>
                       </div>
                     ))}
                   </div>
@@ -219,9 +248,30 @@ export function CalendarioFeriados({ onBack }: Props) {
           })}
         </div>
 
-        <div className="flex items-center gap-4 text-xs text-gray-500">
+        {prolongados.length > 0 && (
+          <div className="rounded-xl bg-white/5 border border-white/8 p-4">
+            <h2 className="text-sm font-semibold text-white mb-2 flex items-center gap-2">
+              <Plane className="w-4 h-4 text-blue-400" /> Feriados prolongados em {ano}
+            </h2>
+            <ul className="space-y-1 text-xs text-gray-300">
+              {prolongados.map(({ feriado, dica }, i) => (
+                <li key={i}>
+                  <strong className="text-white">
+                    {feriado.data.toLocaleDateString("pt-BR")} ({DIAS_SEMANA_LONGO[feriado.data.getDay()]})
+                  </strong>{" "}
+                  — {feriado.nome.replace(" (segunda)", "")}: {dica}
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
+
+        <div className="flex flex-wrap items-center gap-4 text-xs text-gray-500">
           <span className="flex items-center gap-1">
-            <span className="w-3 h-3 rounded bg-green-500" /> Feriado
+            <span className="w-3 h-3 rounded bg-green-500" /> Feriado nacional
+          </span>
+          <span className="flex items-center gap-1">
+            <span className="w-3 h-3 rounded bg-yellow-500/70" /> Ponto facultativo
           </span>
           <span className="flex items-center gap-1">
             <span className="w-3 h-3 rounded bg-blue-500/20" /> Final de Semana
@@ -237,18 +287,20 @@ export function CalendarioFeriados({ onBack }: Props) {
           example: {
             title: "Exemplo: consultando feriados de um determinado ano",
             steps: [
-              "Feriados fixos: 1º de janeiro, 21 de abril, 7 de setembro, 25 de dezembro",
-              "Feriados móveis calculados: Carnaval, Sexta-feira Santa, Corpus Christi",
-              "Total de feriados nacionais no ano: 12",
+              "Feriados fixos: 1º de janeiro, 21 de abril, 1º de maio, 7 de setembro, 12 de outubro, 2, 15 e 20 de novembro e 25 de dezembro",
+              "Datas móveis calculadas a partir da Páscoa: Carnaval, Sexta-feira Santa e Corpus Christi",
+              "Total: 10 feriados nacionais (incluindo a Consciência Negra) e 4 pontos facultativos",
               "Próximo feriado a partir de hoje: destacado no calendário",
             ],
-            result: "O calendário reúne os 12 feriados nacionais do ano, incluindo tanto as datas fixas quanto as móveis calculadas conforme o calendário litúrgico.",
+            result: "O calendário mostra os feriados nacionais, os pontos facultativos (Carnaval, Quarta-feira de Cinzas e Corpus Christi) e quais datas formam feriados prolongados.",
           },
           faqs: [
             { question: "Qual a diferença entre feriado fixo e feriado móvel?", answer: "Feriados fixos ocorrem sempre na mesma data todo ano (como 25 de dezembro), enquanto feriados móveis mudam de data conforme cálculos do calendário lunar/litúrgico, como a Páscoa e o Carnaval." },
             { question: "O calendário inclui feriados estaduais e municipais?", answer: "O foco principal costuma ser nos feriados nacionais; feriados estaduais e municipais variam por localidade e podem não estar incluídos." },
             { question: "Como é calculada a data da Páscoa a cada ano?", answer: "A Páscoa é calculada com base no primeiro domingo após a primeira lua cheia depois do equinócio de março, o que faz sua data variar anualmente." },
-            { question: "Pontos facultativos são incluídos no calendário?", answer: "Pontos facultativos (como Segunda-feira de Carnaval) geralmente são diferenciados dos feriados oficiais, já que não são obrigatórios por lei em todo o território nacional." },
+            { question: "Pontos facultativos são incluídos no calendário?", answer: "Sim, em amarelo. Carnaval, Quarta-feira de Cinzas e Corpus Christi são pontos facultativos federais: a folga depende do empregador e de leis estaduais ou municipais." },
+            { question: "O Dia da Consciência Negra é feriado nacional?", answer: "Sim. Desde 2024, o 20 de novembro é feriado nacional pela Lei 14.759/2023." },
+            { question: "Quais são os feriados prolongados de 2027?", answer: "Em 2027 caem perto do fim de semana: 1º de janeiro (sexta), Carnaval (8 e 9 de fevereiro), Sexta-feira Santa (26 de março), Corpus Christi (quinta, 27 de maio), 7 de setembro, 12 de outubro e 2 de novembro (terças) e 15 de novembro (segunda)." },
           ],
         }}
       />

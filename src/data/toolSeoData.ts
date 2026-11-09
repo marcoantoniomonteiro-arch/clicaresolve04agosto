@@ -48,8 +48,8 @@ export const TOOL_SEO_DATA: Record<string, ToolSEOData> = {
     ],
   },
   "calculadora-desconto": {
-    title: "Calcule Desconto e Preço Final Grátis | CLICAresolve",
-    description: "Calcule preço com desconto, aumento percentual ou valor original. Gratuito, sem cadastro. Calcule em segundos!",
+    title: "Calculadora de Desconto: Preço Final e % de Desconto | CLICAresolve",
+    description: "Calcule o preço com desconto, descubra quantos % de desconto uma oferta realmente dá e confira promoções da Black Friday antes de comprar. Grátis.",
     schemaType: "SoftwareApplication",
     hasFAQ: false,
   },
@@ -82,8 +82,8 @@ export const TOOL_SEO_DATA: Record<string, ToolSEOData> = {
     hasFAQ: false,
   },
   "comparador-preco": {
-    title: "Compare Preço por Unidade de Produto Grátis | CLICAresolve",
-    description: "Compare preços de produtos com embalagens diferentes. Gratuito, sem cadastro. Economize no supermercado!",
+    title: "Qual Compensa Mais? Comparador de Preço por Unidade | CLICAresolve",
+    description: "Compare embalagens de tamanhos diferentes e descubra qual produto sai mais barato por quilo, litro ou unidade no supermercado. Grátis e sem cadastro.",
     schemaType: "SoftwareApplication",
     hasFAQ: false,
   },
@@ -100,8 +100,8 @@ export const TOOL_SEO_DATA: Record<string, ToolSEOData> = {
     hasFAQ: false,
   },
   "taxas-maquininha": {
-    title: "Compare Taxas de Maquininha de Cartão Grátis | CLICAresolve",
-    description: "Compare taxas de Cielo, Rede, Stone, PagSeguro e mais. Gratuito, sem cadastro. Encontre a melhor!",
+    title: "Custo Real da Maquininha: Calcule Taxas e Quanto Recebe | CLICAresolve",
+    description: "Descubra o custo real da maquininha de cartão: digite a venda e a taxa de débito, crédito ou parcelado e veja quanto cai na sua conta. Grátis e sem cadastro.",
     schemaType: "SoftwareApplication",
     hasFAQ: true,
     faqs: [
@@ -148,8 +148,8 @@ export const TOOL_SEO_DATA: Record<string, ToolSEOData> = {
     ],
   },
   "divisor-carona": {
-    title: "Divida Custos de Carona e Viagem Grátis | CLICAresolve",
-    description: "Divida os gastos da viagem entre todos os passageiros. Gratuito, sem cadastro. Divida justamente!",
+    title: "Dividir Gasolina da Viagem: Calculadora de Carona | CLICAresolve",
+    description: "Calcule quanto cada passageiro paga de combustível e pedágio na carona ou viagem de carro: informe a distância, o consumo e o preço do litro. Grátis.",
     schemaType: "SoftwareApplication",
     hasFAQ: true,
     faqs: [
@@ -343,8 +343,8 @@ export const TOOL_SEO_DATA: Record<string, ToolSEOData> = {
   },
   // Utilidades
   "conversor-roupas": {
-    title: "Tamanho de Roupa EUA, Europa e Brasil: Conversor | CLICAresolve",
-    description: "Converta tamanhos de roupa dos EUA, Europa e China para o Brasil (P, M, G, 38, 40...). Tabela de tamanho de roupa internacional, grátis e sem cadastro.",
+    title: "Tabela de Tamanhos de Roupa: EUA, Europa e Brasil | CLICAresolve",
+    description: "Comprou em loja de fora? Converta tamanhos de roupa dos EUA, Europa, Reino Unido e China para o Brasil (P, M, G, 38, 40...) em segundos. Grátis e sem cadastro.",
     schemaType: "SoftwareApplication",
     hasFAQ: false,
   },
@@ -393,6 +393,12 @@ export const TOOL_SEO_DATA: Record<string, ToolSEOData> = {
     schemaType: "SoftwareApplication",
     hasFAQ: false,
   },
+  "link-whatsapp": {
+    title: "Gerador de Link do WhatsApp com Mensagem (wa.me) | CLICAresolve",
+    description: "Crie o link do seu WhatsApp com mensagem pronta para colocar na bio do Instagram, no stories ou no site. Gera também QR Code. Grátis e sem cadastro.",
+    schemaType: "SoftwareApplication",
+    hasFAQ: false,
+  },
   "gerador-link-whatsapp": {
     title: "Gere Link Direto para WhatsApp Grátis | CLICAresolve",
     description: "Gere links diretos para WhatsApp com mensagem. Gratuito, sem cadastro. Crie seu link!",
@@ -426,8 +432,8 @@ export const TOOL_SEO_DATA: Record<string, ToolSEOData> = {
   },
   // Esportes
   "gerador-bolao": {
-    title: "Gere Palpites de Bolão Grátis para Loteria | CLICAresolve",
-    description: "Gere palpites aleatórios para bolão. Gratuito, sem cadastro. Gere seu bolão!",
+    title: "Bolão de Futebol Online: Organize Palpites no WhatsApp | CLICAresolve",
+    description: "Monte o bolão do jogo, anote o placar que cada amigo chutou e envie a lista pronta para o grupo do WhatsApp. Grátis, sem cadastro e sem app.",
     schemaType: "SoftwareApplication",
     hasFAQ: true,
     faqs: [
@@ -487,8 +493,8 @@ export const TOOL_SEO_DATA: Record<string, ToolSEOData> = {
     ],
   },
   "painel-bingo": {
-    title: "Painel de Bingo com Sorteio de Números Grátis | CLICAresolve",
-    description: "Sorteie e acompanhe números do bingo. Gratuito, sem cadastro. Jogue bingo!",
+    title: "Painel de Bingo Online: Sorteador de Números 1 a 75 | CLICAresolve",
+    description: "Sorteie as pedras do bingo de 1 a 75 com um clique e acompanhe o painel com o histórico dos números chamados. Ideal para bingo em família, festa ou igreja.",
     schemaType: "SoftwareApplication",
     hasFAQ: true,
     faqs: [
@@ -586,8 +592,8 @@ export const TOOL_SEO_DATA: Record<string, ToolSEOData> = {
   },
   // Calendário
   "calendario-feriados": {
-    title: "Calendário de Feriados Nacionais com Contador | CLICAresolve",
-    description: "Veja feriados nacionais e móveis com contador. Gratuito, sem cadastro. Confira os feriados!",
+    title: "Feriados 2027 e 2026: Calendário e Feriados Prolongados | CLICAresolve",
+    description: "Veja todos os feriados nacionais de 2026 e 2027, os pontos facultativos e quais datas viram feriado prolongado. Contagem regressiva para o próximo feriado.",
     schemaType: "SoftwareApplication",
     hasFAQ: true,
     faqs: [
@@ -604,8 +610,8 @@ export const TOOL_SEO_DATA: Record<string, ToolSEOData> = {
     hasFAQ: false,
   },
   "dias-vida": {
-    title: "Horas de Vida — Quantos Dias Você Já Viveu? | CLICAresolve",
-    description: "Calcule suas horas de vida: digite a data de nascimento e veja quantos dias, horas, minutos e segundos você já viveu até hoje. Grátis e sem cadastro.",
+    title: "Quantos Dias de Vida Eu Tenho? Calcule Dias e Horas | CLICAresolve",
+    description: "Digite sua data de nascimento e descubra quantos dias, horas, minutos e segundos de vida você já tem, e quando chega aos 10.000 dias. Grátis e sem cadastro.",
     schemaType: "SoftwareApplication",
     hasFAQ: false,
   },
@@ -798,8 +804,8 @@ export const TOOL_SEO_DATA: Record<string, ToolSEOData> = {
     ],
   },
   "spawn-timer": {
-    title: "Cronômetro de Spawn para Jogos Online Grátis | CLICAresolve",
-    description: "Múltiplos timers para monitorar spawns. Gratuito, sem cadastro. Monitore spawns!",
+    title: "Spawn Timer: Cronômetro de Respawn para Jogos Online | CLICAresolve",
+    description: "Crie vários timers de respawn ao mesmo tempo para chefes, itens e monstros em jogos online, com alerta sonoro quando o spawn estiver chegando. Grátis.",
     schemaType: "SoftwareApplication",
     hasFAQ: true,
     faqs: [
@@ -1002,8 +1008,8 @@ export const TOOL_SEO_DATA: Record<string, ToolSEOData> = {
     ],
   },
   "contador-tempo-decorrido": {
-    title: "Contador de Tempo Decorrido e Regressivo Online Grátis | CLICAresolve",
-    description: "Calcule em tempo real quanto tempo passou ou falta até uma data. Gratuito, sem cadastro!",
+    title: "Quanto Tempo Passou Desde uma Data? Contador Online | CLICAresolve",
+    description: "Calcule em tempo real quanto tempo passou desde uma data (namoro, casamento, emprego) ou quanto falta para um evento, em anos, meses, dias e horas.",
     schemaType: "SoftwareApplication",
     hasFAQ: true,
     faqs: [
