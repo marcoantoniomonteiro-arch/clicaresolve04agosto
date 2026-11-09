@@ -78,7 +78,7 @@ export function ConversorMoedas({ onBack }: Props) {
     <ToolLayout
       title="Conversor de Moedas"
       emoji="💱"
-      category="Financas"
+      category="Finanças"
       description="Converta valores entre diferentes moedas com taxas editaveis."
       onBack={onBack}
       affiliateBanner={<AffiliateBanner terms={["livro educação financeira"]} label="livro educação financeira" />}

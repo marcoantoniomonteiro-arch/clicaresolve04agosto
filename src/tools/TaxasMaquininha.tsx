@@ -76,7 +76,7 @@ export function TaxasMaquininha({ onBack }: Props) {
     <ToolLayout
       title="Taxas de Maquininha"
       emoji="💳"
-      category="Financas"
+      category="Finanças"
       description="Calcule o valor líquido das vendas com cartão considerando taxas."
       onBack={onBack}
       affiliateBanner={<AffiliateBanner terms={["maquininha cartão"]} label="maquininha cartão" />}

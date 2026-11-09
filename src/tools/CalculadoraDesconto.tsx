@@ -49,7 +49,7 @@ export function CalculadoraDesconto({ onBack }: Props) {
     <ToolLayout
       title="Calculadora de Desconto"
       emoji="🏷️"
-      category="Financas"
+      category="Finanças"
       description="Calcule descontos ou descubra a porcentagem de desconto aplicada."
       onBack={onBack}
       affiliateBanner={<AffiliateBanner terms={["calculadora financeira"]} label="calculadora financeira" />}

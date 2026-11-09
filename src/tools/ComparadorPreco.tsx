@@ -90,7 +90,7 @@ export function ComparadorPreco({ onBack }: Props) {
     <ToolLayout
       title="Comparador de Preço"
       emoji="⚖️"
-      category="Financas"
+      category="Finanças"
       description="Compare preços e encontre o produto mais vantajoso."
       onBack={onBack}
       affiliateBanner={<AffiliateBanner terms={["organizador compras lista"]} label="organizador compras lista" />}

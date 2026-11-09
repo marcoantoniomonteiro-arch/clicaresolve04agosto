@@ -63,7 +63,7 @@ export function PalpitesLoteria({ onBack }: Props) {
     <ToolLayout
       title="Palpites Loteria"
       emoji="🍀"
-      category="Financas"
+      category="Finanças"
       description="Gere palpites aleatórios para Mega-Sena ou Lotofacil."
       onBack={onBack}
       affiliateBanner={<AffiliateBanner terms={["kit loteria bolão"]} label="kit loteria bolão" />}

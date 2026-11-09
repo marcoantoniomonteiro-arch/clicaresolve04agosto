@@ -159,6 +159,26 @@ export function ContatoPage({ onBack }: Props) {
             ))}
           </div>
         </div>
+
+        {/* Informações para quem vai entrar em contato */}
+        <div className="p-5 rounded-xl bg-white/5 border border-white/10 space-y-4 text-sm text-gray-300 leading-relaxed">
+          <h2 className="text-lg font-bold text-white">Sobre o que você pode falar com a gente</h2>
+          <ul className="list-disc pl-5 space-y-1.5">
+            <li><strong className="text-white">Erros de cálculo ou de informação:</strong> informe o nome da ferramenta, os valores usados e o resultado que apareceu. Toda correção é revisada e, quando confirmada, aplicada no site.</li>
+            <li><strong className="text-white">Sugestões de ferramentas:</strong> conte qual conta ou tarefa do dia a dia você gostaria de resolver. Muitas ferramentas do site nasceram de pedidos de usuários.</li>
+            <li><strong className="text-white">Problemas técnicos:</strong> diga o navegador e o aparelho que você usa (por exemplo, Chrome no Android) e, se puder, envie um print da tela.</li>
+            <li><strong className="text-white">Privacidade e dados:</strong> dúvidas sobre cookies, anúncios e dados pessoais seguem a nossa <a href="/privacidade" className="text-green-400 hover:text-green-300">Política de Privacidade</a>.</li>
+            <li><strong className="text-white">Parcerias e imprensa:</strong> propostas de conteúdo, divulgação ou entrevistas.</li>
+          </ul>
+          <h2 className="text-lg font-bold text-white pt-2">Antes de escrever</h2>
+          <p>
+            As ferramentas do CLICAresolve são informativas e não substituem a orientação de profissionais como médicos, nutricionistas, contadores, advogados ou engenheiros. Não conseguimos responder a consultas individuais nessas áreas. Para entender de onde vêm as fórmulas e fontes usadas nos cálculos, veja a página de <a href="/metodologia" className="text-green-400 hover:text-green-300">Metodologia</a>. Muitas dúvidas também são respondidas nos nossos <a href="/guias" className="text-green-400 hover:text-green-300">guias práticos</a>.
+          </p>
+          <h2 className="text-lg font-bold text-white pt-2">Prazo de resposta</h2>
+          <p>
+            Respondemos às mensagens em até 2 dias úteis. Mensagens sobre erros em cálculos têm prioridade. O CLICAresolve é um projeto independente brasileiro; saiba mais na página <a href="/sobre" className="text-green-400 hover:text-green-300">Sobre</a>.
+          </p>
+        </div>
       </div>
     </StaticPage>
   );
