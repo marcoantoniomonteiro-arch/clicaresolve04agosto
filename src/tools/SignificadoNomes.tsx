@@ -477,7 +477,13 @@ export function SignificadoNomes({ onBack, initialName }: Props) {
           </div>
         )}
       </div>
-      {/* Índice de todos os nomes: cada um tem a sua própria página */}
+      {/* Índice de todos os nomes: só na página geral. Nas páginas de nome, a
+          lista inteira (580+ links iguais em todas) viraria conteúdo repetido. */}
+      {isNamePage ? (
+        <p className="mt-8 text-sm text-muted">
+          <a href="/significado-nomes" className="text-green-400 hover:text-green-300">Ver o significado de todos os nomes da A a Z →</a>
+        </p>
+      ) : (
       <nav aria-label="Todos os nomes" className="mt-8">
         <h2 className="text-lg font-bold text-text mb-3">Significado de todos os nomes da A a Z</h2>
         <div className="flex flex-wrap gap-x-3 gap-y-1.5 text-sm">
@@ -488,6 +494,7 @@ export function SignificadoNomes({ onBack, initialName }: Props) {
           ))}
         </div>
       </nav>
+      )}
       <ToolContent
         toolName="Significado dos Nomes"
         category="Utilidades"

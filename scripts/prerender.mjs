@@ -79,15 +79,15 @@ if (failures.length) {
   if (failures.length > routes.length / 2) process.exit(1);
 }
 
-// Sitemap gerado a partir das páginas que existem de fato
-const today = new Date().toISOString().slice(0, 10);
+// Sitemap gerado a partir das páginas que existem de fato.
+// Sem <lastmod>: a data de cada build mudava todas as páginas ao mesmo tempo e o
+// Google passa a ignorar datas que não refletem mudanças reais no conteúdo.
 const okRoutes = routes.filter((r) => !failures.some((f) => f.route === r));
 const priority = (r) => (r === "/" ? "1.0" : r.startsWith("/categoria/") || r === "/guias" ? "0.8" : r.startsWith("/guia/") ? "0.8" : "0.6");
 const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 ${okRoutes.map((r) => `  <url>
     <loc>https://www.clicaresolve.com.br${r === "/" ? "/" : r}</loc>
-    <lastmod>${today}</lastmod>
     <priority>${priority(r)}</priority>
   </url>`).join("\n")}
 </urlset>
