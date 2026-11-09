@@ -5,8 +5,18 @@
   "trailingSlash": false,
   "redirects": [
     {
+      "source": "/significado-nome/aarao",
+      "destination": "/significado-nome/arao",
+      "permanent": true
+    },
+    {
       "source": "/significado-nome/alison",
       "destination": "/significado-nome/alisson",
+      "permanent": true
+    },
+    {
+      "source": "/significado-nome/allan",
+      "destination": "/significado-nome/alan",
       "permanent": true
     },
     {
@@ -17,6 +27,11 @@
     {
       "source": "/significado-nome/alysson",
       "destination": "/significado-nome/alisson",
+      "permanent": true
+    },
+    {
+      "source": "/significado-nome/ana-luisa",
+      "destination": "/significado-nome/ana-luiza",
       "permanent": true
     },
     {
@@ -40,8 +55,28 @@
       "permanent": true
     },
     {
+      "source": "/significado-nome/apolo",
+      "destination": "/significado-nome/apollo",
+      "permanent": true
+    },
+    {
+      "source": "/significado-nome/aracy",
+      "destination": "/significado-nome/araci",
+      "permanent": true
+    },
+    {
       "source": "/significado-nome/caique",
       "destination": "/significado-nome/kaique",
+      "permanent": true
+    },
+    {
+      "source": "/significado-nome/carmem",
+      "destination": "/significado-nome/carmen",
+      "permanent": true
+    },
+    {
+      "source": "/significado-nome/catia",
+      "destination": "/significado-nome/katia",
       "permanent": true
     },
     {
@@ -65,6 +100,11 @@
       "permanent": true
     },
     {
+      "source": "/significado-nome/cynthia",
+      "destination": "/significado-nome/cintia",
+      "permanent": true
+    },
+    {
       "source": "/significado-nome/david",
       "destination": "/significado-nome/deivid",
       "permanent": true
@@ -77,6 +117,21 @@
     {
       "source": "/significado-nome/deividi",
       "destination": "/significado-nome/deivid",
+      "permanent": true
+    },
+    {
+      "source": "/significado-nome/elisabeth",
+      "destination": "/significado-nome/elisabete",
+      "permanent": true
+    },
+    {
+      "source": "/significado-nome/elizabete",
+      "destination": "/significado-nome/elisabete",
+      "permanent": true
+    },
+    {
+      "source": "/significado-nome/elizabeth",
+      "destination": "/significado-nome/elisabete",
       "permanent": true
     },
     {
@@ -135,8 +190,23 @@
       "permanent": true
     },
     {
+      "source": "/significado-nome/gisela",
+      "destination": "/significado-nome/gisele",
+      "permanent": true
+    },
+    {
+      "source": "/significado-nome/giselle",
+      "destination": "/significado-nome/gisele",
+      "permanent": true
+    },
+    {
       "source": "/significado-nome/imanuel",
       "destination": "/significado-nome/emanuel",
+      "permanent": true
+    },
+    {
+      "source": "/significado-nome/isaque",
+      "destination": "/significado-nome/isaac",
       "permanent": true
     },
     {
@@ -155,8 +225,28 @@
       "permanent": true
     },
     {
+      "source": "/significado-nome/jesica",
+      "destination": "/significado-nome/jessica",
+      "permanent": true
+    },
+    {
+      "source": "/significado-nome/jhonatan",
+      "destination": "/significado-nome/jonathan",
+      "permanent": true
+    },
+    {
+      "source": "/significado-nome/jhonathan",
+      "destination": "/significado-nome/jonathan",
+      "permanent": true
+    },
+    {
       "source": "/significado-nome/jociane",
       "destination": "/significado-nome/josiane",
+      "permanent": true
+    },
+    {
+      "source": "/significado-nome/jonatan",
+      "destination": "/significado-nome/jonathan",
       "permanent": true
     },
     {
@@ -170,8 +260,18 @@
       "permanent": true
     },
     {
+      "source": "/significado-nome/judith",
+      "destination": "/significado-nome/judite",
+      "permanent": true
+    },
+    {
       "source": "/significado-nome/kaike",
       "destination": "/significado-nome/kaique",
+      "permanent": true
+    },
+    {
+      "source": "/significado-nome/kamila",
+      "destination": "/significado-nome/camila",
       "permanent": true
     },
     {
@@ -215,6 +315,26 @@
       "permanent": true
     },
     {
+      "source": "/significado-nome/lis",
+      "destination": "/significado-nome/liz",
+      "permanent": true
+    },
+    {
+      "source": "/significado-nome/luam",
+      "destination": "/significado-nome/luan",
+      "permanent": true
+    },
+    {
+      "source": "/significado-nome/luca",
+      "destination": "/significado-nome/lucca",
+      "permanent": true
+    },
+    {
+      "source": "/significado-nome/luis",
+      "destination": "/significado-nome/luiz",
+      "permanent": true
+    },
+    {
       "source": "/significado-nome/maikol",
       "destination": "/significado-nome/maicon",
       "permanent": true
@@ -222,6 +342,26 @@
     {
       "source": "/significado-nome/maikon",
       "destination": "/significado-nome/maicon",
+      "permanent": true
+    },
+    {
+      "source": "/significado-nome/manuel",
+      "destination": "/significado-nome/manoel",
+      "permanent": true
+    },
+    {
+      "source": "/significado-nome/maria-luisa",
+      "destination": "/significado-nome/maria-luiza",
+      "permanent": true
+    },
+    {
+      "source": "/significado-nome/martha",
+      "destination": "/significado-nome/marta",
+      "permanent": true
+    },
+    {
+      "source": "/significado-nome/mateus",
+      "destination": "/significado-nome/matheus",
       "permanent": true
     },
     {
@@ -245,8 +385,33 @@
       "permanent": true
     },
     {
+      "source": "/significado-nome/mirela",
+      "destination": "/significado-nome/mirella",
+      "permanent": true
+    },
+    {
       "source": "/significado-nome/mishele",
       "destination": "/significado-nome/michele",
+      "permanent": true
+    },
+    {
+      "source": "/significado-nome/natacha",
+      "destination": "/significado-nome/natasha",
+      "permanent": true
+    },
+    {
+      "source": "/significado-nome/nathalia",
+      "destination": "/significado-nome/natalia",
+      "permanent": true
+    },
+    {
+      "source": "/significado-nome/neuza",
+      "destination": "/significado-nome/neusa",
+      "permanent": true
+    },
+    {
+      "source": "/significado-nome/oswaldo",
+      "destination": "/significado-nome/osvaldo",
       "permanent": true
     },
     {
@@ -265,8 +430,18 @@
       "permanent": true
     },
     {
+      "source": "/significado-nome/rayan",
+      "destination": "/significado-nome/ryan",
+      "permanent": true
+    },
+    {
       "source": "/significado-nome/rayanne",
       "destination": "/significado-nome/rayane",
+      "permanent": true
+    },
+    {
+      "source": "/significado-nome/rian",
+      "destination": "/significado-nome/ryan",
       "permanent": true
     },
     {
@@ -282,6 +457,11 @@
     {
       "source": "/significado-nome/rozimeire",
       "destination": "/significado-nome/rosimeire",
+      "permanent": true
+    },
+    {
+      "source": "/significado-nome/sara",
+      "destination": "/significado-nome/sarah",
       "permanent": true
     },
     {
@@ -320,6 +500,11 @@
       "permanent": true
     },
     {
+      "source": "/significado-nome/tais",
+      "destination": "/significado-nome/thais",
+      "permanent": true
+    },
+    {
       "source": "/significado-nome/tatiane",
       "destination": "/significado-nome/tatiana",
       "permanent": true
@@ -335,8 +520,33 @@
       "permanent": true
     },
     {
+      "source": "/significado-nome/teo",
+      "destination": "/significado-nome/theo",
+      "permanent": true
+    },
+    {
+      "source": "/significado-nome/teresa",
+      "destination": "/significado-nome/tereza",
+      "permanent": true
+    },
+    {
+      "source": "/significado-nome/thayna",
+      "destination": "/significado-nome/taina",
+      "permanent": true
+    },
+    {
       "source": "/significado-nome/vinicios",
       "destination": "/significado-nome/vinicius",
+      "permanent": true
+    },
+    {
+      "source": "/significado-nome/vivian",
+      "destination": "/significado-nome/viviane",
+      "permanent": true
+    },
+    {
+      "source": "/significado-nome/wanda",
+      "destination": "/significado-nome/vanda",
       "permanent": true
     },
     {
@@ -352,6 +562,21 @@
     {
       "source": "/significado-nome/wellington",
       "destination": "/significado-nome/weverton",
+      "permanent": true
+    },
+    {
+      "source": "/significado-nome/wilian",
+      "destination": "/significado-nome/william",
+      "permanent": true
+    },
+    {
+      "source": "/significado-nome/willian",
+      "destination": "/significado-nome/william",
+      "permanent": true
+    },
+    {
+      "source": "/significado-nome/yasmim",
+      "destination": "/significado-nome/yasmin",
       "permanent": true
     }
   ]
