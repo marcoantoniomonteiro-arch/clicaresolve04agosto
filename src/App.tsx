@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useMemo, useCallback, useRef, Suspense } from "react";
 import { Header } from "./components/Header";
 import { SEOHead } from "./components/SEOHead";
+import { EnglishHomePage } from "./pages/EnglishHomePage";
 const CategoryPage = React.lazy(() => import("./components/CategoryPage").then(m => ({ default: m.CategoryPage })));
 import { CookieBanner } from "./components/CookieBanner";
 import { ErrorBoundary } from "./components/ErrorBoundary";
@@ -412,6 +413,7 @@ export function parsePath(pathname: string): RouteState {
   const path = decodeURIComponent(pathname).replace(/^\//, "").replace(/\/$/, "").replace(/\.html$/, "");
   const empty: RouteState = { activeTool: null, activeCategoryPage: null, lang: "pt" };
   if (!path) return empty;
+  if (path === "en") return { ...empty, lang: "en" };
   if (path.startsWith("en/")) {
     const ptSlug = enSlugToPtSlug[path.replace("en/", "")];
     if (ptSlug && TOOL_COMPONENTS[ptSlug]) return { ...empty, lang: "en", activeTool: ptSlug };
@@ -438,6 +440,7 @@ export function parsePath(pathname: string): RouteState {
 export function getPrerenderRoutes(): string[] {
   return [
     "/",
+    "/en",
     ...Object.keys(STATIC_PAGES).map((s) => `/${s}`),
     ...Object.keys(CATEGORY_SEO_DATA).map((s) => `/categoria/${s}`),
     ...Object.keys(TOOL_COMPONENTS).map((s) => `/${s}`),
@@ -464,7 +467,7 @@ export default function App({ initialPath }: { initialPath?: string } = {}) {
   useEffect(() => {
     // Páginas de nome (/significado-nome/x) mantêm a própria URL
     if (activeTool === "significado-nomes" && initialName && window.location.pathname.startsWith("/significado-nome/")) return;
-    let url = "/";
+    let url = lang === "en" ? "/en" : "/";
     if (activeTool) {
       if (lang === "en" && ptSlugToEnSlug[activeTool]) {
         url = `/en/${ptSlugToEnSlug[activeTool]}`;
@@ -496,6 +499,13 @@ export default function App({ initialPath }: { initialPath?: string } = {}) {
           setActiveCategoryPage(null);
           return;
         }
+      }
+      if (path === "en") {
+        setLang("en");
+        setActiveTool(null);
+        setActiveCategoryPage(null);
+        setInitialName(undefined);
+        return;
       }
       setLang("pt");
       if (!path) {
@@ -643,6 +653,26 @@ export default function App({ initialPath }: { initialPath?: string } = {}) {
     }
   }
 
+  if (lang === "en") {
+    return (
+      <NavigationContext.Provider value={{ onSelectCategory: navigateToCategory, onSelectTool: navigateToTool, lang, activeTool }}>
+      <div className={theme === "light" ? "light" : ""}>
+        <Header
+          theme={theme}
+          onToggleTheme={() => setTheme((t) => (t === "dark" ? "light" : "dark"))}
+          search={search}
+          onSearchChange={setSearch}
+          onLogoClick={() => setActiveTool(null)}
+          lang={lang}
+          onToggleLang={() => setLang("pt")}
+        />
+        <EnglishHomePage onSelectTool={navigateToTool} />
+        <CookieBanner />
+      </div>
+      </NavigationContext.Provider>
+    );
+  }
+
   return (
     <NavigationContext.Provider value={{ onSelectCategory: navigateToCategory, onSelectTool: navigateToTool, lang, activeTool }}>
     <div className={theme === "light" ? "light" : ""}>
@@ -653,10 +683,11 @@ export default function App({ initialPath }: { initialPath?: string } = {}) {
         onSearchChange={setSearch}
         onLogoClick={() => setActiveTool(null)}
         lang={lang}
-        onToggleLang={() => setLang(lang === "en" ? "pt" : "en")}
+        onToggleLang={() => setLang("en")}
       />
 
       <SEOHead
+        alternateUrl="/en"
         schema={{
           "@context": "https://schema.org",
           "@type": "WebSite",
@@ -833,11 +864,12 @@ function Footer({ onNavigate, cafeOpen, setCafeOpen }: { onNavigate: (page: stri
                 { label: "Sobre", slug: "sobre" },
                 { label: "Metodologia", slug: "metodologia" },
                 { label: "Contato", slug: "contato" },
+                { label: "English version", slug: "en" },
               ].map((l) => (
                 <a
                   key={l.slug}
                   href={`/${l.slug}`}
-                  onClick={(e) => { if (e.ctrlKey || e.metaKey || e.shiftKey || e.button !== 0) return; e.preventDefault(); onNavigate(l.slug); }}
+                  onClick={(e) => { if (e.ctrlKey || e.metaKey || e.shiftKey || e.button !== 0 || l.slug === "en") return; e.preventDefault(); onNavigate(l.slug); }}
                   className="block text-xs text-muted hover:text-green-400 transition-colors text-left"
                 >
                   {l.label}

@@ -42,6 +42,8 @@ interface ToolLayoutProps {
   disclaimer?: string;
   slug?: string;
   content?: React.ReactNode;
+  /** A página define o próprio <SEOHead> (ex.: páginas de nome) */
+  customSeo?: boolean;
 }
 
 const CATEGORY_SLUG_MAP: Record<string, string> = {
@@ -65,6 +67,24 @@ const CATEGORY_SLUG_MAP: Record<string, string> = {
   "Sorte": "esportes",
 };
 
+/** Nomes das categorias nas páginas em inglês */
+const CATEGORY_NAMES_EN: Record<string, string> = {
+  "casa-transportes": "Home & Transport",
+  "saude-bem-estar": "Health & Wellness",
+  "viagem": "Travel & Leisure",
+  "esportes": "Sports & Games",
+  "financas": "Finance",
+  "estudos": "Study & Education",
+  "religioso": "Religious Studies",
+  "calendario-tempo": "Calendar & Time",
+  "utilidades": "Utilities",
+  "micro-nichos": "Specialized Tools",
+  "familia-bebes": "Family & Babies",
+  "pet": "Pets",
+  "astrologia": "Astrology",
+  "livros": "Books & Reading",
+};
+
 export function ToolLayout({
   title,
   emoji,
@@ -76,13 +96,19 @@ export function ToolLayout({
   disclaimer,
   slug,
   content,
+  customSeo = false,
 }: ToolLayoutProps) {
   const { onSelectCategory, onSelectTool, lang, activeTool } = useNavigation();
   const toolSlug = slug || activeTool || TOOLS.find((t) => t.name === title)?.slug || "";
   const seoEN = lang === "en" ? toolsSeoENByPtSlug[toolSlug] : null;
   const categorySlug = CATEGORY_SLUG_MAP[category] || "";
   const categoryData = CATEGORY_SEO_DATA[categorySlug];
-  const categoryName = categoryData?.categoryName || category;
+  const categoryName = seoEN
+    ? (CATEGORY_NAMES_EN[categorySlug] || categoryData?.categoryName || category)
+    : (categoryData?.categoryName || category);
+  // Nome da ferramenta no idioma da página (breadcrumb, schema e título)
+  const pageName = seoEN ? seoEN.h1 : title;
+  const pageUrl = seoEN ? `/en/${seoEN.enSlug}` : `/${toolSlug}`;
 
   const seo = getToolSEO(toolSlug);
 
@@ -94,18 +120,24 @@ export function ToolLayout({
     .filter((t) => t.category === category && t.slug !== toolSlug)
     .slice(0, 4);
 
-  const breadcrumbs = [
-    { name: "Início", url: "/" },
-    { name: categoryName, url: `/categoria/${categorySlug}` },
-    { name: title, url: `/${toolSlug}` },
-  ];
+  const breadcrumbs = seoEN
+    ? [
+        { name: "Home", url: "/en" },
+        { name: pageName, url: pageUrl },
+      ]
+    : [
+        { name: "Início", url: "/" },
+        { name: categoryName, url: `/categoria/${categorySlug}` },
+        { name: title, url: `/${toolSlug}` },
+      ];
 
   const baseSchema = {
     "@context": "https://schema.org",
     "@type": seo.schemaType === "MedicalWebPage" ? "MedicalWebPage" : "SoftwareApplication",
-    name: title,
-    description: seo.description,
-    url: `https://www.clicaresolve.com.br/${toolSlug}`,
+    name: pageName,
+    description: seoEN ? seoEN.metaDescription : seo.description,
+    url: `https://www.clicaresolve.com.br${pageUrl}`,
+    inLanguage: seoEN ? "en" : "pt-BR",
     applicationCategory: "UtilityApplication",
     operatingSystem: "Any",
     offers: {
@@ -146,7 +178,7 @@ export function ToolLayout({
 
   return (
     <div className="min-h-screen bg-bg text-text pt-16" style={{ WebkitOverflowScrolling: 'touch' }}>
-      <SEOHead
+      {!customSeo && <SEOHead
         title={seoEN ? seoEN.title : seo.title}
         description={seoEN ? seoEN.metaDescription : seo.description}
         canonical={seoEN ? `/en/${seoEN.enSlug}` : `/${toolSlug}`}
@@ -158,14 +190,14 @@ export function ToolLayout({
         speakable={true}
         lang={lang}
         alternateUrl={seoEN ? `/${toolSlug}` : (toolsSeoENByPtSlug[toolSlug] ? `/en/${toolsSeoENByPtSlug[toolSlug].enSlug}` : undefined)}
-      />
+      />}
 
       <div className="max-w-2xl mx-auto px-4 py-8">
         {/* Breadcrumb */}
         <nav className="flex items-center gap-2 text-sm text-muted mb-4" aria-label="Breadcrumb">
-          <a href="/" onClick={(e) => { if (e.ctrlKey || e.metaKey || e.shiftKey || e.button !== 0) return; e.preventDefault(); onBack(); }} className="hover:text-green-400 transition-colors">{lang === "en" ? "Home" : "Início"}</a>
+          <a href={seoEN ? "/en" : "/"} onClick={(e) => { if (e.ctrlKey || e.metaKey || e.shiftKey || e.button !== 0) return; e.preventDefault(); onBack(); }} className="hover:text-green-400 transition-colors">{lang === "en" ? "Home" : "Início"}</a>
           <span>/</span>
-          {categorySlug ? (
+          {categorySlug && !seoEN ? (
             <a href={`/categoria/${categorySlug}`} onClick={(e) => { if (e.ctrlKey || e.metaKey || e.shiftKey || e.button !== 0) return; e.preventDefault(); onSelectCategory(categorySlug); }} className="hover:text-green-400 transition-colors">
               {categoryName}
             </a>
@@ -173,7 +205,7 @@ export function ToolLayout({
             <span>{categoryName}</span>
           )}
           <span>/</span>
-          <span className="text-muted">{title}</span>
+          <span className="text-muted">{pageName}</span>
         </nav>
 
         <a
@@ -194,7 +226,7 @@ export function ToolLayout({
             <div className="flex items-start gap-4 mb-6">
               <div className="w-14 h-14 rounded-2xl flex items-center justify-center text-3xl shrink-0" style={{ background: 'rgba(0,200,83,0.12)' }}>{emoji}</div>
               <div>
-                <span className="text-xs font-semibold text-green-400 uppercase tracking-wider">{category}</span>
+                <span className="text-xs font-semibold text-green-400 uppercase tracking-wider">{seoEN ? categoryName : category}</span>
                 <h1 className="text-2xl font-bold text-text mt-0.5">{seoEN ? seoEN.h1 : title}</h1>
                 <p className="text-sm text-muted mt-1">{seoEN ? seoEN.intro : description}</p>
               </div>
