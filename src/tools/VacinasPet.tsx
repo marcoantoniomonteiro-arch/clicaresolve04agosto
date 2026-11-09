@@ -15,6 +15,7 @@ interface Vaccine {
   name: string;
   intervalMonths: number;
   lastDate?: string;
+  custom?: boolean;
 }
 
 interface Pet {
@@ -32,6 +33,7 @@ const DEFAULT_VACCINES: Record<string, Vaccine[]> = {
     { name: "Antirrábica", intervalMonths: 12 },
     { name: "Giárdia", intervalMonths: 12 },
     { name: "Gripe Canina (Tosse dos Canis)", intervalMonths: 12 },
+    { name: "Leishmaniose", intervalMonths: 12 },
   ],
   gato: [
     { name: "Quádrupla/Quíntupla Felina", intervalMonths: 12 },
@@ -68,7 +70,14 @@ function loadPets(): Pet[] {
   const raw = localStorage.getItem("vacinas_pet_pets");
   if (!raw) return [];
   try {
-    return JSON.parse(raw);
+    const pets: Pet[] = JSON.parse(raw);
+    // Acrescenta vacinas padrão que entraram depois que o pet foi cadastrado
+    return pets.map((p) => {
+      const faltando = (DEFAULT_VACCINES[p.species] || []).filter(
+        (d) => !p.vaccines.some((v) => v.name === d.name)
+      );
+      return faltando.length ? { ...p, vaccines: [...p.vaccines, ...faltando.map((v) => ({ ...v }))] } : p;
+    });
   } catch {
     return [];
   }
@@ -81,6 +90,8 @@ export function VacinasPet({ onBack }: Props) {
   const [newName, setNewName] = useState("");
   const [newSpecies, setNewSpecies] = useState<"cao" | "gato">("cao");
   const [newBirth, setNewBirth] = useState("");
+  const [customName, setCustomName] = useState<Record<string, string>>({});
+  const [customMonths, setCustomMonths] = useState<Record<string, string>>({});
 
   useEffect(() => {
     setPets(loadPets());
@@ -119,6 +130,29 @@ export function VacinasPet({ onBack }: Props) {
         vaccines: p.vaccines.map((v) => (v.name === vaccineName ? { ...v, lastDate: date } : v)),
       };
     });
+    setPets(updated);
+    savePets(updated);
+  }
+
+  function addVaccine(petId: string) {
+    const nome = (customName[petId] || "").trim();
+    const meses = Math.max(1, Math.min(60, Number(customMonths[petId] || 12)));
+    if (!nome) return;
+    const updated = pets.map((p) =>
+      p.id !== petId || p.vaccines.some((v) => v.name.toLowerCase() === nome.toLowerCase())
+        ? p
+        : { ...p, vaccines: [...p.vaccines, { name: nome, intervalMonths: meses, custom: true }] }
+    );
+    setPets(updated);
+    savePets(updated);
+    setCustomName({ ...customName, [petId]: "" });
+    setCustomMonths({ ...customMonths, [petId]: "12" });
+  }
+
+  function removeVaccine(petId: string, vaccineName: string) {
+    const updated = pets.map((p) =>
+      p.id !== petId ? p : { ...p, vaccines: p.vaccines.filter((v) => v.name !== vaccineName) }
+    );
     setPets(updated);
     savePets(updated);
   }
@@ -315,10 +349,49 @@ export function VacinasPet({ onBack }: Props) {
                               {days !== null && days < 0 && (
                                 <AlertTriangle className="w-4 h-4 text-red-400" />
                               )}
+                              <button
+                                type="button"
+                                onClick={() => removeVaccine(pet.id, v.name)}
+                                aria-label={`Remover ${v.name}`}
+                                className="p-1 text-gray-600 hover:text-red-400"
+                              >
+                                <Trash2 className="w-3.5 h-3.5" />
+                              </button>
                             </div>
                           </div>
                         );
                       })}
+                    </div>
+                    <div className="mt-3 p-3 rounded-lg border border-dashed border-white/15">
+                      <p className="text-xs text-gray-400 mb-2">Falta alguma vacina? Adicione outra:</p>
+                      <div className="flex flex-wrap gap-2">
+                        <input
+                          value={customName[pet.id] || ""}
+                          onChange={(e) => setCustomName({ ...customName, [pet.id]: e.target.value })}
+                          onKeyDown={(e) => e.key === "Enter" && addVaccine(pet.id)}
+                          placeholder={pet.species === "cao" ? "Ex.: Leptospirose, Lyme" : "Ex.: Clamidiose, Bordetella"}
+                          className="flex-1 min-w-[140px] bg-white/5 text-xs text-white border border-white/10 rounded px-2 py-1.5"
+                        />
+                        <label className="flex items-center gap-1 text-xs text-gray-400">
+                          reforço a cada
+                          <input
+                            type="number"
+                            min={1}
+                            max={60}
+                            value={customMonths[pet.id] || "12"}
+                            onChange={(e) => setCustomMonths({ ...customMonths, [pet.id]: e.target.value })}
+                            className="w-14 bg-white/5 text-xs text-white border border-white/10 rounded px-2 py-1.5"
+                          />
+                          meses
+                        </label>
+                        <button
+                          type="button"
+                          onClick={() => addVaccine(pet.id)}
+                          className="inline-flex items-center gap-1 px-3 py-1.5 rounded bg-teal-500/20 text-teal-300 text-xs font-semibold hover:bg-teal-500/30"
+                        >
+                          <Plus className="w-3.5 h-3.5" /> Adicionar
+                        </button>
+                      </div>
                     </div>
                   </div>
 
@@ -412,7 +485,7 @@ export function VacinasPet({ onBack }: Props) {
         category="Pet"
         data={{
           directAnswer: "O calendário de vacinação de pets acompanha as doses e datas de reforço recomendadas para cães e gatos, conforme a idade e o tipo de vacina.",
-          howItWorks: "A ferramenta organiza as vacinas essenciais para cães e gatos (como V8/V10, antirrábica, giárdia) e ajuda a acompanhar quando cada dose e reforço devem ser aplicados, com base na idade do pet. O calendário de vacinação real deve sempre ser definido e ajustado por um médico veterinário, já que pode variar conforme a região, o histórico de saúde e o tipo de vacina disponível.",
+          howItWorks: "A ferramenta organiza as vacinas mais usadas em cães e gatos (como V8/V10, antirrábica, giárdia, gripe canina, leishmaniose, quádrupla/quíntupla felina e FeLV), permite adicionar outras vacinas e ajuda a acompanhar quando cada dose e reforço devem ser aplicados, com base na idade do pet. O calendário de vacinação real deve sempre ser definido e ajustado por um médico veterinário, já que pode variar conforme a região, o histórico de saúde e o tipo de vacina disponível.",
           example: {
             title: "Exemplo: calendário básico para filhote de cão",
             steps: [
@@ -427,6 +500,8 @@ export function VacinasPet({ onBack }: Props) {
             { question: "Com que idade começa a vacinação de filhotes?", answer: "Geralmente entre 45 e 60 dias de vida, após o desmame, seguindo orientação do veterinário." },
             { question: "A vacina antirrábica é obrigatória?", answer: "Sim, em muitas regiões é obrigatória por lei e essencial para a saúde pública e do animal." },
             { question: "Com que frequência é necessário reforçar as vacinas?", answer: "A maioria das vacinas de cães e gatos precisa de reforço anual, mas isso pode variar conforme o fabricante e a orientação veterinária." },
+            { question: "A vacina contra leishmaniose está incluída?", answer: "Sim, para cães. A leishmaniose visceral é comum em várias regiões do Brasil. A disponibilidade da vacina mudou nos últimos anos, então confirme com o veterinário qual produto e protocolo usar. Se você usa coleira repelente, ela continua sendo uma proteção importante." },
+            { question: "Falta uma vacina que meu pet toma. Posso adicionar?", answer: "Sim. Abra o pet, use o campo \"Adicionar outra vacina\", digite o nome e o intervalo de reforço em meses. Também dá para remover vacinas que o seu pet não toma." },
             { question: "Posso usar essa ferramenta no lugar de um veterinário?", answer: "Não, ela serve apenas como um organizador de referência. O calendário de vacinação real deve ser sempre definido por um médico veterinário." },
           ],
         }}
