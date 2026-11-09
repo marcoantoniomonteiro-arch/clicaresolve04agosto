@@ -5,6 +5,7 @@ import { CONFIG } from "../config";
 import { NAMES_DB } from "./namesData";
 import { ToolContent } from "../components/ToolContent";
 import { SEOHead } from "../components/SEOHead";
+import { getNameStats, sameOrigin, nameFaqs, formatNumber, DECADE_LABELS } from "./namesInfo";
 
 interface Props {
   onBack: () => void;
@@ -102,6 +103,18 @@ export const ALL_NAME_SLUGS: { name: string; slug: string }[] = (() => {
   return list;
 })();
 
+function popularityText(name: string, st: NonNullable<ReturnType<typeof getNameStats>>): string {
+  const share = Math.round(((st.gender === "feminino" ? st.women : st.men) / Math.max(1, st.men + st.women)) * 100);
+  const genero = st.gender === "unissex"
+    ? "usado para os dois gêneros"
+    : `${st.gender} (${share}% ${st.gender === "feminino" ? "mulheres" : "homens"})`;
+  const rank = st.rank > 0
+    ? ` e o ${st.rank}º mais comum entre os ${st.rankOf} nomes ${st.gender === "feminino" ? "femininos" : "masculinos"} do nosso guia`
+    : "";
+  const auge = st.peakIndex === 0 ? `entre os nascidos ${st.peakText}` : `na ${st.peakText}`;
+  return `Segundo o Censo 2010 do IBGE, ${formatNumber(st.total)} pessoas se chamavam ${name} no Brasil. É um nome ${genero}${rank}. O auge foi ${auge}, e o nome está ${st.trend} nos registros mais recentes.`;
+}
+
 export function SignificadoNomes({ onBack, initialName }: Props) {
   // O resultado inicial é calculado já na primeira renderização, para que a
   // página /significado-nome/x saia pronta no HTML (o Google vê o conteúdo).
@@ -180,12 +193,17 @@ export function SignificadoNomes({ onBack, initialName }: Props) {
 
   // Páginas de nome: endereço próprio, título próprio e liberadas para o Google.
   // Nome que não está na base: aponta para a página geral e não é indexado.
+  const pageStats = initialResult ? getNameStats(initialResult.name) : null;
   const seoTitle = isNamePage
-    ? `Significado do Nome ${pageName}: Origem e Curiosidades`
+    ? `Significado do Nome ${pageName}: Origem e Popularidade`
     : "Significado de Nomes — Origem e Significado dos Nomes";
   const seoDescription = isNamePage && initialResult
-    ? `O nome ${initialResult.name} tem origem ${initialResult.origin.toLowerCase()} e significa: ${initialResult.meaning.charAt(0).toLowerCase() + initialResult.meaning.slice(1)}. Veja curiosidades e nomes parecidos.`
+    ? `${initialResult.name} significa "${initialResult.meaning.charAt(0).toLowerCase() + initialResult.meaning.slice(1)}" e tem origem ${initialResult.origin.toLowerCase()}.${pageStats ? ` ${formatNumber(pageStats.total)} brasileiros têm esse nome (IBGE).` : ""} Veja curiosidades e nomes parecidos.`
     : "Descubra a origem, significado e curiosidades sobre nomes de bebês.";
+  const pageFaqs = isNamePage && initialResult ? nameFaqs(initialResult, pageStats) : [];
+  const stats = result ? getNameStats(result.name) : null;
+  const originNames = result && DB_MAP.get(normalizeName(result.name)) ? sameOrigin(result, 10) : [];
+  const maxDecade = stats ? Math.max(...stats.decades, 1) : 1;
   const seoCanonical = isNamePage && pageName
     ? `/significado-nome/${slugify(pageName)}`
     : "/significado-nomes";
@@ -248,14 +266,22 @@ export function SignificadoNomes({ onBack, initialName }: Props) {
             { name: "Significado de Nomes", url: "/significado-nomes" },
             { name: `Nome ${pageName}`, url: seoCanonical },
           ] : undefined}
-          schema={isNamePage && initialResult ? {
+          schema={isNamePage && initialResult ? [{
             "@context": "https://schema.org",
             "@type": "WebPage",
             name: seoTitle,
             description: seoDescription,
             url: `https://www.clicaresolve.com.br${seoCanonical}`,
             inLanguage: "pt-BR",
-          } : undefined}
+          }, {
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            mainEntity: pageFaqs.map((f) => ({
+              "@type": "Question",
+              name: f.question,
+              acceptedAnswer: { "@type": "Answer", text: f.answer },
+            })),
+          }] : undefined}
         />
       )}
       <div className="space-y-5">
@@ -311,9 +337,62 @@ export function SignificadoNomes({ onBack, initialName }: Props) {
                   <Globe className="w-4 h-4 text-green-400" />
                   <p className="text-xs font-semibold text-green-400 uppercase tracking-wider">Origem</p>
                 </div>
-                <p className="text-sm text-gray-300">{result.origin} — {result.name} é um nome de origem {result.origin.toLowerCase()}, com raízes históricas que remontam a séculos de tradição cultural e linguística.</p>
+                <p className="text-sm text-gray-300">{result.name} é um nome de origem {result.origin.toLowerCase()}.</p>
+                {originNames.length > 0 && (
+                  <p className="text-sm text-gray-400 mt-2">
+                    Outros nomes de origem {result.origin.split("/")[0].toLowerCase()}:{" "}
+                    {originNames.map((n, i) => (
+                      <React.Fragment key={n.name}>
+                        {i > 0 && ", "}
+                        <a href={`/significado-nome/${slugify(n.name)}`} className="text-green-400 hover:text-green-300">{n.name}</a>
+                      </React.Fragment>
+                    ))}
+                  </p>
+                )}
               </div>
+
+              {stats && (
+                <div className="p-4 rounded-xl bg-white/5 border border-white/10">
+                  <div className="flex items-center gap-2 mb-2">
+                    <span className="text-base">📊</span>
+                    <p className="text-xs font-semibold text-pink-300 uppercase tracking-wider">Popularidade no Brasil</p>
+                  </div>
+                  <p className="text-sm text-gray-300 leading-relaxed">{popularityText(result.name, stats)}</p>
+                  <div className="mt-4 flex items-end gap-1.5 h-28" role="img" aria-label={`Nascidos com o nome ${result.name} por década`}>
+                    {stats.decades.map((d, i) => (
+                      <div key={i} className="flex-1 flex flex-col items-center justify-end h-full">
+                        <div className="w-full rounded-t bg-gradient-to-t from-pink-500/70 to-sky-400/70" style={{ height: `${Math.max(2, Math.round((d / maxDecade) * 100))}%` }} title={`${DECADE_LABELS[i]}: ${formatNumber(d)}`} />
+                      </div>
+                    ))}
+                  </div>
+                  <div className="flex gap-1.5 mt-1">
+                    {DECADE_LABELS.map((l, i) => (
+                      <span key={i} className="flex-1 text-center text-[10px] text-gray-500">{i === 0 ? "<1930" : l}</span>
+                    ))}
+                  </div>
+                  <p className="text-[11px] text-gray-500 mt-2">Nascidos por década. Fonte: IBGE, Censo Demográfico 2010.</p>
+                </div>
+              )}
+
+              {result.aliases && result.aliases.length > 0 && (
+                <div className="p-4 rounded-xl bg-white/5 border border-white/10">
+                  <p className="text-xs font-semibold text-sky-300 uppercase tracking-wider mb-2">Variações e grafias</p>
+                  <p className="text-sm text-gray-300">{[result.name, ...result.aliases].join(" · ")}</p>
+                </div>
+              )}
             </div>
+
+            {isNamePage && pageFaqs.length > 0 && (
+              <div className="space-y-2">
+                <h2 className="text-lg font-bold text-text mt-2">Perguntas frequentes sobre o nome {pageName}</h2>
+                {pageFaqs.map((f) => (
+                  <details key={f.question} className="p-4 rounded-xl bg-white/5 border border-white/10" open>
+                    <summary className="text-sm font-semibold text-white cursor-pointer">{f.question}</summary>
+                    <p className="text-sm text-gray-300 mt-2 leading-relaxed">{f.answer}</p>
+                  </details>
+                ))}
+              </div>
+            )}
 
             <button onClick={reset} className="btn-primary w-full flex items-center justify-center gap-2">
               <RotateCcw className="w-4 h-4" />
@@ -414,7 +493,7 @@ export function SignificadoNomes({ onBack, initialName }: Props) {
         category="Utilidades"
         data={{
           directAnswer: "O significado de um nome é consultado em uma base de dados com origens etimológicas e interpretações tradicionalmente associadas a cada nome próprio.",
-          howItWorks: "A ferramenta busca em uma base com mais de 150 nomes o significado, origem etimológica (grega, latina, hebraica, etc) e curiosidades associadas a cada nome, ajudando pais que estão escolhendo um nome para o bebê ou pessoas curiosas sobre a origem do próprio nome.",
+          howItWorks: "A ferramenta busca em uma base com mais de 580 nomes o significado, origem etimológica (grega, latina, hebraica, etc) e curiosidades associadas a cada nome, ajudando pais que estão escolhendo um nome para o bebê ou pessoas curiosas sobre a origem do próprio nome.",
           example: {
             title: "Exemplo: consultando o significado do nome 'Sofia'",
             steps: [
