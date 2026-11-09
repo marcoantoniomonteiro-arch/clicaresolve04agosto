@@ -42,7 +42,7 @@ export function JurosCompostos({ onBack }: Props) {
     <ToolLayout
       title="Juros Compostos"
       emoji="📈"
-      category="Financas"
+      category="Finanças"
       description="Simule o crescimento do seu investimento com juros compostos."
       onBack={onBack}
       affiliateBanner={<AffiliateBanner terms={["livro investimentos renda fixa"]} label="livro investimentos renda fixa" />}

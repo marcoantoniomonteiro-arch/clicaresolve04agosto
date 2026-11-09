@@ -31,7 +31,7 @@ export function PontoEquilibrio({ onBack }: Props) {
     <ToolLayout
       title="Ponto de Equilibrio"
       emoji="📈"
-      category="Financas"
+      category="Finanças"
       description="Descubra quantas unidades precisa vender para cobrir todos os custos."
       onBack={onBack}
       affiliateBanner={

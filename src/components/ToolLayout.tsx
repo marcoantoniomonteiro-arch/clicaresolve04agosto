@@ -4,6 +4,7 @@ import { AdPlaceholder } from "./AdPlaceholder";
 import { SiteFooterLinks } from "./SiteFooterLinks";
 import { ShareButtons } from "./ShareButtons";
 import { getGuidesForTool } from "../data/guidesMeta";
+import { TOOL_EXTRAS } from "../data/toolExtras";
 import { ToolContent } from "./ToolContent";
 import { SEOHead } from "./SEOHead";
 import { TOOLS } from "../data/tools";
@@ -260,8 +261,6 @@ export function ToolLayout({
           </a>
         ))}
 
-        {affiliateBanner}
-
         <AdPlaceholder size="quadrado" slot="meio" />
 
         {disclaimer && (
@@ -274,6 +273,27 @@ export function ToolLayout({
         <div className="border-t border-border pt-8 mt-2">
           {content}
         </div>
+
+        {/* Texto explicativo extra da ferramenta (português) */}
+        {!seoEN && TOOL_EXTRAS[toolSlug] && (
+          <div className="mt-10 border-t border-border pt-8 space-y-6">
+            {TOOL_EXTRAS[toolSlug].map((sec) => (
+              <section key={sec.heading}>
+                <h2 className="text-lg font-bold text-text mb-3">{sec.heading}</h2>
+                {sec.paragraphs?.map((p, i) => (
+                  <p key={i} className="text-sm text-muted leading-relaxed mb-3">{p}</p>
+                ))}
+                {sec.list && (
+                  <ul className="list-disc pl-5 space-y-1.5">
+                    {sec.list.map((li, i) => (
+                      <li key={i} className="text-sm text-muted leading-relaxed">{li}</li>
+                    ))}
+                  </ul>
+                )}
+              </section>
+            ))}
+          </div>
+        )}
 
         {/* FAQ visível — reaproveita seo.faqs, já usado no JSON-LD acima */}
         {showSeoFaqBlock && seoFaqs && (
@@ -289,6 +309,8 @@ export function ToolLayout({
             </div>
           </div>
         )}
+
+        {affiliateBanner}
 
         {/* Related Tools */}
         {relatedTools.length > 0 && (

@@ -39,7 +39,7 @@ export function SimuladorMarkup({ onBack }: Props) {
     <ToolLayout
       title="Simulador de Markup"
       emoji="🛒"
-      category="Financas"
+      category="Finanças"
       description="Calcule o preço de venda ideal considerando custos, impostos e margem de lucro."
       onBack={onBack}
       affiliateBanner={<AffiliateBanner terms={["curso vendas online"]} label="curso vendas online" />}

@@ -82,7 +82,7 @@ export function PorcentagemReversa({ onBack }: Props) {
     <ToolLayout
       title="Porcentagem Reversa"
       emoji="%"
-      category="Financas"
+      category="Finanças"
       description="4 modos de cálculo de porcentagem em uma so ferramenta."
       onBack={onBack}
       affiliateBanner={<AffiliateBanner terms={["calculadora de bolso"]} label="calculadora de bolso" />}

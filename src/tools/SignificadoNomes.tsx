@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { ToolLayout } from "../components/ToolLayout";
-import { Baby, Search, Sparkles, Globe, BookOpen, RotateCcw } from "lucide-react";
-import { CONFIG } from "../config";
+import { Search, Sparkles, Globe, BookOpen, RotateCcw } from "lucide-react";
 import { NAMES_DB } from "./namesData";
 import { ToolContent } from "../components/ToolContent";
 import { SEOHead } from "../components/SEOHead";
+import { AffiliateBanner } from "../components/AffiliateBanner";
 import { getNameStats, sameOrigin, nameFaqs, formatNumber, DECADE_LABELS } from "./namesInfo";
 
 interface Props {
@@ -219,41 +219,7 @@ export function SignificadoNomes({ onBack, initialName }: Props) {
       category="Família e Bebês"
       description="Descubra a origem, significado e curiosidades sobre nomes de bebês."
       onBack={onBack}
-      affiliateBanner={
-        <div
-          className="my-6 p-5 rounded-2xl border border-pink-200/20"
-          style={{ background: "linear-gradient(135deg, #ffd6e8, #d6e8ff)" }}
-        >
-          <div className="flex items-start gap-3">
-            <div className="text-3xl">🍼</div>
-            <div className="flex-1">
-              <p className="text-sm font-bold text-gray-800 mb-1">
-                Decidindo o nome do seu bebê? Comece a planejar o futuro dele!
-              </p>
-              <p className="text-xs text-gray-700 mb-3">
-                Crie sua Lista de Bebê Oficial na Amazon com descontos exclusivos.
-              </p>
-              <a
-                href={CONFIG.urlAmazon("lista de bebê enxoval")}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-white/80 hover:bg-white text-pink-700 text-sm font-bold shadow-sm transition-all duration-200"
-              >
-                <Baby className="w-4 h-4" />
-                Criar Lista de Bebê
-              </a>
-              <a
-                href={CONFIG.urlShopee("enxoval bebê")}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="mt-2 inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-orange-500 hover:bg-orange-400 text-white text-sm font-bold shadow-sm transition-all duration-200"
-              >
-                🛍️ Ver na Shopee
-              </a>
-            </div>
-          </div>
-        </div>
-      }
+      affiliateBanner={<AffiliateBanner terms={["enxoval de bebê"]} label="enxoval de bebê" />}
     >
       {initialName && (
         <SEOHead

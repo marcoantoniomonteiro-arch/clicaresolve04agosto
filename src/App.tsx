@@ -796,7 +796,7 @@ export default function App({ initialPath }: { initialPath?: string } = {}) {
             <a href="/guias" className="text-sm text-green-400 hover:text-green-300">Ver todos os guias →</a>
           </div>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
-            {GUIDES_META.map((g) => (
+            {GUIDES_META.slice(0, 9).map((g) => (
               <a key={g.slug} href={`/guia/${g.slug}`} className="p-5 rounded-2xl bg-card border border-border hover:border-green-400/30 hover:bg-green-400/5 transition-all">
                 <div className="text-2xl mb-2">{g.emoji}</div>
                 <h3 className="text-sm font-bold text-text mb-1 leading-snug">{g.title}</h3>

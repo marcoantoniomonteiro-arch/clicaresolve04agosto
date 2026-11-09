@@ -16,7 +16,12 @@ export interface GuideContent {
   faqs: { question: string; answer: string }[];
 }
 
-export const GUIDES: Record<string, GuideContent> = {
+import { GUIDES_EXTRA_1 } from "./guidesExtra1";
+import { GUIDES_EXTRA_2 } from "./guidesExtra2";
+import { GUIDES_EXTRA_3 } from "./guidesExtra3";
+import { GUIDES_EXTRA_4 } from "./guidesExtra4";
+
+const GUIDES_BASE: Record<string, GuideContent> = {
   "quantos-btus-preciso": {
     slug: "quantos-btus-preciso",
     updated: "2026-10-28",
@@ -337,4 +342,12 @@ export const GUIDES: Record<string, GuideContent> = {
       { question: "A fórmula vale para Valorant, CS2 e Fortnite?", answer: "Sim, para converter dentro do mesmo jogo. Para passar a sensibilidade de um jogo para outro, é preciso também considerar a escala de cada um, como faz o conversor de DPI." },
     ],
   },
+};
+
+export const GUIDES: Record<string, GuideContent> = {
+  ...GUIDES_BASE,
+  ...GUIDES_EXTRA_1,
+  ...GUIDES_EXTRA_2,
+  ...GUIDES_EXTRA_3,
+  ...GUIDES_EXTRA_4,
 };

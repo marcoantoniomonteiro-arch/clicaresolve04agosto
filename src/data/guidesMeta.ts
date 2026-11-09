@@ -1,3 +1,4 @@
+import { GUIDES_META_EXTRA } from "./guidesMetaExtra";
 // Lista leve dos guias (carregada em todas as páginas para os links).
 // O texto completo de cada guia fica em guides.ts e só é baixado na página do guia.
 export interface GuideMeta {
@@ -52,6 +53,7 @@ export const GUIDES_META: GuideMeta[] = [
     emoji: "🖱️",
     toolSlugs: ["conversor-dpi"],
   },
+  ...GUIDES_META_EXTRA,
 ];
 
 export const GUIDE_SLUGS = GUIDES_META.map((g) => g.slug);
