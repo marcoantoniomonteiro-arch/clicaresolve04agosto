@@ -21,13 +21,33 @@ interface Vaccine {
 interface Pet {
   id: string;
   name: string;
-  species: "cao" | "gato";
+  species: Especie;
   birthDate: string;
   vaccines: Vaccine[];
   lastVermifugeDate?: string;
 }
 
-const DEFAULT_VACCINES: Record<string, Vaccine[]> = {
+type Especie = "cao" | "gato" | "coelho" | "furao" | "cavalo" | "ave" | "roedor" | "outro";
+
+const ESPECIES: { id: Especie; emoji: string; nome: string; exemplo: string; nota?: string }[] = [
+  { id: "cao", emoji: "🐕", nome: "Cão", exemplo: "Ex.: Leptospirose, Lyme" },
+  { id: "gato", emoji: "🐈", nome: "Gato", exemplo: "Ex.: Clamidiose, Bordetella" },
+  { id: "coelho", emoji: "🐇", nome: "Coelho", exemplo: "Ex.: Mixomatose, DHV",
+    nota: "Vacinas para coelhos têm pouca disponibilidade no Brasil. Consulte um veterinário de animais exóticos e adicione as que ele indicar." },
+  { id: "furao", emoji: "🦦", nome: "Furão", exemplo: "Ex.: Leptospirose" },
+  { id: "cavalo", emoji: "🐴", nome: "Cavalo", exemplo: "Ex.: Garrotilho, Leptospirose",
+    nota: "Em cavalos, a influenza costuma ter reforço semestral em animais que viajam ou competem. Ajuste o intervalo com o veterinário." },
+  { id: "ave", emoji: "🦜", nome: "Ave", exemplo: "Ex.: Newcastle, Bouba aviária",
+    nota: "Aves de estimação geralmente não têm vacinas de rotina. Adicione as que o veterinário indicar e anote a vermifugação." },
+  { id: "roedor", emoji: "🐹", nome: "Roedor", exemplo: "Ex.: vacina indicada pelo veterinário",
+    nota: "Hamsters, porquinhos-da-índia e outros roedores normalmente não tomam vacinas. Use a ferramenta para lembrar de check-ups e vermifugação." },
+  { id: "outro", emoji: "🐾", nome: "Outro", exemplo: "Digite o nome da vacina",
+    nota: "Adicione as vacinas e os intervalos de reforço indicados pelo veterinário." },
+];
+
+const especieInfo = (e: Especie) => ESPECIES.find((x) => x.id === e) || ESPECIES[ESPECIES.length - 1];
+
+const DEFAULT_VACCINES: Record<Especie, Vaccine[]> = {
   cao: [
     { name: "V8 / V10", intervalMonths: 12 },
     { name: "Antirrábica", intervalMonths: 12 },
@@ -40,6 +60,21 @@ const DEFAULT_VACCINES: Record<string, Vaccine[]> = {
     { name: "Antirrábica", intervalMonths: 12 },
     { name: "FeLV (Leucemia Felina)", intervalMonths: 12 },
   ],
+  coelho: [],
+  furao: [
+    { name: "Cinomose", intervalMonths: 12 },
+    { name: "Antirrábica", intervalMonths: 12 },
+  ],
+  cavalo: [
+    { name: "Influenza Equina", intervalMonths: 12 },
+    { name: "Tétano", intervalMonths: 12 },
+    { name: "Antirrábica", intervalMonths: 12 },
+    { name: "Encefalomielite Equina", intervalMonths: 12 },
+    { name: "Rinopneumonite (Herpesvírus Equino)", intervalMonths: 12 },
+  ],
+  ave: [],
+  roedor: [],
+  outro: [],
 };
 
 function generateId(): string {
@@ -73,7 +108,7 @@ function loadPets(): Pet[] {
     const pets: Pet[] = JSON.parse(raw);
     // Acrescenta vacinas padrão que entraram depois que o pet foi cadastrado
     return pets.map((p) => {
-      const faltando = (DEFAULT_VACCINES[p.species] || []).filter(
+      const faltando = (DEFAULT_VACCINES[p.species as Especie] || []).filter(
         (d) => !p.vaccines.some((v) => v.name === d.name)
       );
       return faltando.length ? { ...p, vaccines: [...p.vaccines, ...faltando.map((v) => ({ ...v }))] } : p;
@@ -88,7 +123,7 @@ export function VacinasPet({ onBack }: Props) {
   const [expanded, setExpanded] = useState<string | null>(null);
   const [showAdd, setShowAdd] = useState(false);
   const [newName, setNewName] = useState("");
-  const [newSpecies, setNewSpecies] = useState<"cao" | "gato">("cao");
+  const [newSpecies, setNewSpecies] = useState<Especie>("cao");
   const [newBirth, setNewBirth] = useState("");
   const [customName, setCustomName] = useState<Record<string, string>>({});
   const [customMonths, setCustomMonths] = useState<Record<string, string>>({});
@@ -175,7 +210,7 @@ export function VacinasPet({ onBack }: Props) {
       title="Rastreador de Vacinas"
       emoji="💉"
       category="Pet"
-      description="Cadastre seus pets, acompanhe vacinas e receba alertas de reforço."
+      description="Cadastre cães, gatos, coelhos, furões, cavalos e outros pets, acompanhe vacinas e veja quando vence cada reforço."
       onBack={onBack}
       affiliateBanner={
         <div className="my-6 p-4 rounded-xl border border-teal-500/20 bg-teal-500/5">
@@ -240,18 +275,18 @@ export function VacinasPet({ onBack }: Props) {
             </label>
             <div>
               <span className="text-sm text-gray-400 mb-1 block">Espécie</span>
-              <div className="flex gap-2">
-                {(["cao", "gato"] as const).map((e) => (
+              <div className="grid grid-cols-4 gap-2">
+                {ESPECIES.map(({ id: e, emoji, nome }) => (
                   <button
                     key={e}
                     onClick={() => setNewSpecies(e)}
-                    className={`flex-1 py-2.5 rounded-xl text-sm font-semibold border transition-all ${
+                    className={`py-2.5 rounded-xl text-sm font-semibold border transition-all ${
                       newSpecies === e
                         ? "bg-teal-500/20 border-teal-500/40 text-teal-300"
                         : "bg-white/5 border-white/10 text-gray-400 hover:bg-white/10"
                     }`}
                   >
-                    {e === "cao" ? "🐕 Cão" : "🐈 Gato"}
+                    {emoji} {nome}
                   </button>
                 ))}
               </div>
@@ -287,11 +322,11 @@ export function VacinasPet({ onBack }: Props) {
                 className="p-4 flex items-center gap-3 cursor-pointer hover:bg-white/5 transition-colors"
                 onClick={() => setExpanded(isOpen ? null : pet.id)}
               >
-                <div className="text-2xl">{pet.species === "cao" ? "🐕" : "🐈"}</div>
+                <div className="text-2xl">{especieInfo(pet.species).emoji}</div>
                 <div className="flex-1">
                   <p className="text-sm font-semibold text-white">{pet.name}</p>
                   <p className="text-xs text-gray-500">
-                    {pet.species === "cao" ? "Cão" : "Gato"}
+                    {especieInfo(pet.species).nome}
                     {pet.birthDate ? ` · Nascimento: ${new Date(pet.birthDate).toLocaleDateString("pt-BR")}` : ""}
                   </p>
                 </div>
@@ -321,6 +356,11 @@ export function VacinasPet({ onBack }: Props) {
                       <Syringe className="w-4 h-4 text-teal-400" />
                       <p className="text-xs font-semibold text-teal-400 uppercase tracking-wider">Vacinas</p>
                     </div>
+                    {especieInfo(pet.species).nota && (
+                      <p className="text-xs text-gray-400 mb-2 p-2 rounded bg-white/5 border border-white/10">
+                        {especieInfo(pet.species).nota}
+                      </p>
+                    )}
                     <div className="space-y-2">
                       {pet.vaccines.map((v) => {
                         const days = daysUntil(v.lastDate, v.intervalMonths);
@@ -369,7 +409,7 @@ export function VacinasPet({ onBack }: Props) {
                           value={customName[pet.id] || ""}
                           onChange={(e) => setCustomName({ ...customName, [pet.id]: e.target.value })}
                           onKeyDown={(e) => e.key === "Enter" && addVaccine(pet.id)}
-                          placeholder={pet.species === "cao" ? "Ex.: Leptospirose, Lyme" : "Ex.: Clamidiose, Bordetella"}
+                          placeholder={especieInfo(pet.species).exemplo}
                           className="flex-1 min-w-[140px] bg-white/5 text-xs text-white border border-white/10 rounded px-2 py-1.5"
                         />
                         <label className="flex items-center gap-1 text-xs text-gray-400">
@@ -484,7 +524,7 @@ export function VacinasPet({ onBack }: Props) {
         toolName="Rastreador de Vacinas"
         category="Pet"
         data={{
-          directAnswer: "O calendário de vacinação de pets acompanha as doses e datas de reforço recomendadas para cães e gatos, conforme a idade e o tipo de vacina.",
+          directAnswer: "O rastreador de vacinas acompanha as doses e datas de reforço de cães, gatos, coelhos, furões, cavalos, aves, roedores e outros animais, conforme o tipo de vacina.",
           howItWorks: "A ferramenta organiza as vacinas mais usadas em cães e gatos (como V8/V10, antirrábica, giárdia, gripe canina, leishmaniose, quádrupla/quíntupla felina e FeLV), permite adicionar outras vacinas e ajuda a acompanhar quando cada dose e reforço devem ser aplicados, com base na idade do pet. O calendário de vacinação real deve sempre ser definido e ajustado por um médico veterinário, já que pode variar conforme a região, o histórico de saúde e o tipo de vacina disponível.",
           example: {
             title: "Exemplo: calendário básico para filhote de cão",
@@ -501,6 +541,7 @@ export function VacinasPet({ onBack }: Props) {
             { question: "A vacina antirrábica é obrigatória?", answer: "Sim, em muitas regiões é obrigatória por lei e essencial para a saúde pública e do animal." },
             { question: "Com que frequência é necessário reforçar as vacinas?", answer: "A maioria das vacinas de cães e gatos precisa de reforço anual, mas isso pode variar conforme o fabricante e a orientação veterinária." },
             { question: "A vacina contra leishmaniose está incluída?", answer: "Sim, para cães. A leishmaniose visceral é comum em várias regiões do Brasil. A disponibilidade da vacina mudou nos últimos anos, então confirme com o veterinário qual produto e protocolo usar. Se você usa coleira repelente, ela continua sendo uma proteção importante." },
+            { question: "Funciona para outros animais além de cão e gato?", answer: "Sim. Dá para cadastrar coelho, furão, cavalo, ave, roedor ou outro animal. Furões e cavalos já vêm com as vacinas mais comuns; para os demais, adicione as vacinas que o veterinário indicar." },
             { question: "Falta uma vacina que meu pet toma. Posso adicionar?", answer: "Sim. Abra o pet, use o campo \"Adicionar outra vacina\", digite o nome e o intervalo de reforço em meses. Também dá para remover vacinas que o seu pet não toma." },
             { question: "Posso usar essa ferramenta no lugar de um veterinário?", answer: "Não, ela serve apenas como um organizador de referência. O calendário de vacinação real deve ser sempre definido por um médico veterinário." },
           ],
