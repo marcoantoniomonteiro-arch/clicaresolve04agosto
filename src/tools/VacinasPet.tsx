@@ -27,7 +27,7 @@ interface Pet {
   lastVermifugeDate?: string;
 }
 
-type Especie = "cao" | "gato" | "coelho" | "furao" | "cavalo" | "ave" | "roedor" | "outro";
+type Especie = "cao" | "gato" | "coelho" | "furao" | "cavalo" | "bovino" | "ovino" | "suino" | "galinha" | "ave" | "roedor" | "outro";
 
 const ESPECIES: { id: Especie; emoji: string; nome: string; exemplo: string; nota?: string }[] = [
   { id: "cao", emoji: "🐕", nome: "Cão", exemplo: "Ex.: Leptospirose, Lyme" },
@@ -37,6 +37,14 @@ const ESPECIES: { id: Especie; emoji: string; nome: string; exemplo: string; not
   { id: "furao", emoji: "🦦", nome: "Furão", exemplo: "Ex.: Leptospirose" },
   { id: "cavalo", emoji: "🐴", nome: "Cavalo", exemplo: "Ex.: Garrotilho, Leptospirose",
     nota: "Em cavalos, a influenza costuma ter reforço semestral em animais que viajam ou competem. Ajuste o intervalo com o veterinário." },
+  { id: "bovino", emoji: "🐄", nome: "Boi / Vaca", exemplo: "Ex.: Carbúnculo, Botulismo",
+    nota: "Febre aftosa: o Brasil não vacina mais desde 2024 (país livre sem vacinação). A brucelose é obrigatória em bezerras de 3 a 8 meses, em dose única. A antirrábica é indicada em áreas de risco e obrigatória em algumas regiões; confirme com o serviço veterinário do seu estado." },
+  { id: "ovino", emoji: "🐑", nome: "Ovelha / Cabra", exemplo: "Ex.: Linfadenite caseosa, Ectima",
+    nota: "O calendário pode variar por região e sistema de criação. Confirme com o veterinário, principalmente para fêmeas prenhes." },
+  { id: "suino", emoji: "🐖", nome: "Porco", exemplo: "Ex.: Circovírus, Micoplasma, Parvovirose",
+    nota: "Em granjas, o protocolo de vacinas (circovírus, micoplasma, parvovirose, erisipela e outras) é definido pelo veterinário responsável. Adicione as vacinas indicadas." },
+  { id: "galinha", emoji: "🐔", nome: "Galinha", exemplo: "Ex.: Bouba aviária, Gumboro",
+    nota: "Marek é aplicada em dose única no pintinho. O intervalo da Newcastle varia conforme a vacina e a região; ajuste com o veterinário." },
   { id: "ave", emoji: "🦜", nome: "Ave", exemplo: "Ex.: Newcastle, Bouba aviária",
     nota: "Aves de estimação geralmente não têm vacinas de rotina. Adicione as que o veterinário indicar e anote a vermifugação." },
   { id: "roedor", emoji: "🐹", nome: "Roedor", exemplo: "Ex.: vacina indicada pelo veterinário",
@@ -71,6 +79,22 @@ const DEFAULT_VACCINES: Record<Especie, Vaccine[]> = {
     { name: "Antirrábica", intervalMonths: 12 },
     { name: "Encefalomielite Equina", intervalMonths: 12 },
     { name: "Rinopneumonite (Herpesvírus Equino)", intervalMonths: 12 },
+  ],
+  bovino: [
+    { name: "Brucelose (bezerras de 3 a 8 meses)", intervalMonths: 0 },
+    { name: "Antirrábica", intervalMonths: 12 },
+    { name: "Clostridioses (polivalente)", intervalMonths: 12 },
+    { name: "Leptospirose", intervalMonths: 6 },
+    { name: "IBR / BVD", intervalMonths: 12 },
+  ],
+  ovino: [
+    { name: "Clostridioses (polivalente)", intervalMonths: 12 },
+    { name: "Antirrábica", intervalMonths: 12 },
+  ],
+  suino: [],
+  galinha: [
+    { name: "Marek", intervalMonths: 0 },
+    { name: "Newcastle", intervalMonths: 3 },
   ],
   ave: [],
   roedor: [],
@@ -171,7 +195,7 @@ export function VacinasPet({ onBack }: Props) {
 
   function addVaccine(petId: string) {
     const nome = (customName[petId] || "").trim();
-    const meses = Math.max(1, Math.min(60, Number(customMonths[petId] || 12)));
+    const meses = Math.max(0, Math.min(60, Number(customMonths[petId] ?? 12)));
     if (!nome) return;
     const updated = pets.map((p) =>
       p.id !== petId || p.vaccines.some((v) => v.name.toLowerCase() === nome.toLowerCase())
@@ -210,7 +234,7 @@ export function VacinasPet({ onBack }: Props) {
       title="Rastreador de Vacinas"
       emoji="💉"
       category="Pet"
-      description="Cadastre cães, gatos, coelhos, furões, cavalos e outros pets, acompanhe vacinas e veja quando vence cada reforço."
+      description="Cadastre pets e animais de criação (cães, gatos, cavalos, bois, ovelhas, galinhas e outros), acompanhe vacinas e veja quando vence cada reforço."
       onBack={onBack}
       affiliateBanner={
         <div className="my-6 p-4 rounded-xl border border-teal-500/20 bg-teal-500/5">
@@ -264,12 +288,12 @@ export function VacinasPet({ onBack }: Props) {
         {showAdd && (
           <div className="p-4 rounded-xl bg-white/5 border border-white/10 space-y-3">
             <label className="block">
-              <span className="text-sm text-gray-400 mb-1 block">Nome do pet</span>
+              <span className="text-sm text-gray-400 mb-1 block">Nome do animal</span>
               <input
                 type="text"
                 value={newName}
                 onChange={(e) => setNewName(e.target.value)}
-                placeholder="Ex: Rex, Luna..."
+                placeholder="Ex: Rex, Luna, Mimosa..."
                 className="input-field w-full"
               />
             </label>
@@ -364,7 +388,12 @@ export function VacinasPet({ onBack }: Props) {
                     <div className="space-y-2">
                       {pet.vaccines.map((v) => {
                         const days = daysUntil(v.lastDate, v.intervalMonths);
-                        const badge = statusBadge(days);
+                        const badge =
+                          v.intervalMonths === 0
+                            ? v.lastDate
+                              ? { color: "bg-green-500/20 text-green-400 border-green-500/30", text: "Dose única ✓" }
+                              : { color: "bg-gray-500/20 text-gray-400", text: "Dose única" }
+                            : statusBadge(days);
                         return (
                           <div
                             key={v.name}
@@ -416,13 +445,14 @@ export function VacinasPet({ onBack }: Props) {
                           reforço a cada
                           <input
                             type="number"
-                            min={1}
+                            min={0}
                             max={60}
+                            title="Use 0 para vacina de dose única"
                             value={customMonths[pet.id] || "12"}
                             onChange={(e) => setCustomMonths({ ...customMonths, [pet.id]: e.target.value })}
                             className="w-14 bg-white/5 text-xs text-white border border-white/10 rounded px-2 py-1.5"
                           />
-                          meses
+                          meses <span className="text-gray-600">(0 = dose única)</span>
                         </label>
                         <button
                           type="button"
@@ -541,7 +571,8 @@ export function VacinasPet({ onBack }: Props) {
             { question: "A vacina antirrábica é obrigatória?", answer: "Sim, em muitas regiões é obrigatória por lei e essencial para a saúde pública e do animal." },
             { question: "Com que frequência é necessário reforçar as vacinas?", answer: "A maioria das vacinas de cães e gatos precisa de reforço anual, mas isso pode variar conforme o fabricante e a orientação veterinária." },
             { question: "A vacina contra leishmaniose está incluída?", answer: "Sim, para cães. A leishmaniose visceral é comum em várias regiões do Brasil. A disponibilidade da vacina mudou nos últimos anos, então confirme com o veterinário qual produto e protocolo usar. Se você usa coleira repelente, ela continua sendo uma proteção importante." },
-            { question: "Funciona para outros animais além de cão e gato?", answer: "Sim. Dá para cadastrar coelho, furão, cavalo, ave, roedor ou outro animal. Furões e cavalos já vêm com as vacinas mais comuns; para os demais, adicione as vacinas que o veterinário indicar." },
+            { question: "Funciona para outros animais além de cão e gato?", answer: "Sim. Dá para cadastrar coelho, furão, cavalo, boi ou vaca, ovelha ou cabra, porco, galinha, ave, roedor ou outro animal. Várias espécies já vêm com as vacinas mais comuns; para as demais, adicione as vacinas que o veterinário indicar." },
+            { question: "Ainda é preciso vacinar o gado contra febre aftosa?", answer: "Não. O Brasil encerrou a vacinação contra febre aftosa em 2024 e foi reconhecido pela Organização Mundial de Saúde Animal como país livre da doença sem vacinação em 2025. A vigilância continua, e a brucelose segue obrigatória em bezerras de 3 a 8 meses." },
             { question: "Falta uma vacina que meu pet toma. Posso adicionar?", answer: "Sim. Abra o pet, use o campo \"Adicionar outra vacina\", digite o nome e o intervalo de reforço em meses. Também dá para remover vacinas que o seu pet não toma." },
             { question: "Posso usar essa ferramenta no lugar de um veterinário?", answer: "Não, ela serve apenas como um organizador de referência. O calendário de vacinação real deve ser sempre definido por um médico veterinário." },
           ],

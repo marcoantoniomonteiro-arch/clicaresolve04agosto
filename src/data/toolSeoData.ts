@@ -723,7 +723,7 @@ export const TOOL_SEO_DATA: Record<string, ToolSEOData> = {
   },
   "vacinas-pet": {
     title: "Rastreador de Vacinas e Vermifugação de Pets | CLICAresolve",
-    description: "Carteira de vacinação online para cão, gato, coelho, furão, cavalo e outros pets: anote as doses, veja quando vence cada reforço e a vermifugação. Grátis.",
+    description: "Carteira de vacinação online para cão, gato, cavalo, boi, vaca, ovelha, galinha e outros animais: anote as doses e veja quando vence cada reforço. Grátis.",
     schemaType: "SoftwareApplication",
     hasFAQ: true,
     faqs: [

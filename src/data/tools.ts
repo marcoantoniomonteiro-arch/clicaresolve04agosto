@@ -679,7 +679,7 @@ export const tools: Tool[] = [
     emoji: "💉",
     category: "Pet",
     name: "Rastreador de Vacinas",
-    description: "Carteira de vacinação de cães, gatos, coelhos, furões, cavalos e outros pets, com alerta de reforço.",
+    description: "Carteira de vacinação de pets e animais de criação (cães, gatos, cavalos, bois, galinhas e outros), com alerta de reforço.",
   },
   {
     id: 91,
