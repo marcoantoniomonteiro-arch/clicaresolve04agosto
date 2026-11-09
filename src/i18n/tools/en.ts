@@ -429,8 +429,8 @@ export const toolsSeoEN: ToolSeoEN[] = [
   {
     ptSlug: "taxas-maquininha",
     enSlug: "card-machine-fees-calculator",
-    title: "Card Machine Fees Calculator — Know Your Real Payout",
-    metaDescription: "Calculate how much you actually receive after card machine fees and taxes. Free tool for merchants.",
+    title: "Card Machine Fee Calculator: Real Cost of Each Sale",
+    metaDescription: "Find the real cost of your card machine: enter the sale amount and the debit, credit or installment rate and see exactly how much lands in your account. Free.",
     h1: "Card Machine Fees Calculator",
     intro: "Find out exactly how much you'll receive after card processing fees are deducted from a sale.",
     faqs: [
@@ -462,8 +462,8 @@ export const toolsSeoEN: ToolSeoEN[] = [
   {
     ptSlug: "comparador-preco",
     enSlug: "price-comparison-calculator",
-    title: "Price Comparison Calculator — Find the Best Unit Price",
-    metaDescription: "Compare prices between different package sizes to find the best value per unit. Free shopping tool.",
+    title: "Unit Price Calculator: Which Package Is Cheaper?",
+    metaDescription: "Compare packages of different sizes and find which one is cheaper per kg, liter or unit. Free unit price calculator for grocery shopping, no sign-up.",
     h1: "Price Comparison Calculator",
     intro: "Compare products with different sizes or quantities to find which one offers the best price per unit.",
     faqs: [
@@ -594,12 +594,13 @@ export const toolsSeoEN: ToolSeoEN[] = [
   {
     ptSlug: "calendario-feriados",
     enSlug: "holiday-calendar",
-    title: "Holiday Calendar — Track Public Holidays by Country",
-    metaDescription: "View upcoming public holidays and observances by country. Free holiday calendar tool.",
-    h1: "Holiday Calendar",
-    intro: "Browse public holidays and observances for different countries throughout the year.",
+    title: "Brazil Public Holidays 2026 and 2027: Full Calendar",
+    metaDescription: "All national public holidays in Brazil for 2026 and 2027, optional days off like Carnival, long weekends and a countdown to the next holiday. Free.",
+    h1: "Brazil Public Holiday Calendar",
+    intro: "See Brazil's national public holidays and optional days off for any year, which dates create long weekends, and how many days are left until the next holiday.",
     faqs: [
-      { question: "How do I find holidays for a specific country?", answer: "Select your country to see a list of public holidays, their dates, and any special observances throughout the year." }
+      { question: "What are the public holidays in Brazil in 2027?", answer: "January 1, Good Friday (March 26), April 21, May 1, September 7, October 12, November 2, 15 and 20, and December 25. Carnival (February 8 and 9) and Corpus Christi (May 27) are optional days off for federal employees." },
+      { question: "Does the calendar include state and city holidays?", answer: "No. It shows national holidays and federal optional days off; state and municipal holidays vary by location." }
     ]
   },
   {
@@ -869,8 +870,8 @@ export const toolsSeoEN: ToolSeoEN[] = [
   {
     ptSlug: "consumo-racao",
     enSlug: "pet-food-calculator",
-    title: "Pet Food Calculator — Daily Food Intake for Dogs & Cats",
-    metaDescription: "Calculate the ideal daily food amount for your dog or cat based on weight, age, and activity. Free pet food calculator.",
+    title: "How Much to Feed a Dog or Cat? Pet Food Calculator",
+    metaDescription: "Find out how many grams of food your dog or cat needs per day based on weight, age and activity level. Free pet food calculator, no sign-up.",
     h1: "Pet Food Calculator",
     intro: "Find out how much food your pet should eat each day based on weight, life stage, and activity level.",
     faqs: [
