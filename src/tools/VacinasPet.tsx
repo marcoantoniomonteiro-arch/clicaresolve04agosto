@@ -2,9 +2,10 @@ import React, { useState, useEffect } from "react";
 import { ToolLayout } from "../components/ToolLayout";
 import { ToolContent } from "../components/ToolContent";
 import { CONFIG } from "../config";
+import { drawVaccineCard, canvasToBlob } from "../utils/vaccineCard";
 import {
   Plus, Trash2, ChevronDown, ChevronUp, Syringe, Shield, AlertTriangle,
-  Calendar, Dog, Cat, Pill
+  Calendar, Dog, Cat, Pill, Download, Share2, Printer, BadgeCheck
 } from "lucide-react";
 
 interface Props {
@@ -23,6 +24,8 @@ interface Pet {
   name: string;
   species: Especie;
   birthDate: string;
+  customSpecies?: string;
+  tutor?: string;
   vaccines: Vaccine[];
   lastVermifugeDate?: string;
 }
@@ -54,6 +57,8 @@ const ESPECIES: { id: Especie; emoji: string; nome: string; exemplo: string; not
 ];
 
 const especieInfo = (e: Especie) => ESPECIES.find((x) => x.id === e) || ESPECIES[ESPECIES.length - 1];
+const especieNome = (p: { species: Especie; customSpecies?: string }) =>
+  p.species === "outro" && p.customSpecies ? p.customSpecies : especieInfo(p.species).nome;
 
 const DEFAULT_VACCINES: Record<Especie, Vaccine[]> = {
   cao: [
@@ -149,6 +154,9 @@ export function VacinasPet({ onBack }: Props) {
   const [newName, setNewName] = useState("");
   const [newSpecies, setNewSpecies] = useState<Especie>("cao");
   const [newBirth, setNewBirth] = useState("");
+  const [newCustomSpecies, setNewCustomSpecies] = useState("");
+  const [newTutor, setNewTutor] = useState("");
+  const [cardUrl, setCardUrl] = useState<Record<string, string>>({});
   const [customName, setCustomName] = useState<Record<string, string>>({});
   const [customMonths, setCustomMonths] = useState<Record<string, string>>({});
 
@@ -163,6 +171,8 @@ export function VacinasPet({ onBack }: Props) {
       name: newName.trim(),
       species: newSpecies,
       birthDate: newBirth,
+      customSpecies: newSpecies === "outro" && newCustomSpecies.trim() ? newCustomSpecies.trim() : undefined,
+      tutor: newTutor.trim() || undefined,
       vaccines: DEFAULT_VACCINES[newSpecies].map((v) => ({ ...v })),
     };
     const updated = [...pets, pet];
@@ -170,6 +180,8 @@ export function VacinasPet({ onBack }: Props) {
     savePets(updated);
     setNewName("");
     setNewBirth("");
+    setNewCustomSpecies("");
+    setNewTutor("");
     setShowAdd(false);
     setExpanded(pet.id);
   }
@@ -214,6 +226,56 @@ export function VacinasPet({ onBack }: Props) {
     );
     setPets(updated);
     savePets(updated);
+  }
+
+  function cardCanvas(pet: Pet) {
+    return drawVaccineCard({
+      name: pet.name,
+      speciesLabel: especieNome(pet),
+      emoji: especieInfo(pet.species).emoji,
+      birthDate: pet.birthDate || undefined,
+      tutor: pet.tutor,
+      vaccines: pet.vaccines,
+      lastVermifugeDate: pet.lastVermifugeDate || "",
+    });
+  }
+
+  function gerarCartao(pet: Pet) {
+    const url = cardCanvas(pet).toDataURL("image/png");
+    setCardUrl({ ...cardUrl, [pet.id]: url });
+  }
+
+  function nomeArquivo(pet: Pet) {
+    return `cartao-vacina-${pet.name.normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[^a-zA-Z0-9]+/g, "-").toLowerCase()}.png`;
+  }
+
+  function baixarCartao(pet: Pet) {
+    const a = document.createElement("a");
+    a.href = cardCanvas(pet).toDataURL("image/png");
+    a.download = nomeArquivo(pet);
+    a.click();
+  }
+
+  async function compartilharCartao(pet: Pet) {
+    try {
+      const blob = await canvasToBlob(cardCanvas(pet));
+      const file = new File([blob], nomeArquivo(pet), { type: "image/png" });
+      if (navigator.canShare && navigator.canShare({ files: [file] })) {
+        await navigator.share({ files: [file], title: `Cartão de vacinação de ${pet.name}`, text: "Feito em clicaresolve.com.br/vacinas-pet" });
+        return;
+      }
+    } catch {
+      return; // usuário cancelou
+    }
+    baixarCartao(pet);
+  }
+
+  function imprimirCartao(pet: Pet) {
+    const url = cardCanvas(pet).toDataURL("image/png");
+    const w = window.open("", "_blank");
+    if (!w) return baixarCartao(pet);
+    w.document.write(`<html><head><title>Cartão de vacinação - ${pet.name.replace(/</g, "")}</title><style>body{margin:0;display:flex;justify-content:center}img{max-width:100%;height:auto}@page{margin:10mm}</style></head><body><img src="${url}" onload="setTimeout(function(){window.print()},200)"></body></html>`);
+    w.document.close();
   }
 
   function updateVermifugeDate(petId: string, date: string) {
@@ -315,6 +377,28 @@ export function VacinasPet({ onBack }: Props) {
                 ))}
               </div>
             </div>
+            {newSpecies === "outro" && (
+              <label className="block">
+                <span className="text-sm text-gray-400 mb-1 block">Qual animal?</span>
+                <input
+                  value={newCustomSpecies}
+                  onChange={(e) => setNewCustomSpecies(e.target.value)}
+                  placeholder="Ex: Tartaruga, Iguana, Papagaio..."
+                  maxLength={30}
+                  className="input-field w-full"
+                />
+              </label>
+            )}
+            <label className="block">
+              <span className="text-sm text-gray-400 mb-1 block">Nome do tutor (opcional, aparece no cartão)</span>
+              <input
+                value={newTutor}
+                onChange={(e) => setNewTutor(e.target.value)}
+                placeholder="Ex: Maria"
+                maxLength={40}
+                className="input-field w-full"
+              />
+            </label>
             <label className="block">
               <span className="text-sm text-gray-400 mb-1 block">Data de nascimento (opcional)</span>
               <input
@@ -350,7 +434,7 @@ export function VacinasPet({ onBack }: Props) {
                 <div className="flex-1">
                   <p className="text-sm font-semibold text-white">{pet.name}</p>
                   <p className="text-xs text-gray-500">
-                    {especieInfo(pet.species).nome}
+                    {especieNome(pet)}
                     {pet.birthDate ? ` · Nascimento: ${new Date(pet.birthDate).toLocaleDateString("pt-BR")}` : ""}
                   </p>
                 </div>
@@ -505,6 +589,38 @@ export function VacinasPet({ onBack }: Props) {
                       </p>
                     </div>
                   </div>
+
+                  {/* Cartão de vacinação */}
+                  <div className="p-3 rounded-lg bg-gradient-to-br from-teal-500/10 to-sky-500/10 border border-teal-500/20">
+                    <div className="flex items-center gap-2 mb-2">
+                      <BadgeCheck className="w-4 h-4 text-teal-300" />
+                      <p className="text-xs font-semibold text-teal-300 uppercase tracking-wider">Cartão de vacinação</p>
+                    </div>
+                    <p className="text-xs text-gray-400 mb-3">
+                      Gere uma imagem com todas as vacinas de {pet.name} para guardar no celular, imprimir ou mandar no WhatsApp.
+                    </p>
+                    <div className="flex flex-wrap gap-2">
+                      <button type="button" onClick={() => gerarCartao(pet)} className="inline-flex items-center gap-1.5 px-3 py-2 rounded-lg bg-teal-500 text-black text-xs font-bold hover:opacity-90">
+                        <BadgeCheck className="w-4 h-4" /> Ver cartão
+                      </button>
+                      <button type="button" onClick={() => baixarCartao(pet)} className="inline-flex items-center gap-1.5 px-3 py-2 rounded-lg bg-white/10 text-white text-xs font-semibold hover:bg-white/15">
+                        <Download className="w-4 h-4" /> Baixar
+                      </button>
+                      <button type="button" onClick={() => compartilharCartao(pet)} className="inline-flex items-center gap-1.5 px-3 py-2 rounded-lg bg-[#25D366] text-black text-xs font-semibold hover:opacity-90">
+                        <Share2 className="w-4 h-4" /> Compartilhar
+                      </button>
+                      <button type="button" onClick={() => imprimirCartao(pet)} className="inline-flex items-center gap-1.5 px-3 py-2 rounded-lg bg-white/10 text-white text-xs font-semibold hover:bg-white/15">
+                        <Printer className="w-4 h-4" /> Imprimir / PDF
+                      </button>
+                    </div>
+                    {cardUrl[pet.id] && (
+                      <img
+                        src={cardUrl[pet.id]}
+                        alt={`Cartão de vacinação de ${pet.name}`}
+                        className="mt-3 w-full rounded-lg border border-white/10"
+                      />
+                    )}
+                  </div>
                 </div>
               )}
             </div>
@@ -573,6 +689,8 @@ export function VacinasPet({ onBack }: Props) {
             { question: "A vacina contra leishmaniose está incluída?", answer: "Sim, para cães. A leishmaniose visceral é comum em várias regiões do Brasil. A disponibilidade da vacina mudou nos últimos anos, então confirme com o veterinário qual produto e protocolo usar. Se você usa coleira repelente, ela continua sendo uma proteção importante." },
             { question: "Funciona para outros animais além de cão e gato?", answer: "Sim. Dá para cadastrar coelho, furão, cavalo, boi ou vaca, ovelha ou cabra, porco, galinha, ave, roedor ou outro animal. Várias espécies já vêm com as vacinas mais comuns; para as demais, adicione as vacinas que o veterinário indicar." },
             { question: "Ainda é preciso vacinar o gado contra febre aftosa?", answer: "Não. O Brasil encerrou a vacinação contra febre aftosa em 2024 e foi reconhecido pela Organização Mundial de Saúde Animal como país livre da doença sem vacinação em 2025. A vigilância continua, e a brucelose segue obrigatória em bezerras de 3 a 8 meses." },
+            { question: "Dá para gerar um cartão de vacinação?", answer: "Sim. Abra o animal e use \"Ver cartão\": a ferramenta monta uma imagem com as vacinas, datas aplicadas, próximos reforços e situação. Dá para baixar, imprimir ou salvar em PDF e compartilhar no WhatsApp." },
+            { question: "Meu animal não está na lista. E agora?", answer: "Escolha \"Outro\" e digite qual é o animal (tartaruga, iguana, papagaio...). Depois adicione as vacinas que o veterinário indicar." },
             { question: "Falta uma vacina que meu pet toma. Posso adicionar?", answer: "Sim. Abra o pet, use o campo \"Adicionar outra vacina\", digite o nome e o intervalo de reforço em meses. Também dá para remover vacinas que o seu pet não toma." },
             { question: "Posso usar essa ferramenta no lugar de um veterinário?", answer: "Não, ela serve apenas como um organizador de referência. O calendário de vacinação real deve ser sempre definido por um médico veterinário." },
           ],
