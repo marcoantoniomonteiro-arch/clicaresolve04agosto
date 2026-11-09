@@ -1,4 +1,4 @@
-import React, { useState, useMemo, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { ToolLayout } from "../components/ToolLayout";
 import { Baby, Search, Sparkles, Globe, BookOpen, RotateCcw } from "lucide-react";
 import { CONFIG } from "../config";
@@ -66,24 +66,50 @@ function findSimilarNames(query: string, count: number = 6): typeof NAMES_DB {
     .slice(0, count);
 }
 
-export function SignificadoNomes({ onBack, initialName }: Props) {
-  const [query, setQuery] = useState("");
-  const [result, setResult] = useState<typeof NAMES_DB[0] | null>(null);
-  const [notFound, setNotFound] = useState(false);
-  const [suggestions, setSuggestions] = useState<typeof NAMES_DB>([]);
-
-  const dbMap = useMemo(() => {
-    const map = new Map<string, typeof NAMES_DB[0]>();
-    for (const entry of NAMES_DB) {
-      map.set(normalizeName(entry.name), entry);
-      if (entry.aliases) {
-        for (const alias of entry.aliases) {
-          map.set(normalizeName(alias), entry);
-        }
+/** Mapa nome normalizado -> entrada (inclui apelidos/grafias alternativas) */
+const DB_MAP: Map<string, typeof NAMES_DB[0]> = (() => {
+  const map = new Map<string, typeof NAMES_DB[0]>();
+  for (const entry of NAMES_DB) {
+    map.set(normalizeName(entry.name), entry);
+    if (entry.aliases) {
+      for (const alias of entry.aliases) {
+        map.set(normalizeName(alias), entry);
       }
     }
-    return map;
-  }, []);
+  }
+  return map;
+})();
+
+/** Procura um nome da base (usado também na pré-renderização das páginas de nome) */
+export function findName(name: string): typeof NAMES_DB[0] | undefined {
+  return DB_MAP.get(normalizeName(name.replace(/-/g, " ").trim()));
+}
+
+/** Todos os nomes da base, em ordem alfabética, sem repetir o mesmo endereço */
+export const ALL_NAME_SLUGS: { name: string; slug: string }[] = (() => {
+  const seen = new Set<string>();
+  const list: { name: string; slug: string }[] = [];
+  for (const entry of [...NAMES_DB].sort((a, b) => a.name.localeCompare(b.name, "pt-BR"))) {
+    const slug = slugify(entry.name);
+    if (!slug || seen.has(slug)) continue;
+    seen.add(slug);
+    list.push({ name: entry.name, slug });
+  }
+  return list;
+})();
+
+export function SignificadoNomes({ onBack, initialName }: Props) {
+  // O resultado inicial é calculado já na primeira renderização, para que a
+  // página /significado-nome/x saia pronta no HTML (o Google vê o conteúdo).
+  const initialResult = initialName ? findName(initialName) ?? null : null;
+  const [query, setQuery] = useState(initialResult ? initialResult.name : "");
+  const [result, setResult] = useState<typeof NAMES_DB[0] | null>(initialResult);
+  const [notFound, setNotFound] = useState(false);
+  const [suggestions, setSuggestions] = useState<typeof NAMES_DB>([]);
+  const isNamePage = !!(initialName && initialResult);
+  const pageName = initialResult?.name;
+
+  const dbMap = DB_MAP;
 
   function search() {
     const trimmed = query.trim();
@@ -142,25 +168,31 @@ export function SignificadoNomes({ onBack, initialName }: Props) {
   }
 
   useEffect(() => {
-    if (initialName) {
-      selectName(initialName);
+    if (initialName && !initialResult) {
+      setQuery(initialName);
     }
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const seoTitle = initialName && result
-    ? `Significado do Nome ${result.name} — Origem e Curiosidades`
+  // Páginas de nome: endereço próprio, título próprio e liberadas para o Google.
+  // Nome que não está na base: aponta para a página geral e não é indexado.
+  const seoTitle = isNamePage
+    ? `Significado do Nome ${pageName}: Origem e Curiosidades`
     : "Significado de Nomes — Origem e Significado dos Nomes";
-  const seoDescription = initialName && result
-    ? `${result.name}: nome de origem ${result.origin}. ${result.meaning}`
+  const seoDescription = isNamePage && initialResult
+    ? `O nome ${initialResult.name} tem origem ${initialResult.origin.toLowerCase()} e significa: ${initialResult.meaning.charAt(0).toLowerCase() + initialResult.meaning.slice(1)}. Veja curiosidades e nomes parecidos.`
     : "Descubra a origem, significado e curiosidades sobre nomes de bebês.";
-  const seoCanonical = initialName && result
-    ? `/significado-nome/${slugify(result.name)}`
+  const seoCanonical = isNamePage && pageName
+    ? `/significado-nome/${slugify(pageName)}`
     : "/significado-nomes";
+  const sameLetter = pageName
+    ? ALL_NAME_SLUGS.filter((n) => normalizeName(n.name)[0] === normalizeName(pageName)[0] && n.name !== pageName).slice(0, 12)
+    : [];
 
   return (
     <ToolLayout
-      title="Significado de Nomes"
+      title={isNamePage ? `Significado do Nome ${pageName}` : "Significado de Nomes"}
+      customSeo={!!initialName}
       emoji="👶"
       category="Família e Bebês"
       description="Descubra a origem, significado e curiosidades sobre nomes de bebês."
@@ -201,12 +233,27 @@ export function SignificadoNomes({ onBack, initialName }: Props) {
         </div>
       }
     >
-      <SEOHead
-        title={seoTitle}
-        description={seoDescription}
-        canonical={seoCanonical}
-        noindex={!!(initialName && result)}
-      />
+      {initialName && (
+        <SEOHead
+          title={seoTitle}
+          description={seoDescription}
+          canonical={seoCanonical}
+          noindex={!isNamePage}
+          breadcrumbs={isNamePage ? [
+            { name: "Início", url: "/" },
+            { name: "Significado de Nomes", url: "/significado-nomes" },
+            { name: `Nome ${pageName}`, url: seoCanonical },
+          ] : undefined}
+          schema={isNamePage && initialResult ? {
+            "@context": "https://schema.org",
+            "@type": "WebPage",
+            name: seoTitle,
+            description: seoDescription,
+            url: `https://www.clicaresolve.com.br${seoCanonical}`,
+            inLanguage: "pt-BR",
+          } : undefined}
+        />
+      )}
       <div className="space-y-5">
         {/* Search input */}
         <div className="flex gap-2">
@@ -307,6 +354,26 @@ export function SignificadoNomes({ onBack, initialName }: Props) {
           </div>
         )}
 
+        {/* Nomes com a mesma letra (páginas de nome) */}
+        {isNamePage && sameLetter.length > 0 && (
+          <div>
+            <p className="text-xs text-gray-400 mb-3 uppercase tracking-wider font-semibold">
+              Outros nomes com a letra {pageName?.charAt(0)}:
+            </p>
+            <div className="flex flex-wrap gap-2">
+              {sameLetter.map((n) => (
+                <a
+                  key={n.slug}
+                  href={`/significado-nome/${n.slug}`}
+                  className="px-3 py-1.5 rounded-lg bg-white/5 hover:bg-white/10 border border-white/10 text-sm text-white transition-colors"
+                >
+                  {n.name}
+                </a>
+              ))}
+            </div>
+          </div>
+        )}
+
         {/* Quick popular names */}
         {!result && !notFound && (
           <div>
@@ -327,6 +394,17 @@ export function SignificadoNomes({ onBack, initialName }: Props) {
           </div>
         )}
       </div>
+      {/* Índice de todos os nomes: cada um tem a sua própria página */}
+      <nav aria-label="Todos os nomes" className="mt-8">
+        <h2 className="text-lg font-bold text-text mb-3">Significado de todos os nomes da A a Z</h2>
+        <div className="flex flex-wrap gap-x-3 gap-y-1.5 text-sm">
+          {ALL_NAME_SLUGS.map((n) => (
+            <a key={n.slug} href={`/significado-nome/${n.slug}`} className="text-muted hover:text-green-400 transition-colors">
+              {n.name}
+            </a>
+          ))}
+        </div>
+      </nav>
       <ToolContent
         toolName="Significado dos Nomes"
         category="Utilidades"

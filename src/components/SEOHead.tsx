@@ -37,7 +37,11 @@ export function SEOHead({
     : "CLICAresolve — Ferramentas Gratuitas para o Dia a Dia";
   const og = ogTitle || title || "CLICAresolve";
   const ogDesc = ogDescription || description;
-  const url = canonical ? `${SITE_URL}${canonical}` : SITE_URL;
+  const url = canonical ? `${SITE_URL}${canonical}` : `${SITE_URL}/`;
+  const altUrl = alternateUrl ? `${SITE_URL}${alternateUrl}` : undefined;
+  // hreflang: a versão em português é a padrão (x-default)
+  const ptUrl = lang === "en" ? altUrl : url;
+  const enUrl = lang === "en" ? url : altUrl;
 
   const breadcrumbSchema = breadcrumbs && breadcrumbs.length > 0
     ? {
@@ -81,25 +85,10 @@ export function SEOHead({
       <meta name="description" content={description} />
       {noindex && <meta name="robots" content="noindex, follow" />}
       <link rel="canonical" href={url} />
-      {lang === "en" ? (
-        <>
-          <link rel="alternate" hreflang="en" href={url} />
-          {alternateUrl && (
-            <link rel="alternate" hreflang="pt-BR" href={`${SITE_URL}${alternateUrl}`} />
-          )}
-          {alternateUrl && (
-            <link rel="alternate" hreflang="x-default" href={`${SITE_URL}${alternateUrl}`} />
-          )}
-        </>
-      ) : (
-        <>
-          <link rel="alternate" hreflang="pt-BR" href={url} />
-          {alternateUrl && (
-            <link rel="alternate" hreflang="en" href={`${SITE_URL}${alternateUrl}`} />
-          )}
-          <link rel="alternate" hreflang="x-default" href={url} />
-        </>
-      )}
+      {/* O Helmet ignora <></> (fragmentos): por isso cada tag fica solta aqui */}
+      {!noindex && ptUrl && <link rel="alternate" hrefLang="pt-BR" href={ptUrl} />}
+      {!noindex && enUrl && <link rel="alternate" hrefLang="en" href={enUrl} />}
+      {!noindex && ptUrl && <link rel="alternate" hrefLang="x-default" href={ptUrl} />}
       <meta property="og:title" content={og} />
       <meta property="og:description" content={ogDesc} />
       <meta property="og:type" content={ogType} />

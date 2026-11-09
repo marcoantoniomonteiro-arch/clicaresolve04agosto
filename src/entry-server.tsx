@@ -5,7 +5,8 @@ import { renderToPipeableStream } from "react-dom/server";
 import { Writable } from "node:stream";
 import { StringDecoder } from "node:string_decoder";
 import { HelmetProvider, HelmetServerState } from "react-helmet-async";
-import App, { getPrerenderRoutes } from "./App";
+import App, { getPrerenderRoutes as getAppRoutes } from "./App";
+import { ALL_NAME_SLUGS } from "./tools/SignificadoNomes";
 import { toolsSeoEN } from "./i18n/tools/en";
 import { ptSlugToEnSlug } from "./i18n/tools/slugs";
 import { GUIDE_SLUGS } from "./data/guidesMeta";
@@ -21,7 +22,10 @@ export function checkEnglishSlugs(): string[] {
   return [...en, ...guides];
 }
 
-export { getPrerenderRoutes };
+/** Rotas do site + uma página para cada nome da base de significados */
+export function getPrerenderRoutes(): string[] {
+  return [...getAppRoutes(), ...ALL_NAME_SLUGS.map((n) => `/significado-nome/${n.slug}`)];
+}
 
 export function render(url: string): Promise<{ html: string; head: string; htmlAttributes: string }> {
   return new Promise((resolve, reject) => {
