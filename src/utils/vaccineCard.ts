@@ -12,6 +12,7 @@ export interface CardPet {
   emoji: string;
   birthDate?: string;
   tutor?: string;
+  photo?: HTMLImageElement;
   vaccines: CardVaccine[];
   lastVermifugeDate?: string;
 }
@@ -101,10 +102,33 @@ export function drawVaccineCard(pet: CardPet): HTMLCanvasElement {
   ctx.font = `700 30px ${FONT}`;
   ctx.fillText("CARTÃO DE VACINAÇÃO", PAD + 30, 120);
 
-  ctx.font = `150px ${FONT}`;
-  ctx.textAlign = "right";
-  ctx.fillText(pet.emoji, W - PAD - 30, 270);
-  ctx.textAlign = "left";
+  if (pet.photo && pet.photo.complete && pet.photo.naturalWidth > 0) {
+    const R = 105;
+    const cx = W - PAD - 30 - R;
+    const cy = 190;
+    ctx.save();
+    ctx.beginPath();
+    ctx.arc(cx, cy, R + 8, 0, Math.PI * 2);
+    ctx.fillStyle = "rgba(255,255,255,0.95)";
+    ctx.fill();
+    ctx.beginPath();
+    ctx.arc(cx, cy, R, 0, Math.PI * 2);
+    ctx.clip();
+    const iw = pet.photo.naturalWidth;
+    const ih = pet.photo.naturalHeight;
+    const side = Math.min(iw, ih);
+    ctx.drawImage(pet.photo, (iw - side) / 2, (ih - side) / 2, side, side, cx - R, cy - R, 2 * R, 2 * R);
+    ctx.restore();
+    ctx.font = `56px ${FONT}`;
+    ctx.textAlign = "center";
+    ctx.fillText(pet.emoji, cx + R * 0.72, cy + R * 0.95);
+    ctx.textAlign = "left";
+  } else {
+    ctx.font = `150px ${FONT}`;
+    ctx.textAlign = "right";
+    ctx.fillText(pet.emoji, W - PAD - 30, 270);
+    ctx.textAlign = "left";
+  }
 
   ctx.fillStyle = "#ffffff";
   ctx.font = `800 76px ${FONT}`;

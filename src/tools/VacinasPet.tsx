@@ -1,11 +1,11 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { ToolLayout } from "../components/ToolLayout";
 import { ToolContent } from "../components/ToolContent";
 import { CONFIG } from "../config";
 import { drawVaccineCard, canvasToBlob } from "../utils/vaccineCard";
 import {
   Plus, Trash2, ChevronDown, ChevronUp, Syringe, Shield, AlertTriangle,
-  Calendar, Dog, Cat, Pill, Download, Share2, Printer, BadgeCheck
+  Calendar, Dog, Cat, Pill, Download, Share2, Printer, BadgeCheck, Camera
 } from "lucide-react";
 
 interface Props {
@@ -26,6 +26,7 @@ interface Pet {
   birthDate: string;
   customSpecies?: string;
   tutor?: string;
+  photo?: string; // data URL (JPEG reduzido), fica só no aparelho
   vaccines: Vaccine[];
   lastVermifugeDate?: string;
 }
@@ -126,8 +127,45 @@ function daysUntilVermifuge(dateStr?: string): number | null {
   return Math.ceil(diff / (1000 * 60 * 60 * 24));
 }
 
-function savePets(pets: Pet[]) {
-  localStorage.setItem("vacinas_pet_pets", JSON.stringify(pets));
+function savePets(pets: Pet[]): boolean {
+  try {
+    localStorage.setItem("vacinas_pet_pets", JSON.stringify(pets));
+    return true;
+  } catch {
+    return false;
+  }
+}
+
+// Recorta a foto em quadrado e reduz para 360 px, para ocupar pouco espaço no aparelho
+function reduzirFoto(file: File): Promise<string> {
+  return new Promise((resolve, reject) => {
+    const url = URL.createObjectURL(file);
+    const img = new Image();
+    img.onload = () => {
+      const side = Math.min(img.naturalWidth, img.naturalHeight);
+      const c = document.createElement("canvas");
+      c.width = 360;
+      c.height = 360;
+      c.getContext("2d")!.drawImage(
+        img,
+        (img.naturalWidth - side) / 2,
+        (img.naturalHeight - side) / 2,
+        side,
+        side,
+        0,
+        0,
+        360,
+        360
+      );
+      URL.revokeObjectURL(url);
+      resolve(c.toDataURL("image/jpeg", 0.82));
+    };
+    img.onerror = () => {
+      URL.revokeObjectURL(url);
+      reject(new Error("imagem inválida"));
+    };
+    img.src = url;
+  });
 }
 
 function loadPets(): Pet[] {
@@ -157,6 +195,48 @@ export function VacinasPet({ onBack }: Props) {
   const [newCustomSpecies, setNewCustomSpecies] = useState("");
   const [newTutor, setNewTutor] = useState("");
   const [cardUrl, setCardUrl] = useState<Record<string, string>>({});
+  const [fotoErro, setFotoErro] = useState<Record<string, string>>({});
+  const fotos = useRef<Record<string, HTMLImageElement>>({});
+
+  // Mantém as fotos carregadas para o cartão ser desenhado na hora do clique
+  useEffect(() => {
+    pets.forEach((p) => {
+      if (p.photo && fotos.current[p.id]?.src !== p.photo) {
+        const img = new Image();
+        img.src = p.photo;
+        fotos.current[p.id] = img;
+      }
+      if (!p.photo) delete fotos.current[p.id];
+    });
+  }, [pets]);
+
+  async function escolherFoto(petId: string, file?: File) {
+    if (!file) return;
+    if (!file.type.startsWith("image/")) {
+      setFotoErro({ ...fotoErro, [petId]: "Escolha um arquivo de imagem (JPG, PNG, HEIC convertido...)." });
+      return;
+    }
+    try {
+      const photo = await reduzirFoto(file);
+      const updated = pets.map((p) => (p.id === petId ? { ...p, photo } : p));
+      if (!savePets(updated)) {
+        setFotoErro({ ...fotoErro, [petId]: "Sem espaço no navegador para salvar a foto. Remova a foto de outro animal e tente de novo." });
+        return;
+      }
+      setPets(updated);
+      setFotoErro({ ...fotoErro, [petId]: "" });
+      setCardUrl({ ...cardUrl, [petId]: "" });
+    } catch {
+      setFotoErro({ ...fotoErro, [petId]: "Não foi possível abrir essa imagem. Tente uma foto em JPG ou PNG." });
+    }
+  }
+
+  function removerFoto(petId: string) {
+    const updated = pets.map((p) => (p.id === petId ? { ...p, photo: undefined } : p));
+    setPets(updated);
+    savePets(updated);
+    setCardUrl({ ...cardUrl, [petId]: "" });
+  }
   const [customName, setCustomName] = useState<Record<string, string>>({});
   const [customMonths, setCustomMonths] = useState<Record<string, string>>({});
 
@@ -235,6 +315,7 @@ export function VacinasPet({ onBack }: Props) {
       emoji: especieInfo(pet.species).emoji,
       birthDate: pet.birthDate || undefined,
       tutor: pet.tutor,
+      photo: fotos.current[pet.id],
       vaccines: pet.vaccines,
       lastVermifugeDate: pet.lastVermifugeDate || "",
     });
@@ -430,7 +511,11 @@ export function VacinasPet({ onBack }: Props) {
                 className="p-4 flex items-center gap-3 cursor-pointer hover:bg-white/5 transition-colors"
                 onClick={() => setExpanded(isOpen ? null : pet.id)}
               >
-                <div className="text-2xl">{especieInfo(pet.species).emoji}</div>
+                {pet.photo ? (
+                  <img src={pet.photo} alt={pet.name} className="w-11 h-11 rounded-full object-cover border-2 border-teal-500/40" />
+                ) : (
+                  <div className="text-2xl">{especieInfo(pet.species).emoji}</div>
+                )}
                 <div className="flex-1">
                   <p className="text-sm font-semibold text-white">{pet.name}</p>
                   <p className="text-xs text-gray-500">
@@ -458,6 +543,46 @@ export function VacinasPet({ onBack }: Props) {
 
               {isOpen && (
                 <div className="px-4 pb-4 space-y-4">
+                  {/* Foto */}
+                  <div className="flex items-center gap-3 p-3 rounded-lg bg-white/5 border border-white/10">
+                    {pet.photo ? (
+                      <img src={pet.photo} alt={pet.name} className="w-16 h-16 rounded-full object-cover border-2 border-teal-500/40" />
+                    ) : (
+                      <div className="w-16 h-16 rounded-full bg-white/10 flex items-center justify-center text-3xl">
+                        {especieInfo(pet.species).emoji}
+                      </div>
+                    )}
+                    <div className="flex-1">
+                      <p className="text-sm font-semibold text-white">Foto de {pet.name}</p>
+                      <p className="text-xs text-gray-500">Aparece no cartão. Fica salva só neste aparelho.</p>
+                      <div className="flex flex-wrap gap-2 mt-2">
+                        <label className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-teal-500/20 text-teal-300 text-xs font-semibold cursor-pointer hover:bg-teal-500/30">
+                          <Camera className="w-3.5 h-3.5" />
+                          {pet.photo ? "Trocar foto" : "Adicionar foto"}
+                          <input
+                            type="file"
+                            accept="image/*"
+                            className="hidden"
+                            onChange={(e) => {
+                              escolherFoto(pet.id, e.target.files?.[0]);
+                              e.target.value = "";
+                            }}
+                          />
+                        </label>
+                        {pet.photo && (
+                          <button
+                            type="button"
+                            onClick={() => removerFoto(pet.id)}
+                            className="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg bg-white/5 text-gray-400 text-xs hover:text-red-400"
+                          >
+                            <Trash2 className="w-3.5 h-3.5" /> Remover
+                          </button>
+                        )}
+                      </div>
+                      {fotoErro[pet.id] && <p className="text-xs text-red-400 mt-1">{fotoErro[pet.id]}</p>}
+                    </div>
+                  </div>
+
                   {/* Vaccines */}
                   <div>
                     <div className="flex items-center gap-2 mb-3">
@@ -670,7 +795,7 @@ export function VacinasPet({ onBack }: Props) {
         toolName="Rastreador de Vacinas"
         category="Pet"
         data={{
-          directAnswer: "O rastreador de vacinas acompanha as doses e datas de reforço de cães, gatos, coelhos, furões, cavalos, aves, roedores e outros animais, conforme o tipo de vacina.",
+          directAnswer: "O rastreador de vacinas acompanha as doses e datas de reforço de cães, gatos, coelhos, furões, cavalos, bois, ovelhas, porcos, galinhas, aves, roedores e outros animais, e gera um cartão de vacinação com foto.",
           howItWorks: "A ferramenta organiza as vacinas mais usadas em cães e gatos (como V8/V10, antirrábica, giárdia, gripe canina, leishmaniose, quádrupla/quíntupla felina e FeLV), permite adicionar outras vacinas e ajuda a acompanhar quando cada dose e reforço devem ser aplicados, com base na idade do pet. O calendário de vacinação real deve sempre ser definido e ajustado por um médico veterinário, já que pode variar conforme a região, o histórico de saúde e o tipo de vacina disponível.",
           example: {
             title: "Exemplo: calendário básico para filhote de cão",
@@ -690,6 +815,7 @@ export function VacinasPet({ onBack }: Props) {
             { question: "Funciona para outros animais além de cão e gato?", answer: "Sim. Dá para cadastrar coelho, furão, cavalo, boi ou vaca, ovelha ou cabra, porco, galinha, ave, roedor ou outro animal. Várias espécies já vêm com as vacinas mais comuns; para as demais, adicione as vacinas que o veterinário indicar." },
             { question: "Ainda é preciso vacinar o gado contra febre aftosa?", answer: "Não. O Brasil encerrou a vacinação contra febre aftosa em 2024 e foi reconhecido pela Organização Mundial de Saúde Animal como país livre da doença sem vacinação em 2025. A vigilância continua, e a brucelose segue obrigatória em bezerras de 3 a 8 meses." },
             { question: "Dá para gerar um cartão de vacinação?", answer: "Sim. Abra o animal e use \"Ver cartão\": a ferramenta monta uma imagem com as vacinas, datas aplicadas, próximos reforços e situação. Dá para baixar, imprimir ou salvar em PDF e compartilhar no WhatsApp." },
+            { question: "Posso colocar a foto do meu animal?", answer: "Sim. Abra o animal e toque em \"Adicionar foto\". A foto é recortada em quadrado, aparece na lista e no cartão de vacinação, e fica salva só no seu aparelho, sem ser enviada para nenhum servidor." },
             { question: "Meu animal não está na lista. E agora?", answer: "Escolha \"Outro\" e digite qual é o animal (tartaruga, iguana, papagaio...). Depois adicione as vacinas que o veterinário indicar." },
             { question: "Falta uma vacina que meu pet toma. Posso adicionar?", answer: "Sim. Abra o pet, use o campo \"Adicionar outra vacina\", digite o nome e o intervalo de reforço em meses. Também dá para remover vacinas que o seu pet não toma." },
             { question: "Posso usar essa ferramenta no lugar de um veterinário?", answer: "Não, ela serve apenas como um organizador de referência. O calendário de vacinação real deve ser sempre definido por um médico veterinário." },
