@@ -69,13 +69,17 @@ function findSimilarNames(query: string, count: number = 6): typeof NAMES_DB {
 /** Mapa nome normalizado -> entrada (inclui apelidos/grafias alternativas) */
 const DB_MAP: Map<string, typeof NAMES_DB[0]> = (() => {
   const map = new Map<string, typeof NAMES_DB[0]>();
+  // Primeiro as grafias alternativas, depois os nomes principais: assim um nome
+  // que tem página própria nunca é "engolido" pelo apelido de outro
+  // (ex.: "Davi" é nome próprio, não uma grafia de "Deivid").
+  for (const entry of NAMES_DB) {
+    for (const alias of entry.aliases || []) {
+      const key = normalizeName(alias);
+      if (!map.has(key)) map.set(key, entry);
+    }
+  }
   for (const entry of NAMES_DB) {
     map.set(normalizeName(entry.name), entry);
-    if (entry.aliases) {
-      for (const alias of entry.aliases) {
-        map.set(normalizeName(alias), entry);
-      }
-    }
   }
   return map;
 })();
