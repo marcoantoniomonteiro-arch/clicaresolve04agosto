@@ -911,28 +911,6 @@ export const toolsSeoEN: ToolSeoEN[] = [
       { question: "How do I calculate total work hours?", answer: "Subtract your start time from your end time for each period, then add all periods together to get your total hours worked." }
     ]
   },
-  {
-    ptSlug: "reserva-emergencia",
-    enSlug: "emergency-fund-calculator",
-    title: "Emergency Fund Calculator — How Much Should You Save?",
-    metaDescription: "Calculate how much you need in your emergency fund based on your monthly expenses, for free.",
-    h1: "Emergency Fund Calculator",
-    intro: "Find out how much you should save for emergencies, based on your essential monthly expenses and desired safety net (in months of coverage).",
-    faqs: [
-      { question: "How many months of expenses should an emergency fund cover?", answer: "Most financial experts recommend saving 3 to 6 months of essential expenses, though this can vary based on job stability and personal circumstances." }
-    ]
-  },
-  {
-    ptSlug: "gerador-nomes-bebes",
-    enSlug: "baby-name-generator",
-    title: "Baby Name Generator — Free Baby Name Ideas",
-    metaDescription: "Generate creative and meaningful baby name ideas for free, for boys, girls, or gender-neutral names.",
-    h1: "Baby Name Generator",
-    intro: "Get creative baby name suggestions, with options to filter by gender and style, to help you find the perfect name.",
-    faqs: [
-      { question: "Can I search by name meaning?", answer: "Depending on the version, you can filter suggestions by theme or style, though full meaning-based search may vary." }
-    ]
-  },
 ];
 
 export const enSlugToPtSlug: Record<string, string> = Object.fromEntries(

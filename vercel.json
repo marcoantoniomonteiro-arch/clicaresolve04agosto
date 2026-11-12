@@ -5,6 +5,16 @@
   "trailingSlash": false,
   "redirects": [
     {
+      "source": "/en/baby-name-generator",
+      "destination": "/significado-nomes",
+      "permanent": true
+    },
+    {
+      "source": "/en/emergency-fund-calculator",
+      "destination": "/en/compound-interest",
+      "permanent": true
+    },
+    {
       "source": "/significado-nome/aarao",
       "destination": "/significado-nome/arao",
       "permanent": true

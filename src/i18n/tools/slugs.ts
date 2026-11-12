@@ -84,8 +84,6 @@ const PAIRS: [string, string][] = [
   ["nomes-pets", "pet-name-generator"],
   ["vacinas-pet", "pet-vaccine-tracker"],
   ["acumulador-horas", "work-hours-tracker"],
-  ["reserva-emergencia", "emergency-fund-calculator"],
-  ["gerador-nomes-bebes", "baby-name-generator"],
 ];
 
 export const ptSlugToEnSlug: Record<string, string> = Object.fromEntries(PAIRS);
