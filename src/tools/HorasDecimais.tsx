@@ -53,7 +53,7 @@ export function HorasDecimais({ onBack }: Props) {
             <p className="text-xs text-blue-400 font-semibold">Horário → Decimal</p>
           </div>
           <div className="flex items-center gap-3">
-            <div className="flex-1">
+            <div className="flex-1 min-w-0">
               <label className="text-xs text-gray-400 mb-1 block">Horas</label>
               <input
                 type="number"
@@ -64,7 +64,7 @@ export function HorasDecimais({ onBack }: Props) {
               />
             </div>
             <span className="text-2xl text-gray-400 mt-4">:</span>
-            <div className="flex-1">
+            <div className="flex-1 min-w-0">
               <label className="text-xs text-gray-400 mb-1 block">Minutos</label>
               <input
                 type="number"

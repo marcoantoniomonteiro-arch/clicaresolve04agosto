@@ -25,7 +25,7 @@ function ClickCursorIcon() {
 
 export function Header({ theme, onToggleTheme, search, onSearchChange, onLogoClick, lang, onToggleLang }: HeaderProps) {
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 h-16 flex items-center px-4 gap-4 border-b border-border backdrop-blur-xl bg-bg/70 shadow-lg shadow-black/5">
+    <header className="fixed top-0 left-0 right-0 z-50 h-16 flex items-center px-3 sm:px-4 gap-2 sm:gap-4 border-b border-border backdrop-blur-xl bg-bg/70 shadow-lg shadow-black/5">
       <button
         onClick={onLogoClick}
         className="flex items-center gap-1.5 shrink-0 hover:opacity-80 transition-opacity group"
@@ -42,7 +42,7 @@ export function Header({ theme, onToggleTheme, search, onSearchChange, onLogoCli
         </div>
       </button>
 
-      <div className="flex-1 relative max-w-lg mx-auto">
+      <div className="flex-1 min-w-0 relative max-w-lg mx-auto">
         <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400 pointer-events-none" />
         <input
           type="text"
@@ -64,7 +64,7 @@ export function Header({ theme, onToggleTheme, search, onSearchChange, onLogoCli
 
       <button
         onClick={onToggleLang}
-        className="shrink-0 h-11 px-3 flex items-center justify-center rounded-xl bg-card border border-border text-xs font-semibold text-muted hover:text-text hover:bg-card hover:border-green-400/30 transition-all duration-200"
+        className="shrink-0 h-11 px-2.5 sm:px-3 flex items-center justify-center rounded-xl bg-card border border-border text-xs font-semibold text-muted hover:text-text hover:bg-card hover:border-green-400/30 transition-all duration-200"
         aria-label="Alternar idioma"
       >
         {lang === "en" ? "PT" : "EN"}
@@ -72,7 +72,7 @@ export function Header({ theme, onToggleTheme, search, onSearchChange, onLogoCli
 
       <button
         onClick={onToggleTheme}
-        className="shrink-0 w-11 h-11 flex items-center justify-center rounded-xl bg-card border border-border text-muted hover:text-text hover:bg-card hover:border-green-400/30 transition-all duration-200"
+        className="shrink-0 w-10 h-11 sm:w-11 flex items-center justify-center rounded-xl bg-card border border-border text-muted hover:text-text hover:bg-card hover:border-green-400/30 transition-all duration-200"
         aria-label="Alternar tema"
       >
         {theme === "dark" ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
