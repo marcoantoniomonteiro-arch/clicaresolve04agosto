@@ -345,7 +345,7 @@ function CategoryFilter({ activeCategory, onSelectCategory }: {
 }) {
   return (
     <nav
-      className="border-b border-border bg-bg/80 backdrop-blur-sm"
+      className="border-b border-border bg-bg/80 backdrop-blur-sm w-full max-w-full"
       style={{ overflowX: 'auto', WebkitOverflowScrolling: 'touch', scrollbarWidth: 'none' }}
       aria-label="Filtrar por categoria"
     >
@@ -757,7 +757,7 @@ export default function App({ initialPath }: { initialPath?: string } = {}) {
               </button>
             </div>
           ) : (
-            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-5">
+            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3 sm:gap-5">
               {filtered.map((tool, i) => {
                 const catColor = CATEGORY_COLORS[tool.category] || "text-gray-400 bg-gray-400/10 border-gray-400/20";
                 return (
@@ -811,7 +811,7 @@ export default function App({ initialPath }: { initialPath?: string } = {}) {
           <h2 className="text-xl font-bold text-text mb-8 text-center">
             Explore por Categoria
           </h2>
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-5">
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3 sm:gap-5">
             {Object.values(CATEGORY_SEO_DATA).map((cat, i) => {
               const count = getCategoryTools(cat, TOOLS).length;
               return (

@@ -222,13 +222,13 @@ export function ToolLayout({
 
         <AdPlaceholder size="banner" slot="topo" />
 
-        <div className="flex flex-col md:flex-row items-start gap-4 mb-10">
-          <div className="flex-1 bg-card rounded-2xl p-6 border border-border shadow-xl animate-fade-in-up">
+        <div className="flex flex-col md:flex-row items-start gap-4 mb-10 w-full">
+          <div className="flex-1 w-full min-w-0 bg-card rounded-2xl p-5 sm:p-6 border border-border shadow-xl animate-fade-in-up">
             <div className="flex items-start gap-4 mb-6">
               <div className="w-14 h-14 rounded-2xl flex items-center justify-center text-3xl shrink-0" style={{ background: 'rgba(0,200,83,0.12)' }}>{emoji}</div>
-              <div>
+              <div className="min-w-0">
                 <span className="text-xs font-semibold text-green-400 uppercase tracking-wider">{seoEN ? categoryName : category}</span>
-                <h1 className="text-2xl font-bold text-text mt-0.5">{seoEN ? seoEN.h1 : title}</h1>
+                <h1 className="text-2xl font-bold text-text mt-0.5 break-words">{seoEN ? seoEN.h1 : title}</h1>
                 <p className="text-sm text-muted mt-1">{seoEN ? seoEN.intro : description}</p>
               </div>
             </div>
@@ -281,12 +281,12 @@ export function ToolLayout({
               <section key={sec.heading}>
                 <h2 className="text-lg font-bold text-text mb-3">{sec.heading}</h2>
                 {sec.paragraphs?.map((p, i) => (
-                  <p key={i} className="text-sm text-muted leading-relaxed mb-3">{p}</p>
+                  <p key={i} className="text-sm text-muted leading-relaxed mb-3 break-words">{p}</p>
                 ))}
                 {sec.list && (
                   <ul className="list-disc pl-5 space-y-1.5">
                     {sec.list.map((li, i) => (
-                      <li key={i} className="text-sm text-muted leading-relaxed">{li}</li>
+                      <li key={i} className="text-sm text-muted leading-relaxed break-words">{li}</li>
                     ))}
                   </ul>
                 )}
@@ -303,7 +303,7 @@ export function ToolLayout({
               {seoFaqs.map((faq, i) => (
                 <div key={i}>
                   <h3 className="text-sm font-semibold text-text mb-1">{faq.question}</h3>
-                  <p className="text-sm text-muted leading-relaxed">{faq.answer}</p>
+                  <p className="text-sm text-muted leading-relaxed break-words">{faq.answer}</p>
                 </div>
               ))}
             </div>

@@ -114,7 +114,7 @@ export function ComparadorPreco({ onBack }: Props) {
             >
               <div className="flex items-start gap-3">
                 <span className="text-gray-500 font-bold w-6">#{idx + 1}</span>
-                <div className="flex-1 space-y-3">
+                <div className="flex-1 min-w-0 space-y-3">
                   <input
                     type="text"
                     value={product.name}

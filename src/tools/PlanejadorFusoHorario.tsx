@@ -55,8 +55,13 @@ export function PlanejadorFusoHorario({ onBack }: Props) {
   const [selectedIds, setSelectedIds] = useState<string[]>(["sao_paulo", "tokio"]);
   const [now, setNow] = useState(new Date());
   const [showAdd, setShowAdd] = useState(false);
+  // O horário só é mostrado depois que a página abre no navegador
+  // (a versão pré-gerada não sabe a hora real e causaria erro de hidratação)
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
+    setMounted(true);
+    setNow(new Date());
     const timer = setInterval(() => setNow(new Date()), 60000);
     return () => clearInterval(timer);
   }, []);
@@ -153,7 +158,7 @@ export function PlanejadorFusoHorario({ onBack }: Props) {
                   <p className="text-sm font-medium text-white">{city.label}</p>
                   <p className="text-xs text-gray-500 flex items-center gap-1">
                     <Clock className="w-3 h-3" />
-                    {formatTimeInZone(city.timeZone, now)}
+                    {mounted ? formatTimeInZone(city.timeZone, now) : "--:--"}
                   </p>
                 </div>
                 {selectedIds.length > 1 && (

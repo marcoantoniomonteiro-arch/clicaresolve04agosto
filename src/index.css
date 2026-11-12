@@ -27,12 +27,32 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
+
+  /* Rede de segurança: nada pode fazer a página rolar para o lado no celular */
+  html,
+  body {
+    overflow-x: clip;
+  }
 }
 
 @layer components {
+  /* Endereços e palavras muito longas quebram a linha em vez de alargar a página */
+  p, li, dd, td {
+    overflow-wrap: anywhere;
+  }
+
   .input-field {
     background-color: var(--color-card);
     color: var(--color-text);
+    /* Evita que campos fiquem mais largos que a coluna no celular */
+    min-width: 0;
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+  /* Itens de grid/flex podem encolher (sem isso, campos empurram a página para o lado) */
+  label > .input-field,
+  .grid > * {
+    min-width: 0;
   }
 
   .text-gradient-primary {
