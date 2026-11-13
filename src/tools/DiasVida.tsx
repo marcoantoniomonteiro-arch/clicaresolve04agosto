@@ -71,10 +71,10 @@ export function DiasVida({ onBack }: Props) {
 
   const compartilhar = () => {
     if (!resultado) return;
-    const texto = `🎂 Estou vivo ha ${resultado.dias.toLocaleString()} dias!\n\n` +
+    const texto = `🎂 Estou vivo ha ${resultado.dias.toLocaleString("pt-BR")} dias!\n\n` +
       `📅 ${resultado.anos} anos, ${resultado.meses} meses e ${resultado.dias % 30} dias\n` +
-      `⏰ ${resultado.horas.toLocaleString()} horas\n` +
-      `💓 ${resultado.minutos.toLocaleString()} minutos\n\n` +
+      `⏰ ${resultado.horas.toLocaleString("pt-BR")} horas\n` +
+      `💓 ${resultado.minutos.toLocaleString("pt-BR")} minutos\n\n` +
       `_Calculado no CLICAresolve_`;
     const url = `https://wa.me/?text=${encodeURIComponent(texto)}`;
     window.open(url, "_blank");
@@ -125,7 +125,7 @@ export function DiasVida({ onBack }: Props) {
           <div className="space-y-4">
             <div className="p-6 rounded-xl bg-gradient-to-br from-purple-500/20 to-pink-500/20 border border-purple-500/30 text-center">
               <p className="text-xs text-purple-400 mb-1">Dias de Vida</p>
-              <p className="text-5xl font-black text-white">{resultado.dias.toLocaleString()}</p>
+              <p className="text-5xl font-black text-white">{resultado.dias.toLocaleString("pt-BR")}</p>
               <p className="text-sm text-gray-400 mt-1">
                 {resultado.anos} anos, {resultado.meses - resultado.anos * 12} meses
               </p>
@@ -135,20 +135,20 @@ export function DiasVida({ onBack }: Props) {
               <div className="p-3 rounded-xl bg-white/5 text-center">
                 <Calendar className="w-4 h-4 text-gray-400 mx-auto mb-1" />
                 <p className="text-xs text-gray-400">Semanas</p>
-                <p className="text-lg font-bold text-white">{resultado.semanas.toLocaleString()}</p>
+                <p className="text-lg font-bold text-white">{resultado.semanas.toLocaleString("pt-BR")}</p>
               </div>
               <div className="p-3 rounded-xl bg-white/5 text-center">
                 <Clock className="w-4 h-4 text-gray-400 mx-auto mb-1" />
                 <p className="text-xs text-gray-400">Horas</p>
-                <p className="text-lg font-bold text-white">{resultado.horas.toLocaleString()}</p>
+                <p className="text-lg font-bold text-white">{resultado.horas.toLocaleString("pt-BR")}</p>
               </div>
               <div className="p-3 rounded-xl bg-white/5 text-center">
                 <p className="text-xs text-gray-400 mt-2">Minutos</p>
-                <p className="text-lg font-bold text-white">{resultado.minutos.toLocaleString()}</p>
+                <p className="text-lg font-bold text-white">{resultado.minutos.toLocaleString("pt-BR")}</p>
               </div>
               <div className="p-3 rounded-xl bg-white/5 text-center">
                 <p className="text-xs text-gray-400 mt-2">Segundos</p>
-                <p className="text-lg font-bold text-white">{resultado.segundos.toLocaleString()}</p>
+                <p className="text-lg font-bold text-white">{resultado.segundos.toLocaleString("pt-BR")}</p>
               </div>
             </div>
 
@@ -159,9 +159,9 @@ export function DiasVida({ onBack }: Props) {
                   <p className="text-xs text-amber-400 font-semibold">Próximo Marco</p>
                 </div>
                 <div className="flex items-center justify-between">
-                  <span className="text-sm text-white">{resultado.proximoMarco.dias.toLocaleString()} dias</span>
+                  <span className="text-sm text-white">{resultado.proximoMarco.dias.toLocaleString("pt-BR")} dias</span>
                   <span className="text-sm text-amber-400">
-                    Faltam {resultado.diasAteProximoMarco?.toLocaleString()} dias
+                    Faltam {resultado.diasAteProximoMarco?.toLocaleString("pt-BR")} dias
                   </span>
                 </div>
                 <div className="mt-2 h-2 bg-white/10 rounded-full overflow-hidden">
@@ -175,14 +175,14 @@ export function DiasVida({ onBack }: Props) {
 
             {resultado.marcosAlcancados.length > 0 && (
               <div className="p-4 rounded-xl bg-white/5 border border-white/8">
-                <p className="text-xs text-gray-400 mb-2">Marcos Alcancados</p>
+                <p className="text-xs text-gray-400 mb-2">Marcos Alcançados</p>
                 <div className="flex flex-wrap gap-2">
                   {resultado.marcosAlcancados.map((m) => (
                     <span
                       key={m.dias}
                       className="px-3 py-1 rounded-full bg-green-500/20 text-green-400 text-xs font-semibold"
                     >
-                      {m.dias.toLocaleString()} dias
+                      {m.dias.toLocaleString("pt-BR")} dias
                     </span>
                   ))}
                 </div>

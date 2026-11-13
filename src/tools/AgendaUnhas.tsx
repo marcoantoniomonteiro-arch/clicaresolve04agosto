@@ -129,7 +129,7 @@ export function AgendaUnhas({ onBack }: Props) {
               placeholder="Nome da cliente"
               className="input-field"
             />
-            <input
+            <input aria-label="Data do último atendimento"
               type="date"
               value={novaData}
               onChange={(e) => setNovaData(e.target.value)}
@@ -232,7 +232,7 @@ export function AgendaUnhas({ onBack }: Props) {
           },
           faqs: [
             { question: "Posso agendar mais de um serviço no mesmo horário para clientes diferentes?", answer: "Não é recomendado, já que cada atendimento exige atenção individual; a ferramenta ajuda justamente a evitar esse tipo de conflito." },
-            { question: "A agenda envia lembretes automáticos?", answer: "Isso depende da versão da ferramenta; o foco principal é a organização visual dos horários." },
+            { question: "A agenda envia lembretes automáticos?", answer: "Não. A agenda organiza os horários e fica salva no seu navegador, mas não envia mensagens. Uma boa prática é confirmar o horário com a cliente pelo WhatsApp um dia antes." },
             { question: "Posso cadastrar o valor de cada serviço na agenda?", answer: "Muitas versões permitem registrar o valor cobrado por atendimento, ajudando também no controle financeiro simples." },
             { question: "Serve para outros profissionais além de nail designers?", answer: "Sim, a lógica de agenda por horário e serviço pode ser adaptada para outros profissionais autônomos de beleza e estética." },
           ],

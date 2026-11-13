@@ -165,12 +165,12 @@ export const toolsSeoEN: ToolSeoEN[] = [
   {
     ptSlug: "conversor-moedas",
     enSlug: "currency-converter",
-    title: "Currency Converter — Real-Time Exchange Rates",
-    metaDescription: "Convert between currencies instantly with live exchange rates. Free currency conversion tool.",
+    title: "Currency Converter with Editable Exchange Rates",
+    metaDescription: "Convert between the Brazilian real, dollar, euro and other currencies using reference rates you can edit with today's quote. Free, no sign-up.",
     h1: "Currency Converter",
-    intro: "Quickly convert between different currencies using current exchange rates.",
+    intro: "Convert between currencies using reference rates. Edit any rate with the quote of the day for an exact result.",
     faqs: [
-      { question: "Are the exchange rates real-time?", answer: "Our converter uses updated exchange rate data for accurate conversions. Rates can fluctuate throughout the day." }
+      { question: "Are the exchange rates real-time?", answer: "No. The converter uses reference rates that you can edit. Check the current quote with your bank or a financial site and type it in for an exact conversion." }
     ]
   },
   {
@@ -231,12 +231,12 @@ export const toolsSeoEN: ToolSeoEN[] = [
   {
     ptSlug: "mapeamento-erros",
     enSlug: "error-log-tracker",
-    title: "Error Log Tracker — Organize & Track Bugs Free",
-    metaDescription: "Track and organize errors, bugs, and issues in your projects. Free error tracking tool.",
-    h1: "Error Log Tracker",
-    intro: "Keep track of errors and bugs found in your projects, organized by priority and status.",
+    title: "Study Error Tracker: Find Your Weakest Subjects",
+    metaDescription: "Log your right and wrong answers by subject and see which topics need more study before the exam. Free study tracker, no sign-up.",
+    h1: "Study Error Tracker",
+    intro: "Record how many questions you got right in each subject and see your hit rate, so you know where to focus your revision.",
     faqs: [
-      { question: "Why should I track errors systematically?", answer: "Tracking errors helps you prioritize fixes, avoid duplicate work, and maintain a clear history of issues resolved over time." }
+      { question: "How does it find my weakest subjects?", answer: "It calculates your hit rate per subject and ranks them from lowest to highest, so the ones that need more study appear first." }
     ]
   },
   {
@@ -330,23 +330,23 @@ export const toolsSeoEN: ToolSeoEN[] = [
   {
     ptSlug: "onde-assistir",
     enSlug: "where-to-watch-finder",
-    title: "Where to Watch Finder — Find Movies & Shows by Streaming Service",
-    metaDescription: "Find which streaming service has the movie or show you want to watch. Free streaming search tool.",
-    h1: "Where to Watch Finder",
-    intro: "Search for a movie or TV show and find out which streaming platforms have it available.",
+    title: "Where to Watch Sports in Brazil: TV and Streaming",
+    metaDescription: "Guide to the free-to-air, cable and streaming channels that broadcast football, Formula 1, NBA, NFL, UFC and other sports in Brazil.",
+    h1: "Where to Watch Sports in Brazil",
+    intro: "See which TV channels and streaming services usually show each sport in Brazil, and whether you need a subscription.",
     faqs: [
-      { question: "Why can't I find a title on my streaming service?", answer: "Streaming availability varies by region and changes frequently due to licensing agreements between studios and platforms." }
+      { question: "Is the broadcast information always current?", answer: "Broadcast rights change from season to season and schedules can change, so always check the channel listing close to the event." }
     ]
   },
   {
     ptSlug: "gerador-bolao",
     enSlug: "office-pool-generator",
-    title: "Office Pool Generator — Organize Sports Betting Pools",
-    metaDescription: "Create and manage office pools for sports tournaments. Free pool organizer tool.",
-    h1: "Office Pool Generator",
-    intro: "Organize a sports betting pool among friends or coworkers, tracking picks and results.",
+    title: "Football Prediction Pool Organizer for Friends",
+    metaDescription: "Set up a football prediction pool, record everyone's score guesses and share the list on WhatsApp. Free, no sign-up.",
+    h1: "Football Prediction Pool Organizer",
+    intro: "Create a prediction pool for a match, record the score each friend guessed and share the ready list in your group.",
     faqs: [
-      { question: "How does an office pool work?", answer: "Participants predict outcomes of games or tournaments, and points are awarded based on accuracy. Whoever scores the most points wins." }
+      { question: "How does a prediction pool work?", answer: "Each participant guesses the final score before the match. After the game, whoever guessed right, or came closest, wins." }
     ]
   },
   {
@@ -528,12 +528,12 @@ export const toolsSeoEN: ToolSeoEN[] = [
   {
     ptSlug: "formatador-legendas",
     enSlug: "subtitle-formatter",
-    title: "Subtitle Formatter — Clean & Format SRT/VTT Files",
-    metaDescription: "Format and clean up subtitle files for videos. Free subtitle formatting tool.",
-    h1: "Subtitle Formatter",
-    intro: "Clean up and reformat subtitle text for your videos, fixing timing and line breaks.",
+    title: "Instagram Caption Line Break Formatter",
+    metaDescription: "Add invisible line breaks to Instagram and TikTok captions so your paragraphs and spacing are kept when you post. Free and instant.",
+    h1: "Instagram Caption Formatter",
+    intro: "Paste your caption, keep the paragraphs and blank lines, and copy a version that Instagram and TikTok won't squash together.",
     faqs: [
-      { question: "What subtitle formats are supported?", answer: "Most tools work with common formats like SRT and VTT, which are widely used across video platforms." }
+      { question: "Why does Instagram remove my line breaks?", answer: "Instagram often merges empty lines when you post. The formatter inserts an invisible character on blank lines so the spacing is kept." }
     ]
   },
   {
@@ -683,12 +683,12 @@ export const toolsSeoEN: ToolSeoEN[] = [
   {
     ptSlug: "conversor-dpi",
     enSlug: "dpi-converter",
-    title: "DPI Converter — Convert Image Resolution Instantly",
-    metaDescription: "Convert image resolution between DPI, pixels, and print size. Free DPI conversion tool.",
-    h1: "DPI Converter",
-    intro: "Convert between DPI, pixel dimensions, and physical print size for your images.",
+    title: "Mouse DPI Sensitivity Converter for Games",
+    metaDescription: "Changed your mouse DPI? Convert your in-game sensitivity to keep the same aim and see your eDPI. Works for CS2, Valorant, Fortnite and more.",
+    h1: "Mouse DPI Sensitivity Converter",
+    intro: "Enter your old DPI, your sensitivity and your new DPI to get the sensitivity that keeps exactly the same feel in game.",
     faqs: [
-      { question: "What is DPI?", answer: "DPI (dots per inch) measures print resolution — higher DPI means finer detail, which matters for print quality." }
+      { question: "What is eDPI?", answer: "eDPI is your mouse DPI multiplied by your in-game sensitivity. Keeping the same eDPI keeps the same aim when you change DPI." }
     ]
   },
   {
@@ -717,7 +717,7 @@ export const toolsSeoEN: ToolSeoEN[] = [
     ptSlug: "spawn-timer",
     enSlug: "respawn-timer",
     title: "Respawn Timer — Track Game Cooldowns & Spawns",
-    metaDescription: "Track respawn times and cooldowns for games. Free gaming timer tool.",
+    metaDescription: "Track boss and item respawn times in online games with multiple timers and sound alerts. Free gaming respawn timer, no sign-up.",
     h1: "Respawn Timer",
     intro: "Track respawn timers and cooldowns for objectives, bosses, or items in your favorite games.",
     faqs: [

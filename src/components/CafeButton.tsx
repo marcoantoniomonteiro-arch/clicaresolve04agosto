@@ -2,7 +2,7 @@ import React, { useState, useEffect, useCallback, Suspense } from "react";
 
 // O gerador de QR Code só é baixado quando o QR aparece na tela
 const QRCodeSVGLazy = React.lazy(() => import("qrcode.react").then((m) => ({ default: m.QRCodeSVG })));
-function QRCodeSVG(props: { value: string; size: number; level: "L" | "M" | "Q" | "H" }) {
+function QRCodeSVG(props: { value: string; size: number; level: "L" | "M" | "Q" | "H"; title?: string }) {
   return (
     <Suspense fallback={<div style={{ width: props.size, height: props.size }} />}>
       <QRCodeSVGLazy {...props} />
@@ -102,7 +102,7 @@ export function CafeButton({ externalOpen = false, onExternalClose }: { external
               </p>
 
               <div className="inline-block p-3 bg-white rounded-xl mb-4">
-                <QRCodeSVG value={PIX_CODE} size={200} level="M" />
+                <QRCodeSVG value={PIX_CODE} size={200} level="M" title="QR Code do Pix para apoiar o CLICAresolve" />
               </div>
 
               <p className="text-xs text-gray-400 mb-3">
@@ -174,7 +174,7 @@ export function CafeInline() {
       </p>
       <div className="flex flex-col sm:flex-row items-center gap-5">
         <div className="p-3 bg-white rounded-xl shrink-0">
-          <QRCodeSVG value={PIX_CODE} size={180} level="M" />
+          <QRCodeSVG value={PIX_CODE} size={180} level="M" title="QR Code do Pix para apoiar o CLICAresolve" />
         </div>
         <div className="flex-1 text-center sm:text-left">
           <p className="text-sm text-gray-300 mb-2">

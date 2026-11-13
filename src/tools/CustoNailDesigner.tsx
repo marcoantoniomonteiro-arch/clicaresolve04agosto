@@ -4,6 +4,7 @@ import { AffiliateBanner } from "../components/AffiliateBanner";
 import { Plus, Trash2, Calculator, Droplets } from "lucide-react";
 import { ToolContent } from "../components/ToolContent";
 
+import { fmtNum } from "../utils/format";
 interface Props {
   onBack: () => void;
 }
@@ -87,7 +88,7 @@ export function CustoNailDesigner({ onBack }: Props) {
       onBack={onBack}
       affiliateBanner={
         <AffiliateBanner
-          terms={["kit alongamento unhas", "gel para unhas", "lampada uv nail"]}
+          terms={["kit alongamento unhas", "gel para unhas", "lâmpada uv nail"]}
           label="Materiais para nail"
           shopeeTerms={["kit unhas gel"]} shopeeLabel="Ver na Shopee"
         />
@@ -97,7 +98,7 @@ export function CustoNailDesigner({ onBack }: Props) {
         <div className="p-4 rounded-xl bg-white/5 border border-white/8">
           <div className="flex items-center gap-2 mb-2">
             <Droplets className="w-4 h-4 text-gray-400" />
-            <p className="text-xs text-gray-400">Insumos Rapidos</p>
+            <p className="text-xs text-gray-400">Insumos Rápidos</p>
           </div>
           <div className="flex flex-wrap gap-2">
             {INSUMOS_SUGERIDOS.filter((s) => !insumos.find((i) => i.nome === s.nome)).map((s) => (
@@ -159,7 +160,7 @@ export function CustoNailDesigner({ onBack }: Props) {
                   className="input-field w-16 text-center text-xs"
                 />
                 <span className="text-xs text-gray-400 w-16 text-right">
-                  R$ {(i.custo * i.quantidade).toFixed(2)}
+                  R$ {fmtNum((i.custo * i.quantidade), 2)}
                 </span>
                 <button
                   onClick={() => removeInsumo(i.id)}
@@ -201,19 +202,19 @@ export function CustoNailDesigner({ onBack }: Props) {
           <div className="space-y-2">
             <div className="flex justify-between text-sm">
               <span className="text-gray-400">Custo insumos</span>
-              <span className="text-white">R$ {resultado.custoInsumos.toFixed(2)}</span>
+              <span className="text-white">R$ {fmtNum(resultado.custoInsumos, 2)}</span>
             </div>
             <div className="flex justify-between text-sm">
               <span className="text-gray-400">Mão de obra</span>
-              <span className="text-white">R$ {resultado.custoMaoDeObra.toFixed(2)}</span>
+              <span className="text-white">R$ {fmtNum(resultado.custoMaoDeObra, 2)}</span>
             </div>
             <div className="border-t border-white/10 pt-2 flex justify-between">
               <span className="text-sm font-semibold text-gray-300">Preço mínimo</span>
-              <span className="font-bold text-white">R$ {resultado.precoMinimo.toFixed(2)}</span>
+              <span className="font-bold text-white">R$ {fmtNum(resultado.precoMinimo, 2)}</span>
             </div>
             <div className="flex justify-between bg-white/5 rounded p-2">
               <span className="text-sm font-semibold text-pink-400">Com margem 30%</span>
-              <span className="font-bold text-pink-400">R$ {resultado.precoMargem.toFixed(2)}</span>
+              <span className="font-bold text-pink-400">R$ {fmtNum(resultado.precoMargem, 2)}</span>
             </div>
           </div>
         </div>

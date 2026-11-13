@@ -162,7 +162,7 @@ export function AlertaAgua({ onBack }: Props) {
               <Pause className="w-4 h-4" /> Pausar
             </button>
           )}
-          <button
+          <button aria-label="Reiniciar"
             onClick={resetar}
             className="w-11 h-11 flex items-center justify-center rounded-xl border border-white/10 text-gray-400 hover:text-white transition-colors"
           >
@@ -189,7 +189,7 @@ export function AlertaAgua({ onBack }: Props) {
           faqs: [
             { question: "Qual o intervalo ideal entre os lembretes de água?", answer: "Não há um número universal, mas intervalos de 1 a 2 horas são comumente recomendados para manter a hidratação ao longo do dia." },
             { question: "Quanto de água devo beber por dia?", answer: "A recomendação geral é de cerca de 35ml por kg de peso corporal, mas isso pode variar conforme atividade física e clima." },
-            { question: "Os lembretes funcionam com o navegador fechado?", answer: "Isso depende da configuração específica; notificações no navegador geralmente exigem que a aba ou o navegador estejam abertos." },
+            { question: "Os lembretes funcionam com o navegador fechado?", answer: "Não. Os lembretes funcionam enquanto a página estiver aberta, mesmo em outra aba. Se o navegador for fechado, os avisos param; ao abrir de novo, é só ligar o alerta." },
             { question: "Esqueci de beber água em um lembrete, o que fazer?", answer: "Sem problema, basta continuar seguindo os próximos lembretes normalmente; o objetivo é criar o hábito ao longo do tempo." },
           ],
         }}

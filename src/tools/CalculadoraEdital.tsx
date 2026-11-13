@@ -7,6 +7,7 @@ import { Plus, Trash2, Check, Download } from "lucide-react";
 import { ToolContent } from "../components/ToolContent";
 import { CONFIG } from "../config";
 
+import { fmtNum } from "../utils/format";
 interface Props {
   onBack: () => void;
 }
@@ -78,7 +79,7 @@ export function CalculadoraEdital({ onBack }: Props) {
       title="Calculadora de Edital"
       emoji="📋"
       category="Estudos"
-      description="Acompanhe seu progresso nos topicos do edital com peso e exportação."
+      description="Acompanhe seu progresso nos tópicos do edital com peso e exportação."
       onBack={onBack}
       affiliateBanner={<AffiliateBanner terms={["livros concurso público"]} label="livros concurso público" />}
     
@@ -89,11 +90,11 @@ export function CalculadoraEdital({ onBack }: Props) {
             type="text"
             value={novoTopico}
             onChange={(e) => setNovoTopico(e.target.value)}
-            placeholder="Novo topico do edital"
+            placeholder="Novo tópico do edital"
             className="input-field flex-1"
             onKeyDown={(e) => e.key === "Enter" && addTopico()}
           />
-          <select
+          <select aria-label="Peso do tópico"
             value={novoPeso}
             onChange={(e) => setNovoPeso(parseInt(e.target.value))}
             className="input-field w-20"
@@ -104,7 +105,7 @@ export function CalculadoraEdital({ onBack }: Props) {
               </option>
             ))}
           </select>
-          <button onClick={addTopico} className="btn-primary px-4">
+          <button aria-label="Adicionar tópico" onClick={addTopico} className="btn-primary px-4">
             <Plus className="w-4 h-4" />
           </button>
         </div>
@@ -115,7 +116,7 @@ export function CalculadoraEdital({ onBack }: Props) {
               <div className="flex justify-between items-center mb-2">
                 <span className="text-sm text-gray-400">Progresso</span>
                 <span className="text-sm font-bold text-green-400">
-                  {progresso.percent.toFixed(1)}%
+                  {fmtNum(progresso.percent, 1)}%
                 </span>
               </div>
               <div className="h-3 bg-white/10 rounded-full overflow-hidden">
@@ -156,7 +157,7 @@ export function CalculadoraEdital({ onBack }: Props) {
                   >
                     {t.nome}
                   </span>
-                  <select
+                  <select aria-label={`Peso de ${t.nome}`}
                     value={t.peso}
                     onChange={(e) => updatePeso(t.id, parseInt(e.target.value))}
                     className="input-field w-16 text-center text-xs"

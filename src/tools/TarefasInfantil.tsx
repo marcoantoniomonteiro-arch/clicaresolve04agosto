@@ -122,7 +122,7 @@ export function TarefasInfantil({ onBack }: Props) {
       onBack={onBack}
       affiliateBanner={
         <AffiliateBanner
-          terms={["quadro de rotina infantil", "livro de habitos infantil", "quadro de tarejas"]}
+          terms={["quadro de rotina infantil", "livro de hábitos infantil", "quadro de tarefas"]}
           label="Motivação para os pequenos"
         />
       }
@@ -131,7 +131,7 @@ export function TarefasInfantil({ onBack }: Props) {
         {filhos.length === 0 ? (
           <div className={`p-6 rounded-2xl bg-gradient-to-br ${corGradiente} bg-opacity-20 border border-white/20 text-center`}>
             <p className="text-4xl mb-2">🌟</p>
-            <p className="text-white font-semibold mb-4">Adicione uma criança para comecar</p>
+            <p className="text-white font-semibold mb-4">Adicione uma criança para começar</p>
             <div className="grid grid-cols-2 gap-3 mb-3">
               <input
                 type="text"
@@ -314,7 +314,7 @@ export function TarefasInfantil({ onBack }: Props) {
           faqs: [
             { question: "A partir de que idade esse tipo de quadro funciona bem?", answer: "Costuma funcionar bem a partir dos 3-4 anos, quando a criança já entende símbolos visuais simples e conquistas." },
             { question: "Posso personalizar as tarefas do quadro?", answer: "Sim, é possível adicionar, remover ou editar as tarefas conforme a rotina específica de cada família." },
-            { question: "O quadro pode ser usado para mais de uma criança?", answer: "Depende da versão da ferramenta; muitas permitem criar quadros separados para cada criança da casa." },
+            { question: "O quadro pode ser usado para mais de uma criança?", answer: "Sim. Dá para cadastrar várias crianças, cada uma com suas tarefas e pontos, e alternar entre elas." },
             { question: "Esse tipo de recurso realmente ajuda no desenvolvimento infantil?", answer: "Educadores costumam recomendar quadros visuais de tarefas como forma de estimular autonomia, organização e senso de conquista nas crianças." },
           ],
         }}

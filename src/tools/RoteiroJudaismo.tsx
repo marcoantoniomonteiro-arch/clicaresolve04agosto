@@ -5,6 +5,7 @@ import { Book, Check, ChevronDown, ChevronUp } from "lucide-react";
 import { CONFIG } from "../config";
 import { ToolContent } from "../components/ToolContent";
 
+import { fmtNum } from "../utils/format";
 interface Props {
   onBack: () => void;
 }
@@ -27,24 +28,24 @@ const FASES: Fase[] = [
   {
     id: 1,
     titulo: "Fase 1: Tora e Tehilim",
-    descricao: "Fundamento - Os 5 livros de Moises e os Salmos",
+    descricao: "Fundamento - Os 5 livros de Moisés e os Salmos",
     obras: [
-      { id: "genesis", nome: "Genesis (Bereshit)", descricao: "Criação, patriarcas e origem do povo hebreu", termoAmazon: "Genesis Bereshit Hebraico" },
-      { id: "exodo", nome: "Exodo (Shemot)", descricao: "Saida do Egito, entrega da Tora no Sinai", termoAmazon: "Exodo Shemot Hebraico" },
+      { id: "genesis", nome: "Gênesis (Bereshit)", descricao: "Criação, patriarcas e origem do povo hebreu", termoAmazon: "Gênesis Bereshit Hebraico" },
+      { id: "exodo", nome: "Êxodo (Shemot)", descricao: "Saída do Egito, entrega da Tora no Sinai", termoAmazon: "Êxodo Shemot Hebraico" },
       { id: "levitico", nome: "Levitico (Vayicra)", descricao: "Leis de santidade e serviço no Templo", termoAmazon: "Levitico Vayicra" },
       { id: "numeros", nome: "Números (Bamidbar)", descricao: "Jornada pelo deserto, censos e preparação", termoAmazon: "Números Bamidbar" },
-      { id: "deuteronomio", nome: "Deuteronomio (Devarim)", descricao: "Revisão da lei antes da entrada em Canaa", termoAmazon: "Deuteronomio Devarim" },
+      { id: "deuteronomio", nome: "Deuteronomio (Devarim)", descricao: "Revisão da lei antes da entrada em Canaã", termoAmazon: "Deuteronomio Devarim" },
       { id: "tehilim", nome: "Tehilim (Salmos)", descricao: "150 salmos de louvor, suplica e gratidao", termoAmazon: "Salmos Tehilim Hebraico" },
     ],
   },
   {
     id: 2,
-    titulo: "Fase 2: Tanakh e Comentarios",
+    titulo: "Fase 2: Tanakh e Comentários",
     descricao: "Profundidade - Tanakh completo com Rashi",
     obras: [
-      { id: "profetas", nome: "Neviim (Profetas)", descricao: "Josue, Juizes, Samuel, Reis e Profetas posteriores", termoAmazon: "Profetas Neviim Hebraico" },
+      { id: "profetas", nome: "Neviim (Profetas)", descricao: "Josué, Juízes, Samuel, Reis e Profetas posteriores", termoAmazon: "Profetas Neviim Hebraico" },
       { id: "escritos", nome: "Ketuvim (Escritos)", descricao: "Salmos, Proverbios, Job, Meguilot e outros", termoAmazon: "Escritos Ketuvim Hebraico" },
-      { id: "rashi", nome: "Comentarios de Rashi", descricao: "O principal comentario medieval da Tora", termoAmazon: "Rashi comentario Torah" },
+      { id: "rashi", nome: "Comentários de Rashi", descricao: "O principal comentario medieval da Tora", termoAmazon: "Rashi comentario Torah" },
     ],
   },
   {
@@ -57,10 +58,10 @@ const FASES: Fase[] = [
   },
   {
     id: 4,
-    titulo: "Fase 4: Etica e Misticismo",
-    descricao: "Elevação - Etica, Kabalah e Zohar",
+    titulo: "Fase 4: Ética e Misticismo",
+    descricao: "Elevação - Ética, Kabalah e Zohar",
     obras: [
-      { id: "pirkei", nome: "Pirkei Avot (Etica dos Pais)", descricao: "Ensinamentos eticos dos sabios", termoAmazon: "Pirkei Avot Etica dos Pais" },
+      { id: "pirkei", nome: "Pirkei Avot (Ética dos Pais)", descricao: "Ensinamentos eticos dos sabios", termoAmazon: "Pirkei Avot Ética dos Pais" },
       { id: "kabalah", nome: "Introdução a Kabalah", descricao: "Conceitos basicos do misticismo judeu", termoAmazon: "Introdução Cabala Judaica" },
       { id: "zohar", nome: "Zohar (Brilho)", descricao: "Obra central da Kabalah", termoAmazon: "Zohar Livro Esplendor" },
     ],
@@ -104,14 +105,14 @@ export function RoteiroJudaismo({ onBack }: Props) {
 
   return (
     <ToolLayout
-      title="Roteiro de Estudos do Judaismo"
+      title="Roteiro de Estudos do Judaísmo"
       emoji="✡️"
       category="Religioso"
-      description="Trilha de estudos em 4 fases sobre judaismo com progresso salvo."
+      description="Trilha de estudos em 4 fases sobre judaísmo com progresso salvo."
       onBack={onBack}
       affiliateBanner={
         <AffiliateBanner
-          terms={["Tora em portugues", "Bíblia Hebraica", "Tanakh completo"]}
+          terms={["Tora em português", "Bíblia Hebraica", "Tanakh completo"]}
           label="Adquira os livros"
         />
       }
@@ -120,7 +121,7 @@ export function RoteiroJudaismo({ onBack }: Props) {
         <div className="p-4 rounded-xl bg-white/5 border border-white/8">
           <div className="flex justify-between items-center mb-2">
             <span className="text-sm text-gray-400">Progresso Geral</span>
-            <span className="text-sm font-bold text-green-400">{progresso.percent.toFixed(0)}%</span>
+            <span className="text-sm font-bold text-green-400">{fmtNum(progresso.percent, 0)}%</span>
           </div>
           <div className="h-3 bg-white/10 rounded-full overflow-hidden">
             <div
@@ -171,7 +172,7 @@ export function RoteiroJudaismo({ onBack }: Props) {
                         }`}
                       >
                         <div className="flex items-start gap-3">
-                          <button
+                          <button aria-label={`Marcar ${obra.titulo} como estudado`}
                             onClick={() => toggleObra(obra.id)}
                             className={`w-6 h-6 rounded-lg border-2 flex items-center justify-center flex-shrink-0 transition-all ${
                               concluidos[obra.id]

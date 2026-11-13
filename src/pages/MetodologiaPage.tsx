@@ -107,7 +107,7 @@ const METHODOLOGIES = [
       { name: "Gerador de QR Code", source: "Algoritmo QR Code ISO/IEC 18004. Codificação de texto/URL em formato matricial 2D legível por câmeras" },
       { name: "Gerador de Senhas", source: "Gerador criptográfico usando Math.random() com seed aleatória. Entropia calculada por comprimento e conjunto de caracteres (NIST SP 800-63B)" },
       { name: "Conversor de Cozinha", source: "Tabela de conversão de medidas culinárias: 1 xícara = 240ml, 1 colher de sopa = 15ml, 1 colher de chá = 5ml. Densidade de ingredientes conforme USDA" },
-      { name: "Conversor de Roupas", source: "Tabela de conversão de tamanhos: BR/EUA/Europa. Baseado em padronização internacional de tamanhamento (ISO 8559)" },
+      { name: "Conversor de Roupas", source: "Tabela de conversão de tamanhos: BR/EUA/Europa. Baseado em padronização internacional de medidas do corpo para vestuário (ISO 8559)" },
     ],
   },
 ];

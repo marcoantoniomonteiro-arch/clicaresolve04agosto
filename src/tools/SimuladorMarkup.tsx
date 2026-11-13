@@ -6,6 +6,7 @@ import React, { useState, useMemo } from "react";
 import { ToolContent } from "../components/ToolContent";
 import { CONFIG } from "../config";
 
+import { fmtNum } from "../utils/format";
 interface Props {
   onBack: () => void;
 }
@@ -23,6 +24,9 @@ export function SimuladorMarkup({ onBack }: Props) {
     const margemPct = parseFloat(margemDesejada.replace(",", ".")) || 0;
 
     if (c <= 0) return null;
+    // Impostos + comissão + margem precisam somar menos de 100% do preço de venda
+    const somaPct = impPct + comPct + margemPct;
+    if (somaPct >= 100) return { invalido: true as const, somaPct };
 
     const markup = 1 / (1 - (impPct / 100) - (comPct / 100) - (margemPct / 100));
     const precoVenda = c * markup;
@@ -32,7 +36,7 @@ export function SimuladorMarkup({ onBack }: Props) {
     const lucroBruto = precoVenda - c - valorImpostos - valorComissao;
     const margemReal = precoVenda > 0 ? (lucroBruto / precoVenda) * 100 : 0;
 
-    return { c, impPct, comPct, margemPct, markup, precoVenda, valorImpostos, valorComissao, lucroBruto, margemReal };
+    return { invalido: false as const, c, impPct, comPct, margemPct, markup, precoVenda, valorImpostos, valorComissao, lucroBruto, margemReal };
   }, [custo, impostos, comissao, margemDesejada]);
 
   return (
@@ -90,32 +94,38 @@ export function SimuladorMarkup({ onBack }: Props) {
           </label>
         </div>
 
-        {result && (
+        {result && result.invalido && (
+          <div className="p-4 rounded-xl bg-red-500/10 border border-red-500/30 text-sm text-red-300">
+            Impostos, comissão e margem somam {fmtNum(result.somaPct, 1, 0)}% do preço de venda. Essa soma precisa ficar abaixo de 100%, senão não existe preço que cubra tudo. Reduza a margem ou revise as taxas.
+          </div>
+        )}
+
+        {result && !result.invalido && (
           <div className="space-y-4">
             <div className="p-5 rounded-xl bg-green-500/10 border border-green-500/20 text-center">
               <p className="text-xs text-green-400 mb-1">Preço de Venda Ideal</p>
               <p className="text-4xl font-black text-green-400">
-                R$ {result.precoVenda.toFixed(2)}
+                R$ {fmtNum(result.precoVenda, 2)}
               </p>
-              <p className="text-sm text-gray-400 mt-1">Markup: {result.markup.toFixed(2)}x</p>
+              <p className="text-sm text-gray-400 mt-1">Markup: {fmtNum(result.markup, 2)}x</p>
             </div>
 
             <div className="grid grid-cols-4 gap-3">
               <div className="p-3 rounded-xl bg-white/5 text-center">
                 <p className="text-xs text-gray-400">Custo</p>
-                <p className="text-sm font-bold text-white">R$ {result.c.toFixed(2)}</p>
+                <p className="text-sm font-bold text-white">R$ {fmtNum(result.c, 2)}</p>
               </div>
               <div className="p-3 rounded-xl bg-red-500/10 border border-red-500/20 text-center">
                 <p className="text-xs text-red-400">Impostos</p>
-                <p className="text-sm font-bold text-red-400">R$ {result.valorImpostos.toFixed(2)}</p>
+                <p className="text-sm font-bold text-red-400">R$ {fmtNum(result.valorImpostos, 2)}</p>
               </div>
               <div className="p-3 rounded-xl bg-yellow-500/10 border border-yellow-500/20 text-center">
                 <p className="text-xs text-yellow-400">Comissão</p>
-                <p className="text-sm font-bold text-yellow-400">R$ {result.valorComissao.toFixed(2)}</p>
+                <p className="text-sm font-bold text-yellow-400">R$ {fmtNum(result.valorComissao, 2)}</p>
               </div>
               <div className="p-3 rounded-xl bg-green-500/10 border border-green-500/20 text-center">
                 <p className="text-xs text-green-400">Lucro</p>
-                <p className="text-sm font-bold text-green-400">R$ {result.lucroBruto.toFixed(2)}</p>
+                <p className="text-sm font-bold text-green-400">R$ {fmtNum(result.lucroBruto, 2)}</p>
               </div>
             </div>
 
@@ -123,7 +133,7 @@ export function SimuladorMarkup({ onBack }: Props) {
               <div className="flex justify-between items-center">
                 <span className="text-sm text-gray-400">Margem Real</span>
                 <span className={`text-lg font-bold ${result.margemReal >= 0 ? "text-green-400" : "text-red-400"}`}>
-                  {result.margemReal.toFixed(1)}%
+                  {fmtNum(result.margemReal, 1)}%
                 </span>
               </div>
               <div className="h-2 bg-white/10 rounded-full mt-2">
@@ -135,7 +145,7 @@ export function SimuladorMarkup({ onBack }: Props) {
             </div>
 
             <p className="text-xs text-gray-500 text-center">
-              Cada venda de R$ {result.precoVenda.toFixed(2)} gera R$ {result.lucroBruto.toFixed(2)} de lucro líquido.
+              Cada venda de R$ {fmtNum(result.precoVenda, 2)} gera R$ {fmtNum(result.lucroBruto, 2)} de lucro líquido.
             </p>
           </div>
         )}

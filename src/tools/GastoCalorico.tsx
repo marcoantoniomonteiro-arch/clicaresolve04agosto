@@ -46,7 +46,7 @@ export function GastoCalórico({ onBack }: Props) {
       category="Saúde"
       description="Calcule seu metabolismo basal e gasto calórico diário pela fórmula Mifflin-St Jeor."
       onBack={onBack}
-      affiliateBanner={<AffiliateBanner terms={["whey protein", "balanca de alimentos"]} label="Nutrição e suplementação" />}
+      affiliateBanner={<AffiliateBanner terms={["whey protein", "balança de alimentos"]} label="Nutrição e suplementação" />}
       disclaimer="Esta ferramenta é puramente informativa. Não substitui consulta médica ou diagnóstico profissional. Consulte sempre um profissional de saúde habilitado."
     >
       <div className="space-y-4">

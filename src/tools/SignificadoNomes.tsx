@@ -197,9 +197,14 @@ export function SignificadoNomes({ onBack, initialName }: Props) {
   const seoTitle = isNamePage
     ? `Significado do Nome ${pageName}: Origem e Popularidade`
     : "Significado de Nomes — Origem e Significado dos Nomes";
-  const seoDescription = isNamePage && initialResult
-    ? `${initialResult.name} significa "${initialResult.meaning.charAt(0).toLowerCase() + initialResult.meaning.slice(1)}" e tem origem ${initialResult.origin.toLowerCase()}.${pageStats ? ` ${formatNumber(pageStats.total)} brasileiros têm esse nome (IBGE).` : ""} Veja curiosidades e nomes parecidos.`
-    : "Descubra a origem, significado e curiosidades sobre nomes de bebês.";
+  const seoDescription = (() => {
+    if (!isNamePage || !initialResult) return "Descubra o significado, a origem e a popularidade de mais de 580 nomes, com dados do IBGE. Grátis e sem cadastro.";
+    const base = `${initialResult.name} significa "${initialResult.meaning.charAt(0).toLowerCase() + initialResult.meaning.slice(1)}" e tem origem ${initialResult.origin.toLowerCase()}.`;
+    const stats = pageStats ? ` ${formatNumber(pageStats.total)} brasileiros têm esse nome (IBGE).` : "";
+    // Mantém a descrição em até ~160 caracteres para não ser cortada no Google
+    for (const d of [base + stats + " Veja nomes parecidos.", base + stats, base]) if (d.length <= 160) return d;
+    return base;
+  })();
   const pageFaqs = isNamePage && initialResult ? nameFaqs(initialResult, pageStats) : [];
   const stats = result ? getNameStats(result.name) : null;
   const originNames = result && DB_MAP.get(normalizeName(result.name)) ? sameOrigin(result, 10) : [];
@@ -480,7 +485,7 @@ export function SignificadoNomes({ onBack, initialName }: Props) {
           faqs: [
             { question: "A base de nomes cobre nomes de todas as origens?", answer: "A base cobre uma ampla variedade de origens (grega, latina, hebraica, entre outras), mas nem todo nome existente estará necessariamente catalogado." },
             { question: "O significado de um nome influencia a personalidade da pessoa?", answer: "Não há comprovação científica disso; o significado é uma informação cultural e etimológica, não uma previsão de personalidade." },
-            { question: "Nomes compostos também são consultados?", answer: "Geralmente a consulta funciona melhor para nomes individuais; nomes compostos podem ser consultados separadamente, parte por parte." },
+            { question: "Nomes compostos também são consultados?", answer: "Sim. Os compostos mais populares, como João Pedro, Pedro Henrique, Maria Eduarda e Ana Clara, têm página própria. Para os demais, consulte cada nome separadamente." },
             { question: "A popularidade do nome também é mostrada?", answer: "Em muitos casos sim, com dados sobre a frequência de uso do nome ao longo dos anos no Brasil." },
           ],
         }}

@@ -18,50 +18,50 @@ interface NumeroInfo {
 
 const NUMEROS: Record<number, NumeroInfo> = {
   1: {
-    titulo: "O Lider",
+    titulo: "O Líder",
     descricao: "Pioneiros, independentes e determinados. Nascem para comandar e inovar.",
-    caracteristicas: ["Independencia", "Lideranca", "Originalidade", "Determinacao"],
-    desafios: ["Arrogancia", "Impaciencia", "Egoismo", "Teimosia"],
+    caracteristicas: ["Independência", "Liderança", "Originalidade", "Determinação"],
+    desafios: ["Arrogância", "Impaciência", "Egoísmo", "Teimosia"],
     cores: ["Vermelho", "Dourado", "Laranja"],
   },
   2: {
     titulo: "O Diplomata",
     descricao: "Pacificadores, intuitivos e cooperativos. Trazem harmonia e parceria.",
-    caracteristicas: ["Cooperacao", "Sensibilidade", "Paciencia", "Intuicao"],
-    desafios: ["Indecisao", "Dependencia", "Passividade", "Oversensibilidade"],
+    caracteristicas: ["Cooperação", "Sensibilidade", "Paciência", "Intuição"],
+    desafios: ["Indecisão", "Dependência", "Passividade", "Sensibilidade excessiva"],
     cores: ["Branco", "Prata", "Verde claro"],
   },
   3: {
     titulo: "O Comunicador",
-    descricao: "Expressivos, criaros e otimistas. Trazem alegria e arte ao mundo.",
-    caracteristicas: ["Criatividade", "Comunicacao", "Otimismo", "Expressao"],
-    desafios: ["Superficialidade", "Dispersao", "Exagero", "Imaturidade"],
+    descricao: "Expressivos, criativos e otimistas. Trazem alegria e arte ao mundo.",
+    caracteristicas: ["Criatividade", "Comunicação", "Otimismo", "Expressão"],
+    desafios: ["Superficialidade", "Dispersão", "Exagero", "Imaturidade"],
     cores: ["Amarelo", "Rosa", "Azul claro"],
   },
   4: {
     titulo: "O Construtor",
-    descricao: "Praticos, trabalhardores e disciplinados. Constroem alicerces solidos.",
-    caracteristicas: ["Organizacao", "Disciplina", "Estabilidade", "Trabalho duro"],
+    descricao: "Práticos, trabalhadores e disciplinados. Constroem alicerces sólidos.",
+    caracteristicas: ["Organização", "Disciplina", "Estabilidade", "Trabalho duro"],
     desafios: ["Rigidez", "Teimosia", "Pessimismo", "Controle"],
     cores: ["Verde escuro", "Marrom", "Cinza"],
   },
   5: {
     titulo: "O Liberdade",
-    descricao: "Aventureiros, versaceis e curiosos. Buscam liberdade e novas experiencias.",
+    descricao: "Aventureiros, versáteis e curiosos. Buscam liberdade e novas experiências.",
     caracteristicas: ["Liberdade", "Aventura", "Versatilidade", "Curiosidade"],
-    desafios: ["Inquietude", "Impulsividade", "Inconstancia", "Escapismo"],
+    desafios: ["Inquietude", "Impulsividade", "Inconstância", "Escapismo"],
     cores: ["Azul turquesa", "Lils", "Prata"],
   },
   6: {
     titulo: "O Nutridor",
-    descricao: "Amorosos, responsaveis e harmoniosos. Cuidam da família e do lar.",
+    descricao: "Amorosos, responsáveis e harmoniosos. Cuidam da família e do lar.",
     caracteristicas: ["Amor", "Responsabilidade", "Harmonia", "Cuidado"],
     desafios: ["Autossacrificio", "Preocupação excessiva", "Perfeccionismo", "Controle"],
     cores: ["Rosa", "Azul", "Indigo"],
   },
   7: {
     titulo: "O Buscador",
-    descricao: "Analiticos, espirituais e introspectivos. Buscam verdades profundas.",
+    descricao: "Analíticos, espirituais e introspectivos. Buscam verdades profundas.",
     caracteristicas: ["Sabedoria", "Introspeccao", "Espiritualidade", "Analise"],
     desafios: ["Isolamento", "Ceticismo", "Frieza", "Distanciamento"],
     cores: ["Violeta", "Roxo", "Branco"],
@@ -69,29 +69,29 @@ const NUMEROS: Record<number, NumeroInfo> = {
   8: {
     titulo: "O Poder",
     descricao: "Ambiciosos, executivos e materialistas. Atingem sucesso e autoridade.",
-    caracteristicas: ["Sucesso", "Autoridade", "Organizacao", "Prosperidade"],
-    desafios: ["Ambição cega", "Materialismo", "Controle", "Arrogancia"],
+    caracteristicas: ["Sucesso", "Autoridade", "Organização", "Prosperidade"],
+    desafios: ["Ambição cega", "Materialismo", "Controle", "Arrogância"],
     cores: ["Dourado", "Preto", "Cinza escuro"],
   },
   9: {
-    titulo: "O Humanitario",
-    descricao: "Compassivos, universais e artisticos. Servem a humanidade.",
-    caracteristicas: ["Compaixao", "Universalidade", "Generosidade", "Sabedoria"],
+    titulo: "O Humanitário",
+    descricao: "Compassivos, universais e artísticos. Servem a humanidade.",
+    caracteristicas: ["Compaixão", "Universalidade", "Generosidade", "Sabedoria"],
     desafios: ["Desapego excessivo", "Vitimizacao", "Idealismo irreal", "Emoções ciclicas"],
     cores: ["Dourado", "Vermelho", "Rosa"],
   },
   11: {
     titulo: "O Mestre Iluminador",
-    descricao: "Números mestres trazem maior potencial espiritual e intuição. Visionarios e inspiradores.",
-    caracteristicas: ["Intuição elevada", "Inspiracao", "Visionario", "Espiritualidade"],
+    descricao: "Números mestres trazem maior potencial espiritual e intuição. Visionários e inspiradores.",
+    caracteristicas: ["Intuição elevada", "Inspiração", "Visionário", "Espiritualidade"],
     desafios: ["Nervosismo", "Autocrítica", "Idealismo excessivo", "Pressão interna"],
     cores: ["Prata", "Violeta", "Dourado"],
   },
   22: {
     titulo: "O Mestre Construtor",
     descricao: "Números mestres trazem maior potencial de realização. Constroem grandes projetos.",
-    caracteristicas: ["Mestre construtor", "Visao prática", "Lideranca global", "Realizacoes"],
-    desafios: ["Pressão enorme", "Autocobranca", "Rigidez", "Desesperanca"],
+    caracteristicas: ["Mestre construtor", "Visão prática", "Liderança global", "Realizações"],
+    desafios: ["Pressão enorme", "Autocobranca", "Rigidez", "Desesperança"],
     cores: ["Dourado", "Branco", "Preto"],
   },
 };
@@ -137,11 +137,11 @@ export function MapaNumerologico({ onBack }: Props) {
       title="MapaNumerologico"
       emoji="🔢"
       category="Astrologia"
-      description="Descubra seu Nmero do Destino baseado na sua data de nascimento."
+      description="Descubra seu Número do Destino a partir da sua data de nascimento."
       onBack={onBack}
       affiliateBanner={
         <AffiliateBanner
-          terms={["livro de numerologia", "numerologia cabalistica"]}
+          terms={["livro de numerologia", "numerologia cabalística"]}
           label="Aprofunde-se na numerologia"
         />
       }
@@ -200,7 +200,7 @@ export function MapaNumerologico({ onBack }: Props) {
             </div>
 
             <div className="p-4 rounded-xl bg-white/5 border border-white/10">
-              <p className="text-xs text-gray-400 mb-2">Cores favoraveis</p>
+              <p className="text-xs text-gray-400 mb-2">Cores favoráveis</p>
               <div className="flex gap-2">
                 {info.cores.map((cor, i) => (
                   <span key={i} className="px-2 py-1 rounded bg-white/10 text-xs text-gray-300">{cor}</span>
@@ -212,7 +212,7 @@ export function MapaNumerologico({ onBack }: Props) {
 
         <div className="p-3 rounded-lg bg-yellow-500/10 border border-yellow-500/20">
           <p className="text-xs text-yellow-300">
-            <span className="font-semibold">Como calcular:</span> Soma-se todos os digitos da data de nascimentoo até obter um nmero de 1 a 9 (ou 11/22 que saoo nmeros mestres).
+            <span className="font-semibold">Como calcular:</span> Somam-se todos os dígitos da data de nascimento até chegar a um número de 1 a 9 (ou 11 e 22, que são números mestres).
           </p>
         </div>
 

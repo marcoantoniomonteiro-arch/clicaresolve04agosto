@@ -83,7 +83,7 @@ export function SeletorCores({ onBack }: Props) {
     >
       <div className="space-y-4">
         <div className="flex flex-col items-center gap-4">
-          <input
+          <input aria-label="Escolher cor"
             type="color"
             value={valid ? hex : "#000000"}
             onChange={(e) => handleColorPick(e.target.value)}

@@ -199,7 +199,7 @@ export function ProbabilidadesClassificacao({ onBack }: Props) {
           faqs: [
             { question: "Essa é uma previsão garantida?", answer: "Não, é uma estimativa estatística baseada na situação atual da tabela, não uma previsão exata do resultado final." },
             { question: "O que é 'aproveitamento' no futebol?", answer: "É a porcentagem de pontos conquistados em relação ao total possível nos jogos disputados (vitória = 3 pontos, empate = 1, derrota = 0)." },
-            { question: "A ferramenta considera o histórico de confrontos diretos?", answer: "Geralmente não; o cálculo foca na matemática de pontos necessários, não em fatores específicos como confrontos diretos ou saldo de gols." },
+            { question: "A ferramenta considera o histórico de confrontos diretos?", answer: "Não. O cálculo considera só os pontos e os jogos restantes. Critérios de desempate, como confronto direto e saldo de gols, não entram na conta." },
             { question: "Posso usar para qualquer campeonato?", answer: "Sim, desde que você tenha os dados de posição, pontos e jogos restantes do campeonato desejado." },
           ],
         }}

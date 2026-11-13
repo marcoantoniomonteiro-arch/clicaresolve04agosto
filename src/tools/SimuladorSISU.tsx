@@ -7,6 +7,7 @@ import { GraduationCap } from "lucide-react";
 import { ToolContent } from "../components/ToolContent";
 import { CONFIG } from "../config";
 
+import { fmtNum } from "../utils/format";
 interface Props {
   onBack: () => void;
 }
@@ -94,12 +95,12 @@ export function SimuladorSISU({ onBack }: Props) {
               { label: "Linguagens", value: ling, setter: setLing },
               { label: "Humanas", value: humanas, setter: setHumanas },
               { label: "Natureza", value: natureza, setter: setNatureza },
-              { label: "Matematica", value: mat, setter: setMat },
-              { label: "Redacao", value: redacao, setter: setRedacao },
+              { label: "Matemática", value: mat, setter: setMat },
+              { label: "Redação", value: redacao, setter: setRedacao },
             ].map((n) => (
               <div key={n.label}>
                 <p className="text-xs text-gray-500 text-center mb-1">{n.label}</p>
-                <input
+                <input aria-label={`Nota de ${n.label}`}
                   type="number"
                   min="0"
                   max="1000"
@@ -157,11 +158,11 @@ export function SimuladorSISU({ onBack }: Props) {
         <div className="grid grid-cols-2 gap-3">
           <div className="p-4 rounded-xl bg-white/5 text-center">
             <p className="text-xs text-gray-400">Média Simples</p>
-            <p className="text-3xl font-black text-white">{resultados.mediaSimples.toFixed(1)}</p>
+            <p className="text-3xl font-black text-white">{fmtNum(resultados.mediaSimples, 1)}</p>
           </div>
           <div className="p-4 rounded-xl bg-green-500/10 border border-green-500/20 text-center">
             <p className="text-xs text-green-400">Média Ponderada</p>
-            <p className="text-3xl font-black text-green-400">{resultados.mediaPonderada.toFixed(1)}</p>
+            <p className="text-3xl font-black text-green-400">{fmtNum(resultados.mediaPonderada, 1)}</p>
           </div>
         </div>
 

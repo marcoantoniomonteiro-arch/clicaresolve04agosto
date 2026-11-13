@@ -129,7 +129,7 @@ export function OrganizadorListas({ onBack }: Props) {
           </div>
           <div>
             <div className="flex items-center justify-between mb-1">
-              <span className="text-sm text-gray-400">Saida</span>
+              <span className="text-sm text-gray-400">Saída</span>
               <div className="flex items-center gap-2">
                 <span className="text-xs text-gray-500">{estatisticas.linhasSaida} linhas</span>
                 {saida && (

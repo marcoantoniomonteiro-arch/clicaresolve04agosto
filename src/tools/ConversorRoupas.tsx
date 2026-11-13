@@ -59,11 +59,11 @@ export function ConversorRoupas({ onBack }: Props) {
       title="Conversor de Tamanho de Roupa (EUA, Europa e Brasil)"
       emoji="👕"
       category="Utilidades"
-      description="Converta tamanhos de roupas entre padroes BR, EUA, Europa e China."
+      description="Converta tamanhos de roupas entre padrões BR, EUA, Europa e China."
       onBack={onBack}
       affiliateBanner={
         <AffiliateBanner
-          terms={["guia de tamanhos roupas", "fitas metricas costura", "medidor de corpo"]}
+          terms={["guia de tamanhos roupas", "fitas métricas costura", "medidor de corpo"]}
           label="Facilite suas compras"
           shopeeTerms={["roupas femininas"]} shopeeLabel="Ver na Shopee"
         />

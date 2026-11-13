@@ -5,6 +5,7 @@ import React, { useState, useMemo } from "react";
 
 import { ArrowLeftRight, Clock } from "lucide-react";
 
+import { fmtNum } from "../utils/format";
 interface Props {
   onBack: () => void;
 }
@@ -44,7 +45,7 @@ export function HorasDecimais({ onBack }: Props) {
       onBack={onBack}
       affiliateBanner={<AffiliateBanner terms={["calculadora científica"]} label="calculadora científica" />}
     
-      disclaimer="Cálculo matematico. Não inclui adicionais de Convenções Coletivas (CCT)."
+      disclaimer="Cálculo matemático. Não inclui adicionais de Convenções Coletivas (CCT)."
     >
       <div className="space-y-5">
         <div className="p-5 rounded-xl bg-white/5 border border-white/8">
@@ -55,7 +56,7 @@ export function HorasDecimais({ onBack }: Props) {
           <div className="flex items-center gap-3">
             <div className="flex-1 min-w-0">
               <label className="text-xs text-gray-400 mb-1 block">Horas</label>
-              <input
+              <input aria-label="Horas"
                 type="number"
                 min="0"
                 value={horasInput}
@@ -66,7 +67,7 @@ export function HorasDecimais({ onBack }: Props) {
             <span className="text-2xl text-gray-400 mt-4">:</span>
             <div className="flex-1 min-w-0">
               <label className="text-xs text-gray-400 mb-1 block">Minutos</label>
-              <input
+              <input aria-label="Minutos"
                 type="number"
                 min="0"
                 max="59"
@@ -78,8 +79,8 @@ export function HorasDecimais({ onBack }: Props) {
           </div>
           <div className="mt-4 p-4 rounded-lg bg-blue-500/10 text-center">
             <p className="text-xs text-blue-400">Decimal</p>
-            <p className="text-3xl font-black text-blue-400">{deHorarioParaDecimal.toFixed(4)}</p>
-            <p className="text-xs text-gray-500 mt-1">= {deHorarioParaDecimal.toFixed(2)} horas</p>
+            <p className="text-3xl font-black text-blue-400">{fmtNum(deHorarioParaDecimal, 4)}</p>
+            <p className="text-xs text-gray-500 mt-1">= {fmtNum(deHorarioParaDecimal, 2)} horas</p>
           </div>
         </div>
 

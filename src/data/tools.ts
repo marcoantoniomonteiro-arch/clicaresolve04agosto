@@ -207,7 +207,7 @@ export const tools: Tool[] = [
     emoji: "📊",
     category: "Educação",
     name: "Mapeamento de Erros",
-    description: "Registre e análise seus erros de estudo.",
+    description: "Registre acertos e erros por matéria e descubra o que revisar.",
   },
   {
     id: 26,

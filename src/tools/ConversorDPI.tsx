@@ -6,6 +6,7 @@ import React, { useState, useMemo } from "react";
 
 import { Mouse, Crosshair } from "lucide-react";
 
+import { fmtNum } from "../utils/format";
 interface Props {
   onBack: () => void;
 }
@@ -42,8 +43,8 @@ export function ConversorDPI({ onBack }: Props) {
 
     return {
       edpi,
-      novaSens: novaSens.toFixed(4),
-      multiplicador: (dpi1 / dpi2).toFixed(4),
+      novaSens: fmtNum(novaSens, 4, 0),
+      multiplicador: fmtNum(dpi1 / dpi2, 4, 0),
     };
   }, [dpiAtual, sensAtual, dpiNovo]);
 
@@ -106,7 +107,7 @@ export function ConversorDPI({ onBack }: Props) {
           <p className="text-xs text-gray-400 mb-1">Nova Sensibilidade</p>
           <p className="text-4xl font-black text-green-400">{resultado.novaSens}</p>
           <p className="text-xs text-gray-500 mt-2">
-            eDPI: {resultado.edpi.toFixed(0)} | Multiplicador: {resultado.multiplicador}x
+            eDPI: {fmtNum(resultado.edpi, 0)} | Multiplicador: {resultado.multiplicador}x
           </p>
         </div>
 

@@ -88,7 +88,7 @@ export function PainelBingo({ onBack }: Props) {
             <Sparkles className="w-4 h-4" />
             Sortear Próximo
           </button>
-          <button
+          <button aria-label="Reiniciar o bingo"
             onClick={reset}
             className="px-4 py-2 rounded-xl bg-red-500/20 border border-red-500/30 text-red-400 hover:bg-red-500/30 transition-colors"
           >

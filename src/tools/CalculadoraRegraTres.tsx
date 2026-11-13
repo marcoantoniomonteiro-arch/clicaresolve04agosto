@@ -3,6 +3,7 @@ import { ToolLayout } from "../components/ToolLayout";
 import { AffiliateBanner } from "../components/AffiliateBanner";
 import { ToolContent } from "../components/ToolContent";
 
+import { fmtNum } from "../utils/format";
 interface Props {
   onBack: () => void;
 }
@@ -26,10 +27,10 @@ export function CalculadoraRegraTres({ onBack }: Props) {
     let calc: string;
     if (type === "direct") {
       result = (bN * cN) / aN;
-      calc = `X = (${bN} × ${cN}) / ${aN} = ${(bN * cN)} / ${aN} = ${result.toFixed(4).replace(/\.?0+$/, "")}`;
+      calc = `X = (${bN} × ${cN}) / ${aN} = ${(bN * cN)} / ${aN} = ${fmtNum(result, 4, 0)}`;
     } else {
       result = (aN * bN) / cN;
-      calc = `X = (${aN} × ${bN}) / ${cN} = ${(aN * bN)} / ${cN} = ${result.toFixed(4).replace(/\.?0+$/, "")}`;
+      calc = `X = (${aN} × ${bN}) / ${cN} = ${(aN * bN)} / ${cN} = ${fmtNum(result, 4, 0)}`;
     }
     return { x: result, steps: calc };
   }, [a, b, c, type]);
@@ -92,7 +93,7 @@ export function CalculadoraRegraTres({ onBack }: Props) {
             <label className="block">
               <span className="text-sm text-gray-400 mb-1 block">X (resultado)</span>
               <div className="input-field bg-green-500/10 border-green-500/20 text-green-400 font-bold">
-                {x !== null ? x.toFixed(2).replace(/\.?0+$/, "") : "—"}
+                {x !== null ? fmtNum(x, 2, 0) : "—"}
               </div>
             </label>
           </div>

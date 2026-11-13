@@ -769,7 +769,7 @@ export default function App({ initialPath }: { initialPath?: string } = {}) {
                     className="group relative text-left p-5 rounded-2xl bg-card border border-border hover:border-green-400/30 hover:bg-green-400/5 transition-all duration-[200ms] ease-out hover:-translate-y-[3px] hover:shadow-xl hover:shadow-green-400/[0.15] animate-fade-in-up"
                     style={{ WebkitTapHighlightColor: 'transparent', animationDelay: `${Math.min(i * 30, 600)}ms` }}
                   >
-                    <span className="absolute top-3 right-3 text-xs text-muted font-mono opacity-50 group-hover:opacity-0 transition-opacity">
+                    <span aria-hidden="true" className="absolute top-3 right-3 text-xs text-muted font-mono opacity-80 group-hover:opacity-0 transition-opacity">
                       #{String(tool.id).padStart(2, "0")}
                     </span>
                     <div className="text-3xl mb-3 transition-transform group-hover:scale-110 group-hover:-rotate-3">{tool.emoji}</div>

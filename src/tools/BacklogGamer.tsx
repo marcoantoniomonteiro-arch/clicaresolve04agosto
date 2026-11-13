@@ -6,6 +6,7 @@ import React, { useState, useEffect, useMemo, useCallback } from "react";
 import { Gamepad2, Plus, Trash2, Clock, TrendingUp } from "lucide-react";
 import { ToolContent } from "../components/ToolContent";
 
+import { fmtNum } from "../utils/format";
 interface Props {
   onBack: () => void;
 }
@@ -94,7 +95,7 @@ export function BacklogGamer({ onBack }: Props) {
             <p className="text-xs text-gray-400">Total</p>
           </div>
           <div className="p-3 rounded-xl bg-yellow-500/10 border border-yellow-500/20 text-center">
-            <p className="text-2xl font-bold text-yellow-400">{estatisticas.mediaHoras.toFixed(0)}h</p>
+            <p className="text-2xl font-bold text-yellow-400">{fmtNum(estatisticas.mediaHoras, 0)}h</p>
             <p className="text-xs text-gray-400">Média</p>
           </div>
         </div>
@@ -119,7 +120,7 @@ export function BacklogGamer({ onBack }: Props) {
             />
           </div>
           <div className="flex gap-2 mb-2">
-            <select
+            <select aria-label="Plataforma"
               value={plataforma}
               onChange={(e) => setPlataforma(e.target.value)}
               className="input-field flex-1"
@@ -209,7 +210,7 @@ export function BacklogGamer({ onBack }: Props) {
           faqs: [
             { question: "O que é 'backlog' no contexto de jogos?", answer: "É a lista de jogos que uma pessoa possui ou pretende jogar, mas ainda não terminou ou nem começou." },
             { question: "Posso adicionar quantos jogos quiser ao backlog?", answer: "Sim, não há limite prático de jogos que podem ser catalogados na ferramenta." },
-            { question: "A ferramenta salva meu progresso entre sessões?", answer: "Isso depende da configuração; geralmente os dados ficam salvos localmente no navegador." },
+            { question: "A ferramenta salva meu progresso entre sessões?", answer: "Sim. A lista fica salva no navegador deste aparelho. Se você limpar os dados do navegador ou trocar de aparelho, ela não vai junto." },
             { question: "Serve para qualquer plataforma de jogos?", answer: "Sim, a ferramenta é genérica e pode catalogar jogos de qualquer console, PC ou plataforma mobile." },
           ],
         }}

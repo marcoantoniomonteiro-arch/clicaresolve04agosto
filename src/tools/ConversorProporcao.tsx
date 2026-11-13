@@ -6,6 +6,7 @@ import React, { useState, useMemo } from "react";
 
 import { Maximize2, ArrowRight } from "lucide-react";
 
+import { fmtNum } from "../utils/format";
 interface Props {
   onBack: () => void;
 }
@@ -57,7 +58,7 @@ export function ConversorProporcao({ onBack }: Props) {
 
       return {
         tipo: "calcular",
-        ratio: ratio.toFixed(3),
+        ratio: fmtNum(ratio, 3),
         simplificado,
       };
     } else {

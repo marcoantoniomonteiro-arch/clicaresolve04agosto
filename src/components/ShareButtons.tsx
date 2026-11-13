@@ -19,9 +19,9 @@ export function ShareButtons({ url, text, className = "" }: Props) {
 
   const links = [
     { name: "WhatsApp", href: `https://wa.me/?text=${enc(`${text} ${url}`)}`, icon: MessageCircle, color: "bg-[#25D366] text-black" },
-    { name: "Facebook", href: `https://www.facebook.com/sharer/sharer.php?u=${enc(url)}`, icon: Facebook, color: "bg-[#1877F2] text-white" },
+    { name: "Facebook", href: `https://www.facebook.com/sharer/sharer.php?u=${enc(url)}`, icon: Facebook, color: "bg-[#1466D8] text-white" },
     { name: "X", href: `https://twitter.com/intent/tweet?url=${enc(url)}&text=${enc(text)}`, icon: Twitter, color: "bg-black text-white border border-white/20" },
-    { name: "Telegram", href: `https://t.me/share/url?url=${enc(url)}&text=${enc(text)}`, icon: Send, color: "bg-[#229ED9] text-white" },
+    { name: "Telegram", href: `https://t.me/share/url?url=${enc(url)}&text=${enc(text)}`, icon: Send, color: "bg-[#16729F] text-white" },
     { name: "Pinterest", href: `https://pinterest.com/pin/create/button/?url=${enc(url)}&description=${enc(text)}`, icon: null, color: "bg-[#E60023] text-white" },
     { name: "LinkedIn", href: `https://www.linkedin.com/sharing/share-offsite/?url=${enc(url)}`, icon: Linkedin, color: "bg-[#0A66C2] text-white" },
   ];

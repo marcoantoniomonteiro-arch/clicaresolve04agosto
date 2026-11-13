@@ -5,6 +5,7 @@ import React, { useState, useMemo } from "react";
 
 import { CreditCard, DollarSign, Calendar } from "lucide-react";
 
+import { fmtNum } from "../utils/format";
 interface Props {
   onBack: () => void;
 }
@@ -162,12 +163,12 @@ export function TaxasMaquininha({ onBack }: Props) {
               <div className="p-4 rounded-xl bg-red-500/10 border border-red-500/20 text-center">
                 <DollarSign className="w-5 h-5 text-red-400 mx-auto mb-1" />
                 <p className="text-xs text-red-400">Valor da Taxa</p>
-                <p className="text-lg font-bold text-red-400">R$ {result.taxaValor.toFixed(2)}</p>
+                <p className="text-lg font-bold text-red-400">R$ {fmtNum(result.taxaValor, 2)}</p>
               </div>
               <div className="p-4 rounded-xl bg-green-500/10 border border-green-500/20 text-center">
                 <DollarSign className="w-5 h-5 text-green-400 mx-auto mb-1" />
                 <p className="text-xs text-green-400">Você Recebe</p>
-                <p className="text-lg font-bold text-green-400">R$ {result.liquido.toFixed(2)}</p>
+                <p className="text-lg font-bold text-green-400">R$ {fmtNum(result.liquido, 2)}</p>
               </div>
             </div>
 
@@ -183,7 +184,7 @@ export function TaxasMaquininha({ onBack }: Props) {
               </div>
               {result.parcelas > 1 && (
                 <p className="text-xs text-gray-500 mt-2">
-                  {result.parcelas}x de R$ {result.valorParcela.toFixed(2)} (líquido por parcela)
+                  {result.parcelas}x de R$ {fmtNum(result.valorParcela, 2)} (líquido por parcela)
                 </p>
               )}
             </div>

@@ -121,7 +121,7 @@ export function FormatadorTexto({ onBack }: Props) {
     { label: "iNVERTIDO", action: invertidoCase, icon: CaseSensitive },
     { label: "Inverter (esreveR)", action: invertido, icon: ArrowDownUp },
     { label: "Remover acentos", action: removerAcentos, icon: Type },
-    { label: "Espacos simples", action: removerEspacosDuplos, icon: Type },
+    { label: "Espaços simples", action: removerEspacosDuplos, icon: Type },
   ];
 
   return (
@@ -129,7 +129,7 @@ export function FormatadorTexto({ onBack }: Props) {
       title="Formatador de Texto"
       emoji="🔡"
       category="Utilidades"
-      description="Transforme texto entre maiusculas, minusculas, capitalizado e mais."
+      description="Transforme texto entre maiúsculas, minúsculas, capitalizado e mais."
       onBack={onBack}
       affiliateBanner={<AffiliateBanner terms={["teclado ergonômico"]} label="teclado ergonômico" />}
     
@@ -173,8 +173,8 @@ export function FormatadorTexto({ onBack }: Props) {
 
         <div className="p-3 rounded-lg bg-white/5 text-xs text-gray-500">
           <p className="font-semibold text-gray-400 mb-1">Atalhos úteis:</p>
-          <p>Capitalizado: primeira letra de cada palavra em maiuscula</p>
-          <p>iNVERTIDO: troca maiusculas por minusculas e vice-versa</p>
+          <p>Capitalizado: primeira letra de cada palavra em maiúscula</p>
+          <p>iNVERTIDO: troca maiúsculas por minúsculas e vice-versa</p>
         </div>
       </div>
       <ToolContent

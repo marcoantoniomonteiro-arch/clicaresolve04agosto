@@ -4,6 +4,7 @@ import { AffiliateBanner } from "../components/AffiliateBanner";
 import { Users, Beer, Flame } from "lucide-react";
 import { ToolContent } from "../components/ToolContent";
 
+import { fmtNum } from "../utils/format";
 interface Props {
   onBack: () => void;
 }
@@ -37,10 +38,10 @@ export function CalculadoraChurrasco({ onBack }: Props) {
       totalPessoas,
       adultos,
       carnes: {
-        picanha: picanha.toFixed(2),
-        frango: frango.toFixed(2),
-        linguica: linguica.toFixed(2),
-        totalCarne: totalCarne.toFixed(2),
+        picanha: fmtNum(picanha, 2),
+        frango: fmtNum(frango, 2),
+        linguica: fmtNum(linguica, 2),
+        totalCarne: fmtNum(totalCarne, 2),
       },
       carvao,
       bebidas: {

@@ -88,8 +88,8 @@ export const TOOL_SEO_DATA: Record<string, ToolSEOData> = {
     hasFAQ: false,
   },
   "conversor-moedas": {
-    title: "Converta Moedas para Reais em Tempo Real Grátis | CLICAresolve",
-    description: "Converta dólar, euro e outras moedas para reais com taxa atualizada. Gratuito, sem cadastro. Converta agora!",
+    title: "Conversor de Moedas: Dólar, Euro e Real | CLICAresolve",
+    description: "Converta dólar, euro e outras moedas para reais com cotações de referência que você pode editar com o valor do dia. Grátis e sem cadastro.",
     schemaType: "SoftwareApplication",
     hasFAQ: false,
   },
@@ -258,7 +258,7 @@ export const TOOL_SEO_DATA: Record<string, ToolSEOData> = {
     faqs: [
       { question: "Qual o intervalo ideal entre os lembretes de água?", answer: "Não há um número universal, mas intervalos de 1 a 2 horas são comumente recomendados para manter a hidratação ao longo do dia." },
       { question: "Quanto de água devo beber por dia?", answer: "A recomendação geral é de cerca de 35ml por kg de peso corporal, mas isso pode variar conforme atividade física e clima." },
-      { question: "Os lembretes funcionam com o navegador fechado?", answer: "Isso depende da configuração específica; notificações no navegador geralmente exigem que a aba ou o navegador estejam abertos." },
+      { question: "Os lembretes funcionam com o navegador fechado?", answer: "Não. Os lembretes funcionam enquanto a página estiver aberta, mesmo em outra aba. Se o navegador for fechado, os avisos param; ao abrir de novo, é só ligar o alerta." },
       { question: "Esqueci de beber água em um lembrete, o que fazer?", answer: "Sem problema, basta continuar seguindo os próximos lembretes normalmente; o objetivo é criar o hábito ao longo do tempo." },
     ],
   },
@@ -287,7 +287,7 @@ export const TOOL_SEO_DATA: Record<string, ToolSEOData> = {
       { question: "Qual é considerada uma boa velocidade de digitação?", answer: "A média geral fica em torno de 40 WPM, enquanto digitadores profissionais costumam atingir 65-75+ WPM." },
       { question: "Erros de digitação afetam o resultado?", answer: "Sim, a precisão é calculada junto com a velocidade; muitos erros reduzem tanto a pontuação de precisão quanto o WPM líquido considerado." },
       { question: "Praticar regularmente aumenta a velocidade de digitação?", answer: "Sim, digitação é uma habilidade motora que melhora com prática consistente, assim como outras habilidades manuais." },
-      { question: "O teste é feito só em português?", answer: "Depende da configuração da ferramenta; muitas oferecem testes em diferentes idiomas ou com textos variados." },
+      { question: "O teste é feito só em português?", answer: "Sim. Os textos do teste são em português, com acentos e pontuação, para medir a digitação como ela acontece no dia a dia." },
     ],
   },
   "contador-caracteres": {
@@ -311,7 +311,7 @@ export const TOOL_SEO_DATA: Record<string, ToolSEOData> = {
   },
   "mapeamento-erros": {
     title: "Mapeie Erros de Estudo e Melhore Notas Grátis | CLICAresolve",
-    description: "Registre e análise erros de estudo para melhorar. Gratuito, sem cadastro. Mapeie seus erros!",
+    description: "Anote acertos e erros por matéria e descubra quais conteúdos precisam de mais revisão antes da prova, do ENEM ou do concurso. Grátis e sem cadastro.",
     schemaType: "SoftwareApplication",
     hasFAQ: false,
   },
@@ -412,22 +412,22 @@ export const TOOL_SEO_DATA: Record<string, ToolSEOData> = {
     schemaType: "SoftwareApplication",
     hasFAQ: true,
     faqs: [
-      { question: "Quantas paradas posso adicionar no roteiro?", answer: "Geralmente é possível adicionar diversas paradas, mas o desempenho da otimização é melhor com uma quantidade moderada de pontos (até 10-15)." },
-      { question: "A ferramenta considera o trânsito em tempo real?", answer: "Isso depende da fonte de dados de mapa utilizada; a otimização básica geralmente considera distância, não necessariamente o trânsito ao vivo." },
+      { question: "Quantas paradas posso adicionar no roteiro?", answer: "Até 8 paradas por roteiro, além do ponto de partida." },
+      { question: "A ferramenta considera o trânsito em tempo real?", answer: "Não. A ferramenta localiza os lugares pelo OpenStreetMap e calcula a distância em linha reta entre as paradas. Ela não considera trânsito nem o traçado exato das ruas, então a distância real costuma ser um pouco maior. Para navegar, use um app de mapas." },
       { question: "Posso reordenar manualmente as paradas sugeridas?", answer: "Sim, a sugestão é um ponto de partida; o usuário pode ajustar a ordem conforme suas preferências pessoais." },
       { question: "Serve para roteiros de entrega ou só turismo?", answer: "Serve para qualquer situação com múltiplas paradas, incluindo entregas, visitas comerciais ou passeios turísticos." },
     ],
   },
   "onde-assistir": {
-    title: "Descubra Onde Assistir Filmes e Séries | CLICAresolve",
-    description: "Descubra em qual streaming está seu filme ou série. Gratuito, sem cadastro. Encontre agora!",
+    title: "Onde Assistir Esportes Hoje: Canais e Streaming | CLICAresolve",
+    description: "Guia dos canais de TV aberta, fechada e streaming que transmitem futebol, Fórmula 1, NBA, NFL, UFC e outros esportes no Brasil. Grátis.",
     schemaType: "SoftwareApplication",
     hasFAQ: true,
     faqs: [
       { question: "A informação de transmissão é sempre atualizada?", answer: "A programação esportiva pode mudar por decisão das emissoras; sempre vale confirmar próximo ao horário do jogo." },
-      { question: "Cobre apenas futebol?", answer: "Depende da abrangência da ferramenta; muitas dessas ferramentas focam em futebol, mas podem incluir outros esportes populares." },
-      { question: "Mostra jogos de qualquer país?", answer: "Geralmente prioriza competições de maior interesse do público local, podendo incluir campeonatos internacionais relevantes." },
-      { question: "Preciso de assinatura para assistir aos jogos indicados?", answer: "Depende do canal ou plataforma de cada transmissão — alguns jogos são exibidos em canais abertos, gratuitos, enquanto outros exigem assinatura paga." },
+      { question: "Cobre apenas futebol?", answer: "Não. O guia reúne os canais e serviços que transmitem futebol, Fórmula 1, NBA, NFL, UFC, tênis e outros esportes no Brasil." },
+      { question: "Mostra jogos de qualquer país?", answer: "O foco são as transmissões disponíveis no Brasil, incluindo campeonatos internacionais exibidos aqui, como Champions League, NBA e NFL." },
+      { question: "Preciso de assinatura para assistir aos jogos indicados?", answer: "Depende do canal: TV aberta e canais gratuitos no YouTube não cobram nada, enquanto TV fechada e streaming exigem assinatura. O guia indica o tipo de cada um." },
     ],
   },
   // Esportes
@@ -451,7 +451,7 @@ export const TOOL_SEO_DATA: Record<string, ToolSEOData> = {
     faqs: [
       { question: "Essa é uma previsão garantida?", answer: "Não, é uma estimativa estatística baseada na situação atual da tabela, não uma previsão exata do resultado final." },
       { question: "O que é 'aproveitamento' no futebol?", answer: "É a porcentagem de pontos conquistados em relação ao total possível nos jogos disputados (vitória = 3 pontos, empate = 1, derrota = 0)." },
-      { question: "A ferramenta considera o histórico de confrontos diretos?", answer: "Geralmente não; o cálculo foca na matemática de pontos necessários, não em fatores específicos como confrontos diretos ou saldo de gols." },
+      { question: "A ferramenta considera o histórico de confrontos diretos?", answer: "Não. O cálculo considera só os pontos e os jogos restantes. Critérios de desempate, como confronto direto e saldo de gols, não entram na conta." },
       { question: "Posso usar para qualquer campeonato?", answer: "Sim, desde que você tenha os dados de posição, pontos e jogos restantes do campeonato desejado." },
     ],
   },
@@ -475,7 +475,7 @@ export const TOOL_SEO_DATA: Record<string, ToolSEOData> = {
     faqs: [
       { question: "O placar serve para qualquer esporte?", answer: "Sim, por ser um contador genérico de pontos, funciona para praticamente qualquer esporte ou jogo que precise de contagem." },
       { question: "Posso resetar o placar durante o jogo?", answer: "Sim, há uma opção para zerar a pontuação e começar um novo jogo ou set." },
-      { question: "O placar salva o histórico de jogos anteriores?", answer: "Depende da versão da ferramenta; geralmente o foco é no acompanhamento em tempo real do jogo atual." },
+      { question: "O placar salva o histórico de jogos anteriores?", answer: "Não. O placar mostra apenas a partida atual; ao recarregar a página ou zerar, a contagem recomeça. Anote o resultado antes de começar outro jogo." },
       { question: "Posso usar em torneios com várias partidas?", answer: "Sim, basta resetar o placar entre uma partida e outra para acompanhar cada jogo separadamente." },
     ],
   },
@@ -519,7 +519,7 @@ export const TOOL_SEO_DATA: Record<string, ToolSEOData> = {
   },
   "formatador-legendas": {
     title: "Formate Legendas para Instagram e TikTok Grátis | CLICAresolve",
-    description: "Adicione quebras de linha para legendas. Gratuito, sem cadastro. Formate legendas!",
+    description: "Cole a legenda e mantenha os parágrafos e linhas em branco no Instagram e no TikTok com quebras de linha invisíveis. Grátis e sem cadastro.",
     schemaType: "SoftwareApplication",
     hasFAQ: true,
     faqs: [
@@ -655,7 +655,7 @@ export const TOOL_SEO_DATA: Record<string, ToolSEOData> = {
     schemaType: "SoftwareApplication",
     hasFAQ: true,
     faqs: [
-      { question: "A compatibilidade de signos tem comprovação científica?", answer: "Não, a astrologia é uma tradição cultural sem válidação científica; deve ser vista como entretenimento." },
+      { question: "A compatibilidade de signos tem comprovação científica?", answer: "Não, a astrologia é uma tradição cultural sem validação científica; deve ser vista como entretenimento." },
       { question: "O que são os elementos dos signos?", answer: "Cada signo é associado a um dos 4 elementos: Fogo, Terra, Ar ou Água, usados na tradição astrológica para descrever características." },
       { question: "Compatibilidade baixa significa que o relacionamento não vai dar certo?", answer: "Não, relacionamentos reais dependem de fatores muito mais complexos do que a astrologia, como comunicação, valores e experiências compartilhadas." },
       { question: "Todos os astrólogos concordam com essas combinações?", answer: "Não necessariamente; a astrologia tem diferentes escolas e interpretações, e as combinações podem variar conforme a tradição seguida." },
@@ -682,7 +682,7 @@ export const TOOL_SEO_DATA: Record<string, ToolSEOData> = {
     faqs: [
       { question: "Quantos livros estão na base de dados?", answer: "A base conta com mais de 60 livros organizados em 6 categorias diferentes de gênero literário." },
       { question: "Posso refazer o quiz para receber outras sugestões?", answer: "Sim, é possível refazer o quiz quantas vezes quiser, respondendo de forma diferente para explorar outras sugestões." },
-      { question: "A ferramenta cobre livros nacionais e internacionais?", answer: "Depende da composição da base de dados; geralmente inclui uma mistura de autores nacionais e internacionais mais conhecidos." },
+      { question: "A ferramenta cobre livros nacionais e internacionais?", answer: "Sim. A lista mistura clássicos e autores brasileiros, como Machado de Assis, Clarice Lispector, Jorge Amado e Ariano Suassuna, com sucessos internacionais." },
       { question: "As sugestões são personalizadas de verdade ou aleatórias?", answer: "As sugestões são cruzadas com base nas respostas do quiz, priorizando livros que combinem com o perfil de leitura identificado." },
     ],
   },
@@ -695,7 +695,7 @@ export const TOOL_SEO_DATA: Record<string, ToolSEOData> = {
     faqs: [
       { question: "A base de nomes cobre nomes de todas as origens?", answer: "A base cobre uma ampla variedade de origens (grega, latina, hebraica, entre outras), mas nem todo nome existente estará necessariamente catalogado." },
       { question: "O significado de um nome influencia a personalidade da pessoa?", answer: "Não há comprovação científica disso; o significado é uma informação cultural e etimológica, não uma previsão de personalidade." },
-      { question: "Nomes compostos também são consultados?", answer: "Geralmente a consulta funciona melhor para nomes individuais; nomes compostos podem ser consultados separadamente, parte por parte." },
+      { question: "Nomes compostos também são consultados?", answer: "Sim. Os compostos mais populares, como João Pedro, Pedro Henrique, Maria Eduarda e Ana Clara, têm página própria. Para os demais, consulte cada nome separadamente." },
       { question: "A popularidade do nome também é mostrada?", answer: "Em muitos casos sim, com dados sobre a frequência de uso do nome ao longo dos anos no Brasil." },
     ],
   },
@@ -750,7 +750,7 @@ export const TOOL_SEO_DATA: Record<string, ToolSEOData> = {
     hasFAQ: true,
     faqs: [
       { question: "Posso agendar mais de um serviço no mesmo horário para clientes diferentes?", answer: "Não é recomendado, já que cada atendimento exige atenção individual; a ferramenta ajuda justamente a evitar esse tipo de conflito." },
-      { question: "A agenda envia lembretes automáticos?", answer: "Isso depende da versão da ferramenta; o foco principal é a organização visual dos horários." },
+      { question: "A agenda envia lembretes automáticos?", answer: "Não. A agenda organiza os horários e fica salva no seu navegador, mas não envia mensagens. Uma boa prática é confirmar o horário com a cliente pelo WhatsApp um dia antes." },
       { question: "Posso cadastrar o valor de cada serviço na agenda?", answer: "Muitas versões permitem registrar o valor cobrado por atendimento, ajudando também no controle financeiro simples." },
       { question: "Serve para outros profissionais além de nail designers?", answer: "Sim, a lógica de agenda por horário e serviço pode ser adaptada para outros profissionais autônomos de beleza e estética." },
     ],
@@ -775,7 +775,7 @@ export const TOOL_SEO_DATA: Record<string, ToolSEOData> = {
     faqs: [
       { question: "A partir de que idade esse tipo de quadro funciona bem?", answer: "Costuma funcionar bem a partir dos 3-4 anos, quando a criança já entende símbolos visuais simples e conquistas." },
       { question: "Posso personalizar as tarefas do quadro?", answer: "Sim, é possível adicionar, remover ou editar as tarefas conforme a rotina específica de cada família." },
-      { question: "O quadro pode ser usado para mais de uma criança?", answer: "Depende da versão da ferramenta; muitas permitem criar quadros separados para cada criança da casa." },
+      { question: "O quadro pode ser usado para mais de uma criança?", answer: "Sim. Dá para cadastrar várias crianças, cada uma com suas tarefas e pontos, e alternar entre elas." },
       { question: "Esse tipo de recurso realmente ajuda no desenvolvimento infantil?", answer: "Educadores costumam recomendar quadros visuais de tarefas como forma de estimular autonomia, organização e senso de conquista nas crianças." },
     ],
   },
@@ -787,7 +787,7 @@ export const TOOL_SEO_DATA: Record<string, ToolSEOData> = {
     faqs: [
       { question: "O que é 'backlog' no contexto de jogos?", answer: "É a lista de jogos que uma pessoa possui ou pretende jogar, mas ainda não terminou ou nem começou." },
       { question: "Posso adicionar quantos jogos quiser ao backlog?", answer: "Sim, não há limite prático de jogos que podem ser catalogados na ferramenta." },
-      { question: "A ferramenta salva meu progresso entre sessões?", answer: "Isso depende da configuração; geralmente os dados ficam salvos localmente no navegador." },
+      { question: "A ferramenta salva meu progresso entre sessões?", answer: "Sim. A lista fica salva no navegador deste aparelho. Se você limpar os dados do navegador ou trocar de aparelho, ela não vai junto." },
       { question: "Serve para qualquer plataforma de jogos?", answer: "Sim, a ferramenta é genérica e pode catalogar jogos de qualquer console, PC ou plataforma mobile." },
     ],
   },
@@ -859,7 +859,7 @@ export const TOOL_SEO_DATA: Record<string, ToolSEOData> = {
     faqs: [
       { question: "Essa ferramenta confirma se o CPF/CNPJ realmente existe?", answer: "Não. Ela verifica apenas se os dígitos verificadores são matematicamente válidos. Para saber se o documento existe e está regular, é necessário consultar diretamente o site da Receita Federal." },
       { question: "Como funciona o cálculo do dígito verificador?", answer: "É um algoritmo matemático (módulo 11) que usa os primeiros dígitos do documento, multiplicados por pesos específicos, para calcular os 2 últimos dígitos de verificação." },
-      { question: "Meus dados são enviados para algum servidor?", answer: "Não, toda a válidação acontece no seu navegador, sem enviar o CPF/CNPJ digitado a nenhum lugar." },
+      { question: "Meus dados são enviados para algum servidor?", answer: "Não, toda a validação acontece no seu navegador, sem enviar o CPF/CNPJ digitado a nenhum lugar." },
       { question: "Um CPF com dígitos iguais (111.111.111-11) é válido?", answer: "Não, a ferramenta rejeita automaticamente sequências de dígitos repetidos, que nunca são CPFs/CNPJs reais válidos." },
     ],
   },
@@ -917,7 +917,7 @@ export const TOOL_SEO_DATA: Record<string, ToolSEOData> = {
     schemaType: "SoftwareApplication",
     hasFAQ: true,
     faqs: [
-      { question: "O que é uma expressão regular?", answer: "É um padrão de busca usado para encontrar, validar ou substituir textos que seguem uma estrutura específica, muito usado em válidação de formulários e processamento de texto." },
+      { question: "O que é uma expressão regular?", answer: "É um padrão de busca usado para encontrar, validar ou substituir textos que seguem uma estrutura específica, muito usado em validação de formulários e processamento de texto." },
       { question: "O que significa a flag \"g\" no regex?", answer: "Significa \"global\" - faz o regex encontrar TODAS as correspondências no texto, não apenas a primeira." },
       { question: "Por que meu regex não encontra nada?", answer: "Verifique se a sintaxe está correta e se as flags necessárias (como \"i\" para ignorar maiúsculas/minúsculas) estão marcadas." },
       { question: "Meu texto é enviado para algum servidor?", answer: "Não, todo o processamento acontece localmente no seu navegador." },
@@ -1124,7 +1124,7 @@ export const TOOL_SEO_DATA: Record<string, ToolSEOData> = {
       { question: "A marca d'água aparece em todas as páginas?", answer: "Sim, ela é aplicada automaticamente em todas as páginas do documento." },
       { question: "Posso ajustar a transparência da marca d'água?", answer: "Sim, use o controle de opacidade para deixá-la mais sutil ou mais visível, conforme necessário." },
       { question: "Meu PDF é enviado para algum servidor?", answer: "Não, todo o processamento acontece localmente no seu navegador." },
-      { question: "Posso usar uma imagem/logo como marca d'água ao invés de texto?", answer: "Esta versão da ferramenta trabalha com marca d'água em texto; marca d'água com imagem pode ser uma evolução futura da ferramenta." },
+      { question: "Posso usar uma imagem ou logo como marca d'água em vez de texto?", answer: "Ainda não. A ferramenta aplica marca d'água em texto, com tamanho, transparência e inclinação ajustáveis." },
     ],
   },
   "extrair-paginas-pdf": {
@@ -1344,7 +1344,7 @@ export const TOOL_SEO_DATA: Record<string, ToolSEOData> = {
     ],
   },
   "pegada-carbono-viagem": {
-    title: "Calculadora de Pegada de Carbono de Viagem Online Grátis | CLICAresolve",
+    title: "Pegada de Carbono da Viagem: Calculadora Grátis | CLICAresolve",
     description: "Estime a emissão de CO2 da sua viagem e quantas árvores seriam necessárias para compensar. Gratuito!",
     schemaType: "SoftwareApplication",
     hasFAQ: true,

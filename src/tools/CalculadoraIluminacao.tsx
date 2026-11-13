@@ -51,7 +51,7 @@ export function CalculadoraIluminacao({ onBack }: Props) {
       category="Casa"
       description="Descubra quantos lúmens e lâmpadas LED seu ambiente precisa para a iluminação ideal."
       onBack={onBack}
-      affiliateBanner={<AffiliateBanner terms={["lampada led"]} label="Ilumine seu ambiente" />}
+      affiliateBanner={<AffiliateBanner terms={["lâmpada led"]} label="Ilumine seu ambiente" />}
     >
       <div className="space-y-4">
         <div className="grid grid-cols-2 gap-4">
@@ -79,7 +79,7 @@ export function CalculadoraIluminacao({ onBack }: Props) {
 
         <div>
           <label className="text-sm text-gray-400 mb-1 block">Tipo de ambiente</label>
-          <select
+          <select aria-label="Tipo de ambiente"
             value={roomId}
             onChange={(e) => setRoomId(e.target.value)}
             className="input-field"

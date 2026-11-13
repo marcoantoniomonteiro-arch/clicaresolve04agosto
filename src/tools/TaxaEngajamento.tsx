@@ -6,6 +6,7 @@ import React, { useState, useMemo } from "react";
 import { TrendingUp, Heart, MessageCircle, Share2 } from "lucide-react";
 import { ToolContent } from "../components/ToolContent";
 
+import { fmtNum } from "../utils/format";
 interface Props {
   onBack: () => void;
 }
@@ -88,7 +89,7 @@ export function TaxaEngajamento({ onBack }: Props) {
 
         <div className="grid grid-cols-2 gap-4">
           <label className="block">
-            <span className="text-sm text-gray-400 mb-1 block">Comentarios Medios</span>
+            <span className="text-sm text-gray-400 mb-1 block">Comentários Médios</span>
             <input
               type="number"
               value={comentariosMedios}
@@ -98,7 +99,7 @@ export function TaxaEngajamento({ onBack }: Props) {
             />
           </label>
           <label className="block">
-            <span className="text-sm text-gray-400 mb-1 block">Compartilhamentos Medios</span>
+            <span className="text-sm text-gray-400 mb-1 block">Compartilhamentos Médios</span>
             <input
               type="number"
               value={compartilhamentos}
@@ -113,7 +114,7 @@ export function TaxaEngajamento({ onBack }: Props) {
           <div className="space-y-4">
             <div className="p-6 rounded-xl bg-green-500/10 border border-green-500/20 text-center">
               <p className="text-xs text-green-400 mb-1">Taxa de Engajamento</p>
-              <p className="text-5xl font-black text-green-400">{resultado.total.toFixed(2)}%</p>
+              <p className="text-5xl font-black text-green-400">{fmtNum(resultado.total, 2)}%</p>
             </div>
 
             <div className={`p-4 rounded-xl ${resultado.classificacao.bg} text-center`}>
@@ -126,17 +127,17 @@ export function TaxaEngajamento({ onBack }: Props) {
               <div className="p-4 rounded-xl bg-red-500/10 border border-red-500/20 text-center">
                 <Heart className="w-5 h-5 text-red-400 mx-auto mb-1" />
                 <p className="text-xs text-red-400">Curtidas</p>
-                <p className="text-lg font-bold text-red-400">{resultado.curtidas.toFixed(2)}%</p>
+                <p className="text-lg font-bold text-red-400">{fmtNum(resultado.curtidas, 2)}%</p>
               </div>
               <div className="p-4 rounded-xl bg-blue-500/10 border border-blue-500/20 text-center">
                 <MessageCircle className="w-5 h-5 text-blue-400 mx-auto mb-1" />
-                <p className="text-xs text-blue-400">Comentarios</p>
-                <p className="text-lg font-bold text-blue-400">{resultado.comentarios.toFixed(2)}%</p>
+                <p className="text-xs text-blue-400">Comentários</p>
+                <p className="text-lg font-bold text-blue-400">{fmtNum(resultado.comentarios, 2)}%</p>
               </div>
               <div className="p-4 rounded-xl bg-purple-500/10 border border-purple-500/20 text-center">
                 <Share2 className="w-5 h-5 text-purple-400 mx-auto mb-1" />
                 <p className="text-xs text-purple-400">Compart.</p>
-                <p className="text-lg font-bold text-purple-400">{resultado.compartilhamentos.toFixed(2)}%</p>
+                <p className="text-lg font-bold text-purple-400">{fmtNum(resultado.compartilhamentos, 2)}%</p>
               </div>
             </div>
 

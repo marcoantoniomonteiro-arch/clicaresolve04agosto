@@ -22,7 +22,7 @@ const GAME_CONFIG = {
     color: "bg-gradient-to-br from-green-500 to-emerald-600",
   },
   lotofacil: {
-    name: "Lotofacil",
+    name: "Lotofácil",
     totalNumbers: 25,
     numbersPerGame: 15,
     minNum: 1,
@@ -64,7 +64,7 @@ export function PalpitesLoteria({ onBack }: Props) {
       title="Palpites Loteria"
       emoji="🍀"
       category="Finanças"
-      description="Gere palpites aleatórios para Mega-Sena ou Lotofacil."
+      description="Gere palpites aleatórios para Mega-Sena ou Lotofácil."
       onBack={onBack}
       affiliateBanner={<AffiliateBanner terms={["kit loteria bolão"]} label="kit loteria bolão" />}
     

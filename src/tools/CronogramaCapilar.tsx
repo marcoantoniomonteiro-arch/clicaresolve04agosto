@@ -31,27 +31,27 @@ const CRONOGRAMAS: Record<Porosidade, Record<Objetivo, string[]>> = {
 
 const DICAS: Record<string, Record<string, string[]>> = {
   H: {
-    titulo: "Hidratacao",
+    titulo: "Hidratação",
     cor: "bg-blue-500",
     dicas: [
       "Use mascaras com glicerina, aloe vera, pantenol",
       "Lave com água morna, não quente",
       "Deixe a mascara agir por 15-20 min",
-      "Use touca termica para potencializar",
+      "Use touca térmica para potencializar",
     ],
   },
   N: {
-    titulo: "Nutricao",
+    titulo: "Nutrição",
     cor: "bg-yellow-500",
     dicas: [
-      "Use mascaras com oleos: argan, coco, rícino",
+      "Use mascaras com óleos: argan, coco, rícino",
       "Aplique do comprimento as pontas",
       "Evite na raiz se tiver cabelo oleoso",
       "Leave-in após o procedimento",
     ],
   },
   R: {
-    titulo: "Reconstrucao",
+    titulo: "Reconstrução",
     cor: "bg-red-500",
     dicas: [
       "Use produtos com queratina, colageno, cisteina",
@@ -62,7 +62,7 @@ const DICAS: Record<string, Record<string, string[]>> = {
   },
 };
 
-const DIAS_SEMANA = ["Domingo", "Segunda", "Terca", "Quarta", "Quinta", "Sexta", "Sabado"];
+const DIAS_SEMANA = ["Domingo", "Segunda", "Terça", "Quarta", "Quinta", "Sexta", "Sábado"];
 
 export function CronogramaCapilar({ onBack }: Props) {
   const [porosidade, setPorosidade] = useState<Porosidade>("media");
@@ -81,7 +81,7 @@ export function CronogramaCapilar({ onBack }: Props) {
       onBack={onBack}
       affiliateBanner={
         <AffiliateBanner
-          terms={["mascara capilar", "oleo para cabelo", "creme de pentear"]}
+          terms={["mascara capilar", "óleo para cabelo", "creme de pentear"]}
           label="Produtos para seu cabelo"
           shopeeTerms={["máscara capilar"]} shopeeLabel="Ver na Shopee"
         />
@@ -117,9 +117,9 @@ export function CronogramaCapilar({ onBack }: Props) {
             <span className="text-sm text-gray-400 mb-2 block">Objetivo Principal</span>
             <div className="space-y-2">
               {[
-                { value: "hidratacao", label: "Hidratacao", desc: "Fios ressecados" },
-                { value: "nutricao", label: "Nutricao", desc: "Fios sem brilho/opacos" },
-                { value: "reconstrucao", label: "Reconstrucao", desc: "Fios danificados" },
+                { value: "hidratacao", label: "Hidratação", desc: "Fios ressecados" },
+                { value: "nutricao", label: "Nutrição", desc: "Fios sem brilho/opacos" },
+                { value: "reconstrucao", label: "Reconstrução", desc: "Fios danificados" },
               ].map((o) => (
                 <button
                   key={o.value}

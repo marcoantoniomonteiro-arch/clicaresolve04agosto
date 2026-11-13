@@ -6,6 +6,7 @@ import React, { useState, useMemo } from "react";
 import { ToolContent } from "../components/ToolContent";
 import { CONFIG } from "../config";
 
+import { fmtNum } from "../utils/format";
 interface Props {
   onBack: () => void;
 }
@@ -24,8 +25,9 @@ export function SalarioHora({ onBack }: Props) {
 
   const result = useMemo(() => {
     const hora = parseFloat(valorHora.replace(",", ".")) || 0;
-    const hDia = parseInt(horasDia) || 8;
-    const dSemana = parseInt(diasSemana) || 5;
+    // Limita a valores possíveis: até 24 h por dia e 7 dias por semana
+    const hDia = Math.min(24, Math.max(1, parseInt(horasDia) || 8));
+    const dSemana = Math.min(7, Math.max(1, parseInt(diasSemana) || 5));
 
     const horasMes = hDia * dSemana * 4.33;
     const bruto = hora * horasMes;
@@ -73,6 +75,8 @@ export function SalarioHora({ onBack }: Props) {
             <span className="text-sm text-gray-400 mb-1 block">Horas/dia</span>
             <input
               type="number"
+              min={1}
+              max={24}
               value={horasDia}
               onChange={(e) => setHorasDia(e.target.value)}
               className="input-field"
@@ -82,6 +86,8 @@ export function SalarioHora({ onBack }: Props) {
             <span className="text-sm text-gray-400 mb-1 block">Dias/semana</span>
             <input
               type="number"
+              min={1}
+              max={7}
               value={diasSemana}
               onChange={(e) => setDiasSemana(e.target.value)}
               className="input-field"
@@ -94,32 +100,32 @@ export function SalarioHora({ onBack }: Props) {
             <div className="p-5 rounded-xl bg-green-500/10 border border-green-500/20 text-center">
               <p className="text-xs text-green-400 mb-1">Salário Líquido Estimado</p>
               <p className="text-4xl font-black text-green-400">
-                R$ {result.liquido.toLocaleString("pt-BR", { minimumFractionDigits: 2 })}
+                R$ {result.liquido.toLocaleString("pt-BR", { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
               </p>
             </div>
 
             <div className="grid grid-cols-3 gap-3">
               <div className="p-4 rounded-xl bg-white/5 text-center">
-                <p className="text-xs text-gray-400">Horas/Mes</p>
-                <p className="text-lg font-bold text-white">{result.horasMes.toFixed(0)}</p>
+                <p className="text-xs text-gray-400">Horas/mês</p>
+                <p className="text-lg font-bold text-white">{fmtNum(result.horasMes, 0)}</p>
               </div>
               <div className="p-4 rounded-xl bg-white/5 text-center">
                 <p className="text-xs text-gray-400">Bruto</p>
                 <p className="text-lg font-bold text-white">
-                  R$ {result.bruto.toLocaleString("pt-BR", { minimumFractionDigits: 2 })}
+                  R$ {result.bruto.toLocaleString("pt-BR", { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
                 </p>
               </div>
               <div className="p-4 rounded-xl bg-red-500/10 border border-red-500/20 text-center">
                 <p className="text-xs text-red-400">INSS</p>
                 <p className="text-lg font-bold text-red-400">
-                  R$ {result.inss.toLocaleString("pt-BR", { minimumFractionDigits: 2 })}
+                  R$ {result.inss.toLocaleString("pt-BR", { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
                 </p>
               </div>
             </div>
 
             <div className="p-3 rounded-lg bg-white/5 text-xs text-gray-400">
               <p>
-                Considerando: {result.hDia}h/dia x {result.dSemana} dias/semana = {result.horasMes.toFixed(0)} horas/mes
+                Considerando: {result.hDia}h/dia x {result.dSemana} dias/semana = {fmtNum(result.horasMes, 0)} horas/mês
               </p>
             </div>
           </div>
@@ -129,7 +135,7 @@ export function SalarioHora({ onBack }: Props) {
         toolName="SalarioHora"
         category="Finanças"
         data={{
-          directAnswer: "Com salário de R$ 2.640 (mínimo 2026) e 220h mensais, o valor/hora é R$ 12.00. Com horas extras, o valor é R$ 18.00.",
+          directAnswer: "Com o salário mínimo de 2026 (R$ 1.621) e jornada de 220 horas por mês, a hora vale R$ 7,37. Com 50% de hora extra, a hora extra vale R$ 11,05.",
           howItWorks: "O conversor calcula o salário mensal a partir do valor-hora, considerando a jornada de trabalho. A fórmula: salário bruto = valor-hora × horas/dia × dias/semana × 4,33 semanas/mês. A ferramenta aplica a tabela do INSS vigente (alíquotas progressivas: 7,5%, 9%, 12%, 14%) e desconta o valor correspondente. Mostra 4 valores: salário bruto, INSS, salário líquido e horas/mês. A tabela do INSS é atualizada automaticamente conforme a legislação brasileira. O cálculo é aproximado e não considera dependentes, plano de saúde ou outros descontos opcionais.",
           example: {
             title: "Exemplo: R$ 25/hora, 8h/dia, 5 dias/semana",

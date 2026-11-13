@@ -7,6 +7,7 @@ import { Plus, Trash2, TrendingDown, TrendingUp, AlertTriangle } from "lucide-re
 import { ToolContent } from "../components/ToolContent";
 import { CONFIG } from "../config";
 
+import { fmtNum } from "../utils/format";
 interface Props {
   onBack: () => void;
 }
@@ -90,7 +91,7 @@ export function MapeamentoErros({ onBack }: Props) {
             type="text"
             value={novaMateria}
             onChange={(e) => setNovaMateria(e.target.value)}
-            placeholder="Materia"
+            placeholder="Matéria"
             className="input-field"
             onKeyDown={(e) => e.key === "Enter" && addMateria()}
           />
@@ -148,7 +149,7 @@ export function MapeamentoErros({ onBack }: Props) {
                         pct < 50 ? "text-red-400" : pct < 70 ? "text-yellow-400" : "text-green-400"
                       }`}
                     >
-                      {pct.toFixed(0)}%
+                      {fmtNum(pct, 0)}%
                     </span>
                     <button
                       onClick={() => removeMateria(m.id)}
@@ -187,7 +188,7 @@ export function MapeamentoErros({ onBack }: Props) {
                             />
                           </div>
                           <span className="text-xs text-gray-300 w-10 text-right">
-                            {pct.toFixed(0)}%
+                            {fmtNum(pct, 0)}%
                           </span>
                         </div>
                       );
@@ -209,7 +210,7 @@ export function MapeamentoErros({ onBack }: Props) {
                   <div className="p-4 rounded-xl bg-blue-500/10 border border-blue-500/20 text-center">
                     <TrendingDown className="w-5 h-5 text-blue-400 mx-auto mb-1" />
                     <p className="text-xs text-blue-400">Média Geral</p>
-                    <p className="text-sm font-bold text-blue-400">{stats.mediaGeral.toFixed(1)}%</p>
+                    <p className="text-sm font-bold text-blue-400">{fmtNum(stats.mediaGeral, 1)}%</p>
                   </div>
                 </div>
 

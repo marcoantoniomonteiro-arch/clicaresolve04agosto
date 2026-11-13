@@ -5,14 +5,15 @@ import { ToolContent } from "../components/ToolContent";
 import { FileDown, FileText, Minimize2 } from "lucide-react";
 import { PDFDocument } from "pdf-lib";
 
+import { fmtNum } from "../utils/format";
 interface Props {
   onBack: () => void;
 }
 
 function formatBytes(bytes: number): string {
   if (bytes < 1024) return `${bytes} B`;
-  if (bytes < 1024 * 1024) return `${(bytes / 1024).toFixed(1)} KB`;
-  return `${(bytes / (1024 * 1024)).toFixed(2)} MB`;
+  if (bytes < 1024 * 1024) return `${fmtNum((bytes / 1024), 1)} KB`;
+  return `${fmtNum((bytes / (1024 * 1024)), 2)} MB`;
 }
 
 export function ComprimirPDF({ onBack }: Props) {

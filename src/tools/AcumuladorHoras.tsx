@@ -96,7 +96,7 @@ export function AcumuladorHoras({ onBack }: Props) {
       onBack={onBack}
       affiliateBanner={<AffiliateBanner terms={["relógio de ponto digital"]} label="relógio de ponto digital" />}
     
-      disclaimer="Cálculo matematico. Não inclui adicionais de Convenções Coletivas (CCT)."
+      disclaimer="Cálculo matemático. Não inclui adicionais de Convenções Coletivas (CCT)."
     >
       <div className="space-y-5">
         <label className="block">
@@ -122,21 +122,21 @@ export function AcumuladorHoras({ onBack }: Props) {
           {registros.map((r, idx) => (
             <div key={r.id} className="flex items-center gap-2 p-2 rounded-lg bg-white/5">
               <span className="text-xs text-gray-500 w-6">{idx + 1}</span>
-              <input
+              <input aria-label="Horário de entrada"
                 type="time"
                 value={r.entrada}
                 onChange={(e) => updateRegistro(r.id, "entrada", e.target.value)}
                 className="input-field flex-1"
               />
               <span className="text-gray-400">→</span>
-              <input
+              <input aria-label="Horário de saída"
                 type="time"
                 value={r.saida}
                 onChange={(e) => updateRegistro(r.id, "saida", e.target.value)}
                 className="input-field flex-1"
               />
               {registros.length > 1 && (
-                <button
+                <button aria-label="Remover registro"
                   onClick={() => removeRegistro(r.id)}
                   className="text-gray-500 hover:text-red-400 transition-colors"
                 >
@@ -153,7 +153,7 @@ export function AcumuladorHoras({ onBack }: Props) {
             className="w-full p-2 rounded-lg border border-dashed border-white/20 text-gray-400 hover:border-white/40 hover:text-white transition-all flex items-center justify-center gap-2"
           >
             <Plus className="w-4 h-4" />
-            Adicionar par entrada/saida
+            Adicionar par entrada/saída
           </button>
         )}
 

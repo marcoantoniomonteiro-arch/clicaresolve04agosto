@@ -22,7 +22,7 @@ const DEFAULT_RATES: Record<Moeda, number> = {
 
 const MOEDA_NAMES: Record<Moeda, string> = {
   BRL: "Real Brasileiro",
-  USD: "Dolar Americano",
+  USD: "Dólar Americano",
   EUR: "Euro",
   ARS: "Peso Argentino",
   GBP: "Libra Esterlina",
@@ -79,7 +79,7 @@ export function ConversorMoedas({ onBack }: Props) {
       title="Conversor de Moedas"
       emoji="💱"
       category="Finanças"
-      description="Converta valores entre diferentes moedas com taxas editaveis."
+      description="Converta valores entre diferentes moedas com taxas editáveis."
       onBack={onBack}
       affiliateBanner={<AffiliateBanner terms={["livro educação financeira"]} label="livro educação financeira" />}
     
@@ -173,7 +173,7 @@ export function ConversorMoedas({ onBack }: Props) {
         category="Finanças"
         data={{
           directAnswer: "A conversão de moedas multiplica o valor informado pela taxa de câmbio atual entre a moeda de origem e a de destino.",
-          howItWorks: "A ferramenta usa a taxa de câmbio de referência entre as duas moedas selecionadas para calcular o valor equivalente. É uma estimativa baseada em cotações de mercado, que variam ao longo do dia. Em transações reais, bancos e casas de câmbio costumam aplicar spread cambial e taxas adicionais.",
+          howItWorks: "A ferramenta usa cotações de referência para calcular o valor equivalente entre as duas moedas. Como o câmbio muda ao longo do dia, você pode editar qualquer cotação com o valor atual, informado pelo seu banco ou por um site financeiro. Em transações reais, bancos e casas de câmbio costumam aplicar spread cambial e taxas adicionais.",
           example: {
             title: "Exemplo: converter R$ 1.000 para Dólar, cotação R$ 5,20",
             steps: [
@@ -186,7 +186,7 @@ export function ConversorMoedas({ onBack }: Props) {
           },
           faqs: [
             { question: "A cotação mostrada é a mesma do banco?", answer: "É uma referência de mercado. Bancos e casas de câmbio aplicam spread, então o valor final pode diferir." },
-            { question: "Com que frequência a cotação é atualizada?", answer: "As cotações variam ao longo do dia útil, seguindo o mercado financeiro internacional." },
+            { question: "A cotação é atualizada automaticamente?", answer: "Não. A ferramenta usa cotações de referência. Para um valor exato, toque em Editar cotações e digite a cotação do dia informada pelo seu banco ou por um site financeiro." },
             { question: "Posso converter qualquer par de moedas?", answer: "Sim, entre as principais moedas disponíveis na lista de seleção." },
             { question: "Por que compra e venda têm valores diferentes?", answer: "Instituições financeiras cobram uma margem (spread) entre o preço de compra e o de venda." },
           ],

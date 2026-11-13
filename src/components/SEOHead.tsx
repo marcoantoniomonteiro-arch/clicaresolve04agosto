@@ -33,7 +33,7 @@ export function SEOHead({
   noindex = false,
 }: SEOHeadProps) {
   const fullTitle = title
-    ? (/CLICAresolve/i.test(title) ? title : `${title} | CLICAresolve`)
+    ? (/CLICAresolve/i.test(title) || title.length > 52 ? title : `${title} | CLICAresolve`)
     : "CLICAresolve — Ferramentas Gratuitas para o Dia a Dia";
   const og = ogTitle || title || "CLICAresolve";
   const ogDesc = ogDescription || description;

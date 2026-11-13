@@ -61,7 +61,7 @@ export function CalculadoraGorjeta({ onBack }: Props) {
               </button>
             ))}
           </div>
-          <input
+          <input aria-label="Porcentagem de gorjeta"
             type="range"
             min="0"
             max="30"

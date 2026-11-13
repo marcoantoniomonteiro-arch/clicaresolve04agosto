@@ -22,7 +22,7 @@ export function AffiliateBanner({ terms }: AffiliateBannerProps) {
         {shown.map((term, i) => (
           <React.Fragment key={term}>
             {i > 0 && " · "}
-            <a href={CONFIG.urlAmazon(term)} target="_blank" rel="noopener noreferrer sponsored" className="text-green-400 hover:text-green-300 underline-offset-2 hover:underline">
+            <a href={CONFIG.urlAmazon(term)} target="_blank" rel="noopener noreferrer sponsored" className="text-green-400 hover:text-green-300 underline underline-offset-2">
               {term}
             </a>
           </React.Fragment>

@@ -4,6 +4,7 @@ import { AffiliateBanner } from "../components/AffiliateBanner";
 import { ToolContent } from "../components/ToolContent";
 import { Info } from "lucide-react";
 
+import { fmtNum } from "../utils/format";
 interface Props {
   onBack: () => void;
 }
@@ -95,9 +96,9 @@ export function AlcoolGasolina({ onBack }: Props) {
       onBack={onBack}
       affiliateBanner={
         <AffiliateBanner
-          terms={["funil de abastecimento", "testador de combustivel"]}
+          terms={["funil de abastecimento", "testador de combustível"]}
           label="Acessórios para o seu carro"
-          mercadoLivreTerms={["funil abastecimento combustivel", "testador de combustivel gasolina"]}
+          mercadoLivreTerms={["funil abastecimento combustível", "testador de combustível gasolina"]}
           mercadoLivreLabel="Encontre no Mercado Livre"
         />
       }
@@ -194,10 +195,10 @@ export function AlcoolGasolina({ onBack }: Props) {
             </p>
             <p className="text-sm text-gray-400 mt-2">
               Relação álcool/gasolina:{" "}
-              <strong>{result.ratio.toFixed(3)}</strong>
+              <strong>{fmtNum(result.ratio, 3)}</strong>
               {result.compensa === "alcool"
-                ? ` (abaixo de ${result.threshold.toFixed(2)} — álcool é mais econômico)`
-                : ` (acima de ${result.threshold.toFixed(2)} — gasolina rende mais)`}
+                ? ` (abaixo de ${fmtNum(result.threshold, 2)} — álcool é mais econômico)`
+                : ` (acima de ${fmtNum(result.threshold, 2)} — gasolina rende mais)`}
             </p>
             <p className="text-xs text-gray-500 mt-2">
               Cenário: {result.scenarioLabel}
@@ -214,7 +215,7 @@ export function AlcoolGasolina({ onBack }: Props) {
           howItWorks:
             "A ferramenta calcula a relação álcool/gasolina: preço do litro de álcool ÷ preço do litro de gasolina. A regra prática brasileira é: se a relação for menor que o ponto de equilíbrio (aproximadamente 70%), o álcool compensa mais; se for maior, a gasolina é mais vantajosa. Isso se deve ao fato de que o álcool tem menor rendimento energético (aproximadamente 30% a menos que a gasolina). O ponto de equilíbrio exato depende do teor de etanol anidro misturado na gasolina comercial: com o novo padrão de 32% (antes 30%), a gasolina tem ligeiramente menos energia por litro, o que eleva o ponto de equilíbrio de 0,70 para aproximadamente 0,704. A ferramenta permite alternar entre os dois cenários para comparar.",
           example: {
-            title: "Exemplo: álcool a R$ 4.89 e gasolina a R$ 6.29",
+            title: "Exemplo: álcool a R$ 4,89 e gasolina a R$ 6,29",
             steps: [
               "Informe o preço do álcool: R$ 4,89",
               "Informe o preço da gasolina: R$ 6,29",

@@ -117,7 +117,7 @@ export function PlanejadorFusoHorario({ onBack }: Props) {
       category="Utilidades"
       description="Encontre a janela de horário comercial comum entre cidades para agendar reuniões internacionais."
       onBack={onBack}
-      affiliateBanner={<AffiliateBanner terms={["relogio mundial"]} label="Relógios mundiais" />}
+      affiliateBanner={<AffiliateBanner terms={["relógio mundial"]} label="Relógios mundiais" />}
     >
       <div className="space-y-4">
         <div>
@@ -162,7 +162,7 @@ export function PlanejadorFusoHorario({ onBack }: Props) {
                   </p>
                 </div>
                 {selectedIds.length > 1 && (
-                  <button
+                  <button aria-label={`Remover ${city.label}`}
                     onClick={() => removeCity(city.id)}
                     className="text-gray-500 hover:text-red-400"
                   >
@@ -177,7 +177,7 @@ export function PlanejadorFusoHorario({ onBack }: Props) {
         {selectedCities.length >= 2 && (
           <div>
             <h3 className="text-sm font-bold text-white mb-3">Linhas do tempo (24h)</h3>
-            <div className="space-y-3 overflow-x-auto">
+            <div className="space-y-3 overflow-x-auto" tabIndex={0} role="region" aria-label="Linha do tempo dos fusos horários">
               {timelineData.map(({ city, hours }) => (
                 <div key={city.id} className="flex items-center gap-2">
                   <div className="w-20 shrink-0 text-xs text-gray-400 truncate">{city.label}</div>

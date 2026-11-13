@@ -75,7 +75,7 @@ export function RegaPlantas({ onBack }: Props) {
       <div className="space-y-4">
         <div>
           <label className="text-sm text-gray-400 mb-1 block">Tipo de planta</label>
-          <select
+          <select aria-label="Tipo de planta"
             value={plantId}
             onChange={(e) => setPlantId(e.target.value)}
             className="input-field"

@@ -34,7 +34,7 @@ const NAMES_DB: Record<string, Record<string, Record<string, NameEntry[]>>> = {
         { name: "Noir", emoji: "🇫🇷" },
         { name: "Onix", emoji: "💎" },
         { name: "Sombra", emoji: "🌑" },
-        { name: "Trovao", emoji: "⚡" },
+        { name: "Trovão", emoji: "⚡" },
         { name: "Midnight", emoji: "🌙" },
         { name: "Carbono", emoji: "⚫" },
         { name: "Max", emoji: "🐕" },
@@ -53,7 +53,7 @@ const NAMES_DB: Record<string, Record<string, Record<string, NameEntry[]>>> = {
         { name: "Foguinho", emoji: "🔥" },
       ],
       comida: [
-        { name: "Cafe", emoji: "☕" },
+        { name: "Café", emoji: "☕" },
         { name: "Pretzel", emoji: "🥨" },
         { name: "Ameixa", emoji: "🍇" },
         { name: "Uva", emoji: "🍇" },

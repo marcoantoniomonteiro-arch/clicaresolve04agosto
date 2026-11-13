@@ -6,6 +6,7 @@ import React, { useState, useEffect, useMemo, useCallback } from "react";
 import { Book, Check, Share2, RotateCcw } from "lucide-react";
 import { ToolContent } from "../components/ToolContent";
 
+import { fmtNum } from "../utils/format";
 interface Props {
   onBack: () => void;
 }
@@ -17,36 +18,36 @@ const generatePlano = (): { dia: number; livro: string; capitulos: string }[] =>
   const plano: { dia: number; livro: string; capitulos: string }[] = [];
 
   const livros = [
-    { nome: "Genesis", caps: 50 },
-    { nome: "Exodo", caps: 40 },
-    { nome: "Levitico", caps: 27 },
-    { nome: "Numeros", caps: 36 },
-    { nome: "Deuteronomio", caps: 34 },
-    { nome: "Josue", caps: 24 },
-    { nome: "Juizes", caps: 21 },
+    { nome: "Gênesis", caps: 50 },
+    { nome: "Êxodo", caps: 40 },
+    { nome: "Levítico", caps: 27 },
+    { nome: "Números", caps: 36 },
+    { nome: "Deuteronômio", caps: 34 },
+    { nome: "Josué", caps: 24 },
+    { nome: "Juízes", caps: 21 },
     { nome: "Rute", caps: 4 },
     { nome: "1 Samuel", caps: 31 },
     { nome: "2 Samuel", caps: 24 },
     { nome: "1 Reis", caps: 22 },
     { nome: "2 Reis", caps: 25 },
-    { nome: "1 Cronicas", caps: 29 },
-    { nome: "2 Cronicas", caps: 36 },
+    { nome: "1 Crônicas", caps: 29 },
+    { nome: "2 Crônicas", caps: 36 },
     { nome: "Esdras", caps: 10 },
     { nome: "Neemias", caps: 13 },
     { nome: "Ester", caps: 10 },
-    { nome: "Job", caps: 42 },
+    { nome: "Jó", caps: 42 },
     { nome: "Salmos", caps: 150 },
-    { nome: "Proverbios", caps: 31 },
+    { nome: "Provérbios", caps: 31 },
     { nome: "Eclesiastes", caps: 12 },
-    { nome: "Canticos", caps: 8 },
-    { nome: "Isaias", caps: 66 },
+    { nome: "Cânticos", caps: 8 },
+    { nome: "Isaías", caps: 66 },
     { nome: "Jeremias", caps: 52 },
-    { nome: "Lamentacoes", caps: 5 },
+    { nome: "Lamentações", caps: 5 },
     { nome: "Ezequiel", caps: 48 },
     { nome: "Daniel", caps: 12 },
     { nome: "Oseias", caps: 14 },
     { nome: "Joel", caps: 3 },
-    { nome: "Amos", caps: 9 },
+    { nome: "Amós", caps: 9 },
     { nome: "Obadias", caps: 1 },
     { nome: "Jonas", caps: 4 },
     { nome: "Miqueias", caps: 7 },
@@ -59,28 +60,28 @@ const generatePlano = (): { dia: number; livro: string; capitulos: string }[] =>
     { nome: "Mateus", caps: 28 },
     { nome: "Marcos", caps: 16 },
     { nome: "Lucas", caps: 24 },
-    { nome: "Joao", caps: 21 },
+    { nome: "João", caps: 21 },
     { nome: "Atos", caps: 28 },
     { nome: "Romanos", caps: 16 },
-    { nome: "1 Corintios", caps: 16 },
-    { nome: "2 Corintios", caps: 13 },
-    { nome: "Galatas", caps: 6 },
-    { nome: "Efesios", caps: 6 },
+    { nome: "1 Coríntios", caps: 16 },
+    { nome: "2 Coríntios", caps: 13 },
+    { nome: "Gálatas", caps: 6 },
+    { nome: "Efésios", caps: 6 },
     { nome: "Filipenses", caps: 4 },
     { nome: "Colossenses", caps: 4 },
     { nome: "1 Tessalonicenses", caps: 5 },
     { nome: "2 Tessalonicenses", caps: 3 },
-    { nome: "1 Timoteo", caps: 6 },
-    { nome: "2 Timoteo", caps: 4 },
+    { nome: "1 Timóteo", caps: 6 },
+    { nome: "2 Timóteo", caps: 4 },
     { nome: "Tito", caps: 3 },
     { nome: "Filemom", caps: 1 },
     { nome: "Hebreus", caps: 13 },
     { nome: "Tiago", caps: 5 },
     { nome: "1 Pedro", caps: 5 },
     { nome: "2 Pedro", caps: 3 },
-    { nome: "1 Joao", caps: 5 },
-    { nome: "2 Joao", caps: 1 },
-    { nome: "3 Joao", caps: 1 },
+    { nome: "1 João", caps: 5 },
+    { nome: "2 João", caps: 1 },
+    { nome: "3 João", caps: 1 },
     { nome: "Judas", caps: 1 },
     { nome: "Apocalipse", caps: 22 },
   ];
@@ -178,7 +179,7 @@ export function PlanoLeituraBiblica({ onBack }: Props) {
         <div className="p-4 rounded-xl bg-white/5 border border-white/8">
           <div className="flex justify-between items-center mb-2">
             <span className="text-sm text-gray-400">Progresso Anual</span>
-            <span className="text-sm font-bold text-green-400">{progresso.percent.toFixed(1)}%</span>
+            <span className="text-sm font-bold text-green-400">{fmtNum(progresso.percent, 1)}%</span>
           </div>
           <div className="h-3 bg-white/10 rounded-full overflow-hidden">
             <div
@@ -202,7 +203,7 @@ export function PlanoLeituraBiblica({ onBack }: Props) {
                   <p className="text-lg font-bold text-white">{leituraDeHoje.livro}</p>
                   <p className="text-sm text-gray-400">Capítulos {leituraDeHoje.capitulos}</p>
                 </div>
-                <button
+                <button aria-label="Marcar a leitura do dia como concluída"
                   onClick={() => toggleDia(diaAtual)}
                   className={`w-10 h-10 rounded-xl flex items-center justify-center transition-all ${
                     concluidos[diaAtual]

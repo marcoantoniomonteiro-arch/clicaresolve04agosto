@@ -28,6 +28,33 @@
     -moz-osx-font-smoothing: grayscale;
   }
 
+  /* Links dentro de textos são sublinhados (não dependem só da cor) */
+  p a,
+  li a,
+  dd a {
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+
+  /* Contraste mínimo (WCAG AA) para textos cinza no tema escuro */
+  html:not(.light) .text-gray-500 {
+    color: #959ca8;
+  }
+  html:not(.light) .text-gray-600 {
+    color: #8a919d;
+  }
+
+  /* Botões coloridos com texto branco: tons mais escuros para atingir contraste AA */
+  .bg-blue-500.text-white {
+    background-color: #2563eb;
+  }
+  .bg-green-600.text-white {
+    background-color: #15803d;
+  }
+  .bg-pink-500.text-white {
+    background-color: #be185d;
+  }
+
   /* Rede de segurança: nada pode fazer a página rolar para o lado no celular */
   html,
   body {
@@ -80,3 +107,43 @@
     transition: all 0.2s ease;
   }
 }
+
+/* ================= Tema claro =================
+   As ferramentas foram desenhadas para o tema escuro (texto claro sobre fundo escuro).
+   No tema claro, estas regras escurecem textos claros e ajustam fundos e bordas translúcidos.
+   Contêineres que continuam escuros (rodapé de cookies, botões de marca) ficam de fora. */
+html.light [class*="text-white"]:not([class*="bg-"]):not(.bg-slate-900 *):not([class*="bg-["] *):not(.bg-black *) { color: var(--color-text); }
+html.light [class*="text-white"][class*="bg-white/"]:not(.bg-slate-900 *):not([class*="bg-["] *):not(.bg-black *), html.light [class*="text-white"][class*="bg-transparent"]:not(.bg-slate-900 *):not([class*="bg-["] *):not(.bg-black *), html.light [class*="text-white"][class*="bg-black/"]:not(.bg-slate-900 *):not([class*="bg-["] *):not(.bg-black *) { color: var(--color-text); }
+html.light .text-gray-100:not(.bg-slate-900 *):not([class*="bg-["] *):not(.bg-black *), html.light .text-gray-200:not(.bg-slate-900 *):not([class*="bg-["] *):not(.bg-black *) { color: #1f2937; }
+html.light .text-gray-300:not(.bg-slate-900 *):not([class*="bg-["] *):not(.bg-black *) { color: #374151; }
+html.light .text-gray-400:not(.bg-slate-900 *):not([class*="bg-["] *):not(.bg-black *), html.light .text-gray-500:not(.bg-slate-900 *):not([class*="bg-["] *):not(.bg-black *), html.light .text-gray-600:not(.bg-slate-900 *):not([class*="bg-["] *):not(.bg-black *) { color: #4b5563; }
+html.light .text-green-200:not(.bg-slate-900 *):not([class*="bg-["] *):not(.bg-black *), html.light .text-green-300:not(.bg-slate-900 *):not([class*="bg-["] *):not(.bg-black *), html.light .text-green-400:not(.bg-slate-900 *):not([class*="bg-["] *):not(.bg-black *), html.light [class*="text-green-400/"]:not(.bg-slate-900 *):not([class*="bg-["] *):not(.bg-black *) { color: #166534; }
+html.light .text-emerald-200:not(.bg-slate-900 *):not([class*="bg-["] *):not(.bg-black *), html.light .text-emerald-300:not(.bg-slate-900 *):not([class*="bg-["] *):not(.bg-black *), html.light .text-emerald-400:not(.bg-slate-900 *):not([class*="bg-["] *):not(.bg-black *), html.light [class*="text-emerald-400/"]:not(.bg-slate-900 *):not([class*="bg-["] *):not(.bg-black *) { color: #065f46; }
+html.light .text-teal-200:not(.bg-slate-900 *):not([class*="bg-["] *):not(.bg-black *), html.light .text-teal-300:not(.bg-slate-900 *):not([class*="bg-["] *):not(.bg-black *), html.light .text-teal-400:not(.bg-slate-900 *):not([class*="bg-["] *):not(.bg-black *), html.light [class*="text-teal-400/"]:not(.bg-slate-900 *):not([class*="bg-["] *):not(.bg-black *) { color: #115e59; }
+html.light .text-cyan-200:not(.bg-slate-900 *):not([class*="bg-["] *):not(.bg-black *), html.light .text-cyan-300:not(.bg-slate-900 *):not([class*="bg-["] *):not(.bg-black *), html.light .text-cyan-400:not(.bg-slate-900 *):not([class*="bg-["] *):not(.bg-black *), html.light [class*="text-cyan-400/"]:not(.bg-slate-900 *):not([class*="bg-["] *):not(.bg-black *) { color: #155e75; }
+html.light .text-sky-200:not(.bg-slate-900 *):not([class*="bg-["] *):not(.bg-black *), html.light .text-sky-300:not(.bg-slate-900 *):not([class*="bg-["] *):not(.bg-black *), html.light .text-sky-400:not(.bg-slate-900 *):not([class*="bg-["] *):not(.bg-black *), html.light [class*="text-sky-400/"]:not(.bg-slate-900 *):not([class*="bg-["] *):not(.bg-black *) { color: #075985; }
+html.light .text-blue-200:not(.bg-slate-900 *):not([class*="bg-["] *):not(.bg-black *), html.light .text-blue-300:not(.bg-slate-900 *):not([class*="bg-["] *):not(.bg-black *), html.light .text-blue-400:not(.bg-slate-900 *):not([class*="bg-["] *):not(.bg-black *), html.light [class*="text-blue-400/"]:not(.bg-slate-900 *):not([class*="bg-["] *):not(.bg-black *) { color: #1e40af; }
+html.light .text-indigo-200:not(.bg-slate-900 *):not([class*="bg-["] *):not(.bg-black *), html.light .text-indigo-300:not(.bg-slate-900 *):not([class*="bg-["] *):not(.bg-black *), html.light .text-indigo-400:not(.bg-slate-900 *):not([class*="bg-["] *):not(.bg-black *), html.light [class*="text-indigo-400/"]:not(.bg-slate-900 *):not([class*="bg-["] *):not(.bg-black *) { color: #3730a3; }
+html.light .text-violet-200:not(.bg-slate-900 *):not([class*="bg-["] *):not(.bg-black *), html.light .text-violet-300:not(.bg-slate-900 *):not([class*="bg-["] *):not(.bg-black *), html.light .text-violet-400:not(.bg-slate-900 *):not([class*="bg-["] *):not(.bg-black *), html.light [class*="text-violet-400/"]:not(.bg-slate-900 *):not([class*="bg-["] *):not(.bg-black *) { color: #5b21b6; }
+html.light .text-purple-200:not(.bg-slate-900 *):not([class*="bg-["] *):not(.bg-black *), html.light .text-purple-300:not(.bg-slate-900 *):not([class*="bg-["] *):not(.bg-black *), html.light .text-purple-400:not(.bg-slate-900 *):not([class*="bg-["] *):not(.bg-black *), html.light [class*="text-purple-400/"]:not(.bg-slate-900 *):not([class*="bg-["] *):not(.bg-black *) { color: #6b21a8; }
+html.light .text-fuchsia-200:not(.bg-slate-900 *):not([class*="bg-["] *):not(.bg-black *), html.light .text-fuchsia-300:not(.bg-slate-900 *):not([class*="bg-["] *):not(.bg-black *), html.light .text-fuchsia-400:not(.bg-slate-900 *):not([class*="bg-["] *):not(.bg-black *), html.light [class*="text-fuchsia-400/"]:not(.bg-slate-900 *):not([class*="bg-["] *):not(.bg-black *) { color: #86198f; }
+html.light .text-pink-200:not(.bg-slate-900 *):not([class*="bg-["] *):not(.bg-black *), html.light .text-pink-300:not(.bg-slate-900 *):not([class*="bg-["] *):not(.bg-black *), html.light .text-pink-400:not(.bg-slate-900 *):not([class*="bg-["] *):not(.bg-black *), html.light [class*="text-pink-400/"]:not(.bg-slate-900 *):not([class*="bg-["] *):not(.bg-black *) { color: #9d174d; }
+html.light .text-rose-200:not(.bg-slate-900 *):not([class*="bg-["] *):not(.bg-black *), html.light .text-rose-300:not(.bg-slate-900 *):not([class*="bg-["] *):not(.bg-black *), html.light .text-rose-400:not(.bg-slate-900 *):not([class*="bg-["] *):not(.bg-black *), html.light [class*="text-rose-400/"]:not(.bg-slate-900 *):not([class*="bg-["] *):not(.bg-black *) { color: #9f1239; }
+html.light .text-red-200:not(.bg-slate-900 *):not([class*="bg-["] *):not(.bg-black *), html.light .text-red-300:not(.bg-slate-900 *):not([class*="bg-["] *):not(.bg-black *), html.light .text-red-400:not(.bg-slate-900 *):not([class*="bg-["] *):not(.bg-black *), html.light [class*="text-red-400/"]:not(.bg-slate-900 *):not([class*="bg-["] *):not(.bg-black *) { color: #991b1b; }
+html.light .text-orange-200:not(.bg-slate-900 *):not([class*="bg-["] *):not(.bg-black *), html.light .text-orange-300:not(.bg-slate-900 *):not([class*="bg-["] *):not(.bg-black *), html.light .text-orange-400:not(.bg-slate-900 *):not([class*="bg-["] *):not(.bg-black *), html.light [class*="text-orange-400/"]:not(.bg-slate-900 *):not([class*="bg-["] *):not(.bg-black *) { color: #9a3412; }
+html.light .text-amber-200:not(.bg-slate-900 *):not([class*="bg-["] *):not(.bg-black *), html.light .text-amber-300:not(.bg-slate-900 *):not([class*="bg-["] *):not(.bg-black *), html.light .text-amber-400:not(.bg-slate-900 *):not([class*="bg-["] *):not(.bg-black *), html.light [class*="text-amber-400/"]:not(.bg-slate-900 *):not([class*="bg-["] *):not(.bg-black *) { color: #92400e; }
+html.light .text-yellow-200:not(.bg-slate-900 *):not([class*="bg-["] *):not(.bg-black *), html.light .text-yellow-300:not(.bg-slate-900 *):not([class*="bg-["] *):not(.bg-black *), html.light .text-yellow-400:not(.bg-slate-900 *):not([class*="bg-["] *):not(.bg-black *), html.light [class*="text-yellow-400/"]:not(.bg-slate-900 *):not([class*="bg-["] *):not(.bg-black *) { color: #854d0e; }
+html.light .text-lime-200:not(.bg-slate-900 *):not([class*="bg-["] *):not(.bg-black *), html.light .text-lime-300:not(.bg-slate-900 *):not([class*="bg-["] *):not(.bg-black *), html.light .text-lime-400:not(.bg-slate-900 *):not([class*="bg-["] *):not(.bg-black *), html.light [class*="text-lime-400/"]:not(.bg-slate-900 *):not([class*="bg-["] *):not(.bg-black *) { color: #3f6212; }
+html.light .bg-white\/3 { background-color: rgba(15, 23, 42, 0.03); }
+html.light .bg-white\/5 { background-color: rgba(15, 23, 42, 0.04); }
+html.light .bg-white\/8 { background-color: rgba(15, 23, 42, 0.05); }
+html.light .bg-white\/10 { background-color: rgba(15, 23, 42, 0.06); }
+html.light .bg-white\/20 { background-color: rgba(15, 23, 42, 0.09); }
+html.light .bg-black\/30 { background-color: rgba(15, 23, 42, 0.06); }
+html.light .bg-gray-800 { background-color: #ffffff; color: #0f172a; }
+html.light .border-white\/5, html.light .border-white\/8 { border-color: rgba(15, 23, 42, 0.08); }
+html.light .border-white\/10 { border-color: rgba(15, 23, 42, 0.1); }
+html.light .border-white\/20, html.light .border-white\/30 { border-color: rgba(15, 23, 42, 0.16); }
+html.light .hover\:bg-white\/10:hover, html.light .hover\:bg-white\/20:hover { background-color: rgba(15, 23, 42, 0.08); }
+html.light .hover\:text-white:hover:not([class*="bg-"]) { color: var(--color-text); }
+html.light .input-field::placeholder { color: #64748b; }
