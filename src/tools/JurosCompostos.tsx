@@ -5,6 +5,7 @@ import { TrendingUp } from "lucide-react";
 import { ToolContent } from "../components/ToolContent";
 import { CONFIG } from "../config";
 
+import { fmtNum } from "../utils/format";
 interface Props {
   onBack: () => void;
 }
@@ -128,19 +129,19 @@ export function JurosCompostos({ onBack }: Props) {
               <div className="p-3 rounded-xl bg-white/5 text-center">
                 <p className="text-xs text-gray-400">Investido</p>
                 <p className="text-base font-bold text-white">
-                  R$ {result.invested.toLocaleString("pt-BR", { minimumFractionDigits: 2 })}
+                  R$ {result.invested.toLocaleString("pt-BR", { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
                 </p>
               </div>
               <div className="p-3 rounded-xl bg-green-500/10 border border-green-500/20 text-center">
                 <p className="text-xs text-green-400">Rendimento</p>
                 <p className="text-base font-bold text-green-400">
-                  R$ {result.earnings.toLocaleString("pt-BR", { minimumFractionDigits: 2 })}
+                  R$ {result.earnings.toLocaleString("pt-BR", { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
                 </p>
               </div>
               <div className="p-3 rounded-xl bg-blue-500/10 border border-blue-500/20 text-center">
                 <p className="text-xs text-blue-400">Rentabilidade</p>
                 <p className="text-base font-bold text-blue-400">
-                  {((result.earnings / result.invested) * 100).toFixed(1)}%
+                  {fmtNum(((result.earnings / result.invested) * 100), 1)}%
                 </p>
               </div>
             </div>
@@ -153,7 +154,7 @@ export function JurosCompostos({ onBack }: Props) {
         category="Finanças"
         data={{
           directAnswer: "Juros compostos são calculados sobre o principal mais os juros acumulados. A fórmula é M = C × (1 + i)^t, onde C é o capital, i é a taxa e t é o tempo.",
-          howItWorks: `A ferramenta simula o crescimento de um investimento com juros compostos, considerando aportes mensais. Calcula: montante final, total investido, rendimento bruto e rentabilidade percentual. A taxa mensal é derivada da taxa anual informada. A simulação aplica juros compostos mês a mês sobre o saldo acumulado mais o aporte. Dados de referência: CDI ${CONFIG.taxaCDI2026.toFixed(2)}% e Selic ${CONFIG.taxaSelic2026.toFixed(2)}% (ano ${CONFIG.anoAtual}).`,
+          howItWorks: `A ferramenta simula o crescimento de um investimento com juros compostos, considerando aportes mensais. Calcula: montante final, total investido, rendimento bruto e rentabilidade percentual. A taxa mensal é derivada da taxa anual informada. A simulação aplica juros compostos mês a mês sobre o saldo acumulado mais o aporte. Dados de referência: CDI ${fmtNum(CONFIG.taxaCDI2026, 2)}% e Selic ${fmtNum(CONFIG.taxaSelic2026, 2)}% (ano ${CONFIG.anoAtual}).`,
           example: {
             title: "Exemplo: R$ 10.000 inicial, R$ 500/mês, 13.25% a.a., 10 anos",
             steps: [

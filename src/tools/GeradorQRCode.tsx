@@ -76,7 +76,7 @@ export function GeradorQRCode({ onBack }: Props) {
       category="Utilidades"
       description="Gere QR Codes a partir de textos ou URLs."
       onBack={onBack}
-      affiliateBanner={<AffiliateBanner terms={["impressora portátil"]} label="impressora portátil" mercadoLivreTerms={["impressora termica portatil"]} mercadoLivreLabel="Encontre no Mercado Livre" />}
+      affiliateBanner={<AffiliateBanner terms={["impressora portátil"]} label="impressora portátil" mercadoLivreTerms={["impressora térmica portátil"]} mercadoLivreLabel="Encontre no Mercado Livre" />}
     
     >
       <div className="space-y-5">

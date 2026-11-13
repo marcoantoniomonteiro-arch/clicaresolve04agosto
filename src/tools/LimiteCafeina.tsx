@@ -4,6 +4,7 @@ import { AffiliateBanner } from "../components/AffiliateBanner";
 import { ToolContent } from "../components/ToolContent";
 import { Plus, Trash2 } from "lucide-react";
 
+import { fmtNum } from "../utils/format";
 interface Props { onBack: () => void; }
 
 const BEBIDAS = [
@@ -60,7 +61,7 @@ export function LimiteCafeina({ onBack }: Props) {
       category="Saúde"
       description="Calcule o total de cafeína consumida e compare com o limite diário seguro."
       onBack={onBack}
-      affiliateBanner={<AffiliateBanner terms={["cafe especial", "garrafa termica"]} label="Para os amantes de café" />}
+      affiliateBanner={<AffiliateBanner terms={["café especial", "garrafa térmica"]} label="Para os amantes de café" />}
       disclaimer="Esta ferramenta é puramente informativa. Não substitui consulta médica ou diagnóstico profissional. Consulte sempre um profissional de saúde habilitado."
     >
       <div className="space-y-4">
@@ -72,7 +73,7 @@ export function LimiteCafeina({ onBack }: Props) {
         <div className="space-y-2">
           {items.map((item) => (
             <div key={item.id} className="flex gap-2 items-center">
-              <select value={item.bebidaId} onChange={(e) => update(item.id, "bebidaId", e.target.value)} className="input-field flex-1">
+              <select aria-label="Bebida" value={item.bebidaId} onChange={(e) => update(item.id, "bebidaId", e.target.value)} className="input-field flex-1">
                 {BEBIDAS.map((b) => <option key={b.id} value={b.id}>{b.label} ({b.mg}mg)</option>)}
               </select>
               <input
@@ -102,11 +103,11 @@ export function LimiteCafeina({ onBack }: Props) {
           <div className="space-y-3 mt-2">
             <div className="flex items-end justify-between">
               <div>
-                <p className="text-3xl font-black text-white">{result.total.toFixed(0)} mg</p>
-                <p className="text-sm text-gray-400">de {result.limite.toFixed(0)} mg limite</p>
+                <p className="text-3xl font-black text-white">{fmtNum(result.total, 0)} mg</p>
+                <p className="text-sm text-gray-400">de {fmtNum(result.limite, 0)} mg limite</p>
               </div>
               <p className={`text-xl font-bold ${result.pct >= 100 ? "text-red-400" : result.pct >= 80 ? "text-yellow-400" : "text-green-400"}`}>
-                {result.pct.toFixed(0)}%
+                {fmtNum(result.pct, 0)}%
               </p>
             </div>
             <div className="h-4 rounded-full bg-white/10 overflow-hidden">

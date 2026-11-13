@@ -5,6 +5,7 @@ import React, { useState, useMemo } from "react";
 
 
 
+import { fmtNum } from "../utils/format";
 interface Props {
   onBack: () => void;
 }
@@ -122,22 +123,22 @@ export function CalculadoraDesconto({ onBack }: Props) {
             <div className="p-5 rounded-xl bg-green-500/10 border border-green-500/20 text-center">
               <p className="text-xs text-green-400 mb-1">Preço com Desconto</p>
               <p className="text-4xl font-black text-green-400">
-                R$ {result.final.toFixed(2)}
+                R$ {fmtNum(result.final, 2)}
               </p>
             </div>
 
             <div className="grid grid-cols-3 gap-3">
               <div className="p-3 rounded-xl bg-white/5 text-center">
                 <p className="text-xs text-gray-400">Original</p>
-                <p className="text-base font-bold text-white">R$ {result.original.toFixed(2)}</p>
+                <p className="text-base font-bold text-white">R$ {fmtNum(result.original, 2)}</p>
               </div>
               <div className="p-3 rounded-xl bg-red-500/10 border border-red-500/20 text-center">
                 <p className="text-xs text-red-400">Desconto</p>
-                <p className="text-base font-bold text-red-400">-{result.percent.toFixed(1)}%</p>
+                <p className="text-base font-bold text-red-400">-{fmtNum(result.percent, 1)}%</p>
               </div>
               <div className="p-3 rounded-xl bg-red-500/10 border border-red-500/20 text-center">
                 <p className="text-xs text-red-400">Economia</p>
-                <p className="text-base font-bold text-red-400">R$ {result.discountValue.toFixed(2)}</p>
+                <p className="text-base font-bold text-red-400">R$ {fmtNum(result.discountValue, 2)}</p>
               </div>
             </div>
           </div>

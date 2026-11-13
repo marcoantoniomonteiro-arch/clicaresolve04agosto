@@ -51,7 +51,7 @@ export function FormatadorLegendas({ onBack }: Props) {
       title="Formatador de Legendas"
       emoji="📄"
       category="Redes Sociais"
-      description="Adicione quebras invisiveis para legendas do Instagram e TikTok."
+      description="Adicione quebras invisíveis para legendas do Instagram e TikTok."
       onBack={onBack}
       affiliateBanner={<AffiliateBanner terms={["ring light creator"]} label="ring light creator" />}
     

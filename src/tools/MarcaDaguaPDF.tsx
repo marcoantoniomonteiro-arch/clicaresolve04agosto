@@ -201,7 +201,7 @@ export function MarcaDaguaPDF({ onBack }: Props) {
             { question: "A marca d'água aparece em todas as páginas?", answer: "Sim, ela é aplicada automaticamente em todas as páginas do documento." },
             { question: "Posso ajustar a transparência da marca d'água?", answer: "Sim, use o controle de opacidade para deixá-la mais sutil ou mais visível, conforme necessário." },
             { question: "Meu PDF é enviado para algum servidor?", answer: "Não, todo o processamento acontece localmente no seu navegador." },
-            { question: "Posso usar uma imagem/logo como marca d'água ao invés de texto?", answer: "Esta versão da ferramenta trabalha com marca d'água em texto; marca d'água com imagem pode ser uma evolução futura da ferramenta." },
+            { question: "Posso usar uma imagem ou logo como marca d'água em vez de texto?", answer: "Ainda não. A ferramenta aplica marca d'água em texto, com tamanho, transparência e inclinação ajustáveis." },
           ],
         }}
       />

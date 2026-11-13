@@ -407,7 +407,7 @@ export function VacinasPet({ onBack }: Props) {
                 href={CONFIG.urlShopee("ração pet")}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-orange-500 hover:bg-orange-400 text-white text-sm font-semibold transition-colors"
+                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-orange-700 hover:bg-orange-600 text-white text-sm font-semibold transition-colors"
               >
                 <span>🛍️</span>
                 <span>ração pet</span>
@@ -782,7 +782,7 @@ export function VacinasPet({ onBack }: Props) {
                   href={CONFIG.urlShopee(p.term)}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="mt-1.5 inline-flex items-center gap-1 px-3 py-1.5 rounded-lg bg-orange-500 hover:bg-orange-400 text-white text-xs font-semibold transition-colors"
+                  className="mt-1.5 inline-flex items-center gap-1 px-3 py-1.5 rounded-lg bg-orange-700 hover:bg-orange-600 text-white text-xs font-semibold transition-colors"
                 >
                   🛍️ Ver na Shopee
                 </a>

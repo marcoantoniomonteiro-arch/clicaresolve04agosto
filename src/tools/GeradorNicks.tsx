@@ -108,7 +108,7 @@ export function GeradorNicks({ onBack }: Props) {
 
         <div className="grid grid-cols-2 gap-2">
           {[
-            { value: "epico", label: "Epico", desc: "Sombrio, medieval" },
+            { value: "epico", label: "Épico", desc: "Sombrio, medieval" },
             { value: "fofo", label: "Fofo", desc: "Carinhoso, kawaii" },
             { value: "profissional", label: "Profissional", desc: "Limpo, serio" },
             { value: "gamer", label: "Gamer", desc: "Leet, numerico" },
@@ -143,7 +143,7 @@ export function GeradorNicks({ onBack }: Props) {
               className="p-3 rounded-lg bg-white/5 border border-white/8 flex items-center justify-between"
             >
               <span className="text-sm font-semibold text-white truncate">{nick}</span>
-              <button
+              <button aria-label={`Copiar ${nick}`}
                 onClick={() => copiar(nick)}
                 className="ml-2 text-gray-400 hover:text-white"
               >

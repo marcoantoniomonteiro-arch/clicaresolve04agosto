@@ -50,7 +50,7 @@ export function FrequenciaCardiaca({ onBack }: Props) {
       category="Saúde"
       description="Calcule sua frequência cardíaca máxima e 5 zonas de treino personalizadas."
       onBack={onBack}
-      affiliateBanner={<AffiliateBanner terms={["monitor cardiaco", "smartwatch"]} label="Monitore seu treino" />}
+      affiliateBanner={<AffiliateBanner terms={["monitor cardíaco", "smartwatch"]} label="Monitore seu treino" />}
       disclaimer="Esta ferramenta é puramente informativa. Não substitui consulta médica ou diagnóstico profissional. Consulte sempre um profissional de saúde habilitado."
     >
       <div className="space-y-4">

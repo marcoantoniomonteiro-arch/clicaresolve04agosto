@@ -51,7 +51,7 @@ export function GeradorLinkWhatsApp({ onBack }: Props) {
       title="Gerador de Link WhatsApp"
       emoji="💬"
       category="Utilidades"
-      description="Gere links diretos para WhatsApp. Ideal para autonomos e pequenos negocios."
+      description="Gere links diretos para WhatsApp. Ideal para autônomos e pequenos negócios."
       onBack={onBack}
       affiliateBanner={<AffiliateBanner terms={["curso marketing digital"]} label="curso marketing digital" />}
     
@@ -77,7 +77,7 @@ export function GeradorLinkWhatsApp({ onBack }: Props) {
           <textarea
             value={mensagem}
             onChange={(e) => setMensagem(e.target.value)}
-            placeholder="Ola! Vim pelo site e gostaria de..."
+            placeholder="Olá! Vim pelo site e gostaria de..."
             className="input-field w-full h-24 resize-none p-3"
           />
         </label>
@@ -120,7 +120,7 @@ export function GeradorLinkWhatsApp({ onBack }: Props) {
 
         <div className="p-3 rounded-lg bg-blue-500/10 border border-blue-500/20">
           <p className="text-xs text-blue-300">
-            <span className="font-semibold">Dica:</span> Use em botoes "Fale Conosco" no seu site ou bio do Instagram.
+            <span className="font-semibold">Dica:</span> Use em botões "Fale Conosco" no seu site ou bio do Instagram.
           </p>
         </div>
       </div>

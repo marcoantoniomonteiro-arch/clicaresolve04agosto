@@ -108,14 +108,14 @@ export function CalendarioHebraico({ onBack }: Props) {
 
   return (
     <ToolLayout
-      title="Conversor Calendario Hebraico"
+      title="Conversor Calendário Hebraico"
       emoji="🕍"
       category="Religioso"
-      description="Converta datas gregorianas para o calendario hebraico e veja festas próximas."
+      description="Converta datas gregorianas para o calendário hebraico e veja festas próximas."
       onBack={onBack}
       affiliateBanner={<AffiliateBanner terms={["Torá em português livro"]} label="Torá em português livro" />}
     
-      disclaimer="Esta conversão e uma aproximação didatica. O calendario hebraico real baseia-se em ciclos lunissolares complexos. Para datas precisas, consulte um calendario oficial."
+      disclaimer="Esta conversão e uma aproximação didática. O calendário hebraico real baseia-se em ciclos lunissolares complexos. Para datas precisas, consulte um calendário oficial."
     >
       <div className="space-y-5">
         <label className="block">
@@ -188,7 +188,7 @@ export function CalendarioHebraico({ onBack }: Props) {
                         f.status === "Hoje!"
                           ? "bg-green-500/20 text-green-400"
                           : f.status === "Este mês"
-                          ? "bg-blue-500/20 text-blue-400"
+                          ? "bg-blue-500/20 text-blue-300"
                           : "bg-white/5 text-gray-400"
                       }`}
                     >

@@ -105,7 +105,7 @@ export function DPP({ onBack }: Props) {
             title: "Exemplo: DUM em 1º de janeiro de 2026",
             steps: [
               "Informe a DUM: 01/01/2026",
-              "A ferramente aplica Naegele: +7 dias = 08/01/2026",
+              "A ferramenta aplica Naegele: +7 dias = 08/01/2026",
               "Subtrai 3 meses: 08/10/2026; some 1 ano: 08/10/2027",
               "Calcula semanas de gestação e trimestre atual",
               "Exibe DPP formatada, progresso e dias restantes"

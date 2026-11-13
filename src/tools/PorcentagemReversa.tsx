@@ -6,6 +6,7 @@ import React, { useState, useMemo } from "react";
 
 import { Percent, TrendingUp, TrendingDown, Minus, ArrowRight } from "lucide-react";
 
+import { fmtNum } from "../utils/format";
 interface Props {
   onBack: () => void;
 }
@@ -159,8 +160,8 @@ export function PorcentagemReversa({ onBack }: Props) {
             {modo === "variacao" && (
               <div className="p-3 rounded-lg bg-white/5 text-center text-xs">
                 <ArrowRight className="w-4 h-4 text-gray-400 mx-auto mb-1" />
-                {resultado.resultado >= 0 ? "Aumento" : "Reducao"} de{" "}
-                {Math.abs(resultado.resultado).toFixed(2)}%
+                {resultado.resultado >= 0 ? "Aumento" : "Redução"} de{" "}
+                {fmtNum(Math.abs(resultado.resultado), 2)}%
               </div>
             )}
           </div>

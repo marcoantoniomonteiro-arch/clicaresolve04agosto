@@ -3,6 +3,7 @@ import { ToolLayout } from "../components/ToolLayout";
 import { AffiliateBanner } from "../components/AffiliateBanner";
 import { ToolContent } from "../components/ToolContent";
 
+import { fmtNum } from "../utils/format";
 interface Props {
   onBack: () => void;
 }
@@ -28,9 +29,9 @@ const INGREDIENT_NAMES: Record<Ingredient, string> = {
 type MeasureUnit = "xicara" | "colherSopa" | "colherCha" | "copo";
 
 const MEASURE_NAMES: Record<MeasureUnit, string> = {
-  xicara: "Xicara de Cha",
+  xicara: "Xícara de Chá",
   colherSopa: "Colher de Sopa",
-  colherCha: "Colher de Cha",
+  colherCha: "Colher de Chá",
   copo: "Copo Americano (200ml)",
 };
 
@@ -61,11 +62,11 @@ export function ConversorCozinha({ onBack }: Props) {
       title="Conversor de Cozinha"
       emoji="🥄"
       category="Culinária"
-      description="Converta medidas de cozinha entre xicaras, colheres e gramas."
+      description="Converta medidas de cozinha entre xícaras, colheres e gramas."
       onBack={onBack}
       affiliateBanner={
         <AffiliateBanner
-          terms={["jogo de medidores de cozinha", "balanca digital de cozinha", "medidor de ingredientes"]}
+          terms={["jogo de medidores de cozinha", "balança digital de cozinha", "medidor de ingredientes"]}
           label="Facilite suas receitas"
         />
       }
@@ -118,14 +119,14 @@ export function ConversorCozinha({ onBack }: Props) {
           <div className="space-y-4">
             <div className="p-5 rounded-xl bg-green-500/10 border border-green-500/20 text-center">
               <p className="text-xs text-green-400 mb-1">Equivalente</p>
-              <p className="text-4xl font-black text-green-400">{result.grams.toFixed(0)}g</p>
+              <p className="text-4xl font-black text-green-400">{fmtNum(result.grams, 0)}g</p>
               <p className="text-sm text-gray-400 mt-1">
                 {quantity} {MEASURE_NAMES[measure]} de {INGREDIENT_NAMES[ingredient]}
               </p>
             </div>
 
             <div className="p-4 rounded-xl bg-white/5 border border-white/8">
-              <p className="text-xs text-gray-400 mb-3">Outras equivalencias:</p>
+              <p className="text-xs text-gray-400 mb-3">Outras equivalências:</p>
               <div className="space-y-2">
                 {result.allMeasures.map((m) => (
                   <div
@@ -135,7 +136,7 @@ export function ConversorCozinha({ onBack }: Props) {
                     }`}
                   >
                     <span className="text-sm text-gray-400">{m.label}</span>
-                    <span className="text-sm font-semibold text-white">{m.value.toFixed(2)}</span>
+                    <span className="text-sm font-semibold text-white">{fmtNum(m.value, 2)}</span>
                   </div>
                 ))}
               </div>

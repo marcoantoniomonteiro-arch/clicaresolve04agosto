@@ -7,6 +7,7 @@ import { Plus, Trash2 } from "lucide-react";
 import { ToolContent } from "../components/ToolContent";
 import { CONFIG } from "../config";
 
+import { fmtNum } from "../utils/format";
 interface Props {
   onBack: () => void;
 }
@@ -145,7 +146,7 @@ export function ComparadorPreco({ onBack }: Props) {
                     </div>
                     <div>
                       <label className="text-xs text-gray-500 mb-1 block">Unidade</label>
-                      <select
+                      <select aria-label="Unidade"
                         value={product.unit}
                         onChange={(e) => updateProduct(product.id, "unit", e.target.value as any)}
                         className="input-field"
@@ -207,7 +208,7 @@ export function ComparadorPreco({ onBack }: Props) {
                           {item.name || `Produto ${results.items.indexOf(item) + 1}`}
                         </p>
                         <p className="text-xs text-gray-400">
-                          R$ {item.price.toFixed(2)} / {item.normalizedQty.toFixed(0)} {item.unit}
+                          R$ {fmtNum(item.price, 2)} / {fmtNum(item.normalizedQty, 0)} {item.unit}
                         </p>
                       </div>
                       <div className="text-right">
@@ -216,7 +217,7 @@ export function ComparadorPreco({ onBack }: Props) {
                             isCheapest ? "text-green-400" : isExpensive ? "text-red-400" : "text-white"
                           }`}
                         >
-                          R$ {item.pricePerUnit.toFixed(4)}/{item.unit}
+                          R$ {fmtNum(item.pricePerUnit, 4)}/{item.unit}
                         </p>
                         {isCheapest && (
                           <span className="text-xs text-green-400 font-semibold">MELHOR PREÇO</span>
@@ -236,7 +237,7 @@ export function ComparadorPreco({ onBack }: Props) {
         toolName="ComparadorPreco"
         category="Finanças"
         data={{
-          directAnswer: "Comparando 2kg de arroz a R$ 12.00 (R$ 6.00/kg) vs 5kg a R$ 25.00 (R$ 5.00/kg), a embalagem de 5kg tem melhor custo-benefício.",
+          directAnswer: "Comparando 2 kg de arroz a R$ 12,00 (R$ 6,00/kg) com 5 kg a R$ 25,00 (R$ 5,00/kg), a embalagem de 5 kg tem melhor custo-benefício.",
           howItWorks: "A ferramenta normaliza preços de diferentes embalagens para a mesma unidade base (g ou ml), calculando o preço por unidade. Compara até 4 produtos e identifica o mais barato (card verde) e o mais caro (card vermelho). Suporta unidades: g, kg, ml, L. A conversão automática: kg → g, L → ml. Cada produto é exibido em um card com borda colorida conforme a classificação. A ferramenta é ideal para compras no supermercado, farmácia e lojas online, onde embalagens de tamanhos diferentes confundem o consumidor.",
           example: {
             title: "Exemplo: arroz 2kg vs 5kg",

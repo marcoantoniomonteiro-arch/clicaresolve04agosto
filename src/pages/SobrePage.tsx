@@ -11,7 +11,7 @@ export function SobrePage({ onBack }: Props) {
   return (
     <StaticPage
       title="Sobre o CLICAresolve"
-      description="CLICAresolve é um projeto independente brasileiro de ferramentas online gratuitas. Todas as calculadoras seguem metodologias reconhecidas: OMS, Harris-Benedict, Regra de Naegele, CLT e mais."
+      description="Conheça o CLICAresolve: projeto brasileiro de ferramentas online grátis, com cálculos baseados em fontes como OMS, Harris-Benedict e CLT."
       canonical="/sobre"
       ogTitle="Sobre o CLICAresolve — Projeto Independente Brasileiro"
       ogDescription="Ferramentas gratuitas baseadas em metodologias científicas e técnicas reconhecidas. Sem cadastro, privacidade total."

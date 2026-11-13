@@ -4,6 +4,7 @@ import { AffiliateBanner } from "../components/AffiliateBanner";
 import { ToolContent } from "../components/ToolContent";
 import { AlertTriangle } from "lucide-react";
 
+import { fmtNum } from "../utils/format";
 interface Props {
   onBack: () => void;
 }
@@ -36,7 +37,7 @@ export function CalculadoraTokensIA({ onBack }: Props) {
   const formatCost = (cost: number): string => {
     if (cost === 0) return "$0.00";
     if (cost < 0.0001) return cost.toExponential(2);
-    return `$${cost.toFixed(6)}`;
+    return `$${fmtNum(cost, 6)}`;
   };
 
   return (
@@ -104,8 +105,8 @@ export function CalculadoraTokensIA({ onBack }: Props) {
                             <span className="text-[10px] text-yellow-400 ml-1">aprox.</span>
                           )}
                         </td>
-                        <td className="text-right py-2.5 px-2 text-gray-400">${model.input.toFixed(2)}</td>
-                        <td className="text-right py-2.5 px-2 text-gray-400">${model.output.toFixed(2)}</td>
+                        <td className="text-right py-2.5 px-2 text-gray-400">${fmtNum(model.input, 2)}</td>
+                        <td className="text-right py-2.5 px-2 text-gray-400">${fmtNum(model.output, 2)}</td>
                         <td className="text-right py-2.5 px-2 text-green-400 font-semibold">{formatCost(cost)}</td>
                       </tr>
                     );

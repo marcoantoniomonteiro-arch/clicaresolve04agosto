@@ -143,7 +143,7 @@ export const CONFIG = {
   nomeBet: "Bet Parceira",
 
   /** Texto do bonus de boas-vindas — exibido no banner de apostas */
-  textoBet: "Ganhe bonus de boas-vindas",
+  textoBet: "Ganhe bônus de boas-vindas",
 
   /** Link de afiliado de loteria online — exibido em banner de loteria */
   linkLoteria: "https://seu-link-loteria.com",

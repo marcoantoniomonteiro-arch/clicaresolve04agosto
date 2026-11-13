@@ -58,7 +58,7 @@ export function PegadaCarbonoViagem({ onBack }: Props) {
       category="Lazer"
       description="Estime a emissão de CO2 da sua viagem e quantas árvores seriam necessárias para compensar."
       onBack={onBack}
-      affiliateBanner={<AffiliateBanner terms={["garrafa reutilizavel"]} label="Itens sustentáveis" />}
+      affiliateBanner={<AffiliateBanner terms={["garrafa reutilizável"]} label="Itens sustentáveis" />}
     >
       <div className="space-y-4">
         <div>

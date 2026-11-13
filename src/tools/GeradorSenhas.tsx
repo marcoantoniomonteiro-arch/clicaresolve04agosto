@@ -80,7 +80,7 @@ export function GeradorSenhas({ onBack }: Props) {
       title="Gerador de Senhas"
       emoji="🔐"
       category="Utilidades"
-      description="Gere senhas seguras com comprimento e caracteres personalizaveis."
+      description="Gere senhas seguras com comprimento e caracteres personalizáveis."
       onBack={onBack}
       affiliateBanner={<AffiliateBanner terms={["gerenciador senhas cofre"]} label="gerenciador senhas cofre" />}
     
@@ -91,7 +91,7 @@ export function GeradorSenhas({ onBack }: Props) {
             <span className="text-sm text-gray-400">Comprimento</span>
             <span className="text-lg font-bold text-white">{comprimento}</span>
           </div>
-          <input
+          <input aria-label="Comprimento da senha"
             type="range"
             min="8"
             max="32"
@@ -107,10 +107,10 @@ export function GeradorSenhas({ onBack }: Props) {
 
         <div className="grid grid-cols-2 gap-3">
           {[
-            { checked: maiusculas, set: setMaiusculas, label: "Maiusculas" },
-            { checked: minusculas, set: setMinusculas, label: "Minusculas" },
-            { checked: numeros, set: setNumeros, label: "Numeros" },
-            { checked: simbolos, set: setSimbolos, label: "Simbolos" },
+            { checked: maiusculas, set: setMaiusculas, label: "Maiúsculas" },
+            { checked: minusculas, set: setMinusculas, label: "Minúsculas" },
+            { checked: numeros, set: setNumeros, label: "Números" },
+            { checked: simbolos, set: setSimbolos, label: "Símbolos" },
           ].map((opt) => (
             <label
               key={opt.label}
@@ -137,7 +137,7 @@ export function GeradorSenhas({ onBack }: Props) {
               <code className="flex-1 text-lg font-mono text-green-400 break-all">
                 {senha}
               </code>
-              <button
+              <button aria-label="Copiar senha"
                 onClick={copiar}
                 className="p-2 rounded-lg bg-white/10 hover:bg-white/20 transition-colors"
               >

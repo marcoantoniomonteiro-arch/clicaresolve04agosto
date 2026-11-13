@@ -58,14 +58,14 @@ export function DescobridorAnagramas({ onBack }: Props) {
       title="Descobridor de Anagramas"
       emoji="🔤"
       category="Utilidades"
-      description="Descubra todas as palavras formaveis com suas letras. Util para palavras cruzadas."
+      description="Descubra todas as palavras formáveis com suas letras. Útil para palavras cruzadas."
       onBack={onBack}
       affiliateBanner={<AffiliateBanner terms={["jogo palavras cruzadas"]} label="jogo palavras cruzadas" />}
     
     >
       <div className="space-y-5">
         <label className="block">
-          <span className="text-sm text-gray-400 mb-1 block">Letras disponiveis</span>
+          <span className="text-sm text-gray-400 mb-1 block">Letras disponíveis</span>
           <input
             type="text"
             value={letras}
@@ -136,7 +136,7 @@ export function DescobridorAnagramas({ onBack }: Props) {
           faqs: [
             { question: "O que é um anagrama?", answer: "É uma palavra ou frase formada reorganizando todas as letras de outra palavra ou frase, sem adicionar ou remover nenhuma letra." },
             { question: "Toda palavra tem um anagrama?", answer: "Não, muitas combinações de letras não formam nenhuma outra palavra válida no idioma." },
-            { question: "A ferramenta funciona com frases inteiras?", answer: "Depende da implementação; geralmente funciona melhor com palavras individuais, já que frases aumentam muito a quantidade de combinações possíveis." },
+            { question: "A ferramenta funciona com frases inteiras?", answer: "Sim. Os espaços são ignorados e todas as letras da frase entram na busca, mas o resultado mostra palavras soltas que podem ser formadas, não frases completas." },
             { question: "Para que servem os anagramas além de jogos?", answer: "São usados em quebra-cabeças, criação de nomes criativos, exercícios de lógica e até em criptografia simples histórica." },
           ],
         }}

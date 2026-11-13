@@ -5,6 +5,7 @@ import { ToolContent } from "../components/ToolContent";
 import { CONFIG } from "../config";
 import { Plus, Trash2 } from "lucide-react";
 
+import { fmtNum } from "../utils/format";
 interface Props { onBack: () => void; }
 
 interface Aparelho {
@@ -110,7 +111,7 @@ export function ConsumoEnergia({ onBack }: Props) {
               <div key={i} className="flex items-center justify-between p-3 rounded-lg bg-white/5">
                 <div>
                   <p className="text-sm font-medium text-white">{item.nome}</p>
-                  <p className="text-xs text-gray-500">{item.kwh.toFixed(2)} kWh/mês</p>
+                  <p className="text-xs text-gray-500">{fmtNum(item.kwh, 2)} kWh/mês</p>
                 </div>
                 <span className="text-amber-400 font-semibold">{fmt(item.custo)}</span>
               </div>
@@ -118,7 +119,7 @@ export function ConsumoEnergia({ onBack }: Props) {
             <div className="flex items-center justify-between p-4 rounded-xl bg-green-500/10 border border-green-500/30">
               <div>
                 <p className="text-sm font-medium text-white">Total Mensal</p>
-                <p className="text-xs text-gray-400">{result.totalKwh.toFixed(2)} kWh</p>
+                <p className="text-xs text-gray-400">{fmtNum(result.totalKwh, 2)} kWh</p>
               </div>
               <span className="text-2xl font-bold text-green-400">{fmt(result.totalCusto)}</span>
             </div>
@@ -129,7 +130,7 @@ export function ConsumoEnergia({ onBack }: Props) {
         toolName="ConsumoEnergia"
         category="Transportes"
         data={{
-          directAnswer: "Um ar-condicionado de 9.000 BTU ligado 8h/dia consome ~17.28 kWh/mês, custando aproximadamente R$ 14.70/mês (tarifa R$ 0.85/kWh).",
+          directAnswer: "Um ar-condicionado de 9.000 BTU (cerca de 750 W) ligado 8 horas por dia consome perto de 180 kWh por mês, o que custa cerca de R$ 153 com tarifa de R$ 0,85/kWh.",
           howItWorks: "O simulador calcula o consumo de energia de cada aparelho com a fórmula: kWh/mês = (potência (W) × horas/dia × dias/mês) / 1000. O custo é: kWh × tarifa (R$/kWh). A ferramenta permite adicionar até 5 aparelhos e mostra o consumo individual e total. Para cada aparelho, informe nome, potência (W), horas de uso por dia e dias por mês. O resultado mostra: consumo de cada aparelho (kWh), custo individual e total. É ideal para identificar quais equipamentos mais pesam na conta de luz.",
           example: {
             title: "Exemplo: geladeira 150W + TV 100W + ar-condicionado 900W",

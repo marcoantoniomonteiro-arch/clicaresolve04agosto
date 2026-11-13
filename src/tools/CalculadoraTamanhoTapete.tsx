@@ -100,7 +100,7 @@ export function CalculadoraTamanhoTapete({ onBack }: Props) {
       <div className="space-y-4">
         <div>
           <label className="text-sm text-gray-400 mb-1 block">Tipo de cômodo</label>
-          <select
+          <select aria-label="Tipo de cômodo"
             value={roomKind}
             onChange={(e) => setRoomKind(e.target.value as RoomKind)}
             className="input-field"

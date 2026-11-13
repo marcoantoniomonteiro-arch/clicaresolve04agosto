@@ -4,6 +4,7 @@ import { AffiliateBanner } from "../components/AffiliateBanner";
 import { ToolContent } from "../components/ToolContent";
 import { CONFIG } from "../config";
 
+import { fmtNum } from "../utils/format";
 interface Props { onBack: () => void; }
 
 const CLASSIFICATIONS = [
@@ -53,7 +54,7 @@ export function IMCAvancada({ onBack }: Props) {
       category="Saúde"
       description="Calcule seu IMC com classificação OMS, peso ideal e hidratação recomendada."
       onBack={onBack}
-      affiliateBanner={<AffiliateBanner terms={["balanca digital", "fita metrica corporal"]} label="Monitore sua saúde" />}
+      affiliateBanner={<AffiliateBanner terms={["balança digital", "fita métrica corporal"]} label="Monitore sua saúde" />}
       disclaimer="Esta ferramenta é puramente informativa. Não substitui consulta médica ou diagnóstico profissional. Consulte sempre um profissional de saúde habilitado."
     >
       <div className="space-y-4">
@@ -71,8 +72,8 @@ export function IMCAvancada({ onBack }: Props) {
 
         {result && (
           <div className="space-y-4 mt-2 resultado-principal">
-            <div className="p-5 rounded-xl bg-white/5 border border-white/8 text-center" aria-label={`Seu IMC é ${result.imc.toFixed(1)}, classificado como ${result.label}`}>
-              <p className="text-5xl font-black mb-1">{result.imc.toFixed(1)}</p>
+            <div className="p-5 rounded-xl bg-white/5 border border-white/8 text-center" aria-label={`Seu IMC é ${fmtNum(result.imc, 1)}, classificado como ${result.label}`}>
+              <p className="text-5xl font-black mb-1">{fmtNum(result.imc, 1)}</p>
               <p className={`text-lg font-bold ${result.color}`}>{result.label}</p>
             </div>
 
@@ -80,7 +81,7 @@ export function IMCAvancada({ onBack }: Props) {
               <div className="flex justify-between text-xs text-gray-500 mb-1">
                 <span>10</span><span>18.5</span><span>25</span><span>30</span><span>40+</span>
               </div>
-              <div className="h-3 rounded-full bg-white/10 relative overflow-hidden" role="img" aria-label={`Barra de progresso do IMC: ${result.imc.toFixed(1)} na faixa ${result.label}`}>
+              <div className="h-3 rounded-full bg-white/10 relative overflow-hidden" role="img" aria-label={`Barra de progresso do IMC: ${fmtNum(result.imc, 1)} na faixa ${result.label}`}>
                 <div className={`h-3 rounded-full ${result.bg} transition-all duration-700`} style={{ width: `${Math.min(result.pct, 100)}%` }} />
                 <div className="absolute top-0 h-3 w-0.5 bg-white/30" style={{ left: `${Math.min((result.imc / 40) * 100, 100)}%` }} aria-label="Indicador do seu IMC na escala" />
               </div>
@@ -94,15 +95,15 @@ export function IMCAvancada({ onBack }: Props) {
             <ul className="grid grid-cols-3 gap-3 list-none" aria-label="Resultados do IMC: peso mínimo ideal, peso máximo ideal e ingestão de água diária">
               <li className="bg-white/5 rounded-xl p-3 text-center">
                 <p className="text-xs text-gray-400">Peso Mínimo Ideal</p>
-                <p className="text-base font-bold text-white">{result.minIdeal.toFixed(1)} kg</p>
+                <p className="text-base font-bold text-white">{fmtNum(result.minIdeal, 1)} kg</p>
               </li>
               <li className="bg-white/5 rounded-xl p-3 text-center">
                 <p className="text-xs text-gray-400">Peso Máximo Ideal</p>
-                <p className="text-base font-bold text-white">{result.maxIdeal.toFixed(1)} kg</p>
+                <p className="text-base font-bold text-white">{fmtNum(result.maxIdeal, 1)} kg</p>
               </li>
               <li className="bg-blue-500/10 border border-blue-500/20 rounded-xl p-3 text-center">
                 <p className="text-xs text-blue-400">Água/dia</p>
-                <p className="text-base font-bold text-blue-400">{(result.agua / 1000).toFixed(1)} L</p>
+                <p className="text-base font-bold text-blue-400">{fmtNum((result.agua / 1000), 1)} L</p>
               </li>
             </ul>
           </div>

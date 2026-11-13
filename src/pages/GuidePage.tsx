@@ -110,7 +110,7 @@ export function GuidePage({ slug }: { slug: string; onBack?: () => void }) {
                 </ul>
               )}
               {s.table && (
-                <div className="overflow-x-auto my-4 rounded-xl border border-border">
+                <div className="overflow-x-auto my-4 rounded-xl border border-border" tabIndex={0} role="region" aria-label={s.table.caption || s.heading}>
                   <table className="w-full text-sm">
                     <thead className="bg-card">
                       <tr>

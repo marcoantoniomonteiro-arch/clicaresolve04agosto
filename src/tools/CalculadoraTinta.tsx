@@ -4,6 +4,7 @@ import { AffiliateBanner } from "../components/AffiliateBanner";
 import { ToolContent } from "../components/ToolContent";
 import { Plus, Trash2 } from "lucide-react";
 
+import { fmtNum } from "../utils/format";
 interface Props { onBack: () => void; }
 
 interface Parede {
@@ -66,7 +67,7 @@ export function CalculadoraTinta({ onBack }: Props) {
       onBack={onBack}
       affiliateBanner={
         <AffiliateBanner
-          terms={["tinta lavavel", "rolo de pintura", "fita crepe"]}
+          terms={["tinta lavável", "rolo de pintura", "fita crepe"]}
           label="Materiais para pintura"
           mercadoLivreTerms={["tinta lavável parede"]} mercadoLivreLabel="Encontre no Mercado Livre"
         />
@@ -127,11 +128,11 @@ export function CalculadoraTinta({ onBack }: Props) {
           <div className="mt-4 grid grid-cols-2 gap-3">
             <div className="bg-white/5 rounded-xl p-4 text-center">
               <p className="text-xs text-gray-400">Área Total</p>
-              <p className="text-xl font-bold text-white">{result.area.toFixed(2)} m²</p>
+              <p className="text-xl font-bold text-white">{fmtNum(result.area, 2)} m²</p>
             </div>
             <div className="bg-white/5 rounded-xl p-4 text-center">
               <p className="text-xs text-gray-400">Litros Necessários</p>
-              <p className="text-xl font-bold text-white">{result.litros.toFixed(2)} L</p>
+              <p className="text-xl font-bold text-white">{fmtNum(result.litros, 2)} L</p>
             </div>
             <div className="bg-amber-500/10 border border-amber-500/30 rounded-xl p-4 text-center">
               <p className="text-xs text-amber-400">Latas de 3,6 L</p>

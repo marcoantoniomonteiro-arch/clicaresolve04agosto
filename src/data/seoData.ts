@@ -19,9 +19,9 @@ export interface CategorySEOData {
 export const CATEGORY_SEO_DATA: Record<string, CategorySEOData> = {
   "casa-transportes": {
     slug: "casa-transportes",
-    title: "Calculadoras para Casa e Transporte — BTU, Tinta, Energia, Limpeza e Mais",
+    title: "Calculadoras para Casa: BTU, Tinta, Energia e Mais",
     h1: "Calculadoras para Casa e Transporte Online Grátis",
-    metaDescription: "Ferramentas gratuitas para casa e veículo: BTU, tinta, consumo de energia, limpeza por zonas, metros quadrados, álcool ou gasolina, depreciação de veículo e mais. Sem cadastro.",
+    metaDescription: "Calculadoras grátis para a casa: BTU, tinta, consumo de energia, energia solar, metro quadrado, iluminação e limpeza por zonas.",
     intro: "Organizar a casa, economizar energia e tomar decisões inteligentes sobre o veículo são tarefas diárias que exigem precisão. O CLICAresolve reúne as melhores calculadoras e utilitários para Casa e Transporte, tudo gratuito e sem cadastro. Nossa calculadora de BTU ajuda você a escolher o ar-condicionado ideal para cada ambiente. A calculadora de tinta evita desperdício de material e dinheiro. O comparador de álcool ou gasolina mostra qual combustível compensa mais no posto. A ferramenta de depreciação de veículo calcula o valor de revenda do seu carro ao longo do tempo. Já o organizador de limpeza por zonas transforma a faxina da casa em um processo simples e produtivo. Cada ferramenta foi desenvolvida com foco em precisão, privacidade e velocidade: seus dados nunca saem do navegador. Explore nosso hub e descubra como economizar tempo, dinheiro e energia com um clique.",
     diferenciais: [
       "100% gratuito — sem assinaturas, sem anúncios invasivos",
@@ -34,13 +34,13 @@ export const CATEGORY_SEO_DATA: Record<string, CategorySEOData> = {
     categoryName: "Casa e Transporte",
     categoryFilter: "Casa",
     emoji: "🏠",
-    schemaKeywords: ["calculadora btu", "calculadora de tinta", "consumo de energia", "limpeza por zonas", "alcool ou gasolina", "depreciação veiculo", "metros quadrados", "parcelamento multas"]
+    schemaKeywords: ["calculadora btu", "calculadora de tinta", "consumo de energia", "limpeza por zonas", "álcool ou gasolina", "depreciação veiculo", "metros quadrados", "parcelamento multas"]
   },
   "saude-bem-estar": {
     slug: "saude-bem-estar",
-    title: "Calculadoras de Saúde e Bem-Estar Online Grátis — IMC, Calorias, Sono e Mais",
+    title: "Calculadoras de Saúde: IMC, Calorias, Sono e Mais",
     h1: "Calculadoras de Saúde e Bem-Estar Online Grátis",
-    metaDescription: "Ferramentas gratuitas de saúde: IMC avançada, gasto calórico, frequência cardíaca, macronutrientes, limite de cafeína, ciclos do sono, período fértil, DPP, contrações e mais. Sem cadastro.",
+    metaDescription: "Calculadoras de saúde grátis: IMC, gasto calórico, frequência cardíaca, macros, cafeína, sono, período fértil e DPP. Sem cadastro.",
     intro: "Sua saúde é o seu maior patrimônio. O CLICAresolve oferece um conjunto completo de calculadoras e utilitários de saúde e bem-estar, todas gratuitas e sem cadastro. Nossa IMC Avançada vai além do cálculo simples, mostrando sua classificação ideal e peso saudável. A calculadora de gasto calórico estima quantas calorias você queima em diferentes atividades. O monitor de frequência cardíaca define suas zonas de treino personalizadas. Para gestantes, temos a calculadora de DPP (Data Provável do Parto), o cronômetro de contrações e o calculador de período fértil. Para quem busca performance, o ciclo de sono encontra o melhor horário para dormir, e o limite de cafeína calcula sua dose segura diária. A calculadora de macronutrientes distribui proteínas, carboidratos e gorduras de forma personalizada. Cada ferramenta respeita sua privacidade: nenhum dado é armazenado em servidores. Cuide da sua saúde com inteligência e precisão.",
     diferenciais: [
       "Calculadoras validadas por referências médicas — sem substituir profissionais, mas complementando informação",
@@ -53,13 +53,13 @@ export const CATEGORY_SEO_DATA: Record<string, CategorySEOData> = {
     categoryName: "Saúde e Bem-Estar",
     categoryFilter: "Saúde",
     emoji: "❤️",
-    schemaKeywords: ["calculadora imc", "gasto calorico", "frequência cardíaca", "ciclos sono", "período fertil", "dpp", "macronutrientes", "limite cafeína", "alerta água", "contracoes"]
+    schemaKeywords: ["calculadora imc", "gasto calórico", "frequência cardíaca", "ciclos sono", "período fértil", "dpp", "macronutrientes", "limite cafeína", "alerta água", "contracoes"]
   },
   "viagem": {
     slug: "viagem",
-    title: "Ferramentas para Viagem e Lazer — Roteiros, Streaming e Mais",
+    title: "Ferramentas para Viagem e Lazer: Roteiros e Mais",
     h1: "Ferramentas para Viagem e Lazer Online Grátis",
-    metaDescription: "Planeje sua viagem e lazer com ferramentas gratuitas: roteirizador de viagem, onde assistir filmes e séries, divisor de carona e mais. Sem cadastro, tudo no navegador.",
+    metaDescription: "Ferramentas grátis para viagem e lazer: roteirizador, lista de bagagem, pegada de carbono e onde assistir esportes na TV.",
     intro: "Viajar é uma das melhores experiências da vida, mas o planejamento pode ser estressante. O CLICAresolve simplifica cada etapa com ferramentas gratuitas para viagem e lazer. Nosso roteirizador de viagem permite organizar dias, atividades e pontos turísticos em um cronograma claro. O utilitário 'Onde Assistir' ajuda a descobrir em qual streaming está seu filme ou série favorita. O divisor de carona calcula a divisão justa dos gastos entre todos os passageiros. O gerador de link para WhatsApp facilita compartilhar itinerários e informações. E o organizador de listas é perfeito para packing lists e checklists de viagem. Tudo gratuito, sem cadastro e com privacidade garantida: seus planos de viagem ficam apenas no seu navegador. Transforme o planejamento em diversão.",
     diferenciais: [
       "Planejamento completo em um só lugar — roteiro, divisão de custos e streaming",
@@ -76,9 +76,9 @@ export const CATEGORY_SEO_DATA: Record<string, CategorySEOData> = {
   },
   "esportes": {
     slug: "esportes",
-    title: "Ferramentas para Esportes e Jogos — Bolão, Equipes, Placar e Mais",
+    title: "Ferramentas para Esportes: Bolão, Times e Placar",
     h1: "Ferramentas para Esportes e Jogos Online Grátis",
-    metaDescription: "Ferramentas esportivas gratuitas: gerador de bolão, sorteador de equipes, placar poliesportivo, probabilidades de classificação, palpites de loteria e mais. Sem cadastro.",
+    metaDescription: "Ferramentas esportivas grátis: bolão, sorteador de times, placar poliesportivo, chances de classificação, loteria e bingo.",
     intro: "Seja você um jogador de futebol de final de semana, um organizador de campeonatos ou alguém que gosta de reunir os amigos para um bolão, o CLICAresolve tem as ferramentas que você precisa. Nosso gerador de bolão organiza os palpites e a divisão de custos do grupo. O sorteador de equipes divide jogadores em times equilibrados automaticamente. O placar poliesportivo funciona como cronômetro e marcador para diversos esportes. A calculadora de probabilidades de classificação simula cenários de campeonatos. E o painel de bingo é perfeito para jogos em família e eventos. Cada ferramenta é gratuita, sem cadastro e funciona offline no navegador. Organize seu jogo e acompanhe cada ponto com precisão.",
     diferenciais: [
       "Ferramentas para todos os perfis: jogadores, técnicos e organizadores",
@@ -95,9 +95,9 @@ export const CATEGORY_SEO_DATA: Record<string, CategorySEOData> = {
   },
   "financas": {
     slug: "financas",
-    title: "Calculadoras Financeiras Online Grátis — Juros, Markup, Moedas e Mais",
+    title: "Calculadoras Financeiras Grátis: Juros, Markup e Mais",
     h1: "Calculadoras Financeiras Online Grátis",
-    metaDescription: "Ferramentas financeiras gratuitas: juros compostos, simulador de markup, ponto de equilíbrio, conversor de moedas, salário/hora, comparador de preço, taxas de maquininha e mais. Sem cadastro.",
+    metaDescription: "Calculadoras financeiras grátis: juros compostos, markup, ponto de equilíbrio, moedas, salário por hora e taxas de maquininha.",
     intro: "Tomar decisões financeiras inteligentes exige números precisos. O CLICAresolve reúne as calculadoras financeiras mais úteis do Brasil, todas gratuitas e sem cadastro. Nosso simulador de juros compostos mostra o poder do dinheiro no tempo. A calculadora de markup descobre seu custo real, markup e margem de lucro. O ponto de equilíbrio calcula quanto você precisa faturar para cobrir todos os custos. O conversor de moedas faz a conversão com cotações de referência que você pode ajustar para o valor do dia. A calculadora de salário/hora revela seu valor real por hora trabalhada. O comparador de preço encontra a melhor relação custo-benefício entre embalagens. E o simulador de porcentagem reversa resolve qualquer problema de desconto ou aumento. Para profissionais liberais, temos ainda o gerador de recibo e o calculador de taxas de maquininha. Cada ferramenta respeita sua privacidade: nenhum dado financeiro é armazenado. Faça contas inteligentes e tome decisões informadas.",
     diferenciais: [
       "Calculadoras aprovadas por contadores e empreendedores reais",
@@ -110,13 +110,13 @@ export const CATEGORY_SEO_DATA: Record<string, CategorySEOData> = {
     categoryName: "Finanças",
     categoryFilter: "Finanças",
     emoji: "💰",
-    schemaKeywords: ["juros compostos", "simulador markup", "ponto equilibrio", "conversor moedas", "salário hora", "comparador preço", "taxas maquininha", "calculadora desconto", "porcentagem reversa", "gerador recibo"]
+    schemaKeywords: ["juros compostos", "simulador markup", "ponto equilíbrio", "conversor moedas", "salário hora", "comparador preço", "taxas maquininha", "calculadora desconto", "porcentagem reversa", "gerador recibo"]
   },
   "estudos": {
     slug: "estudos",
-    title: "Ferramentas para Estudos e Educação — Pomodoro, SISU, Editais e Mais",
+    title: "Ferramentas para Estudos: Pomodoro, SISU e Editais",
     h1: "Ferramentas para Estudos e Educação Online Grátis",
-    metaDescription: "Ferramentas educacionais gratuitas: ciclo de estudos, simulador SISU, calculadora de edital, mapeamento de erros, pomodoro, velocidade de digitação e mais. Sem cadastro.",
+    metaDescription: "Ferramentas de estudo grátis: ciclo de estudos, simulador SISU, calculadora de edital, pomodoro e velocidade de digitação.",
     intro: "Estudar com eficiência é uma habilidade que se aprende. O CLICAresolve oferece ferramentas gratuitas para maximizar seu rendimento acadêmico e profissional. Nosso ciclo de estudos organiza seu tempo em blocos produtivos com pausas estratégicas. O simulador SISU calcula sua nota de corte e chances de aprovação. A calculadora de edital soma pontos com pesos por matéria. O mapeamento de erros identifica padrões de dificuldade para direcionar seu estudo. O timer Pomodoro mantém foco com intervalos científicos. O teste de velocidade de digitação mede seu WPM. E o contador de caracteres ajuda a formatar textos acadêmicos. Cada ferramenta é gratuita, sem cadastro e funciona offline. Estude de forma inteligente, organize seu tempo e alcance seus objetivos com mais eficiência.",
     diferenciais: [
       "Métodos comprovados de produtividade: Pomodoro, ciclo de estudos e mapeamento de erros",
@@ -133,9 +133,9 @@ export const CATEGORY_SEO_DATA: Record<string, CategorySEOData> = {
   },
   "religioso": {
     slug: "religioso",
-    title: "Ferramentas de Estudos Religiosos — Bíblia, Hebraico, Cronologia e Mais",
+    title: "Ferramentas de Estudo Bíblico e Religioso",
     h1: "Ferramentas de Estudos Religiosos Online Grátis",
-    metaDescription: "Ferramentas religiosas gratuitas: plano de leitura bíblica, cronologia bíblica, conversor calendário hebraico, roteiro de estudos do judaísmo, fichamento SOAP e mais. Sem cadastro.",
+    metaDescription: "Ferramentas religiosas grátis: plano de leitura bíblica, cronologia bíblica, calendário hebraico e método SOAP. Sem cadastro.",
     intro: "Aprofunde sua fé e conhecimento espiritual com as ferramentas religiosas do CLICAresolve. Nosso plano de leitura bíblica em 365 dias acompanha seu progresso diário. A cronologia bíblica interativa mostra a linha do tempo dos principais eventos. O conversor de calendário hebraico traduz datas gregorianas para o calendário judaico e mostra as próximas festas. O roteiro de estudos do judaísmo oferece uma trilha em 4 fases: Torá, Tanakh, filosofia e Kabalah. O fichamento SOAP estrutura seu estudo bíblico em Scripture, Observation, Application e Prayer. Cada ferramenta é gratuita, sem cadastro e respeita sua privacidade: seus dados de estudo espiritual ficam apenas no seu dispositivo. Cresça na fé com organização e profundidade.",
     diferenciais: [
       "Conteúdo teológico respeitoso e academicamente fundamentado",
@@ -148,14 +148,14 @@ export const CATEGORY_SEO_DATA: Record<string, CategorySEOData> = {
     categoryName: "Estudos Religiosos",
     categoryFilter: "Religioso",
     emoji: "📖",
-    schemaKeywords: ["plano leitura bíblica", "cronologia bíblica", "calendario hebraico", "roteiro judaismo", "fichamento soap"]
+    schemaKeywords: ["plano leitura bíblica", "cronologia bíblica", "calendário hebraico", "roteiro judaísmo", "fichamento soap"]
   },
   "calendario-tempo": {
     slug: "calendario-tempo",
     toolSlugs: ["calendario-feriados", "diferenca-datas", "contador-tempo-decorrido", "dias-vida", "acumulador-horas", "horas-decimais", "planejador-fuso-horario", "calendario-hebraico", "pomodoro"],
-    title: "Ferramentas de Calendário e Tempo — Feriados, Diferença de Datas, Horas e Mais",
+    title: "Calendário e Tempo: Feriados, Datas e Horas",
     h1: "Ferramentas de Calendário e Tempo Online Grátis",
-    metaDescription: "Ferramentas de calendário e tempo gratuitas: calendário de feriados, diferença entre datas, acumulador de horas, conversor de horas decimais, dias de vida e contadores. Sem cadastro.",
+    metaDescription: "Ferramentas grátis de calendário e tempo: feriados, diferença entre datas, soma de horas, horas decimais e dias de vida.",
     intro: "O tempo é o recurso mais valioso que temos. O CLICAresolve oferece ferramentas gratuitas para gerenciar datas, horas e prazos com precisão. Nosso calendário de feriados mostra feriados nacionais e móveis de qualquer ano, com contador regressivo. A diferença entre datas calcula intervalos em anos, meses, dias e horas. O acumulador de horas soma jornadas de trabalho e compara com a contratada. O conversor de horas decimais traduz entre formato horário e decimal. E o contador de dias de vida mostra quanto tempo você já viveu em diferentes unidades. Cada ferramenta é gratuita, sem cadastro e funciona offline. Organize seu tempo, planeje prazos e celebre cada momento da vida.",
     diferenciais: [
       "Feriados nacionais e móveis calculados automaticamente para qualquer ano",
@@ -168,13 +168,13 @@ export const CATEGORY_SEO_DATA: Record<string, CategorySEOData> = {
     categoryName: "Calendário e Tempo",
     categoryFilter: "Utilidades",
     emoji: "📅",
-    schemaKeywords: ["calendario feriados", "diferenca datas", "acumulador horas", "horas decimais", "dias vida", "contador tempo"]
+    schemaKeywords: ["calendário feriados", "diferença datas", "acumulador horas", "horas decimais", "dias vida", "contador tempo"]
   },
   "utilidades": {
     slug: "utilidades",
-    title: "Utilitários Online Grátis — QR Code, Senhas, Listas, Conversores e Mais",
+    title: "Utilitários Grátis: QR Code, Senhas e Conversores",
     h1: "Utilitários Online Grátis para o Dia a Dia",
-    metaDescription: "Utilitários gratuitos: gerador de QR Code, gerador de senhas, organizador de listas, conversor de DPI, conversor de proporção, extrator de paleta de cores, gerador de link WhatsApp e mais. Sem cadastro.",
+    metaDescription: "Utilitários grátis: QR Code, gerador de senhas, organizador de listas, conversor de DPI e proporção e link do WhatsApp.",
     intro: "No dia a dia, pequenas tarefas demandam ferramentas específicas. O CLICAresolve reúne dezenas de utilitários gratuitos que resolvem problemas comuns em segundos. Nosso gerador de QR Code cria códigos prontos para digitalização. O gerador de senhas cria senhas seguras e personalizáveis. O organizador de listas remove duplicatas, ordena, numera e inverte linhas. O conversor de DPI traduz sensibilidade de mouse entre diferentes DPIs. O extrator de paleta de cores identifica as cores dominantes de qualquer imagem. O conversor de proporção calcula aspect ratios e dimensões. O gerador de link para WhatsApp cria links de mensagem direta. E o formatador de texto transforma entre maiúsculas, minúsculas, capitalizado e mais. Tudo gratuito, sem cadastro e com privacidade total. Resolva problemas pequenos com grandes ferramentas.",
     diferenciais: [
       "Mais de 15 utilitários em uma única plataforma",
@@ -192,9 +192,9 @@ export const CATEGORY_SEO_DATA: Record<string, CategorySEOData> = {
   "micro-nichos": {
     slug: "micro-nichos",
     toolSlugs: ["pomodoro", "velocidade-digitacao", "acumulador-horas", "horas-decimais", "gerador-recibo", "taxa-engajamento", "formatador-legendas", "conversor-cozinha", "calculadora-churrasco", "backlog-gamer", "spawn-timer", "gerador-nicks", "conversor-dpi", "cronograma-capilar", "custo-nail", "agenda-unhas"],
-    title: "Ferramentas para Nichos Específicos — Produtividade, DP/RH, Redes Sociais e Mais",
+    title: "Ferramentas para Nichos: Produtividade, DP/RH e Mais",
     h1: "Ferramentas para Nichos Específicos Online Grátis",
-    metaDescription: "Ferramentas especializadas gratuitas: produtividade, DP/RH, redes sociais, culinária, calculadoras gerais e muito mais. Sem cadastro, tudo no navegador.",
+    metaDescription: "Ferramentas grátis para nichos: produtividade, DP e RH, redes sociais, games, cozinha, manicure e cronograma capilar.",
     intro: "Cada profissão e hobby tem suas necessidades específicas. O CLICAresolve oferece ferramentas especializadas para nichos únicos, todas gratuitas e sem cadastro. Para produtividade, temos o Pomodoro, o ciclo de estudos e o velocidade de digitação. Para DP/RH, oferecemos o acumulador de horas, o conversor de horas decimais e o gerador de recibo. Para redes sociais, temos a taxa de engajamento e o formatador de legendas. Para culinária, o conversor de medidas e a calculadora de churrasco. Para gamers, o backlog de jogos e o cronômetro de spawn. Para beleza, o cronograma capilar e o custo de nail designer. Para cada nicho, uma solução precisa e privada. Explore nosso hub de micro-nichos e descubra ferramentas que você nem sabia que precisava.",
     diferenciais: [
       "Ferramentas desenvolvidas com feedback de profissionais reais de cada nicho",
@@ -211,9 +211,9 @@ export const CATEGORY_SEO_DATA: Record<string, CategorySEOData> = {
   },
   "familia-bebes": {
     slug: "familia-bebes",
-    title: "Ferramentas para Família e Bebês — Significado de Nomes, DPP e Mais",
+    title: "Significado de Nomes: Ferramentas para Família",
     h1: "Ferramentas para Família e Bebês Online Grátis",
-    metaDescription: "Ferramentas gratuitas para família e bebês: significado de nomes, DPP (Data Provável do Parto), período fértil, cronômetro de contrações e mais. Sem cadastro.",
+    metaDescription: "Descubra o significado, a origem e a popularidade de mais de 580 nomes, com dados do IBGE. Grátis e sem cadastro.",
     intro: "A chegada de um bebê transforma tudo. O CLICAresolve oferece ferramentas gratuitas para apoiar famílias em cada etapa dessa jornada. Nosso descobridor de significado de nomes revela a origem, significado e curiosidades de mais de 150 nomes de bebês, com busca inteligente e sugestões de nomes similares. A calculadora de DPP (Data Provável do Parto) usa a Regra de Naegele para estimar a data do parto. O calculador de período fértil ajuda a planejar a gravidez. E o cronômetro de contrações acompanha o progresso do trabalho de parto. Cada ferramenta é gratuita, sem cadastro e respeita a privacidade da família: dados sensíveis de saúde nunca são armazenados. Prepare-se para o grande dia com informação e tranquilidade.",
     diferenciais: [
       "Base de dados com 150+ nomes de bebês com origem, significado e curiosidades",
@@ -226,7 +226,7 @@ export const CATEGORY_SEO_DATA: Record<string, CategorySEOData> = {
     categoryName: "Família e Bebês",
     categoryFilter: "Família e Bebês",
     emoji: "👶",
-    schemaKeywords: ["significado nomes", "dpp", "período fertil", "contracoes", "nomes bebê"]
+    schemaKeywords: ["significado nomes", "dpp", "período fértil", "contracoes", "nomes bebê"]
   },
   "pet": {
     slug: "pet",
@@ -249,9 +249,9 @@ export const CATEGORY_SEO_DATA: Record<string, CategorySEOData> = {
   },
   "astrologia": {
     slug: "astrologia",
-    title: "Ferramentas de Astrologia — Signo, Compatibilidade, Numerologia e Mais",
+    title: "Astrologia: Signo, Compatibilidade e Numerologia",
     h1: "Ferramentas de Astrologia Online Grátis",
-    metaDescription: "Ferramentas astrológicas gratuitas: descobridor de signo, compatibilidade entre signos, mapa numerológico e mais. Sem cadastro, tudo no navegador.",
+    metaDescription: "Ferramentas grátis de astrologia: descubra seu signo, a compatibilidade amorosa e o mapa numerológico. Sem cadastro.",
     intro: "Descubra o que as estrelas têm a dizer sobre você com as ferramentas astrológicas do CLICAresolve. Nosso descobridor de signo identifica seu signo solar e mostra características, elemento, regente e qualidade. A compatibilidade entre signos calcula a afinidade amorosa, amizade e profissional entre dois signos. E o mapa numerológico revela seu Número do Destino a partir da data de nascimento. Cada ferramenta é gratuita, sem cadastro e respeita sua privacidade: dados pessoais de astrologia ficam apenas no seu navegador. Explore o universo astrológico com curiosidade e diversão.",
     diferenciais: [
       "Informações astrológicas completas: signo, elemento, regente, qualidade e características",
@@ -268,9 +268,9 @@ export const CATEGORY_SEO_DATA: Record<string, CategorySEOData> = {
   },
   "livros": {
     slug: "livros",
-    title: "Ferramentas para Livros e Leitura — Sugestões, Cronologia e Mais",
+    title: "Sugestor de Livros: Descubra Sua Próxima Leitura",
     h1: "Ferramentas para Livros e Leitura Online Grátis",
-    metaDescription: "Ferramentas literárias gratuitas: sugestor de livros, cronologia bíblica, plano de leitura bíblica e mais. Descubra seu próximo livro com um quiz personalizado. Sem cadastro.",
+    metaDescription: "Responda a um quiz rápido e receba sugestões de livros de acordo com o seu gosto e momento. Grátis e sem cadastro.",
     intro: "A leitura enriquece a alma e expande a mente. O CLICAresolve oferece ferramentas gratuitas para leitores e estudiosos de todas as áreas. Nosso sugestor de livros usa um quiz com 4 perguntas para encontrar sua próxima leitura ideal. A cronologia bíblica interativa mostra a linha do tempo dos eventos sagrados. O plano de leitura bíblica em 365 dias acompanha seu progresso diário. E o roteiro de estudos do judaísmo oferece uma trilha completa de conhecimento. Cada ferramenta é gratuita, sem cadastro e respeita sua privacidade. Encontre sua próxima leitura, organize seu estudo e aprofunde seu conhecimento.",
     diferenciais: [
       "Quiz de sugestão de livros com 4 perguntas personalizadas",
@@ -283,7 +283,7 @@ export const CATEGORY_SEO_DATA: Record<string, CategorySEOData> = {
     categoryName: "Livros e Leitura",
     categoryFilter: "Livros e Leitura",
     emoji: "📚",
-    schemaKeywords: ["sugestor livros", "cronologia bíblica", "plano leitura bíblica", "roteiro judaismo", "fichamento soap"]
+    schemaKeywords: ["sugestor livros", "cronologia bíblica", "plano leitura bíblica", "roteiro judaísmo", "fichamento soap"]
   }
 };
 

@@ -152,7 +152,7 @@ export function Pomodoro({ onBack }: Props) {
       title="Pomodoro"
       emoji="🍅"
       category="Estudos"
-      description="Timer de foco com pausas configuraveis e notificações."
+      description="Timer de foco com pausas configuráveis e notificações."
       onBack={onBack}
       affiliateBanner={<AffiliateBanner terms={["timer físico estudo"]} label="timer físico estudo" />}
     
@@ -174,7 +174,7 @@ export function Pomodoro({ onBack }: Props) {
             {running ? <Pause className="w-5 h-5" /> : <Play className="w-5 h-5" />}
             {running ? "Pausar" : "Iniciar"}
           </button>
-          <button
+          <button aria-label="Reiniciar"
             onClick={reset}
             className="px-4 rounded-xl bg-white/5 border border-white/10 text-gray-400 hover:text-white transition-colors"
           >

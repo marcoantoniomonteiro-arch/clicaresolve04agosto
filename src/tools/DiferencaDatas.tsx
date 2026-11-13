@@ -63,14 +63,14 @@ export function DiferencaDatas({ onBack }: Props) {
 
   return (
     <ToolLayout
-      title="Diferenca entre Datas"
+      title="Diferença entre Datas"
       emoji="📅"
       category="Utilidades"
-      description="Calcule a diferenca entre duas datas em anos, meses, dias e mais."
+      description="Calcule a diferença entre duas datas em anos, meses, dias e mais."
       onBack={onBack}
       affiliateBanner={<AffiliateBanner terms={["agenda planner anual"]} label="agenda planner anual" />}
     
-      disclaimer="Cálculo matematico. Não inclui adicionais de Convenções Coletivas (CCT)."
+      disclaimer="Cálculo matemático. Não inclui adicionais de Convenções Coletivas (CCT)."
     >
       <div className="space-y-5">
         <div className="grid grid-cols-2 gap-3">
@@ -150,7 +150,7 @@ export function DiferencaDatas({ onBack }: Props) {
                 </>
               ) : (
                 <>
-                  <p className="text-xs text-green-400 mb-1">Diferenca</p>
+                  <p className="text-xs text-green-400 mb-1">Diferença</p>
                   <p className="text-3xl font-black text-green-400">
                     {resultado.anos}a {resultado.meses}m {resultado.dias}d
                   </p>
@@ -162,20 +162,20 @@ export function DiferencaDatas({ onBack }: Props) {
               <div className="p-3 rounded-xl bg-white/5 text-center">
                 <Calendar className="w-4 h-4 text-gray-400 mx-auto mb-1" />
                 <p className="text-xs text-gray-400">Dias Total</p>
-                <p className="text-lg font-bold text-white">{resultado.diasTotal.toLocaleString()}</p>
+                <p className="text-lg font-bold text-white">{resultado.diasTotal.toLocaleString("pt-BR")}</p>
               </div>
               <div className="p-3 rounded-xl bg-white/5 text-center">
                 <p className="text-xs text-gray-400 mt-2">Semanas</p>
-                <p className="text-lg font-bold text-white">{resultado.semanas.toLocaleString()}</p>
+                <p className="text-lg font-bold text-white">{resultado.semanas.toLocaleString("pt-BR")}</p>
               </div>
               <div className="p-3 rounded-xl bg-white/5 text-center">
                 <Clock className="w-4 h-4 text-gray-400 mx-auto mb-1" />
                 <p className="text-xs text-gray-400">Horas</p>
-                <p className="text-lg font-bold text-white">{resultado.horasTotal.toLocaleString()}</p>
+                <p className="text-lg font-bold text-white">{resultado.horasTotal.toLocaleString("pt-BR")}</p>
               </div>
               <div className="p-3 rounded-xl bg-white/5 text-center">
                 <p className="text-xs text-gray-400 mt-2">Minutos</p>
-                <p className="text-lg font-bold text-white">{resultado.minutosTotal.toLocaleString()}</p>
+                <p className="text-lg font-bold text-white">{resultado.minutosTotal.toLocaleString("pt-BR")}</p>
               </div>
             </div>
 

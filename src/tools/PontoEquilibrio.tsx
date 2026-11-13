@@ -4,6 +4,7 @@ import { AffiliateBanner } from "../components/AffiliateBanner";
 import { ToolContent } from "../components/ToolContent";
 import { CONFIG } from "../config";
 
+import { fmtNum } from "../utils/format";
 interface Props {
   onBack: () => void;
 }
@@ -29,18 +30,18 @@ export function PontoEquilibrio({ onBack }: Props) {
 
   return (
     <ToolLayout
-      title="Ponto de Equilibrio"
+      title="Ponto de Equilíbrio"
       emoji="📈"
       category="Finanças"
       description="Descubra quantas unidades precisa vender para cobrir todos os custos."
       onBack={onBack}
       affiliateBanner={
         <AffiliateBanner
-          terms={["livro gestao financeira MEI", "controle financeiro pequena empresa"]}
-          label="Aprenda mais sobre gestao"
+          terms={["livro gestão financeira MEI", "controle financeiro pequena empresa"]}
+          label="Aprenda mais sobre gestão"
         />
       }
-      disclaimer="Simplificação didatica. Não considera impostos variaveis, sazonalidade ou custos semi-variaveis."
+      disclaimer="Simplificação didática. Não considera impostos variáveis, sazonalidade ou custos semivariáveis."
     >
       <div className="space-y-5">
         <label className="block">
@@ -64,7 +65,7 @@ export function PontoEquilibrio({ onBack }: Props) {
             placeholder="Ex: 15"
             className="input-field"
           />
-          <p className="text-xs text-gray-600 mt-1">Materia-prima, embalagem, etc.</p>
+          <p className="text-xs text-gray-600 mt-1">Matéria-prima, embalagem, etc.</p>
         </label>
 
         <label className="block">
@@ -81,7 +82,7 @@ export function PontoEquilibrio({ onBack }: Props) {
         {result && (
           <div className="space-y-4">
             <div className="p-5 rounded-xl bg-green-500/10 border border-green-500/20 text-center">
-              <p className="text-xs text-green-400 mb-1">Ponto de Equilibrio</p>
+              <p className="text-xs text-green-400 mb-1">Ponto de Equilíbrio</p>
               <p className="text-4xl font-black text-green-400">
                 {Math.ceil(result.unidades)} unidades
               </p>
@@ -91,19 +92,19 @@ export function PontoEquilibrio({ onBack }: Props) {
               <div className="p-4 rounded-xl bg-white/5 text-center">
                 <p className="text-xs text-gray-400">Faturamento Mínimo</p>
                 <p className="text-lg font-bold text-white">
-                  R$ {result.faturamento.toLocaleString("pt-BR", { minimumFractionDigits: 2 })}
+                  R$ {result.faturamento.toLocaleString("pt-BR", { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
                 </p>
               </div>
               <div className="p-4 rounded-xl bg-blue-500/10 border border-blue-500/20 text-center">
                 <p className="text-xs text-blue-400">Margem Contribuição</p>
                 <p className="text-lg font-bold text-blue-400">
-                  R$ {result.mc.toFixed(2)}/un
+                  R$ {fmtNum(result.mc, 2)}/un
                 </p>
               </div>
               <div className="p-4 rounded-xl bg-white/5 text-center">
                 <p className="text-xs text-gray-400">Margem %</p>
                 <p className="text-lg font-bold text-white">
-                  {((result.mc / result.pv) * 100).toFixed(1)}%
+                  {fmtNum(((result.mc / result.pv) * 100), 1)}%
                 </p>
               </div>
             </div>
@@ -112,8 +113,8 @@ export function PontoEquilibrio({ onBack }: Props) {
               <p className="text-xs text-gray-400 mb-2">O que significa?</p>
               <p className="text-sm text-gray-300">
                 Você precisa vender pelo menos <strong className="text-white">{Math.ceil(result.unidades)} unidades</strong> por mês
-                (faturando R$ {result.faturamento.toLocaleString("pt-BR", { minimumFractionDigits: 2 })}) para cobrir todos os custos.
-                Acima disso, cada unidade vendida gera lucro de R$ {result.mc.toFixed(2)}.
+                (faturando R$ {result.faturamento.toLocaleString("pt-BR", { minimumFractionDigits: 2, maximumFractionDigits: 2 })}) para cobrir todos os custos.
+                Acima disso, cada unidade vendida gera lucro de R$ {fmtNum(result.mc, 2)}.
               </p>
             </div>
           </div>

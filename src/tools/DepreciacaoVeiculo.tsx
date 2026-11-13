@@ -4,6 +4,7 @@ import { AffiliateBanner } from "../components/AffiliateBanner";
 import { ToolContent } from "../components/ToolContent";
 import { CONFIG } from "../config";
 
+import { fmtNum } from "../utils/format";
 interface Props { onBack: () => void; }
 
 const CATEGORIAS = [
@@ -49,9 +50,9 @@ export function DepreciacaoVeiculo({ onBack }: Props) {
       onBack={onBack}
       affiliateBanner={
         <AffiliateBanner
-          terms={["pelicula protetora carro", "capa de banco"]}
+          terms={["película protetora carro", "capa de banco"]}
           label="Proteja seu veículo"
-          mercadoLivreTerms={["pelicula automotiva", "capa de banco universal"]} mercadoLivreLabel="Encontre no Mercado Livre"
+          mercadoLivreTerms={["película automotiva", "capa de banco universal"]} mercadoLivreLabel="Encontre no Mercado Livre"
         />
       }
     >
@@ -82,7 +83,7 @@ export function DepreciacaoVeiculo({ onBack }: Props) {
             <select value={categoria} onChange={(e) => setCategoria(e.target.value)} className="input-field">
               {CATEGORIAS.map((c) => (
                 <option key={c.value} value={c.value}>
-                  {c.label} ({(c.taxa * 100).toFixed(0)}%/ano)
+                  {c.label} ({fmtNum((c.taxa * 100), 0)}%/ano)
                 </option>
               ))}
             </select>
@@ -101,7 +102,7 @@ export function DepreciacaoVeiculo({ onBack }: Props) {
                 </div>
                 <div className="flex items-center justify-between text-sm">
                   <span className="text-red-400">Perda: {fmt(a.perda)}</span>
-                  <span className="text-red-400 font-medium">-{a.pct.toFixed(1)}%</span>
+                  <span className="text-red-400 font-medium">-{fmtNum(a.pct, 1)}%</span>
                 </div>
                 <div className="mt-2 h-1.5 rounded-full bg-white/10">
                   <div className="h-1.5 rounded-full bg-red-400/70" style={{ width: `${a.pct}%` }} />

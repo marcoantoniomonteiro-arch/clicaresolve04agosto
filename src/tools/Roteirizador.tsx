@@ -4,6 +4,7 @@ import { AffiliateBanner } from "../components/AffiliateBanner";
 import { ToolContent } from "../components/ToolContent";
 import { Plus, Trash2, MapPin, Navigation } from "lucide-react";
 
+import { fmtNum } from "../utils/format";
 interface Props { onBack: () => void; }
 
 interface Parada {
@@ -208,7 +209,7 @@ export function Roteirizador({ onBack }: Props) {
           <div className="grid grid-cols-3 gap-3">
             <div className="bg-white/5 rounded-xl p-4 text-center">
               <p className="text-xs text-gray-400">Distância</p>
-              <p className="text-lg font-bold text-white">{result.distancia.toFixed(0)} km</p>
+              <p className="text-lg font-bold text-white">{fmtNum(result.distancia, 0)} km</p>
             </div>
             <div className="bg-white/5 rounded-xl p-4 text-center">
               <p className="text-xs text-gray-400">Combustível</p>
@@ -238,8 +239,8 @@ export function Roteirizador({ onBack }: Props) {
             result: "A ordem otimizada reduziu o tempo total de deslocamento entre os 4 pontos turísticos visitados no mesmo dia.",
           },
           faqs: [
-            { question: "Quantas paradas posso adicionar no roteiro?", answer: "Geralmente é possível adicionar diversas paradas, mas o desempenho da otimização é melhor com uma quantidade moderada de pontos (até 10-15)." },
-            { question: "A ferramenta considera o trânsito em tempo real?", answer: "Isso depende da fonte de dados de mapa utilizada; a otimização básica geralmente considera distância, não necessariamente o trânsito ao vivo." },
+            { question: "Quantas paradas posso adicionar no roteiro?", answer: "Até 8 paradas por roteiro, além do ponto de partida." },
+            { question: "A ferramenta considera o trânsito em tempo real?", answer: "Não. A ferramenta localiza os lugares pelo OpenStreetMap e calcula a distância em linha reta entre as paradas. Ela não considera trânsito nem o traçado exato das ruas, então a distância real costuma ser um pouco maior. Para navegar, use um app de mapas." },
             { question: "Posso reordenar manualmente as paradas sugeridas?", answer: "Sim, a sugestão é um ponto de partida; o usuário pode ajustar a ordem conforme suas preferências pessoais." },
             { question: "Serve para roteiros de entrega ou só turismo?", answer: "Serve para qualquer situação com múltiplas paradas, incluindo entregas, visitas comerciais ou passeios turísticos." },
           ],

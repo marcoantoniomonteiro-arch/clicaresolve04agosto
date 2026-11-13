@@ -90,7 +90,7 @@ export function SpawnTimer({ onBack }: Props) {
       title="Cronometro de Spawn"
       emoji="⏲️"
       category="Utilidades"
-      description="Multiplos timers para monitorar spawns em jogos. Ideal como segunda tela."
+      description="Múltiplos timers para monitorar spawns em jogos. Ideal como segunda tela."
       onBack={onBack}
       affiliateBanner={<AffiliateBanner terms={["segundo monitor setup"]} label="segundo monitor setup" mercadoLivreTerms={["monitor gamer 24 polegadas"]} mercadoLivreLabel="Encontre no Mercado Livre" />}
     
@@ -98,7 +98,7 @@ export function SpawnTimer({ onBack }: Props) {
       <div className="space-y-5">
         <div className="flex items-center justify-between">
           <p className="text-xs text-gray-400">{timers.length}/6 timers</p>
-          <button
+          <button aria-label={somAtivo ? "Desativar som" : "Ativar som"}
             onClick={() => setSomAtivo(!somAtivo)}
             className={`p-2 rounded ${somAtivo ? "text-green-400" : "text-gray-500"}`}
           >

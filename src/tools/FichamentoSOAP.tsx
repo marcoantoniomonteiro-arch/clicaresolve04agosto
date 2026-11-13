@@ -95,7 +95,7 @@ Estudo via CLICAresolve`;
             <textarea
               value={scripture}
               onChange={(e) => setScripture(e.target.value)}
-              placeholder="Cole aqui o versiculo ou passagem que deseja estudar..."
+              placeholder="Cole aqui o versículo ou passagem que deseja estudar..."
               className="input-field w-full h-20 resize-none p-3"
             />
           </div>
@@ -168,7 +168,7 @@ Estudo via CLICAresolve`;
 
         {preenchido && (
           <div className="p-4 rounded-xl bg-white/5 border border-white/8">
-            <p className="text-xs text-gray-400 mb-2">Pre-visualizacao</p>
+            <p className="text-xs text-gray-400 mb-2">Pré-visualização</p>
             <pre className="text-xs text-gray-300 whitespace-pre-wrap font-mono">
               {textoFormatado}
             </pre>

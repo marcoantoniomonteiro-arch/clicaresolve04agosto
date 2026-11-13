@@ -90,7 +90,7 @@ export function ContadorCaracteres({ onBack }: Props) {
             <p className="text-lg font-bold text-white">{stats.linhas}</p>
           </div>
           <div className="p-3 rounded-xl bg-white/5 text-center">
-            <p className="text-xs text-gray-400 mt-2">Paragrafos</p>
+            <p className="text-xs text-gray-400 mt-2">Parágrafos</p>
             <p className="text-lg font-bold text-white">{stats.paragrafos}</p>
           </div>
         </div>

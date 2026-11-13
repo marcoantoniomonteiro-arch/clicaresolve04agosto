@@ -146,7 +146,7 @@ export function PlacarPoliesportivo({ onBack }: Props) {
         <div className="grid grid-cols-2 gap-4">
           {([0, 1] as const).map((idx) => (
             <div key={idx} className={`p-4 rounded-2xl border ${idx === 0 ? "border-blue-500/30 bg-blue-500/5" : "border-red-500/30 bg-red-500/5"}`}>
-              <input
+              <input aria-label={`Nome da equipe ${idx + 1}`}
                 value={times[idx].nome}
                 onChange={(e) => updateNome(idx, e.target.value)}
                 className={`w-full bg-transparent text-center font-bold text-base border-b pb-1 mb-3 outline-none ${idx === 0 ? "text-blue-400 border-blue-400/30" : "text-red-400 border-red-400/30"}`}
@@ -197,7 +197,7 @@ export function PlacarPoliesportivo({ onBack }: Props) {
               {running ? <Pause className="w-4 h-4" /> : <Play className="w-4 h-4" />}
               {running ? "Pausar" : "Iniciar"}
             </button>
-            <button onClick={() => { setElapsed(0); setRunning(false); }} className="p-1.5 rounded-lg border border-white/10 text-gray-400 hover:text-white transition-colors">
+            <button aria-label="Zerar cronômetro" onClick={() => { setElapsed(0); setRunning(false); }} className="p-1.5 rounded-lg border border-white/10 text-gray-400 hover:text-white transition-colors">
               <RotateCcw className="w-4 h-4" />
             </button>
           </div>
@@ -226,7 +226,7 @@ export function PlacarPoliesportivo({ onBack }: Props) {
           faqs: [
             { question: "O placar serve para qualquer esporte?", answer: "Sim, por ser um contador genérico de pontos, funciona para praticamente qualquer esporte ou jogo que precise de contagem." },
             { question: "Posso resetar o placar durante o jogo?", answer: "Sim, há uma opção para zerar a pontuação e começar um novo jogo ou set." },
-            { question: "O placar salva o histórico de jogos anteriores?", answer: "Depende da versão da ferramenta; geralmente o foco é no acompanhamento em tempo real do jogo atual." },
+            { question: "O placar salva o histórico de jogos anteriores?", answer: "Não. O placar mostra apenas a partida atual; ao recarregar a página ou zerar, a contagem recomeça. Anote o resultado antes de começar outro jogo." },
             { question: "Posso usar em torneios com várias partidas?", answer: "Sim, basta resetar o placar entre uma partida e outra para acompanhar cada jogo separadamente." },
           ],
         }}

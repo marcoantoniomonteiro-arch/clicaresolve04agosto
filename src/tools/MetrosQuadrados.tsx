@@ -5,6 +5,7 @@ import { ToolContent } from "../components/ToolContent";
 import { CONFIG } from "../config";
 import { Plus, Trash2 } from "lucide-react";
 
+import { fmtNum } from "../utils/format";
 interface Props { onBack: () => void; }
 
 interface Ambiente {
@@ -58,7 +59,7 @@ export function MetrosQuadrados({ onBack }: Props) {
       onBack={onBack}
       affiliateBanner={
         <AffiliateBanner
-          terms={["piso vinilico", "azulejo", "argamassa"]}
+          terms={["piso vinílico", "azulejo", "argamassa"]}
           label="Materiais para piso"
           mercadoLivreTerms={["piso vinílico"]} mercadoLivreLabel="Encontre no Mercado Livre"
         />
@@ -103,18 +104,18 @@ export function MetrosQuadrados({ onBack }: Props) {
             {result.items.map((item, i) => (
               <div key={i} className="flex items-center justify-between p-3 rounded-lg bg-white/5">
                 <span className="text-sm text-white">{item.nome}</span>
-                <span className="text-white font-medium">{item.area.toFixed(2)} m²</span>
+                <span className="text-white font-medium">{fmtNum(item.area, 2)} m²</span>
               </div>
             ))}
             <div className="h-px bg-white/10" />
             <div className="flex items-center justify-between p-3 rounded-xl bg-white/8">
               <span className="text-sm text-gray-400">Área Total</span>
-              <span className="text-xl font-bold text-white">{result.total.toFixed(2)} m²</span>
+              <span className="text-xl font-bold text-white">{fmtNum(result.total, 2)} m²</span>
             </div>
             {margem && (
               <div className="flex items-center justify-between p-3 rounded-xl bg-amber-500/10 border border-amber-500/30">
                 <span className="text-sm text-amber-400">Com 10% de margem</span>
-                <span className="text-xl font-bold text-amber-400">{result.comMargem.toFixed(2)} m²</span>
+                <span className="text-xl font-bold text-amber-400">{fmtNum(result.comMargem, 2)} m²</span>
               </div>
             )}
           </div>

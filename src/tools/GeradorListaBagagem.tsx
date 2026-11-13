@@ -84,7 +84,7 @@ export function GeradorListaBagagem({ onBack }: Props) {
         <div className="grid grid-cols-1 gap-4">
           <div>
             <label className="text-sm text-gray-400 mb-1 block">Duração da viagem (dias)</label>
-            <input
+            <input aria-label="Duração da viagem em dias"
               type="number"
               min={1}
               max={90}
@@ -96,7 +96,7 @@ export function GeradorListaBagagem({ onBack }: Props) {
 
           <div>
             <label className="text-sm text-gray-400 mb-1 block">Clima do destino</label>
-            <select
+            <select aria-label="Clima do destino"
               value={clima}
               onChange={(e) => setClima(e.target.value as Clima)}
               className="input-field text-sm"
@@ -109,7 +109,7 @@ export function GeradorListaBagagem({ onBack }: Props) {
 
           <div>
             <label className="text-sm text-gray-400 mb-1 block">Tipo de viagem</label>
-            <select
+            <select aria-label="Tipo de viagem"
               value={tipo}
               onChange={(e) => setTipo(e.target.value as TipoViagem)}
               className="input-field text-sm"

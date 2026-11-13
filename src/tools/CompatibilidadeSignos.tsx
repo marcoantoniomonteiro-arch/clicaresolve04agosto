@@ -22,43 +22,51 @@ const SIGNOS = [
   "Libra", "Escorpiao", "Sagitario", "Capricornio", "Aquario", "Peixes"
 ];
 
+// Nomes como aparecem na tela (as chaves internas ficam sem acento)
+const SIGNO_NOME: Record<string, string> = {
+  Aries: "Áries", Touro: "Touro", Gemeos: "Gêmeos", Cancer: "Câncer", Leao: "Leão", Virgem: "Virgem",
+  Libra: "Libra", Escorpiao: "Escorpião", Sagitario: "Sagitário", Capricornio: "Capricórnio", Aquario: "Aquário", Peixes: "Peixes",
+};
+const NIVEL_NOME: Record<NivelCompatibilidade, string> = { Alta: "Alta", Media: "Média", Desafiadora: "Desafiadora" };
+const ELEMENTO_NOME: Record<string, string> = { Fogo: "Fogo", Terra: "Terra", Ar: "Ar", Agua: "Água" };
+
 const COMPATIBILIDADES: Record<string, CompatibilidadeInfo> = {
-  "Aries-Leao": { nivel: "Alta", descricao: "Dois signos de Fogo que se entusiasmam juntos. Muita energia, paixao e aventura.", pontosFortes: ["Paixao intensa", "Aventuras compartilhadas", "Mutuo incentivo"], pontosAtencao: ["Disputas de lideranca", "Impulsos descontrolados", "Orgulho de ambos"] },
-  "Aries-Sagitario": { nivel: "Alta", descricao: "Conexao natural de Fogo. Aventura, liberdade e otimismo definem essa parceria.", pontosFortes: ["Aventuras sem fim", "Independencia mutua", "Entusiasmo contagiante"], pontosAtencao: ["Falta de compromisso", "Impaciencia reciproca", "Evitar rotina"] },
-  "Aries-Aquario": { nivel: "Media", descricao: "Aries traz acao, Aquario traz ideias. Parceria intelectual e dinamica.", pontosFortes: ["Originalidade", "Independencia valorizada", "Projetos inovadores"], pontosAtencao: ["Aries e mais impulsivo", "Aquario pode ser distante", "Dificuldade em se comprometer"] },
-  "Aries-Gemeos": { nivel: "Media", descricao: "Energia e comunicação se encontram. Muita atividade, pouca rotina.", pontosFortes: ["Conversas interminaveis", "Espontaneidade", "Adaptabilidade"], pontosAtencao: ["Aries age, Gemeos pensa", "Inconstancia mutua", "Falta de profundidade"] },
-  "Touro-Virgem": { nivel: "Alta", descricao: "Dois signos de Terra que valorizam estabilidade, lealdade e construção solida.", pontosFortes: ["Lealdade inabalavel", "Praticidade mutua", "Construção duradoura"], pontosAtencao: ["Teimosia de ambos", "Rotina excessiva", "Resistencia a mudancas"] },
-  "Touro-Capricornio": { nivel: "Alta", descricao: "Parceria estável e ambiciosa. Juntos constroem a longo prazo.", pontosFortes: ["Metas compartilhadas", "Compromisso serio", "Seguranca mutua"], pontosAtencao: ["Excesso de seriedade", "Dificuldade em relaxar", "Trabalho acima do lazer"] },
-  "Touro-Cancer": { nivel: "Alta", descricao: "Terra e Água: conforto, lar e emoção se fundem em harmonia.", pontosFortes: ["Cuidado mutuo", "Valorização do lar", "Lealdade profunda"], pontosAtencao: ["Ciumes potenciais", "Apego ao passado", "Resistencia a mudancas"] },
-  "Touro-Peixes": { nivel: "Media", descricao: "Touro da estabilidade, Peixes traz emoções. Complementação suave.", pontosFortes: ["Equilibrio emocional", "Creatividade prática", "Cuidado genuino"], pontosAtencao: ["Touro pode ser rigido", "Peixes pode se perder", "Comunicação diferente"] },
-  "Gemeos-Libra": { nivel: "Alta", descricao: "Dois signos de Ar: comunicação, intelecto e sociabilidade fluem.", pontosFortes: ["Conversas estimulantes", "Vida social ativa", "Mutuo respeito"], pontosAtencao: ["Indecisão compartilhada", "Falta de profundidade", "Superficialidade"] },
-  "Gemeos-Aquario": { nivel: "Alta", descricao: "Mentes brilhantes juntas. Inovação, liberdade e ideias sem fim.", pontosFortes: ["Originalidade", "Independencia valorizada", "Intelecto afim"], pontosAtencao: ["Falta de acao prática", "Distância emocional", "Pouca rotina"] },
-  "Gemeos-Leao": { nivel: "Media", descricao: "Ar e Fogo: muita energia mental e expressiva. Diversão garantida.", pontosFortes: ["Criatividade", "Carisma conjunto", "Otima comunicação"], pontosAtencao: ["Ego de Leao", "Inconstancia de Gemeos", "Competição por atenção"] },
-  "Cancer-Escorpiao": { nivel: "Alta", descricao: "Dois signos de Água: emoção profunda, intuição e lealdade total.", pontosFortes: ["Conexao emocional profunda", "Lealdade absoluta", "Intuição compartilhada"], pontosAtencao: ["Ciumes reciproco", "Mudancas de humor", "Rancor potencial"] },
-  "Cancer-Peixes": { nivel: "Alta", descricao: "Água com Água: sensibilidade, empatia e conexao espiritual.", pontosFortes: ["Empatia total", "Sonhos compartilhados", "Cuidado mutuo"], pontosAtencao: ["Emoções intensas demais", "Idealização excessiva", "Fugir da realidade"] },
-  "Cancer-Touro": { nivel: "Alta", descricao: "Água e Terra: lar, conforto e seguranca emocional.", pontosFortes: ["Lar acolhedor", "Lealdade mutua", "Estabilidade emocional"], pontosAtencao: ["Ciumes", "Teimosia", "Apego excessivo"] },
-  "Leao-Sagitario": { nivel: "Alta", descricao: "Fogo com Fogo: expansão, alegria e generosidade sem limites.", pontosFortes: ["Otimismo contagiante", "Grandes planos", "Generosidade mutua"], pontosAtencao: ["Orgulho ferido facilmente", "Exageros", "Falta de foco prático"] },
-  "Leao-Aries": { nivel: "Alta", descricao: "Fogo duplo: paixao, acao e lideranca compartilhada.", pontosFortes: ["Energia intensa", "Admiração mutua", "Conquistas ousadas"], pontosAtencao: ["Competição por lideranca", "Impulsividade", "Orgulho"] },
-  "Virgem-Capricornio": { nivel: "Alta", descricao: "Terra + Terra: trabalho, disciplina e metas solidas.", pontosFortes: ["Dedicação mutua", "Realizações concretas", "Respeito e lealdade"], pontosAtencao: ["Exigencia excessiva", "Critica reciproca", "Pouco relaxamento"] },
-  "Virgem-Touro": { nivel: "Alta", descricao: "Terra dupla: estabilidade, praticidade e lealdade duradoura.", pontosFortes: ["Construção solida", "Confianca mutua", "Rotina organizada"], pontosAtencao: ["Teimosia", "Perfeccionismo", "Resistencia a mudancas"] },
-  "Libra-Aquario": { nivel: "Alta", descricao: "Ar com Ar: intelecto, idealismo e sociabilidade equilibrada.", pontosFortes: ["Ideias inovadoras", "Independencia respeitada", "Amizade forte"], pontosAtencao: ["Distância emocional", "Decisões dificeis", "Pouca acao prática"] },
-  "Libra-Gemeos": { nivel: "Alta", descricao: "Ar com Ar: comunicação fluida, charme e vida social ativa.", pontosFortes: ["Conversas estimulantes", "Parceria intelectual", "Versatilidade"], pontosAtencao: ["Superficialidade", "Indecisao", "Falta de compromisso"] },
-  "Libra-Leao": { nivel: "Media", descricao: "Ar e Fogo: romance, charme e criatividade se encontram.", pontosFortes: ["Romance", "Estilo e graca", "Admiração mutua"], pontosAtencao: ["Ego de Leao", "Indecisão de Libra", "Competição por atenção"] },
-  "Escorpiao-Peixes": { nivel: "Alta", descricao: "Água com Água: profundidade emocional, intuiçao e conexao espiritual.", pontosFortes: ["Intimidade profunda", "Lealdade total", "Transformação mutua"], pontosAtencao: ["Intensidade excessiva", "Ciumes", "Dependencia emocional"] },
-  "Escorpiao-Cancer": { nivel: "Alta", descricao: "Água com Água: emoções profundas, segredos compartilhados.", pontosFortes: ["Confianca absoluta", "Intuição apurada", "Vinculo indissoluvel"], pontosAtencao: ["Manipulacao", "Rancor", "Ciumes"] },
-  "Escorpiao-Virgem": { nivel: "Media", descricao: "Água e Terra: profundidade com praticidade. Análise e sentimento.", pontosFortes: ["Dedicacao", "Lealdade", "Perfeccionismo útil"], pontosAtencao: ["Criticas de Virgem", "Intensidade de Escorpiao", "Desconfianca"] },
-  "Sagitario-Aries": { nivel: "Alta", descricao: "Fogo com Fogo: aventura, liberdade e entusiasmo desenfreado.", pontosFortes: ["Aventuras epicas", "Liberdade mutua", "Otimismo"], pontosAtencao: ["Impulsividade", "Falta de compromisso", "Inconsistencia"] },
-  "Sagitario-Leao": { nivel: "Alta", descricao: "Fogo com Fogo: grandiosidade, viajes e alegria de viver.", pontosFortes: ["Expansao", "Generosidade", "Entusiasmo"], pontosAtencao: ["Orgulho de Leao", "Tatemba de Sagitario", "Exageros"] },
-  "Sagitario-Aquario": { nivel: "Media", descricao: "Fogo e Ar: ideias avancadas, liberdade e humanitarismo.", pontosFortes: ["Visao de futuro", "Independencia", "Inovacao"], pontosAtencao: ["Falta de acao prática", "Distância emocional", "Compromisso duvidoso"] },
-  "Capricornio-Touro": { nivel: "Alta", descricao: "Terra com Terra: ambição, estabilidade e construçao duradoura.", pontosFortes: ["Metas compartilhadas", "Lealdade", "Perseveranca"], pontosAtencao: ["Trabalho demais", "Rigidez", "Pouca espontaneidade"] },
-  "Capricornio-Virgem": { nivel: "Alta", descricao: "Terra com Terra: disciplina, trabalho e resultados concretos.", pontosFortes: ["Dedicacao", "Responsabilidade", "Sucesso mutuo"], pontosAtencao: ["Cobranca excessiva", "Pouco relaxamento", "Perfeccionismo"] },
-  "Capricornio-Escorpiao": { nivel: "Media", descricao: "Terra e Água: poder, determinação e estrategias profundas.", pontosFortes: ["Ambição compartilhada", "Determinacao", "Lealdade"], pontosAtencao: ["Desconfianca", "Manipulacao", "Controle"] },
-  "Aquario-Gemeos": {nivel: "Alta", descricao: "Ar com Ar: ideias, originaldade e amizade acima de tudo.", pontosFortes: ["Mentalidade afim", "Independencia", "Inovação"], pontosAtencao: ["Frieza emocional", "Indecisao", "Pouca profundidade"] },
-  "Aquario-Libra": { nivel: "Alta", descricao: "Ar com Ar: idealismo, justica e sociabilidade.", pontosFortes: ["Valores compartilhados", "Amizade forte", "Equilibrio"], pontosAtencao: ["Distância emocional", "Indecisao", "Idealismo excessivo"] },
-  "Aquario-Sagitario": { nivel: "Media",descricao: "Ar e Fogo: aventuras intelectuais, liberdade e visao de futuro.", pontosFortes: ["Expansão mental", "Independencia", "Originalidade"], pontosAtencao: ["Pouco aterramento", "Frieza de Aquario", "Impaciencia de Sagitario"] },
-  "Peixes-Cancer": { nivel: "Alta", descricao: "Água com Água: emoções profundas, intuição e espiritualidade.", pontosFortes: ["Empatia total", "Romance", "Conexao espiritual"], pontosAtencao: ["Dependencia emocional", "Fuga da realidade", "Confusão de limites"] },
-  "Peixes-Escorpiao": { nivel: "Alta", descricao: "Água com Água: profundidade, transformação e intimidade.", pontosFortes: ["Intimidade profunda", "Lealdade", "Misticismo"], pontosAtencao: ["Intensidade demais", "Manipulacao", "Mudancas de humor"] },
-  "Peixes-Touro": { nivel: "Media", descricao: "Água e Terra: sonhos com praticidade, arte com estabilidade.", pontosFortes: ["Creatividade", "Cuidado", "Estabilidade emocional"], pontosAtencao: ["Touro rigido", "Peixes escapista", "Comunicação diferente"] },
+  "Aries-Leao": { nivel: "Alta", descricao: "Dois signos de Fogo que se entusiasmam juntos. Muita energia, paixão e aventura.", pontosFortes: ["Paixão intensa", "Aventuras compartilhadas", "Mútuo incentivo"], pontosAtencao: ["Disputas de liderança", "Impulsos descontrolados", "Orgulho de ambos"] },
+  "Aries-Sagitario": { nivel: "Alta", descricao: "Conexão natural de Fogo. Aventura, liberdade e otimismo definem essa parceria.", pontosFortes: ["Aventuras sem fim", "Independência mútua", "Entusiasmo contagiante"], pontosAtencao: ["Falta de compromisso", "Impaciência recíproca", "Evitar rotina"] },
+  "Aries-Aquario": { nivel: "Media", descricao: "Áries traz ação, Aquário traz ideias. Parceria intelectual e dinâmica.", pontosFortes: ["Originalidade", "Independência valorizada", "Projetos inovadores"], pontosAtencao: ["Áries é mais impulsivo", "Aquário pode ser distante", "Dificuldade em se comprometer"] },
+  "Aries-Gemeos": { nivel: "Media", descricao: "Energia e comunicação se encontram. Muita atividade, pouca rotina.", pontosFortes: ["Conversas intermináveis", "Espontaneidade", "Adaptabilidade"], pontosAtencao: ["Áries age, Gêmeos pensa", "Inconstância mútua", "Falta de profundidade"] },
+  "Touro-Virgem": { nivel: "Alta", descricao: "Dois signos de Terra que valorizam estabilidade, lealdade e construção sólida.", pontosFortes: ["Lealdade inabalável", "Praticidade mútua", "Construção duradoura"], pontosAtencao: ["Teimosia de ambos", "Rotina excessiva", "Resistência a mudanças"] },
+  "Touro-Capricornio": { nivel: "Alta", descricao: "Parceria estável e ambiciosa. Juntos constroem a longo prazo.", pontosFortes: ["Metas compartilhadas", "Compromisso sério", "Segurança mútua"], pontosAtencao: ["Excesso de seriedade", "Dificuldade em relaxar", "Trabalho acima do lazer"] },
+  "Touro-Cancer": { nivel: "Alta", descricao: "Terra e Água: conforto, lar e emoção se fundem em harmonia.", pontosFortes: ["Cuidado mútuo", "Valorização do lar", "Lealdade profunda"], pontosAtencao: ["Ciúmes potenciais", "Apego ao passado", "Resistência a mudanças"] },
+  "Touro-Peixes": { nivel: "Media", descricao: "Touro traz estabilidade, Peixes traz emoção. Complementação suave.", pontosFortes: ["Equilíbrio emocional", "Criatividade prática", "Cuidado genuíno"], pontosAtencao: ["Touro pode ser rígido", "Peixes pode se perder", "Comunicação diferente"] },
+  "Gemeos-Libra": { nivel: "Alta", descricao: "Dois signos de Ar: comunicação, intelecto e sociabilidade fluem.", pontosFortes: ["Conversas estimulantes", "Vida social ativa", "Mútuo respeito"], pontosAtencao: ["Indecisão compartilhada", "Falta de profundidade", "Superficialidade"] },
+  "Gemeos-Aquario": { nivel: "Alta", descricao: "Mentes brilhantes juntas. Inovação, liberdade e ideias sem fim.", pontosFortes: ["Originalidade", "Independência valorizada", "Intelecto afim"], pontosAtencao: ["Falta de ação prática", "Distância emocional", "Pouca rotina"] },
+  "Gemeos-Leao": { nivel: "Media", descricao: "Ar e Fogo: muita energia mental e expressiva. Diversão garantida.", pontosFortes: ["Criatividade", "Carisma conjunto", "Ótima comunicação"], pontosAtencao: ["Ego de Leão", "Inconstância de Gêmeos", "Competição por atenção"] },
+  "Cancer-Escorpiao": { nivel: "Alta", descricao: "Dois signos de Água: emoção profunda, intuição e lealdade total.", pontosFortes: ["Conexão emocional profunda", "Lealdade absoluta", "Intuição compartilhada"], pontosAtencao: ["Ciúmes recíproco", "Mudanças de humor", "Rancor potencial"] },
+  "Cancer-Peixes": { nivel: "Alta", descricao: "Água com Água: sensibilidade, empatia e conexão espiritual.", pontosFortes: ["Empatia total", "Sonhos compartilhados", "Cuidado mútuo"], pontosAtencao: ["Emoções intensas demais", "Idealização excessiva", "Fugir da realidade"] },
+  "Cancer-Touro": { nivel: "Alta", descricao: "Água e Terra: lar, conforto e segurança emocional.", pontosFortes: ["Lar acolhedor", "Lealdade mútua", "Estabilidade emocional"], pontosAtencao: ["Ciúmes", "Teimosia", "Apego excessivo"] },
+  "Leao-Sagitario": { nivel: "Alta", descricao: "Fogo com Fogo: expansão, alegria e generosidade sem limites.", pontosFortes: ["Otimismo contagiante", "Grandes planos", "Generosidade mútua"], pontosAtencao: ["Orgulho ferido facilmente", "Exageros", "Falta de foco prático"] },
+  "Leao-Aries": { nivel: "Alta", descricao: "Fogo duplo: paixão, ação e liderança compartilhada.", pontosFortes: ["Energia intensa", "Admiração mútua", "Conquistas ousadas"], pontosAtencao: ["Competição por liderança", "Impulsividade", "Orgulho"] },
+  "Virgem-Capricornio": { nivel: "Alta", descricao: "Terra + Terra: trabalho, disciplina e metas sólidas.", pontosFortes: ["Dedicação mútua", "Realizações concretas", "Respeito e lealdade"], pontosAtencao: ["Exigência excessiva", "Crítica recíproca", "Pouco relaxamento"] },
+  "Virgem-Touro": { nivel: "Alta", descricao: "Terra dupla: estabilidade, praticidade e lealdade duradoura.", pontosFortes: ["Construção sólida", "Confiança mútua", "Rotina organizada"], pontosAtencao: ["Teimosia", "Perfeccionismo", "Resistência a mudanças"] },
+  "Libra-Aquario": { nivel: "Alta", descricao: "Ar com Ar: intelecto, idealismo e sociabilidade equilibrada.", pontosFortes: ["Ideias inovadoras", "Independência respeitada", "Amizade forte"], pontosAtencao: ["Distância emocional", "Decisões difíceis", "Pouca ação prática"] },
+  "Libra-Gemeos": { nivel: "Alta", descricao: "Ar com Ar: comunicação fluida, charme e vida social ativa.", pontosFortes: ["Conversas estimulantes", "Parceria intelectual", "Versatilidade"], pontosAtencao: ["Superficialidade", "Indecisão", "Falta de compromisso"] },
+  "Libra-Leao": { nivel: "Media", descricao: "Ar e Fogo: romance, charme e criatividade se encontram.", pontosFortes: ["Romance", "Estilo e graça", "Admiração mútua"], pontosAtencao: ["Ego de Leão", "Indecisão de Libra", "Competição por atenção"] },
+  "Escorpiao-Peixes": { nivel: "Alta", descricao: "Água com Água: profundidade emocional, intuição e conexão espiritual.", pontosFortes: ["Intimidade profunda", "Lealdade total", "Transformação mútua"], pontosAtencao: ["Intensidade excessiva", "Ciúmes", "Dependência emocional"] },
+  "Escorpiao-Cancer": { nivel: "Alta", descricao: "Água com Água: emoções profundas, segredos compartilhados.", pontosFortes: ["Confiança absoluta", "Intuição apurada", "Vínculo indissolúvel"], pontosAtencao: ["Manipulação", "Rancor", "Ciúmes"] },
+  "Escorpiao-Virgem": { nivel: "Media", descricao: "Água e Terra: profundidade com praticidade. Análise e sentimento.", pontosFortes: ["Dedicação", "Lealdade", "Perfeccionismo útil"], pontosAtencao: ["Críticas de Virgem", "Intensidade de Escorpião", "Desconfiança"] },
+  "Sagitario-Aries": { nivel: "Alta", descricao: "Fogo com Fogo: aventura, liberdade e entusiasmo desenfreado.", pontosFortes: ["Aventuras épicas", "Liberdade mútua", "Otimismo"], pontosAtencao: ["Impulsividade", "Falta de compromisso", "Inconsistência"] },
+  "Sagitario-Leao": { nivel: "Alta", descricao: "Fogo com Fogo: grandiosidade, viagens e alegria de viver.", pontosFortes: ["Expansão", "Generosidade", "Entusiasmo"], pontosAtencao: ["Orgulho de Leão", "Impaciência de Sagitário", "Exageros"] },
+  "Sagitario-Aquario": { nivel: "Media", descricao: "Fogo e Ar: ideias avançadas, liberdade e humanitarismo.", pontosFortes: ["Visão de futuro", "Independência", "Inovação"], pontosAtencao: ["Falta de ação prática", "Distância emocional", "Compromisso duvidoso"] },
+  "Capricornio-Touro": { nivel: "Alta", descricao: "Terra com Terra: ambição, estabilidade e construção duradoura.", pontosFortes: ["Metas compartilhadas", "Lealdade", "Perseverança"], pontosAtencao: ["Trabalho demais", "Rigidez", "Pouca espontaneidade"] },
+  "Capricornio-Virgem": { nivel: "Alta", descricao: "Terra com Terra: disciplina, trabalho e resultados concretos.", pontosFortes: ["Dedicação", "Responsabilidade", "Sucesso mútuo"], pontosAtencao: ["Cobrança excessiva", "Pouco relaxamento", "Perfeccionismo"] },
+  "Capricornio-Escorpiao": { nivel: "Media", descricao: "Terra e Água: poder, determinação e estratégias profundas.", pontosFortes: ["Ambição compartilhada", "Determinação", "Lealdade"], pontosAtencao: ["Desconfiança", "Manipulação", "Controle"] },
+  "Aquario-Gemeos": {nivel: "Alta", descricao: "Ar com Ar: ideias, originalidade e amizade acima de tudo.", pontosFortes: ["Mentalidade afim", "Independência", "Inovação"], pontosAtencao: ["Frieza emocional", "Indecisão", "Pouca profundidade"] },
+  "Aquario-Libra": { nivel: "Alta", descricao: "Ar com Ar: idealismo, justiça e sociabilidade.", pontosFortes: ["Valores compartilhados", "Amizade forte", "Equilíbrio"], pontosAtencao: ["Distância emocional", "Indecisão", "Idealismo excessivo"] },
+  "Aquario-Sagitario": { nivel: "Media",descricao: "Ar e Fogo: aventuras intelectuais, liberdade e visão de futuro.", pontosFortes: ["Expansão mental", "Independência", "Originalidade"], pontosAtencao: ["Pouco aterramento", "Frieza de Aquário", "Impaciência de Sagitário"] },
+  "Peixes-Cancer": { nivel: "Alta", descricao: "Água com Água: emoções profundas, intuição e espiritualidade.", pontosFortes: ["Empatia total", "Romance", "Conexão espiritual"], pontosAtencao: ["Dependência emocional", "Fuga da realidade", "Confusão de limites"] },
+  "Peixes-Escorpiao": { nivel: "Alta", descricao: "Água com Água: profundidade, transformação e intimidade.", pontosFortes: ["Intimidade profunda", "Lealdade", "Misticismo"], pontosAtencao: ["Intensidade demais", "Manipulação", "Mudanças de humor"] },
+  "Peixes-Touro": { nivel: "Media", descricao: "Água e Terra: sonhos com praticidade, arte com estabilidade.", pontosFortes: ["Criatividade", "Cuidado", "Estabilidade emocional"], pontosAtencao: ["Touro rígido", "Peixes escapista", "Comunicação diferente"] },
 };
 
 function getCompatibilidade(signo1: string, signo2: string): CompatibilidadeInfo {
@@ -84,9 +92,9 @@ function getCompatibilidade(signo1: string, signo2: string): CompatibilidadeInfo
   if (el1 === el2) {
     return {
       nivel: "Alta",
-      descricao: `Mesmo elemento (${el1}): afinidade natural e valores similares.`,
+      descricao: `Mesmo elemento (${ELEMENTO_NOME[el1]}): afinidade natural e valores parecidos.`,
       pontosFortes: ["Entendimento natural", "Valores similares", "Harmonia básica"],
-      pontosAtencao: ["Excesso de similaridades", "Possiveis conflitos de ego", "Falta de complementação"],
+      pontosAtencao: ["Excesso de similaridades", "Possíveis conflitos de ego", "Falta de complementação"],
     };
   }
 
@@ -98,16 +106,16 @@ function getCompatibilidade(signo1: string, signo2: string): CompatibilidadeInfo
   if (eComplementar) {
     return {
       nivel: "Media",
-      descricao: `Elementos complementares (${el1} + ${el2}): um equilibra o outro.`,
-      pontosFortes: ["Equilibrio", "Complementacao", "Aprendizado mutuo"],
-      pontosAtencao: ["Diferencas de ritmo", "Possiveis conflitos", "Necessidade de adaptação"],
+      descricao: `Elementos complementares (${ELEMENTO_NOME[el1]} + ${ELEMENTO_NOME[el2]}): um equilibra o outro.`,
+      pontosFortes: ["Equilíbrio", "Complementação", "Aprendizado mútuo"],
+      pontosAtencao: ["Diferenças de ritmo", "Possíveis conflitos", "Necessidade de adaptação"],
     };
   }
 
   return {
     nivel: "Desafiadora",
-    descricao: `Elementos diferentes (${el1} + ${el2}): desafios e crescimento potencial.`,
-    pontosFortes: ["Crescimento mutuo", "Diversidade de experiencias", "Superação de limites"],
+    descricao: `Elementos diferentes (${ELEMENTO_NOME[el1]} + ${ELEMENTO_NOME[el2]}): desafios e potencial de crescimento.`,
+    pontosFortes: ["Crescimento mútuo", "Diversidade de experiências", "Superação de limites"],
     pontosAtencao: ["Muitas diferenças", "Necessidade de paciência", "Esforço extra"],
   };
 }
@@ -140,7 +148,7 @@ export function CompatibilidadeSignos({ onBack }: Props) {
       affiliateBanner={
         <AffiliateBanner
           terms={["livro de compatibilidade de signos", "presente para casais"]}
-          label="Para casais e curiosoos"
+          label="Para casais e curiosos"
         />
       }
     >
@@ -154,7 +162,7 @@ export function CompatibilidadeSignos({ onBack }: Props) {
               className="input-field"
             >
               {SIGNOS.map((s) => (
-                <option key={s} value={s}>{s}</option>
+                <option key={s} value={s}>{SIGNO_NOME[s] || s}</option>
               ))}
             </select>
           </label>
@@ -166,7 +174,7 @@ export function CompatibilidadeSignos({ onBack }: Props) {
               className="input-field"
             >
               {SIGNOS.map((s) => (
-                <option key={s} value={s}>{s}</option>
+                <option key={s} value={s}>{SIGNO_NOME[s] || s}</option>
               ))}
             </select>
           </label>
@@ -182,7 +190,7 @@ export function CompatibilidadeSignos({ onBack }: Props) {
             ))}
           </div>
           <p className={`text-2xl font-black ${NIVEL_CORES[compatibilidade.nivel]}`}>
-            Compatibilidade {compatibilidade.nivel}
+            Compatibilidade {NIVEL_NOME[compatibilidade.nivel]}
           </p>
           <p className="text-sm text-gray-300 mt-2">{compatibilidade.descricao}</p>
         </div>
@@ -228,12 +236,12 @@ export function CompatibilidadeSignos({ onBack }: Props) {
               "Signo 1: Áries (elemento Fogo)",
               "Signo 2: Libra (elemento Ar)",
               "Análise: elementos considerados complementares na tradição astrológica",
-              "Resultado: compatibilidade classificada como 'Boa' segundo a tradição",
+              "Resultado: compatibilidade classificada como 'Média' (elementos complementares)",
             ],
             result: "Áries e Libra são tradicionalmente considerados compatíveis pela astrologia, por seus elementos (Fogo e Ar) serem vistos como complementares.",
           },
           faqs: [
-            { question: "A compatibilidade de signos tem comprovação científica?", answer: "Não, a astrologia é uma tradição cultural sem válidação científica; deve ser vista como entretenimento." },
+            { question: "A compatibilidade de signos tem comprovação científica?", answer: "Não, a astrologia é uma tradição cultural sem validação científica; deve ser vista como entretenimento." },
             { question: "O que são os elementos dos signos?", answer: "Cada signo é associado a um dos 4 elementos: Fogo, Terra, Ar ou Água, usados na tradição astrológica para descrever características." },
             { question: "Compatibilidade baixa significa que o relacionamento não vai dar certo?", answer: "Não, relacionamentos reais dependem de fatores muito mais complexos do que a astrologia, como comunicação, valores e experiências compartilhadas." },
             { question: "Todos os astrólogos concordam com essas combinações?", answer: "Não necessariamente; a astrologia tem diferentes escolas e interpretações, e as combinações podem variar conforme a tradição seguida." },

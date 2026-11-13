@@ -18,7 +18,7 @@ interface Materia {
   horas: number;
 }
 
-const DIAS_SEMANA = ["Segunda", "Terca", "Quarta", "Quinta", "Sexta", "Sabado", "Domingo"];
+const DIAS_SEMANA = ["Segunda", "Terça", "Quarta", "Quinta", "Sexta", "Sábado", "Domingo"];
 
 export function CicloEstudos({ onBack }: Props) {
   const [materias, setMaterias] = useState<Materia[]>([]);
@@ -111,7 +111,7 @@ export function CicloEstudos({ onBack }: Props) {
             className="input-field flex-1"
             onKeyDown={(e) => e.key === "Enter" && addMateria()}
           />
-          <select
+          <select aria-label="Horas disponíveis por semana"
             value={novoPeso}
             onChange={(e) => setNovoPeso(parseInt(e.target.value))}
             className="input-field w-20"
@@ -120,7 +120,7 @@ export function CicloEstudos({ onBack }: Props) {
               <option key={p} value={p}>{p}</option>
             ))}
           </select>
-          <button onClick={addMateria} className="btn-primary px-4 flex items-center gap-1">
+          <button aria-label="Adicionar matéria" onClick={addMateria} className="btn-primary px-4 flex items-center gap-1">
             <Plus className="w-4 h-4" />
           </button>
         </div>
@@ -134,7 +134,7 @@ export function CicloEstudos({ onBack }: Props) {
                   style={{ backgroundColor: `hsl(${(m.id * 137) % 360}, 70%, 45%)` }}
                 />
                 <span className="flex-1 text-sm text-white">{m.nome}</span>
-                <select
+                <select aria-label={`Peso de ${m.nome}`}
                   value={m.peso}
                   onChange={(e) => updatePeso(m.id, parseInt(e.target.value))}
                   className="input-field w-16 text-center"
