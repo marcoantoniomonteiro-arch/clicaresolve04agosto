@@ -376,7 +376,7 @@ export function SignificadoNomes({ onBack, initialName }: Props) {
               )}
             </div>
 
-            {isNamePage && facts.length > 0 && (
+            {isNamePage && result?.name === pageName && facts.length > 0 && (
               <div className="p-4 rounded-xl bg-white/5 border border-white/10">
                 <h2 className="text-xs font-semibold text-yellow-300 uppercase tracking-wider mb-2">{pageName} em números</h2>
                 <ul className="space-y-1.5 text-sm text-gray-300 leading-relaxed list-disc pl-5">
@@ -407,7 +407,7 @@ export function SignificadoNomes({ onBack, initialName }: Props) {
               </div>
             )}
 
-            {isNamePage && pageFaqs.length > 0 && (
+            {isNamePage && result?.name === pageName && pageFaqs.length > 0 && (
               <div className="space-y-2">
                 <h2 className="text-lg font-bold text-text mt-2">Perguntas frequentes sobre o nome {pageName}</h2>
                 {pageFaqs.map((f) => (

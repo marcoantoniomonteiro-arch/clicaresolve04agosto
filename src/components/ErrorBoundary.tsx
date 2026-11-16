@@ -1,4 +1,5 @@
 import React from "react";
+import { isChunkLoadError } from "../utils/lazyRetry";
 
 interface ErrorBoundaryProps {
   children: React.ReactNode;
@@ -6,6 +7,8 @@ interface ErrorBoundaryProps {
 
 interface ErrorBoundaryState {
   hasError: boolean;
+  /** O conteúdo pré-renderado está sendo restaurado: não mostra a tela de erro */
+  restoring?: boolean;
 }
 
 export class ErrorBoundary extends React.Component<ErrorBoundaryProps, ErrorBoundaryState> {
@@ -14,15 +17,20 @@ export class ErrorBoundary extends React.Component<ErrorBoundaryProps, ErrorBoun
     this.state = { hasError: false };
   }
 
-  static getDerivedStateFromError(): ErrorBoundaryState {
-    return { hasError: true };
+  static getDerivedStateFromError(error: unknown): ErrorBoundaryState {
+    const restoring = isChunkLoadError(error) && typeof window !== "undefined" && !!window.__restoreSsr;
+    return { hasError: true, restoring };
   }
 
   componentDidCatch(error: Error, errorInfo: React.ErrorInfo) {
     console.error("Erro ao carregar a ferramenta:", error, errorInfo.componentStack);
+    // Arquivo JS que não carregou no 1º acesso: volta o HTML pré-renderado
+    // (o conteúdo continua visível, só sem a parte interativa).
+    if (this.state.restoring && !window.__restoreSsr?.()) this.setState({ restoring: false });
   }
 
   render() {
+    if (this.state.restoring) return null;
     if (this.state.hasError) {
       return (
         <div className="max-w-2xl mx-auto px-4 py-16 text-center">
