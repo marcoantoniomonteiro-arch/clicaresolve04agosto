@@ -5,7 +5,7 @@ import { NAMES_DB } from "./namesData";
 import { ToolContent } from "../components/ToolContent";
 import { SEOHead } from "../components/SEOHead";
 import { AffiliateBanner } from "../components/AffiliateBanner";
-import { getNameStats, sameOrigin, nameFaqs, formatNumber, DECADE_LABELS } from "./namesInfo";
+import { getNameStats, sameOrigin, nameFaqs, formatNumber, DECADE_LABELS, nameFacts, rankNeighbors, counterpartName } from "./namesInfo";
 
 interface Props {
   onBack: () => void;
@@ -212,9 +212,17 @@ export function SignificadoNomes({ onBack, initialName }: Props) {
   const seoCanonical = isNamePage && pageName
     ? `/significado-nome/${slugify(pageName)}`
     : "/significado-nomes";
-  const sameLetter = pageName
-    ? ALL_NAME_SLUGS.filter((n) => normalizeName(n.name)[0] === normalizeName(pageName)[0] && n.name !== pageName).slice(0, 12)
-    : [];
+  // Vizinhos em ordem alfabética (cada página mostra uma lista diferente)
+  const sameLetter = (() => {
+    if (!pageName) return [];
+    const letter = ALL_NAME_SLUGS.filter((n) => normalizeName(n.name)[0] === normalizeName(pageName)[0]);
+    const i = letter.findIndex((n) => n.name === pageName);
+    const start = Math.max(0, Math.min(i - 6, letter.length - 13));
+    return letter.slice(start, start + 13).filter((n) => n.name !== pageName).slice(0, 12);
+  })();
+  const facts = isNamePage && pageName ? nameFacts(pageName, pageStats) : [];
+  const neighbors = isNamePage && pageName ? rankNeighbors(pageName, pageStats) : [];
+  const counterpart = isNamePage && pageName ? counterpartName(pageName, pageStats) : null;
 
   return (
     <ToolLayout
@@ -353,6 +361,37 @@ export function SignificadoNomes({ onBack, initialName }: Props) {
               )}
             </div>
 
+            {isNamePage && facts.length > 0 && (
+              <div className="p-4 rounded-xl bg-white/5 border border-white/10">
+                <h2 className="text-xs font-semibold text-yellow-300 uppercase tracking-wider mb-2">{pageName} em números</h2>
+                <ul className="space-y-1.5 text-sm text-gray-300 leading-relaxed list-disc pl-5">
+                  {facts.map((f) => <li key={f}>{f}</li>)}
+                </ul>
+                {(counterpart || neighbors.length > 0) && (
+                  <div className="mt-3 space-y-1.5 text-sm text-gray-300">
+                    {counterpart && (
+                      <p>
+                        Versão {pageStats?.gender === "masculino" ? "feminina" : "masculina"}:{" "}
+                        <a href={`/significado-nome/${counterpart.slug}`} className="text-green-400 hover:text-green-300">{counterpart.name}</a>{" "}
+                        ({counterpart.note} pessoas no Censo 2010).
+                      </p>
+                    )}
+                    {neighbors.length > 0 && (
+                      <p>
+                        Perto de {pageName} no ranking do guia:{" "}
+                        {neighbors.map((n, i) => (
+                          <React.Fragment key={n.slug}>
+                            {i > 0 && ", "}
+                            <a href={`/significado-nome/${n.slug}`} className="text-green-400 hover:text-green-300">{n.name}</a> ({n.note})
+                          </React.Fragment>
+                        ))}.
+                      </p>
+                    )}
+                  </div>
+                )}
+              </div>
+            )}
+
             {isNamePage && pageFaqs.length > 0 && (
               <div className="space-y-2">
                 <h2 className="text-lg font-bold text-text mt-2">Perguntas frequentes sobre o nome {pageName}</h2>
@@ -466,7 +505,9 @@ export function SignificadoNomes({ onBack, initialName }: Props) {
         </div>
       </nav>
       )}
-      <ToolContent
+      {/* O bloco explicativo da ferramenta fica só na página geral: repetido
+          nas 580 páginas de nome, ele fazia o Google tratá-las como cópias. */}
+      {!isNamePage && <ToolContent
         toolName="Significado dos Nomes"
         category="Utilidades"
         data={{
@@ -489,7 +530,7 @@ export function SignificadoNomes({ onBack, initialName }: Props) {
             { question: "A popularidade do nome também é mostrada?", answer: "Em muitos casos sim, com dados sobre a frequência de uso do nome ao longo dos anos no Brasil." },
           ],
         }}
-      />
+      />}
     </ToolLayout>
   );
 }
