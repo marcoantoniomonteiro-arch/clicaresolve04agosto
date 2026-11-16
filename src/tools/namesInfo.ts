@@ -105,3 +105,73 @@ export function nameFaqs(entry: NameEntry, stats: NameStats | null): { question:
   }
   return faqs;
 }
+
+const NAME_BY_SLUG: Map<string, string> = (() => {
+  const m = new Map<string, string>();
+  for (const n of NAMES_DB) if (!m.has(nameSlug(n.name))) m.set(nameSlug(n.name), n.name);
+  return m;
+})();
+
+export interface NameLink { name: string; slug: string; note?: string }
+
+// Pares que a regra de terminação acertaria por acaso, mas que não são o mesmo nome
+const NOT_PAIRS = new Set(["maria", "mario"]);
+
+/** Nome correspondente do outro gênero (Rafael → Rafaela, Paulo → Paula), se estiver na base */
+export function counterpartName(name: string, stats: NameStats | null): NameLink | null {
+  if (!stats || stats.gender === "unissex") return null;
+  const s = nameSlug(name);
+  if (NOT_PAIRS.has(s)) return null;
+  const cands = stats.gender === "masculino"
+    ? [s + "a", s.replace(/o$/, "a"), s.replace(/e$/, "a"), s.replace(/os$/, "a")]
+    : [s.replace(/a$/, "o"), s.replace(/a$/, ""), s.replace(/a$/, "e")];
+  for (const c of cands) {
+    if (c === s || !NAME_BY_SLUG.has(c)) continue;
+    const v = IBGE_NOMES[c];
+    if (!v || !v[0] || genderOf(v) === stats.gender || genderOf(v) === "unissex") continue;
+    return { name: NAME_BY_SLUG.get(c)!, slug: c, note: formatNumber(v[0]) };
+  }
+  return null;
+}
+
+/** Nomes vizinhos no ranking de popularidade (mesmo gênero) */
+export function rankNeighbors(name: string, stats: NameStats | null, each = 2): NameLink[] {
+  if (!stats || stats.rank <= 0) return [];
+  const pool = stats.gender === "feminino" ? RANKS.feminino : RANKS.masculino;
+  const i = stats.rank - 1;
+  const out: NameLink[] = [];
+  for (let j = Math.max(0, i - each); j <= Math.min(pool.length - 1, i + each); j++) {
+    if (j === i) continue;
+    const slug = pool[j];
+    const n = NAME_BY_SLUG.get(slug);
+    if (n) out.push({ name: n, slug, note: `${j + 1}º` });
+  }
+  return out;
+}
+
+/** Fatos calculados só com os dados do próprio nome (texto diferente em cada página) */
+export function nameFacts(name: string, stats: NameStats | null): string[] {
+  const letters = name.replace(/[^\p{L}]/gu, "");
+  const vowels = letters.normalize("NFD").replace(/[̀-ͯ]/g, "").replace(/[^aeiouAEIOU]/g, "").length;
+  const facts = [
+    `${name} tem ${letters.length} letras (${vowels} vogais e ${letters.length - vowels} consoantes) e começa com a letra ${letters.charAt(0).toUpperCase()}.`,
+  ];
+  if (!stats) return facts;
+  const d = stats.decades;
+  const sum = d.reduce((a, b) => a + b, 0) || 1;
+  const since1980 = Math.round(((d[6] + d[7] + d[8]) / sum) * 100);
+  facts.push(`${since1980}% das pessoas chamadas ${name} no Censo 2010 nasceram a partir de 1980.`);
+  if (stats.peakIndex !== 8 && d[stats.peakIndex] > 0) {
+    const ratio = d[8] / d[stats.peakIndex];
+    facts.push(ratio < 1
+      ? `${formatNumber(d[8])} pessoas com esse nome nasceram nos anos 2000, ${Math.round((1 - ratio) * 100)}% a menos que no auge (${formatNumber(d[stats.peakIndex])} ${stats.peakIndex === 0 ? "nascidas antes de 1930" : "na " + stats.peakText}).`
+      : `${formatNumber(d[8])} pessoas com esse nome nasceram nos anos 2000.`);
+  } else {
+    facts.push(`O nome nunca foi tão usado quanto nos anos 2000: ${formatNumber(d[8])} pessoas com esse nome nasceram na década.`);
+  }
+  const perMil = (stats.total / 190_755_799) * 1000;
+  facts.push(perMil >= 1
+    ? `Isso equivale a cerca de ${perMil.toLocaleString("pt-BR", { maximumFractionDigits: 1 })} em cada mil brasileiros.`
+    : `Isso equivale a cerca de 1 em cada ${formatNumber(Math.round(190_755_799 / stats.total))} brasileiros.`);
+  return facts;
+}
