@@ -194,15 +194,30 @@ export function SignificadoNomes({ onBack, initialName }: Props) {
   // Páginas de nome: endereço próprio, título próprio e liberadas para o Google.
   // Nome que não está na base: aponta para a página geral e não é indexado.
   const pageStats = initialResult ? getNameStats(initialResult.name) : null;
-  const seoTitle = isNamePage
-    ? `Significado do Nome ${pageName}: Origem e Popularidade`
-    : "Significado de Nomes — Origem e Significado dos Nomes";
+  // Quem chega pelo Google costuma perguntar "quantas Fulana tem no Brasil":
+  // o título responde a essa busca quando há dado do IBGE para o nome.
+  const seoTitle = (() => {
+    if (!isNamePage) return "Significado de Nomes — Origem e Significado dos Nomes";
+    if (!pageStats) return `Significado do Nome ${pageName}: Origem e Popularidade`;
+    const opts = [
+      `Quantas Pessoas se Chamam ${pageName} no Brasil? Significado e Origem`,
+      `Quantas Pessoas se Chamam ${pageName} no Brasil? Significado`,
+      `Quantos ${pageName} Existem no Brasil? Significado`,
+    ];
+    return opts.find((t) => t.length <= 62) ?? opts[opts.length - 1];
+  })();
   const seoDescription = (() => {
     if (!isNamePage || !initialResult) return "Descubra o significado, a origem e a popularidade de mais de 580 nomes, com dados do IBGE. Grátis e sem cadastro.";
     const base = `${initialResult.name} significa "${initialResult.meaning.charAt(0).toLowerCase() + initialResult.meaning.slice(1)}" e tem origem ${initialResult.origin.toLowerCase()}.`;
-    const stats = pageStats ? ` ${formatNumber(pageStats.total)} brasileiros têm esse nome (IBGE).` : "";
-    // Mantém a descrição em até ~160 caracteres para não ser cortada no Google
-    for (const d of [base + stats + " Veja nomes parecidos.", base + stats, base]) if (d.length <= 160) return d;
+    // Mantém a descrição em até ~160 caracteres para não ser cortada no Google.
+    // Com dado do IBGE, a quantidade vem primeiro (é o que a pessoa procurou).
+    if (pageStats) {
+      const qtd = `Segundo o IBGE, ${formatNumber(pageStats.total)} brasileiros se chamam ${initialResult.name}.`;
+      const origem = `O nome tem origem ${initialResult.origin.toLowerCase()}.`;
+      for (const d of [`${qtd} ${base} Veja o auge do nome por década.`, `${qtd} ${base}`, `${qtd} ${origem} Veja o significado e o auge por década.`, `${qtd} ${origem}`]) if (d.length <= 160) return d;
+      return qtd;
+    }
+    for (const d of [base + " Veja nomes parecidos.", base]) if (d.length <= 160) return d;
     return base;
   })();
   const pageFaqs = isNamePage && initialResult ? nameFaqs(initialResult, pageStats) : [];

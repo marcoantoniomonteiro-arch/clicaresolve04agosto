@@ -95,7 +95,7 @@ export const NAMES_DB: NameEntry[] = [
   { name: "Eva", origin: "Hebraica", meaning: "A vivente, a que dá vida", curiosity: "Eva foi a primeira mulher na Bíblia, formada da costela de Adão." },
   { name: "Ana", origin: "Hebraica", meaning: "A graciosa, a cheia de graça", curiosity: "Ana era mãe da profetisa Samuel na Bíblia e um dos nomes mais antigos do mundo." },
   { name: "Clara", origin: "Latina", meaning: "Clara, luminosa, brilhante", curiosity: "Santa Clara de Assis fundou a ordem das Clarissas, seguidora de São Francisco." },
-  { name: "Lia", origin: "Hebraica", meaning: "A cansada, a cowgirl", curiosity: "Lia foi a primeira esposa de Jacó na Bíblia e mãe de seis filhos." },
+  { name: "Lia", origin: "Hebraica", meaning: "A cansada, a delicada", curiosity: "Lia foi a primeira esposa de Jacó na Bíblia e mãe de seis filhos." },
   { name: "Rita", origin: "Latina", meaning: "A pérola, a protetora", curiosity: "Santa Rita de Cássia é a padroeira das causas impossíveis e casos difíceis." },
   { name: "Sofia", origin: "Grega", meaning: "Sabedoria", curiosity: "Sofia é uma das sete virtudes cardinais e representa a sabedoria divina." },
   { name: "Victoria", origin: "Latina", meaning: "A vitoriosa", curiosity: "Rainha Vitória governou o Reino Unido por 63 anos, o período mais longo até então." },
