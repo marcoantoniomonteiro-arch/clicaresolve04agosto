@@ -6,9 +6,9 @@ import { ShareButtons } from "./ShareButtons";
 import { getGuidesForTool } from "../data/guidesMeta";
 import { TOOL_EXTRAS } from "../data/toolExtras";
 import { ToolContent } from "./ToolContent";
-import { isEnIndexed } from "../data/searchVisibility";
+import { isEnIndexed, isToolListed } from "../data/searchVisibility";
 import { SEOHead } from "./SEOHead";
-import { TOOLS } from "../data/tools";
+import { TOOLS, LISTED_TOOLS } from "../data/tools";
 import { CATEGORY_SEO_DATA } from "../data/seoData";
 import { getToolSEO } from "../data/toolSeoData";
 import { useNavigation } from "../context/NavigationContext";
@@ -118,7 +118,7 @@ export function ToolLayout({
     window.scrollTo({ top: 0, behavior: 'instant' });
   }, []);
 
-  const relatedTools = TOOLS
+  const relatedTools = LISTED_TOOLS
     .filter((t) => t.category === category && t.slug !== toolSlug)
     .slice(0, 4);
 
@@ -191,8 +191,8 @@ export function ToolLayout({
         breadcrumbs={breadcrumbs}
         speakable={true}
         lang={lang}
-        alternateUrl={seoEN ? `/${toolSlug}` : (toolsSeoENByPtSlug[toolSlug] && isEnIndexed(toolsSeoENByPtSlug[toolSlug].enSlug) ? `/en/${toolsSeoENByPtSlug[toolSlug].enSlug}` : undefined)}
-        noindex={!!seoEN && !isEnIndexed(seoEN.enSlug)}
+        alternateUrl={seoEN ? `/${toolSlug}` : (toolsSeoENByPtSlug[toolSlug] && isToolListed(toolSlug) && isEnIndexed(toolsSeoENByPtSlug[toolSlug].enSlug) ? `/en/${toolsSeoENByPtSlug[toolSlug].enSlug}` : undefined)}
+        noindex={!isToolListed(toolSlug) || (!!seoEN && !isEnIndexed(seoEN.enSlug))}
       />}
 
       <div className="max-w-2xl mx-auto px-4 py-8">

@@ -1,7 +1,7 @@
 import React from "react";
 import { SEOHead } from "./SEOHead";
 import { SiteFooterLinks } from "./SiteFooterLinks";
-import { TOOLS } from "../data/tools";
+import { LISTED_TOOLS } from "../data/tools";
 import { CATEGORY_SEO_DATA, CategorySEOData, getCategoryTools } from "../data/seoData";
 import { ArrowLeft, ArrowRight, CheckCircle } from "lucide-react";
 
@@ -37,7 +37,7 @@ export function CategoryPage({ slug, onBack, onSelectTool, onSelectCategory }: C
   const data: CategorySEOData = CATEGORY_SEO_DATA[slug];
   if (!data) return null;
 
-  const categoryTools = getCategoryTools(data, TOOLS);
+  const categoryTools = getCategoryTools(data, LISTED_TOOLS);
 
   const collectionSchema = {
     "@context": "https://schema.org",
@@ -108,6 +108,7 @@ export function CategoryPage({ slug, onBack, onSelectTool, onSelectCategory }: C
         ogType="website"
         schema={[collectionSchema, faqSchema]}
         breadcrumbs={breadcrumbs}
+        noindex={categoryTools.length === 0}
       />
 
       <div className="max-w-4xl mx-auto px-4 py-8">

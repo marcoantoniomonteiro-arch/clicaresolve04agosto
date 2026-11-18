@@ -1,3 +1,4 @@
+import { isToolListed } from "./searchVisibility";
 export interface Tool {
   id: number;
   slug: string;
@@ -1092,6 +1093,9 @@ export const tools: Tool[] = [
 ];
 
 export const TOOLS = tools;
+
+/** Ferramentas que aparecem no menu, na busca e nas categorias (ver searchVisibility.ts) */
+export const LISTED_TOOLS = tools.filter((t) => isToolListed(t.slug));
 
 export type Category = "Todas" | "Calculadoras" | "Finanças" | "Saúde" | "Produtividade" | "Educação" | "Casa" | "Culinária" | "Utilidades" | "Lazer" | "Esportes" | "Sorte" | "Redes Sociais" | "Religioso" | "DP/RH" | "Astrologia" | "Livros e Leitura" | "Família e Bebês" | "Pet";
 

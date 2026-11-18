@@ -4,7 +4,7 @@ import { SiteFooterLinks } from "../components/SiteFooterLinks";
 import { ShareButtons } from "../components/ShareButtons";
 import { GUIDES } from "../data/guides";
 import { GUIDES_META } from "../data/guidesMeta";
-import { TOOLS } from "../data/tools";
+import { TOOLS, LISTED_TOOLS } from "../data/tools";
 
 const SITE_URL = "https://www.clicaresolve.com.br";
 
@@ -20,7 +20,7 @@ export function GuidePage({ slug }: { slug: string; onBack?: () => void }) {
   if (!meta || !guide) return null;
 
   const url = `${SITE_URL}/guia/${slug}`;
-  const tools = meta.toolSlugs.map((s) => TOOLS.find((t) => t.slug === s)).filter(Boolean) as typeof TOOLS;
+  const tools = meta.toolSlugs.map((s) => LISTED_TOOLS.find((t) => t.slug === s)).filter(Boolean) as typeof TOOLS;
   const others = GUIDES_META.filter((g) => g.slug !== slug).slice(0, 4);
 
   const schemas: Record<string, unknown>[] = [
