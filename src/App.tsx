@@ -8,7 +8,7 @@ import { ErrorBoundary } from "./components/ErrorBoundary";
 import { lazyRetry } from "./utils/lazyRetry";
 import { NavigationContext } from "./context/NavigationContext";
 import { wasScrolling } from "./utils/touchHandler";
-import { TOOLS, CATEGORIES, Category } from "./data/tools";
+import { TOOLS, LISTED_TOOLS, CATEGORIES, Category } from "./data/tools";
 import { CATEGORY_SEO_DATA, getCategoryTools } from "./data/seoData";
 import { GUIDES_META, GUIDE_SLUGS } from "./data/guidesMeta";
 const AlcoolGasolina = lazyRetry(() => import("./tools/AlcoolGasolina").then(m => ({ default: m.AlcoolGasolina })));
@@ -351,7 +351,7 @@ function CategoryFilter({ activeCategory, onSelectCategory }: {
       aria-label="Filtrar por categoria"
     >
       <div className="flex gap-2 px-4 py-3 max-w-screen-xl mx-auto" style={{ minWidth: 'max-content' }}>
-        {CATEGORIES.map((cat) => (
+        {CATEGORIES.filter((cat) => cat === "Todas" || LISTED_TOOLS.some((t) => t.category === cat)).map((cat) => (
           <button
             key={cat}
             onClick={() => onSelectCategory(cat)}
@@ -372,7 +372,7 @@ function CategoryFilter({ activeCategory, onSelectCategory }: {
 }
 
 function FeaturedTools({ onSelectTool }: { onSelectTool: (slug: string) => void }) {
-  const featured = FEATURED_SLUGS.map((slug) => TOOLS.find((t) => t.slug === slug)).filter(Boolean) as typeof TOOLS;
+  const featured = FEATURED_SLUGS.map((slug) => LISTED_TOOLS.find((t) => t.slug === slug)).filter(Boolean) as typeof TOOLS;
   return (
     <section className="max-w-4xl mx-auto px-4 pt-10 pb-2">
       <div className="flex items-center gap-2 mb-4">
@@ -569,7 +569,7 @@ export default function App({ initialPath }: { initialPath?: string } = {}) {
   }, [activeTool, activeCategoryPage]);
 
   const filtered = useMemo(() => {
-    return TOOLS.filter((t) => {
+    return LISTED_TOOLS.filter((t) => {
       const matchCat = activeCategory === "Todas" || t.category === activeCategory;
       const q = search.toLowerCase();
       const matchSearch = !q || t.name.toLowerCase().includes(q) || t.description.toLowerCase().includes(q) || t.category.toLowerCase().includes(q);
@@ -694,7 +694,7 @@ export default function App({ initialPath }: { initialPath?: string } = {}) {
           "@type": "WebSite",
           name: "CLICAresolve",
           url: "https://www.clicaresolve.com.br",
-          description: `${TOOLS.length} ferramentas gratuitas para o seu dia a dia — sem cadastro, sem complicação.`,
+          description: `${LISTED_TOOLS.length} ferramentas gratuitas para o seu dia a dia — sem cadastro, sem complicação.`,
           potentialAction: {
             "@type": "SearchAction",
             target: "https://www.clicaresolve.com.br/?search={search_term_string}",
@@ -714,7 +714,7 @@ export default function App({ initialPath }: { initialPath?: string } = {}) {
           <div className="relative max-w-2xl mx-auto">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-green-400/10 border border-green-400/20 mb-6 animate-fade-in-up">
               <span className="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse" />
-              <span className="text-xs font-medium text-green-400">{TOOLS.length} ferramentas gratuitas</span>
+              <span className="text-xs font-medium text-green-400">{LISTED_TOOLS.length} ferramentas gratuitas</span>
             </div>
             <h1 className="text-5xl sm:text-7xl font-extrabold mb-4 leading-tight tracking-tight animate-fade-in-up text-text" style={{ animationDelay: '80ms' }}>
               <span className="text-text">Clicou, </span>
@@ -813,8 +813,8 @@ export default function App({ initialPath }: { initialPath?: string } = {}) {
             Explore por Categoria
           </h2>
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3 sm:gap-5">
-            {Object.values(CATEGORY_SEO_DATA).map((cat, i) => {
-              const count = getCategoryTools(cat, TOOLS).length;
+            {Object.values(CATEGORY_SEO_DATA).filter((cat) => getCategoryTools(cat, LISTED_TOOLS).length > 0).map((cat, i) => {
+              const count = getCategoryTools(cat, LISTED_TOOLS).length;
               return (
                 <a
                   key={cat.slug}
@@ -855,7 +855,7 @@ function Footer({ onNavigate, cafeOpen, setCafeOpen }: { onNavigate: (page: stri
               <span className="text-sm font-bold leading-none"><span className="text-text">CLICA</span><span className="text-green-400">resolve</span></span>
             </div>
             <p className="text-xs text-muted leading-relaxed">
-              {TOOLS.length} ferramentas gratuitas para o dia a dia — sem cadastro, sem complicação.
+              {LISTED_TOOLS.length} ferramentas gratuitas para o dia a dia — sem cadastro, sem complicação.
             </p>
           </div>
           <div>

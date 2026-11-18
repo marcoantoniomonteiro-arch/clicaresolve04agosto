@@ -33,7 +33,7 @@ export function SobrePage({ onBack }: Props) {
           <p className="text-sm text-gray-300 leading-relaxed">
             O CLICAresolve nasceu de uma ideia simples: resolver problemas do dia a dia com um único clique.
             Somos um portal brasileiro de ferramentas e calculadoras gratuitas, sem cadastro e sem custo.
-            Com mais de 130 ferramentas cobrindo Saúde, Finanças, Transportes, Estudos, Esportes, DP/RH, Pet e mais.
+            São dezenas de ferramentas cobrindo Saúde, Finanças, Casa, Estudos, Esportes, Pet e mais, além de guias que explicam cada cálculo.
             Nossa missão é democratizar o acesso a informações úteis de forma gratuita para todos os brasileiros.
             Os cálculos funcionam no próprio navegador — o que você digita nas calculadoras não é enviado ao CLICAresolve.
           </p>
