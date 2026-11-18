@@ -1,10 +1,12 @@
 import { SEOHead } from "../components/SEOHead";
 import { toolsSeoEN } from "../i18n/tools/en";
 import { TOOLS } from "../data/tools";
+import { isEnIndexed } from "../data/searchVisibility";
 
 /** Página inicial em inglês (/en): lista todas as ferramentas que têm versão em inglês. */
 export function EnglishHomePage({ onSelectTool }: { onSelectTool: (ptSlug: string) => void }) {
   const tools = toolsSeoEN
+    .filter((t) => isEnIndexed(t.enSlug))
     .map((t) => ({ ...t, emoji: TOOLS.find((x) => x.slug === t.ptSlug)?.emoji || "🛠️" }))
     .sort((a, b) => a.h1.localeCompare(b.h1, "en"));
 

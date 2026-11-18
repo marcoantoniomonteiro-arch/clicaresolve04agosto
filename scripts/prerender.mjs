@@ -56,16 +56,20 @@ const failures = [];
 const lastmodFile = path.join(root, "scripts", "lastmod.json");
 const lastmodOld = fs.existsSync(lastmodFile) ? JSON.parse(fs.readFileSync(lastmodFile, "utf8")) : {};
 const lastmodNew = {};
+const noindexRoutes = new Set();
 const today = new Intl.DateTimeFormat("en-CA", { timeZone: "America/Sao_Paulo" }).format(new Date());
 let ok = 0;
 
 for (const route of routes) {
   try {
     const { html, head, htmlAttributes } = await render(route);
+    if (/<meta[^>]*name="robots"[^>]*noindex/.test(head)) noindexRoutes.add(route);
     const hash = crypto.createHash("sha1").update(head + html).digest("hex").slice(0, 16);
     const prev = lastmodOld[route];
     lastmodNew[route] = prev && prev[0] === hash ? prev : [hash, today];
     let page = baseTemplate.replace("</head>", `${head}\n</head>`);
+    // Página com noindex: tira a meta robots padrão (index) do template
+    if (noindexRoutes.has(route)) page = page.replace(/<meta name="robots" content="index[^>]*>\s*/i, "");
     if (htmlAttributes) page = page.replace(/<html[^>]*>/i, `<html ${htmlAttributes}>`);
     page = page.replace('<div id="root"></div>', `<div id="root">${html}</div>`);
     const file = outFileFor(route);
@@ -94,7 +98,8 @@ if (failures.length) {
 // Sitemap gerado a partir das páginas que existem de fato, com a data da última
 // mudança real de cada uma (ver lastmod.json acima).
 fs.writeFileSync(lastmodFile, JSON.stringify(lastmodNew, null, 0).replace(/\],"/g, '],\n"') + "\n");
-const okRoutes = routes.filter((r) => !failures.some((f) => f.route === r));
+// Páginas com noindex (ver src/data/searchVisibility.ts) ficam fora do sitemap
+const okRoutes = routes.filter((r) => !failures.some((f) => f.route === r) && !noindexRoutes.has(r));
 const priority = (r) => (r === "/" ? "1.0" : r.startsWith("/categoria/") || r === "/guias" ? "0.8" : r.startsWith("/guia/") ? "0.8" : "0.6");
 const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">

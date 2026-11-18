@@ -6,6 +6,7 @@ import { ShareButtons } from "./ShareButtons";
 import { getGuidesForTool } from "../data/guidesMeta";
 import { TOOL_EXTRAS } from "../data/toolExtras";
 import { ToolContent } from "./ToolContent";
+import { isEnIndexed } from "../data/searchVisibility";
 import { SEOHead } from "./SEOHead";
 import { TOOLS } from "../data/tools";
 import { CATEGORY_SEO_DATA } from "../data/seoData";
@@ -190,7 +191,8 @@ export function ToolLayout({
         breadcrumbs={breadcrumbs}
         speakable={true}
         lang={lang}
-        alternateUrl={seoEN ? `/${toolSlug}` : (toolsSeoENByPtSlug[toolSlug] ? `/en/${toolsSeoENByPtSlug[toolSlug].enSlug}` : undefined)}
+        alternateUrl={seoEN ? `/${toolSlug}` : (toolsSeoENByPtSlug[toolSlug] && isEnIndexed(toolsSeoENByPtSlug[toolSlug].enSlug) ? `/en/${toolsSeoENByPtSlug[toolSlug].enSlug}` : undefined)}
+        noindex={!!seoEN && !isEnIndexed(seoEN.enSlug)}
       />}
 
       <div className="max-w-2xl mx-auto px-4 py-8">

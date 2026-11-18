@@ -5,6 +5,7 @@ import { NAMES_DB } from "./namesData";
 import { ToolContent } from "../components/ToolContent";
 import { SEOHead } from "../components/SEOHead";
 import { AffiliateBanner } from "../components/AffiliateBanner";
+import { isNameIndexed } from "../data/searchVisibility";
 import { getNameStats, sameOrigin, nameFaqs, formatNumber, DECADE_LABELS, nameFacts, rankNeighbors, counterpartName } from "./namesInfo";
 
 interface Props {
@@ -91,6 +92,11 @@ export function findName(name: string): typeof NAMES_DB[0] | undefined {
 }
 
 /** Todos os nomes da base, em ordem alfabética, sem repetir o mesmo endereço */
+/** Link para a página do nome, ou só o texto se a página estiver fora do Google por enquanto */
+function NameLink({ name, slug, className }: { name: string; slug: string; className: string }) {
+  return isNameIndexed(slug) ? <a href={`/significado-nome/${slug}`} className={className}>{name}</a> : <span>{name}</span>;
+}
+
 export const ALL_NAME_SLUGS: { name: string; slug: string }[] = (() => {
   const seen = new Set<string>();
   const list: { name: string; slug: string }[] = [];
@@ -230,7 +236,7 @@ export function SignificadoNomes({ onBack, initialName }: Props) {
   // Vizinhos em ordem alfabética (cada página mostra uma lista diferente)
   const sameLetter = (() => {
     if (!pageName) return [];
-    const letter = ALL_NAME_SLUGS.filter((n) => normalizeName(n.name)[0] === normalizeName(pageName)[0]);
+    const letter = ALL_NAME_SLUGS.filter((n) => normalizeName(n.name)[0] === normalizeName(pageName)[0] && (n.name === pageName || isNameIndexed(n.slug)));
     const i = letter.findIndex((n) => n.name === pageName);
     const start = Math.max(0, Math.min(i - 6, letter.length - 13));
     return letter.slice(start, start + 13).filter((n) => n.name !== pageName).slice(0, 12);
@@ -254,7 +260,7 @@ export function SignificadoNomes({ onBack, initialName }: Props) {
           title={seoTitle}
           description={seoDescription}
           canonical={seoCanonical}
-          noindex={!isNamePage}
+          noindex={!isNamePage || !isNameIndexed(seoCanonical.replace("/significado-nome/", ""))}
           breadcrumbs={isNamePage ? [
             { name: "Início", url: "/" },
             { name: "Significado de Nomes", url: "/significado-nomes" },
@@ -338,7 +344,7 @@ export function SignificadoNomes({ onBack, initialName }: Props) {
                     {originNames.map((n, i) => (
                       <React.Fragment key={n.name}>
                         {i > 0 && ", "}
-                        <a href={`/significado-nome/${slugify(n.name)}`} className="text-green-400 hover:text-green-300">{n.name}</a>
+                        <NameLink name={n.name} slug={slugify(n.name)} className="text-green-400 hover:text-green-300" />
                       </React.Fragment>
                     ))}
                   </p>
@@ -387,7 +393,7 @@ export function SignificadoNomes({ onBack, initialName }: Props) {
                     {counterpart && (
                       <p>
                         Versão {pageStats?.gender === "masculino" ? "feminina" : "masculina"}:{" "}
-                        <a href={`/significado-nome/${counterpart.slug}`} className="text-green-400 hover:text-green-300">{counterpart.name}</a>{" "}
+                        <NameLink name={counterpart.name} slug={counterpart.slug} className="text-green-400 hover:text-green-300" />{" "}
                         ({counterpart.note} pessoas no Censo 2010).
                       </p>
                     )}
@@ -397,7 +403,7 @@ export function SignificadoNomes({ onBack, initialName }: Props) {
                         {neighbors.map((n, i) => (
                           <React.Fragment key={n.slug}>
                             {i > 0 && ", "}
-                            <a href={`/significado-nome/${n.slug}`} className="text-green-400 hover:text-green-300">{n.name}</a> ({n.note})
+                            <NameLink name={n.name} slug={n.slug} className="text-green-400 hover:text-green-300" /> ({n.note})
                           </React.Fragment>
                         ))}.
                       </p>
@@ -506,13 +512,13 @@ export function SignificadoNomes({ onBack, initialName }: Props) {
           lista inteira (580+ links iguais em todas) viraria conteúdo repetido. */}
       {isNamePage ? (
         <p className="mt-8 text-sm text-muted">
-          <a href="/significado-nomes" className="text-green-400 hover:text-green-300">Ver o significado de todos os nomes da A a Z →</a>
+          <a href="/significado-nomes" className="text-green-400 hover:text-green-300">Ver mais nomes, de A a Z →</a>
         </p>
       ) : (
       <nav aria-label="Todos os nomes" className="mt-8">
-        <h2 className="text-lg font-bold text-text mb-3">Significado de todos os nomes da A a Z</h2>
+        <h2 className="text-lg font-bold text-text mb-3">Significado dos nomes mais buscados, de A a Z</h2>
         <div className="flex flex-wrap gap-x-3 gap-y-1.5 text-sm">
-          {ALL_NAME_SLUGS.map((n) => (
+          {ALL_NAME_SLUGS.filter((n) => isNameIndexed(n.slug)).map((n) => (
             <a key={n.slug} href={`/significado-nome/${n.slug}`} className="text-muted hover:text-green-400 transition-colors">
               {n.name}
             </a>
