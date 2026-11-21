@@ -14,7 +14,7 @@ export function SobrePage({ onBack }: Props) {
       description="Conheça o CLICAresolve: projeto brasileiro independente de calculadoras e ferramentas online grátis, com a fórmula de cada cálculo explicada."
       canonical="/sobre"
       ogTitle="Sobre o CLICAresolve — Projeto Independente Brasileiro"
-      ogDescription="Ferramentas gratuitas baseadas em metodologias científicas e técnicas reconhecidas. Sem cadastro, privacidade total."
+      ogDescription="Criado por Marco Antônio para oferecer de graça, e para todos, as ferramentas do dia a dia que costumam ser pagas ou limitadas."
       onBack={onBack}
     >
       <div className="text-center mb-8">
@@ -24,33 +24,48 @@ export function SobrePage({ onBack }: Props) {
       </div>
 
       <div className="space-y-8">
-        {/* Missão */}
+        {/* Quem faz */}
         <div className="p-5 rounded-xl bg-green-400/5 border border-green-400/10">
           <div className="flex items-center gap-2 mb-3">
             <Globe className="w-5 h-5 text-green-400" />
-            <h2 className="text-lg font-bold text-white">Nossa Missão</h2>
+            <h2 className="text-lg font-bold text-white">Por que o CLICAresolve existe</h2>
           </div>
-          <p className="text-sm text-gray-300 leading-relaxed">
-            O CLICAresolve nasceu de uma ideia simples: resolver problemas do dia a dia com um único clique.
-            Somos um portal brasileiro de ferramentas e calculadoras gratuitas, sem cadastro e sem custo.
-            São dezenas de ferramentas cobrindo Saúde, Finanças, Casa, Estudos, Esportes, Pet e mais, além de guias que explicam cada cálculo.
-            Nossa missão é democratizar o acesso a informações úteis de forma gratuita para todos os brasileiros.
-            Os cálculos funcionam no próprio navegador — o que você digita nas calculadoras não é enviado ao CLICAresolve.
-          </p>
+          <div className="space-y-3 text-sm text-gray-300 leading-relaxed">
+            <p>
+              Eu sou o Marco Antônio. Sempre trabalhei, e no dia a dia precisei de calculadoras, conversores
+              e utilitários para resolver coisas simples: juntar um PDF, fazer uma conta de juros, converter
+              uma medida. Quase sempre esbarrava no mesmo problema: as ferramentas eram pagas, pediam cadastro
+              ou tinham limite de uso, justamente quando eu mais precisava.
+            </p>
+            <p>
+              O CLICAresolve nasceu daí. O propósito é simples: <strong>funcionalidade de graça e para todos</strong>,
+              sem cadastro, sem limite de uso e sem pegadinha. Cada ferramenta mostra como chega ao resultado,
+              e os guias explicam o assunto para quem quer entender, não só calcular.
+            </p>
+            <p>
+              É um projeto independente, feito e mantido por mim. Os cálculos rodam no seu próprio navegador,
+              então o que você digita nas calculadoras não é enviado ao CLICAresolve. O site se mantém com
+              anúncios discretos e com a ajuda de quem quiser pagar um café.
+            </p>
+          </div>
         </div>
 
         {/* Responsável */}
         <div className="p-5 rounded-xl bg-white/5 border border-white/10">
           <div className="flex items-center gap-2 mb-3">
             <Shield className="w-5 h-5 text-green-400" />
-            <h2 className="text-lg font-bold text-white">Responsável</h2>
+            <h2 className="text-lg font-bold text-white">Responsável e contato</h2>
           </div>
           <p className="text-sm text-gray-300 leading-relaxed">
-            <strong>Responsável:</strong> Marco Antônio<br />
+            <strong>Criador e responsável:</strong> Marco Antônio<br />
             <strong>Contato:</strong>{" "}
             <a href="mailto:suporterapido77@yahoo.com" className="text-green-400 hover:text-green-300 transition-colors">
               suporterapido77@yahoo.com
             </a>
+          </p>
+          <p className="text-sm text-gray-400 leading-relaxed mt-2">
+            Encontrou um erro em algum cálculo ou tem uma ideia de ferramenta? Escreva para o e-mail acima.
+            Correções e sugestões são sempre bem-vindas.
           </p>
         </div>
 
