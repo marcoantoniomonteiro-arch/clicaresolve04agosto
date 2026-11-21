@@ -6,108 +6,79 @@ interface Props {
   onBack: () => void;
 }
 
+// Cada descrição confere com o código da ferramenta (revisado em 21/11/2026).
+// Ao mudar uma fórmula numa ferramenta, atualize aqui também.
 const METHODOLOGIES = [
   {
     category: "Saúde e Bem-Estar",
     tools: [
-      { name: "IMC Avançada", source: "Classificação conforme parâmetros da Organização Mundial da Saúde (OMS, 1997). Fórmula: IMC = peso (kg) / altura² (m)" },
-      { name: "Gasto Calórico", source: "Fórmula de Harris-Benedict revisada (Mifflin-St Jeor, 1990). Equação de Metabolismo Basal validada para populações diversas" },
-      { name: "Frequência Cardíaca", source: "Fórmula de Tanaka (2001): 208 – 0.7 × idade. Zonas de treino baseadas em percentuais do FCmax (ACSM, 2018)" },
-      { name: "Macronutrientes", source: "Distribuição percentual recomendada pela OMS/FAO: 50-60% carboidratos, 10-15% proteínas, 25-30% gorduras" },
-      { name: "Limite de Cafeína", source: "Dose segura de 400mg/dia (FDA, 2015) para adultos saudáveis; 200mg/dia para gestantes (EFSA, 2015)" },
-      { name: "Ciclos do Sono", source: "Ciclos de sono de 90 minutos (Carskadon & Dement, 2011). Baseado em arquitetura do sono NREM/REM" },
-      { name: "DPP (Data Provável do Parto)", source: "Regra de Naegele, método obstétrico padrão desde 1812: LMP + 7 dias – 3 meses + 1 ano" },
-      { name: "Período Fértil", source: "Método do calendário (Ogino-Knaus). Ovulação em 14 dias antes da próxima menstruação (WHO, 1988)" },
-      { name: "Cronômetro de Contrações", source: "Monitoramento de intervalo, duração e frequência conforme protocolo obstétrico padrão (ACOG)" },
-      { name: "Alerta de Água", source: "Ingestão recomendada de 2-3L/dia (EFSA, 2010). Ajustável por peso e atividade" },
+      { name: "IMC Avançada", source: "IMC = peso (kg) ÷ altura² (m), com a classificação de faixas da Organização Mundial da Saúde (OMS)." },
+      { name: "Gasto Calórico", source: "Metabolismo basal pela equação de Mifflin-St Jeor (1990): 10 × peso + 6,25 × altura − 5 × idade, +5 para homens e −161 para mulheres. O gasto total multiplica o basal pelo fator de atividade (1,2 a 1,9)." },
+      { name: "Frequência Cardíaca", source: "Frequência máxima estimada por 220 − idade. Se você informar a frequência de repouso, as zonas usam o método de Karvonen (reserva cardíaca); sem ela, são porcentagens da máxima (50% a 100%)." },
+      { name: "Macronutrientes", source: "Divide as calorias pelo objetivo escolhido (emagrecer 40/35/25, manter 50/25/25, ganhar massa 55/25/20 de carboidrato/proteína/gordura) e converte em gramas com 4 kcal/g para carboidrato e proteína e 9 kcal/g para gordura." },
+      { name: "Limite de Cafeína", source: "Limite diário de até 400 mg para adultos saudáveis (FDA e EFSA), ajustado para 3 mg por kg de peso quando esse valor é menor. A FAQ indica 200 mg/dia para gestantes (EFSA). Teores das bebidas são valores médios de referência." },
+      { name: "Ciclos do Sono", source: "Ciclos de cerca de 90 minutos, somando 15 minutos para pegar no sono, para sugerir horários de dormir ou acordar entre ciclos." },
+      { name: "DPP (Data Provável do Parto)", source: "Regra de Naegele: data da última menstruação + 7 dias − 3 meses + 1 ano, com a idade gestacional em semanas." },
+      { name: "Período Fértil", source: "Método do calendário: ovulação estimada em (duração do ciclo − 14) dias após a menstruação e janela fértil de 5 dias antes até o dia da ovulação. Não é método contraceptivo." },
+      { name: "Cronômetro de Contrações", source: "Registra a duração de cada contração e o intervalo entre elas. Não substitui a orientação médica." },
+      { name: "Alerta de Água", source: "Lembretes em intervalos que você escolhe. A FAQ usa a referência geral de cerca de 35 ml de água por kg de peso por dia." },
     ],
   },
   {
     category: "Finanças e Empreendedorismo",
     tools: [
-      { name: "Juros Compostos", source: "Fórmula matemática padrão: M = C × (1 + i)^t. Composto anual, mensal ou diário (equivalente)" },
-      { name: "Simulador de Markup", source: "Fórmula contábil: Markup = 1 / (1 – (DF% + DV% + ML%)). DF = despesas fixas, DV = despesas variáveis, ML = margem líquida desejada" },
-      { name: "Ponto de Equilíbrio", source: "Fórmula contábil: PE = Custo Fixo / (Preço – Custo Variável Unitário). Origem: Charles T. Horngren, Cost Accounting" },
-      { name: "Conversor de Moedas", source: "Taxas de câmbio atualizadas via API pública (taxa diária do mercado internacional de câmbio)" },
-      { name: "Salário/Hora", source: "Cálculo baseado na CLT: salário bruto / horas mensais contratadas (220h para regime de 44h semanais)" },
-      { name: "Taxas de Maquininha", source: "Comparação de taxas de débito e crédito das principais adquirentes (Cielo, Rede, Stone, PagSeguro) conforme tabelas públicas" },
-      { name: "Comparador de Preço", source: "Fórmula unitária: preço / quantidade. Comparação de relação custo-benefício entre embalagens diferentes" },
-      { name: "Porcentagem Reversa", source: "Fórmulas matemáticas padrão: percentual, variação, aumento/diminuição percentual e percentual do total" },
-      { name: "Álcool ou Gasolina", source: "Relação de eficiência energética: etanol vale a pena quando preço ≤ 70% da gasolina (ANP, resolução técnica)" },
-      { name: "Depreciação de Veículo", source: "Método da Tabela FIPE (Fundação Instituto de Pesquisas Econômicas) para depreciação de mercado brasileiro" },
-      { name: "Parcelamento de Multas", source: "Conforme CTB (Código de Trânsito Brasileiro) e Resolução 723/2018 do CONTRAN: multas podem ser parceladas em até 12x" },
+      { name: "Juros Compostos", source: "Fórmula M = C × (1 + i)^t, com aportes mensais opcionais." },
+      { name: "Simulador de Markup", source: "Markup = 1 ÷ (1 − impostos% − comissão% − margem%); preço de venda = custo × markup. Avisa quando a soma das porcentagens chega a 100%." },
+      { name: "Ponto de Equilíbrio", source: "Ponto de equilíbrio = custos fixos ÷ (preço − custo variável por unidade), em unidades e em faturamento." },
+      { name: "Simulador de Financiamento", source: "Tabelas Price (parcelas iguais) e SAC (amortização constante), com juros compostos sobre o saldo devedor." },
+      { name: "Conversor de Moedas", source: "Usa cotações de referência que não são atualizadas automaticamente. Você pode editar cada cotação com o valor do dia informado pelo seu banco." },
+      { name: "Salário por Hora", source: "Horas por mês = horas por dia × dias por semana × 4,33. Valor da hora = salário ÷ horas por mês, com hora extra de 50% e desconto estimado do INSS." },
+      { name: "Taxas de Maquininha", source: "Taxas de referência por modalidade (débito, crédito à vista e parcelado), que você ajusta para as taxas da sua maquininha. Calcula o valor líquido que você recebe, o valor de cada parcela e o prazo de recebimento." },
+      { name: "Comparador de Preço", source: "Preço por unidade de medida (preço ÷ quantidade) para comparar embalagens de tamanhos diferentes." },
+      { name: "Porcentagem Reversa e Desconto", source: "Fórmulas de porcentagem: valor original a partir do valor com desconto ou aumento, variação percentual e desconto em reais." },
+      { name: "Álcool ou Gasolina", source: "Relação preço do etanol ÷ preço da gasolina, comparada com a regra prática de 70% (ou 70,4% considerando a gasolina com 32% de etanol), que reflete o menor rendimento do etanol." },
+      { name: "Depreciação de Veículo", source: "Estimativa com taxa anual por tipo de veículo (de 10% a 15% ao ano). Não substitui a consulta à Tabela FIPE para o valor de mercado." },
+      { name: "Divisor de Carona", source: "Custo da viagem = distância ÷ consumo × preço do combustível, mais pedágios, dividido pelo número de pessoas." },
     ],
   },
   {
-    category: "DP/RH e Trabalho",
+    category: "Estudos e Trabalho",
     tools: [
-      { name: "Acumulador de Horas", source: "Cálculo de jornada conforme CLT (arts. 58-61). Horas extras: 50% adicional; 100% em domingos/feriados" },
-      { name: "Conversor de Horas Decimais", source: "Conversão padrão: minutos/60. Ex: 1h30 = 1,5h. Baseado em norma de controle de ponto (Portaria 1510/2009)" },
-      { name: "Gerador de Recibo", source: "Conforme Lei 5.474/1968 (obrigatoriedade de recibo) e práticas contábeis padrão para prestadores de serviço" },
+      { name: "Simulador SISU", source: "Média ponderada das notas do ENEM com os pesos que você escolhe ou que o curso costuma usar. É uma simulação: a nota de corte real varia por instituição e edição." },
+      { name: "Ciclo de Estudos e Pomodoro", source: "Distribui as horas da semana pelo peso de cada matéria; o Pomodoro usa blocos de foco e pausas (25/5 minutos por padrão, ajustáveis)." },
+      { name: "Regra de Três", source: "Regra de três simples e inversa." },
+      { name: "Horas Decimais", source: "Conversão minutos ÷ 60 (ex.: 1h30 = 1,5 h) e o caminho inverso." },
     ],
   },
   {
-    category: "Educação e Estudos",
+    category: "Casa",
     tools: [
-      { name: "Simulador SISU", source: "Notas de corte baseadas em dados históricos do MEC/SISU. Cálculo: média ponderada do ENEM conforme pesos do edital" },
-      { name: "Calculadora de Edital", source: "Cálculo de nota final com pesos por matéria conforme edital de concurso. Fórmula: Σ (nota × peso) / Σ pesos" },
-      { name: "Ciclo de Estudos", source: "Método de blocos de estudo com pausas, baseado em técnicas de gestão de tempo e neurociência da aprendizagem" },
-      { name: "Pomodoro", source: "Técnica de Francesco Cirillo (1987): 25 minutos de foco + 5 minutos de pausa. Ciclos de 4 pomodoros com pausa longa de 15-30 min" },
-    ],
-  },
-  {
-    category: "Calendário e Tempo",
-    tools: [
-      { name: "Calendário de Feriados", source: "Feriados nacionais conforme Lei 662/1949 e decretos presidenciais. Feriados móveis baseados no cálculo astronômico da Páscoa (Algoritmo de Gauss)" },
-      { name: "Diferença entre Datas", source: "Cálculo de intervalos em anos, meses, dias e horas conforme calendário Gregoriano (padrão ISO 8601)" },
-      { name: "Contador de Dias de Vida", source: "Cálculo de intervalo entre data de nascimento e data atual, com precisão de dias, horas e minutos" },
-    ],
-  },
-  {
-    category: "Família e Bebês",
-    tools: [
-      { name: "Significado de Nomes", source: "Base de dados compilada de etimologia reconhecida: nomes de origem hebraica, grega, latina, germânica, celta e outras. Referências: Behind the Name, SEB (Sociedade de Etimologia Brasileira)" },
+      { name: "Calculadora de BTU", source: "Regra prática de 600 BTU por m², mais 600 BTU por pessoa além de duas e 400 BTU por aparelho eletrônico além do primeiro, arredondado para o modelo comercial mais próximo. Para projetos, consulte um instalador." },
+      { name: "Calculadora de Tinta", source: "Litros = área a pintar × número de demãos ÷ rendimento da tinta (10 m²/L por padrão, ajustável conforme a lata)." },
+      { name: "Consumo de Energia", source: "kWh = potência (W) × horas de uso por dia × dias ÷ 1.000; custo = kWh × tarifa informada." },
+      { name: "Metros Quadrados", source: "Área = largura × comprimento, somando até 5 ambientes, com margem opcional para quebra de piso." },
     ],
   },
   {
     category: "Pet",
     tools: [
-      { name: "Calculadora de Idade Pet", source: "Conversão de idade canina/felina baseada em protocolos da AVMA (American Veterinary Medical Association) e WSAVA (World Small Animal Veterinary Association). Fatores de envelhecimento por porte e espécie" },
-      { name: "Consumo de Ração", source: "Recomendação baseada em percentuais do peso corporal conforme NRC (National Research Council) e FEDIAF. Filhotes: 5-7%, Adultos: 2-3%, Idosos: 2%" },
-      { name: "Rastreador de Vacinas", source: "Protocolos de vacinação baseados em guias da WSAVA (2022) e CVMA (Canadian Veterinary Medical Association). V8/V10: protocolo de 3 doses + reforços anuais" },
-    ],
-  },
-  {
-    category: "Astrologia",
-    tools: [
-      { name: "Descobridor de Signo", source: "Classificação de signos solares conforme astrologia tropical ocidental: datas baseadas no equinócio de primavera (0° de Áries)" },
-      { name: "Mapa Numerológico", source: "Numerologia pitagórica: redução de dígitos da data de nascimento. Número do Destino = soma dos dígitos reduzidos a um dígito (exceto 11, 22, 33)" },
+      { name: "Consumo de Ração", source: "Quantidade diária como porcentagem do peso do animal, conforme espécie e fase da vida, ajustada pelo nível de atividade. Confirme com o veterinário e com a embalagem da ração." },
+      { name: "Carteirinha de Vacinas Pet", source: "Calendário de referência das vacinas mais comuns por espécie, com datas e reforços que você pode editar conforme a orientação do seu veterinário." },
     ],
   },
   {
     category: "Religioso",
     tools: [
-      { name: "Plano de Leitura Bíblica", source: "Cronograma de 365 dias baseado em divisão canônica da Bíblia Hebraica (Tanakh) e Novo Testamento (Texto Crítico NA28)" },
-      { name: "Cronologia Bíblica", source: "Linha do tempo baseada em cronologia de James Ussher (Annals of the World, 1650), The Chronological Bible (Thompson) e arqueologia bíblica moderna" },
-      { name: "Conversor Calendário Hebraico", source: "Algoritmo de conversão gregoriano-hebraico baseado no calendário lunissolar hebraico (molad e cheshbon). Festas conforme tradição rabínica" },
+      { name: "Cronologia Bíblica", source: "Linha do tempo com datas aproximadas usadas tradicionalmente por estudiosos; várias datas antigas são debatidas e aparecem como aproximadas." },
+      { name: "Calendário Hebraico", source: "Conversão entre datas gregorianas e hebraicas pelas regras do calendário hebraico (meses lunares e anos bissextos de 13 meses)." },
+      { name: "Fichamento SOAP", source: "Modelo de estudo bíblico em quatro partes: Escritura, Observação, Aplicação e Oração." },
     ],
   },
   {
-    category: "Casa e Construção",
+    category: "Calendário e Tempo",
     tools: [
-      { name: "Calculadora de BTU", source: "Cálculo baseado em fator de carga térmica: BTU/h = área (m²) × 600 + pessoas × 600 + equipamentos × 600. Referência: ABNT NBR 16401" },
-      { name: "Calculadora de Tinta", source: "Fórmula de rendimento: litros = área (m²) / rendimento (m²/L) × nº de demãos. Rendimento padrão conforme fabricantes (Coral, Suvinil, Sherwin-Williams)" },
-      { name: "Consumo de Energia", source: "Cálculo: kWh = potência (W) × horas/dia × dias / 1000. Baseado em tarifas da ANEEL (Agência Nacional de Energia Elétrica)" },
-      { name: "Metros Quadrados", source: "Fórmula geométrica padrão: área = largura × comprimento. Baseado em normas de metragem (ABNT NBR 14644)" },
-    ],
-  },
-  {
-    category: "Utilitários",
-    tools: [
-      { name: "Gerador de QR Code", source: "Algoritmo QR Code ISO/IEC 18004. Codificação de texto/URL em formato matricial 2D legível por câmeras" },
-      { name: "Gerador de Senhas", source: "Gerador criptográfico usando Math.random() com seed aleatória. Entropia calculada por comprimento e conjunto de caracteres (NIST SP 800-63B)" },
-      { name: "Conversor de Cozinha", source: "Tabela de conversão de medidas culinárias: 1 xícara = 240ml, 1 colher de sopa = 15ml, 1 colher de chá = 5ml. Densidade de ingredientes conforme USDA" },
-      { name: "Conversor de Roupas", source: "Tabela de conversão de tamanhos: BR/EUA/Europa. Baseado em padronização internacional de medidas do corpo para vestuário (ISO 8559)" },
+      { name: "Calendário de Feriados", source: "Feriados nacionais definidos em leis federais (incluindo o Dia da Consciência Negra, feriado nacional desde 2024) e pontos facultativos, com a Páscoa calculada pelo método tradicional." },
+      { name: "Diferença entre Datas e Dias de Vida", source: "Contagem de dias pelo calendário gregoriano, considerando anos bissextos." },
     ],
   },
 ];
@@ -116,17 +87,17 @@ export function MetodologiaPage({ onBack }: Props) {
   return (
     <StaticPage
       title="Metodologia e Fontes Técnicas"
-      description="Cada ferramenta do CLICAresolve é baseada em metodologias científicas e técnicas reconhecidas. Confira as fontes de cada cálculo."
+      description="Veja a fórmula e a fonte de cada calculadora do CLICAresolve: IMC, gasto calórico, juros compostos, BTU, DPP e outras."
       canonical="/metodologia"
       ogTitle="Metodologia e Fontes — CLICAresolve"
-      ogDescription="Todas as ferramentas seguem fórmulas reconhecidas: OMS, Harris-Benedict, Regra de Naegele, CLT e mais."
+      ogDescription="A fórmula e a fonte de cada calculadora: OMS, Mifflin-St Jeor, Regra de Naegele, juros compostos e mais."
       onBack={onBack}
     >
       <div className="text-center mb-8">
         <div className="text-5xl mb-3">📋</div>
         <h1 className="text-3xl font-black text-white mb-2">Metodologia e Fontes Técnicas</h1>
         <p className="text-sm text-gray-400">
-          Transparência total: cada ferramenta tem sua fonte documentada
+          A fórmula usada em cada calculadora, conferida com o código da ferramenta
         </p>
       </div>
 
@@ -144,10 +115,9 @@ export function MetodologiaPage({ onBack }: Props) {
           <li><strong>IMC:</strong> OMS</li>
           <li><strong>Gasto Calórico:</strong> Mifflin-St Jeor (1990)</li>
           <li><strong>DPP:</strong> Regra de Naegele</li>
-          <li><strong>Frequência Cardíaca:</strong> Fórmula 220-idade</li>
-          <li><strong>Rescisão:</strong> CLT arts. 477-484</li>
+          <li><strong>Frequência Cardíaca:</strong> 220 − idade e método de Karvonen</li>
           <li><strong>Juros Compostos:</strong> M = C(1+i)^t</li>
-          <li><strong>BTU:</strong> ABNT NBR 16401</li>
+          <li><strong>BTU:</strong> regra prática de 600 BTU/m²</li>
         </ul>
         <p className="text-xs text-gray-400 mt-3">
           Todos os cálculos são estimativas — consulte sempre um profissional habilitado.
@@ -180,7 +150,7 @@ export function MetodologiaPage({ onBack }: Props) {
 
       <div className="text-center pt-8 border-t border-white/10 mt-8">
         <p className="text-sm text-gray-500">
-          CLICAresolve © {new Date().getFullYear()} — Metodologia transparente, resultados confiáveis.
+          CLICAresolve © {new Date().getFullYear()} — Encontrou um erro? Escreva para nós pela página de Contato.
         </p>
       </div>
     </StaticPage>

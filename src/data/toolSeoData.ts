@@ -189,11 +189,11 @@ export const TOOL_SEO_DATA: Record<string, ToolSEOData> = {
   },
   "gasto-calorico": {
     title: "Calcule Gasto Calórico Diário Grátis | CLICAresolve",
-    description: "Estime calorias queimadas em atividades com fórmula Harris-Benedict. Gratuito, sem cadastro. Calcule agora!",
+    description: "Calcule seu metabolismo basal e quantas calorias gasta por dia pela equação de Mifflin-St Jeor. Grátis, sem cadastro.",
     schemaType: "MedicalWebPage",
     hasFAQ: true,
     faqs: [
-      { question: "Como calcular gasto calórico?", answer: "Usamos a fórmula de Harris-Benedict revisada (Mifflin-St Jeor, 1990) para calcular o metabolismo basal e gasto por atividade." },
+      { question: "Como calcular gasto calórico?", answer: "Usamos a equação de Mifflin-St Jeor (1990) para o metabolismo basal e multiplicamos pelo fator de atividade (1,2 a 1,9) para o gasto diário." },
     ],
   },
   "frequencia-cardiaca": {
