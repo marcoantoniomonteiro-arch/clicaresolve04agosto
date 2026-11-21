@@ -124,8 +124,8 @@ export function GastoCalórico({ onBack }: Props) {
         toolName="GastoCalorico"
         category="Saúde"
         data={{
-          directAnswer: "A média de gasto calórico diário varia de 1.500 a 2.500 kcal, dependendo do sexo, idade, peso e nível de atividade. Use a fórmula de Harris-Benedict para calcular o seu.",
-          howItWorks: "A ferramenta calcula o gasto calórico usando a fórmula de Harris-Benedict (revisada por Mifflin-St Jeor, 1990): para homens, TMB = 10 × peso + 6,25 × altura − 5 × idade + 5; para mulheres, TMB = 10 × peso + 6,25 × altura − 5 × idade − 161. O TDEE (gasto total) é a TMB multiplicada pelo fator de atividade (1,2 a 1,9). A ferramenta mostra 4 valores: TMB, TDEE (manutenção), calorias para emagrecer (−500 kcal) e para ganhar massa (+300 kcal). O resultado é apresentado em cards coloridos com visualização clara.",
+          directAnswer: "A média de gasto calórico diário varia de 1.500 a 2.500 kcal, dependendo do sexo, idade, peso e nível de atividade. Use a calculadora, que aplica a equação de Mifflin-St Jeor, para estimar o seu.",
+          howItWorks: "A ferramenta calcula o gasto calórico com a equação de Mifflin-St Jeor (1990), hoje mais usada que a antiga fórmula de Harris-Benedict: para homens, TMB = 10 × peso + 6,25 × altura − 5 × idade + 5; para mulheres, TMB = 10 × peso + 6,25 × altura − 5 × idade − 161. O TDEE (gasto total) é a TMB multiplicada pelo fator de atividade (1,2 a 1,9). A ferramenta mostra 4 valores: TMB, TDEE (manutenção), calorias para emagrecer (−500 kcal) e para ganhar massa (+300 kcal). O resultado é apresentado em cards coloridos com visualização clara.",
           example: {
             title: "Exemplo: homem, 30 anos, 70kg, 175cm, moderado",
             steps: [
@@ -137,10 +137,10 @@ export function GastoCalórico({ onBack }: Props) {
             ],
             result: "TMB: 1.643 kcal, TDEE: 2.547 kcal, para emagrecer: 2.047 kcal, para ganhar massa: 2.847 kcal",
           },
-          attribution: { fonte: "Harris-Benedict revisada (Mifflin-St Jeor, 1990)", data: CONFIG.dataRevisãoSaúde },
+          attribution: { fonte: "Equação de Mifflin-St Jeor (1990)", data: CONFIG.dataRevisãoSaúde },
           faqs: [
             { question: "Como calcular gasto calórico?", answer: "A ferramenta calcula automaticamente. Informe sexo, idade, peso, altura e nível de atividade. A fórmula Mifflin-St Jeor é usada para estimar o metabolismo basal e o gasto total." },
-            { question: "Qual a fórmula de Harris-Benedict?", answer: "É uma fórmula para estimar o metabolismo basal. A versão revisada (Mifflin-St Jeor, 1990) é mais precisa: TMB = 10 × peso + 6,25 × altura − 5 × idade + 5 (M) ou − 161 (F)." },
+            { question: "Qual a diferença entre Harris-Benedict e Mifflin-St Jeor?", answer: "As duas estimam o metabolismo basal. A de Harris-Benedict é de 1919; a de Mifflin-St Jeor (1990), usada aqui, costuma ser mais precisa para a população atual: TMB = 10 × peso + 6,25 × altura − 5 × idade + 5 (homens) ou − 161 (mulheres)." },
             { question: "Quanto calorias queima em 1 hora de caminhada?", answer: "Aproximadamente 200-300 kcal, dependendo do peso, velocidade e terreno. Caminhada leve: 200 kcal/h. Caminhada rápida: 300-350 kcal/h." },
             { question: "Como aumentar gasto calórico?", answer: "Aumente a atividade física (musculação, cardio), aumente o NEAT (passos diários, escadas), aumente a massa muscular (músculo queima mais calorias em repouso) e durma bem." },
             { question: "Gasto calórico basal vs. total?", answer: "TMB é o gasto em repouso absoluto. TDEE inclui todas as atividades: trabalho, exercício, digestão. O TDEE é o valor real para planejar dieta." },

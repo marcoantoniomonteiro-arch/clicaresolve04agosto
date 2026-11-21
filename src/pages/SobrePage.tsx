@@ -11,7 +11,7 @@ export function SobrePage({ onBack }: Props) {
   return (
     <StaticPage
       title="Sobre o CLICAresolve"
-      description="Conheça o CLICAresolve: projeto brasileiro de ferramentas online grátis, com cálculos baseados em fontes como OMS, Harris-Benedict e CLT."
+      description="Conheça o CLICAresolve: projeto brasileiro independente de calculadoras e ferramentas online grátis, com a fórmula de cada cálculo explicada."
       canonical="/sobre"
       ogTitle="Sobre o CLICAresolve — Projeto Independente Brasileiro"
       ogDescription="Ferramentas gratuitas baseadas em metodologias científicas e técnicas reconhecidas. Sem cadastro, privacidade total."
@@ -58,22 +58,23 @@ export function SobrePage({ onBack }: Props) {
         <div>
           <div className="flex items-center gap-2 mb-4">
             <Award className="w-5 h-5 text-yellow-400" />
-            <h2 className="text-lg font-bold text-white">Metodologia Reconhecida</h2>
+            <h2 className="text-lg font-bold text-white">Como os cálculos são feitos</h2>
           </div>
           <p className="text-sm text-gray-300 leading-relaxed mb-4">
-            Todas as nossas calculadoras seguem fórmulas reconhecidas e públicas. Não inventamos cálculos, 
-            não estimamos às cegas, não criamos algoritmos obscuros. Baseamos cada ferramenta em metodologias 
-            científicas e técnicas validadas por instituições respeitadas ao redor do mundo.
+            As calculadoras usam fórmulas públicas e conhecidas, e cada ferramenta explica a sua na própria
+            página, com um exemplo resolvido passo a passo. Quando o resultado é uma estimativa (como BTU,
+            ração ou depreciação de carro), a página avisa. A lista completa está na página de{" "}
+            <a href="/metodologia" className="text-green-400 hover:text-green-300">Metodologia</a>.
           </p>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
             {[
-              { cat: "Saúde", source: "OMS, Harris-Benedict, Regra de Naegele", icon: "❤️" },
-              { cat: "Finanças", source: "Fórmulas matemáticas padrão, taxas de mercado", icon: "💰" },
-              { cat: "DP/RH", source: "CLT (Consolidação das Leis do Trabalho), arts. 477-484", icon: "📋" },
-              { cat: "Religioso", source: "Textos bíblicos, calendário hebraico tradicional", icon: "📖" },
-              { cat: "Educação", source: "SISU (MEC), ENEM, notas de corte oficiais", icon: "📚" },
-              { cat: "Pet", source: "Protocolos veterinários AVMA, WSAVA", icon: "🐾" },
+              { cat: "Saúde", source: "IMC da OMS, equação de Mifflin-St Jeor, Regra de Naegele", icon: "❤️" },
+              { cat: "Finanças", source: "Juros compostos, tabelas Price e SAC, markup e ponto de equilíbrio", icon: "💰" },
+              { cat: "Casa", source: "Regras práticas de BTU, consumo em kWh, área e tinta", icon: "🏠" },
+              { cat: "Religioso", source: "Cronologia bíblica tradicional e regras do calendário hebraico", icon: "📖" },
+              { cat: "Estudos", source: "Média ponderada do ENEM, ciclo de estudos e Pomodoro", icon: "📚" },
+              { cat: "Pet", source: "Ração por peso e fase da vida, calendário de vacinas editável", icon: "🐾" },
             ].map((item) => (
               <div key={item.cat} className="p-4 rounded-xl bg-white/5 border border-white/10">
                 <div className="text-lg mb-1">{item.icon}</div>
@@ -110,12 +111,10 @@ export function SobrePage({ onBack }: Props) {
           <div className="space-y-3">
             {[
               "Sem cadastro — use qualquer ferramenta sem criar conta",
-              "Sem anúncios invasivos — apenas banners discretos e relevantes",
-              "Metodologia transparente — cada cálculo tem fonte documentada",
-              "Metodologia aberta — fórmulas e fontes explicadas em cada ferramenta",
-              "Privacidade em primeiro lugar — cálculos feitos no seu navegador, sem cadastro",
-              "Acesso offline — funciona sem internet após carregamento",
-              "100% gratuito — sem limites de uso, sem upsell"
+              "Fórmula explicada — cada ferramenta mostra como chega ao resultado, com exemplo",
+              "Guias em português — textos que explicam o assunto além da calculadora",
+              "Privacidade — os cálculos são feitos no seu navegador",
+              "100% gratuito — mantido por anúncios discretos e doações"
             ].map((d, i) => (
               <div key={i} className="flex items-start gap-3">
                 <CheckCircle className="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" />
@@ -128,7 +127,7 @@ export function SobrePage({ onBack }: Props) {
         {/* Footer call */}
         <div className="text-center pt-4 border-t border-white/10">
           <p className="text-sm text-gray-500">
-            CLICAresolve © {new Date().getFullYear()} — Ferramentas gratuitas, precisas e baseadas em metodologias reconhecidas.
+            CLICAresolve © {new Date().getFullYear()} — Ferramentas gratuitas para o dia a dia.
           </p>
         </div>
 

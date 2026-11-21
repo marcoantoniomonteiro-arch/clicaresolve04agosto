@@ -108,7 +108,7 @@ export function Macronutrientes({ onBack }: Props) {
             ],
             result: "200g de carboidratos, 175g de proteínas, 56g de gorduras — distribuição ideal para emagrecer com 2.000 kcal",
           },
-          attribution: { fonte: "OMS/FAO", data: CONFIG.dataRevisãoSaúde },
+          attribution: { fonte: "Valores energéticos de referência: 4 kcal/g (carboidrato e proteína) e 9 kcal/g (gordura)", data: CONFIG.dataRevisãoSaúde },
           faqs: [
             { question: "O que são macronutrientes?", answer: "São os nutrientes que fornecem energia: carboidratos, proteínas e gorduras. O organismo os utiliza para produzir ATP, construir tecidos e regular hormônios." },
             { question: "Quantas proteínas preciso por dia?", answer: "Para adultos saudáveis, 0,8-1,2 g/kg de peso. Para atletas, 1,6-2,0 g/kg. A ferramenta calcula com base no total de calorias." },

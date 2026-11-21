@@ -33,7 +33,7 @@ export function GuidePage({ slug }: { slug: string; onBack?: () => void }) {
       dateModified: guide.updated,
       inLanguage: "pt-BR",
       mainEntityOfPage: url,
-      author: { "@type": "Organization", name: "CLICAresolve", url: SITE_URL },
+      author: { "@type": "Person", name: "Marco Antônio", url: `${SITE_URL}/sobre` },
       publisher: { "@type": "Organization", name: "CLICAresolve", logo: { "@type": "ImageObject", url: `${SITE_URL}/logo.png` } },
       image: `${SITE_URL}/og.png`,
     },
@@ -74,7 +74,7 @@ export function GuidePage({ slug }: { slug: string; onBack?: () => void }) {
         <header className="mb-8">
           <div className="text-4xl mb-3">{meta.emoji}</div>
           <h1 className="text-3xl font-extrabold text-text leading-tight mb-3">{meta.title}</h1>
-          <p className="text-xs text-muted">Atualizado em {formatDate(guide.updated)} · CLICAresolve</p>
+          <p className="text-xs text-muted">Por <a href="/sobre" className="hover:text-green-400 underline underline-offset-2">Marco Antônio</a>, do CLICAresolve · Atualizado em {formatDate(guide.updated)}</p>
         </header>
 
         <div className="space-y-4 mb-8">

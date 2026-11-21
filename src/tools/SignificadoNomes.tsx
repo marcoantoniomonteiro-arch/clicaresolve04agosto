@@ -510,7 +510,7 @@ export function SignificadoNomes({ onBack, initialName }: Props) {
       </div>
       {/* Índice de todos os nomes: só na página geral. Nas páginas de nome, a
           lista inteira (580+ links iguais em todas) viraria conteúdo repetido. */}
-      {isNamePage ? (
+      {!ALL_NAME_SLUGS.some((n) => isNameIndexed(n.slug)) ? null : isNamePage ? (
         <p className="mt-8 text-sm text-muted">
           <a href="/significado-nomes" className="text-green-400 hover:text-green-300">Ver mais nomes, de A a Z →</a>
         </p>
