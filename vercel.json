@@ -5,6 +5,11 @@
   "trailingSlash": false,
   "redirects": [
     {
+      "source": "/categoria",
+      "destination": "/",
+      "permanent": true
+    },
+    {
       "source": "/en/baby-name-generator",
       "destination": "/significado-nomes",
       "permanent": true
